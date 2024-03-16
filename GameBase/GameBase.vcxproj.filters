@@ -36,9 +36,6 @@
     <ClInclude Include="SocketUtils.h">
       <Filter>Netwotk</Filter>
     </ClInclude>
-    <ClInclude Include="globalMacro.h">
-      <Filter>Def</Filter>
-    </ClInclude>
     <ClInclude Include="Session.h">
       <Filter>Netwotk</Filter>
     </ClInclude>
@@ -60,6 +57,7 @@
     <ClInclude Include="Listener.h">
       <Filter>Netwotk</Filter>
     </ClInclude>
+    <ClInclude Include="globalMacro.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -98,5 +96,6 @@
     <ClCompile Include="Listener.cpp">
       <Filter>Netwotk</Filter>
     </ClCompile>
+    <ClCompile Include="globalMacro.cpp" />
   </ItemGroup>
 </Project>

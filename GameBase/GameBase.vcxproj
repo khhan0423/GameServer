@@ -166,6 +166,7 @@
     <ClInclude Include="SocketUtils.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="globalMacro.cpp" />
     <ClCompile Include="globalpch.cpp" />
     <ClCompile Include="IOCPCore.cpp" />
     <ClCompile Include="IOCPEvent.cpp" />

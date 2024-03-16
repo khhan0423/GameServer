@@ -13,7 +13,7 @@ SendBuffer::~SendBuffer()
 
 void SendBuffer::CopyData(void* data, __int32 len)
 {
-	ASSERT(Capacity() >= len);
+	ASSERT_CRASH(Capacity() >= len);
 	::memcpy(_buffer.data(), data, len);
 	_writeSize = len;
 }

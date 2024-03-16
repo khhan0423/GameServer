@@ -9,15 +9,15 @@ LPFN_ACCEPTEX		SocketUtils::AcceptEx = nullptr;
 void SocketUtils::Init()
 {
 	WSADATA wsaData;
-	ASSERT(::WSAStartup(MAKEWORD(2, 2), OUT & wsaData) == 0);
+	ASSERT_CRASH(::WSAStartup(MAKEWORD(2, 2), OUT & wsaData) == 0);
 
 	//https://learn.microsoft.com/ko-kr/windows/win32/api/mswsock/nf-mswsock-acceptex
 	//LPFN_ACCEPTEX, LPFN_DISCONNECTEX, LPFN_ACCEPTEX
 	//함수포인터 사용하려면, 런타임에 포인터 얻어와야함.
 	SOCKET dummySocket = CreateSocket();
-	ASSERT(BindWindowsFunction(dummySocket, WSAID_CONNECTEX, reinterpret_cast<LPVOID*>(&ConnectEx)));
-	ASSERT(BindWindowsFunction(dummySocket, WSAID_DISCONNECTEX, reinterpret_cast<LPVOID*>(&DisconnectEx)));
-	ASSERT(BindWindowsFunction(dummySocket, WSAID_ACCEPTEX, reinterpret_cast<LPVOID*>(&AcceptEx)));
+	ASSERT_CRASH(BindWindowsFunction(dummySocket, WSAID_CONNECTEX, reinterpret_cast<LPVOID*>(&ConnectEx)));
+	ASSERT_CRASH(BindWindowsFunction(dummySocket, WSAID_DISCONNECTEX, reinterpret_cast<LPVOID*>(&DisconnectEx)));
+	ASSERT_CRASH(BindWindowsFunction(dummySocket, WSAID_ACCEPTEX, reinterpret_cast<LPVOID*>(&AcceptEx)));
 	Close(dummySocket);
 }
 

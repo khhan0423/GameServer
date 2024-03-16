@@ -18,10 +18,16 @@
     <ClCompile Include="pch.cpp">
       <Filter>Def</Filter>
     </ClCompile>
+    <ClCompile Include="GameSession.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
       <Filter>Def</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSession.h">
+      <Filter>Main</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
