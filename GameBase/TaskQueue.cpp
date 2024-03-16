@@ -3,6 +3,7 @@
 #include "LockQueueBase.h"
 #include "TaskQueue.h"
 #include "TaskManager.h"
+#include "GlobalGameBase.h"
 
 void TaskQueue::Regist(shared_ptr<Task> task)
 {
@@ -18,7 +19,7 @@ void TaskQueue::Regist(shared_ptr<Task> task)
 		}
 		else
 		{
-			GetTaskManager()->Regist(shared_from_this());
+			GTaskManager->Regist(shared_from_this());
 		}
 	}
 }
@@ -48,7 +49,7 @@ void TaskQueue::Run()
 		if (_now >= TLS_EndTickCount)
 		{
 			TLS_CurrentTaskQueue = nullptr;
-			GetTaskManager()->Regist(shared_from_this());
+			GTaskManager->Regist(shared_from_this());
 			break;
 		}
 	}

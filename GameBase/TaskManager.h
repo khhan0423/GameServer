@@ -1,9 +1,6 @@
 #pragma once
-#include "SingletonBase.h"
 
-#define GetTaskManager() TaskManager::GetInstance()
-
-class TaskManager : public SingletonBase<TaskManager>
+class TaskManager
 {
 public:
 	TaskManager() { cout << "TaskManager::TaskManager()" << endl; };

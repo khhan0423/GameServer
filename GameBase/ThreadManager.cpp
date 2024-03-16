@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "ThreadManager.h"
 #include "TaskManager.h"
+#include "GlobalGameBase.h"
 
 ThreadManager::ThreadManager()
 {
@@ -49,7 +50,7 @@ void ThreadManager::Run()
 		if (_now > TLS_EndTickCount)
 			break;
 
-		shared_ptr<TaskQueue> _taskLine = GetTaskManager()->Pop();
+		shared_ptr<TaskQueue> _taskLine = GTaskManager->Pop();
 		if (_taskLine == nullptr)
 			break;
 
