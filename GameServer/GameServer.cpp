@@ -9,13 +9,13 @@ int main()
 {
 	SocketUtils::Init();
 
-	shared_ptr<ServerService> service = make_shared<ServerService>(
+	shared_ptr<ServerService> m_service = make_shared<ServerService>(
 		NetAddress(L"127.0.0.1", 7777),
 		move(make_shared<IocpCore>())/*rValue move 로 포장해서 넘김*/,
 		move(make_shared<GameSession>)/*rValue move 로 포장해서 넘김*/,
 		3);
 
-	ASSERT(service->Start());
+	ASSERT(m_service->Start());
 
 	for (__int32 i = 0; i < 5; i++)
 	{
@@ -23,7 +23,7 @@ int main()
 			{
 				while (true)
 				{
-					service->GetIocpCore()->Dispatch();
+					m_service->GetIocpCore()->Dispatch();
 				}
 			});
 	}

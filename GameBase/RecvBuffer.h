@@ -12,17 +12,17 @@ public:
 	bool				OnRead(__int32 numOfBytes);
 	bool				OnWrite(__int32 numOfBytes);
 
-	BYTE*				ReadPos() { return &_buffer[_readPos]; }
-	BYTE*				WritePos() { return &_buffer[_writePos]; }
-	__int32				DataSize() { return _writePos - _readPos; }
-	__int32				FreeSize() { return _capacity - _writePos; }
+	BYTE*				GetReadPos() { return &m_buffer[m_readPos]; }
+	BYTE*				GetWritePos() { return &m_buffer[m_writePos]; }
+	__int32				GetDataSize() { return m_writePos - m_readPos; }
+	__int32				GetFreeSize() { return m_capacity - m_writePos; }
 
 private:
-	__int32				_capacity = 0;
-	__int32				_bufferSize = 0;
-	__int32				_readPos = 0;
-	__int32				_writePos = 0;
-	vector<BYTE>		_buffer;
+	__int32				m_capacity = 0;
+	__int32				m_bufferSize = 0;
+	__int32				m_readPos = 0;
+	__int32				m_writePos = 0;
+	vector<BYTE>		m_buffer;
 };
 
 

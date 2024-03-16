@@ -8,8 +8,8 @@ LPFN_ACCEPTEX		SocketUtils::AcceptEx = nullptr;
 
 void SocketUtils::Init()
 {
-	WSADATA wsaData;
-	ASSERT(::WSAStartup(MAKEWORD(2, 2), OUT & wsaData) == 0);
+	WSADATA _wsaData;
+	ASSERT(::WSAStartup(MAKEWORD(2, 2), OUT & _wsaData) == 0);
 
 	//https://learn.microsoft.com/ko-kr/windows/win32/api/mswsock/nf-mswsock-acceptex
 	//LPFN_ACCEPTEX, LPFN_DISCONNECTEX, LPFN_ACCEPTEX
@@ -39,10 +39,10 @@ SOCKET SocketUtils::CreateSocket()
 
 bool SocketUtils::SetLinger(SOCKET socket, unsigned __int16 onoff, unsigned __int16 linger)
 {
-	LINGER option;
-	option.l_onoff = onoff;
-	option.l_linger = linger;
-	return SetSockOpt(socket, SOL_SOCKET, SO_LINGER, option);
+	LINGER _option;
+	_option.l_onoff = onoff;
+	_option.l_linger = linger;
+	return SetSockOpt(socket, SOL_SOCKET, SO_LINGER, _option);
 }
 
 bool SocketUtils::SetReuseAddress(SOCKET socket, bool flag)
@@ -78,12 +78,12 @@ bool SocketUtils::Bind(SOCKET socket, NetAddress netAddr)
 
 bool SocketUtils::BindAnyAddress(SOCKET socket, unsigned __int16 port)
 {
-	SOCKADDR_IN myAddress;
-	myAddress.sin_family = AF_INET;
-	myAddress.sin_addr.s_addr = ::htonl(INADDR_ANY);
-	myAddress.sin_port = ::htons(port);
+	SOCKADDR_IN _myAddress;
+	_myAddress.sin_family = AF_INET;
+	_myAddress.sin_addr.s_addr = ::htonl(INADDR_ANY);
+	_myAddress.sin_port = ::htons(port);
 
-	return SOCKET_ERROR != ::bind(socket, reinterpret_cast<const SOCKADDR*>(&myAddress), sizeof(myAddress));
+	return SOCKET_ERROR != ::bind(socket, reinterpret_cast<const SOCKADDR*>(&_myAddress), sizeof(_myAddress));
 }
 
 bool SocketUtils::Listen(SOCKET socket, __int32 backlog)

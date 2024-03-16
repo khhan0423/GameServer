@@ -8,13 +8,14 @@ public:
 	SendBuffer(__int32 bufferSize);
 	~SendBuffer();
 
-	BYTE*			Buffer() { return _buffer.data(); }
-	__int32			WriteSize() { return _writeSize; }
-	__int32			Capacity() { return static_cast<__int32>(_buffer.size()); }
+	BYTE*			GetBuffer() { return m_buffer.data(); }
+	__int32			GetWriteSize() { return m_writeSize; }
+	__int32			GetCapacity() { return static_cast<__int32>(m_buffer.size()); }
 
 	void			CopyData(void* data, __int32 len);
+	void			Close(__int32 writeSize);
 
 private:
-	vector<BYTE>	_buffer;
-	__int32			_writeSize = 0;
+	vector<BYTE>	m_buffer;
+	__int32			m_writeSize = 0;
 };

@@ -13,6 +13,6 @@ public:
 	void Broadcast(shared_ptr<SendBuffer> sendBuffer);
 
 private:
-	recursive_mutex					_lock;
-	set<shared_ptr<GameSession>>	_sessionSet;
+	recursive_mutex					m_lock;
+	set<shared_ptr<GameSession>>	m_sessionSet;
 };

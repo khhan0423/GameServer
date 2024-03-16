@@ -7,11 +7,11 @@ class SendBuffer;
 
 enum class EventType : unsigned __int16
 {
-	Connect,
-	Disconnect,
-	Accept,
-	Recv,
-	Send
+	eCONNECT,
+	eDISCONNECT,
+	eACCEPT,
+	eRECV,
+	eSEND
 };
 
 //OVERLAPPED 를 상속받은 IocpEvent
@@ -24,27 +24,27 @@ public:
 	void					Init();
 
 public:
-	EventType				eventType;
-	shared_ptr<IocpObject>	owner;
+	EventType				m_eventType;
+	shared_ptr<IocpObject>	m_owner;
 };
 
 
 class ConnectEvent : public IocpEvent
 {
 public:
-	ConnectEvent() : IocpEvent(EventType::Connect) { }
+	ConnectEvent() : IocpEvent(EventType::eCONNECT) { }
 };
 
 class DisconnectEvent : public IocpEvent
 {
 public:
-	DisconnectEvent() : IocpEvent(EventType::Disconnect) { }
+	DisconnectEvent() : IocpEvent(EventType::eDISCONNECT) { }
 };
 
 class AcceptEvent : public IocpEvent
 {
 public:
-	AcceptEvent() : IocpEvent(EventType::Accept) { }
+	AcceptEvent() : IocpEvent(EventType::eACCEPT) { }
 
 public:
 	shared_ptr<Session>	session = nullptr;
@@ -53,14 +53,14 @@ public:
 class RecvEvent : public IocpEvent
 {
 public:
-	RecvEvent() : IocpEvent(EventType::Recv) { }
+	RecvEvent() : IocpEvent(EventType::eRECV) { }
 };
 
 class SendEvent : public IocpEvent
 {
 public:
-	SendEvent() : IocpEvent(EventType::Send) { }
+	SendEvent() : IocpEvent(EventType::eSEND) { }
 
-	vector<shared_ptr<SendBuffer>> sendBuffers;
+	vector<shared_ptr<SendBuffer>> m_sendBufferList;
 };
 

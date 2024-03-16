@@ -21,8 +21,8 @@ public:
 	static void			ReleaseTLS();
 
 private:
-	recursive_mutex		_lock;
-	vector<thread>		_threadList;
+	recursive_mutex		m_lock;
+	vector<thread>		m_threadList;
 };
 
 

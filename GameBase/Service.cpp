@@ -2,7 +2,7 @@
 #include "Service.h"
 
 Service::Service(ServiceType type, NetAddress address, shared_ptr<IocpCore> core, SessionFactory factory, __int32 maxSessionCount)
-	: _type(type), _netAddress(address), _iocpCore(core), _sessionFactory(factory), _maxSessionCount(maxSessionCount)
+	: m_type(type), m_netAddress(address), m_iocpCore(core), m_sessionFactory(factory), m_maxSessionCount(maxSessionCount)
 {
 
 }
@@ -18,30 +18,30 @@ void Service::CloseService()
 
 shared_ptr<Session> Service::CreateSession()
 {
-	shared_ptr<Session> session = _sessionFactory();
-	session->SetService(shared_from_this());
+	shared_ptr<Session> _session = m_sessionFactory();
+	_session->SetService(shared_from_this());
 
-	if (_iocpCore->Register(session) == false)
+	if (m_iocpCore->Register(_session) == false)
 		return nullptr;
 
-	return session;
+	return _session;
 }
 
 void Service::AddSession(shared_ptr<Session> session)
 {
 	{
-		lock_guard<recursive_mutex> lock(_lock);
-		_sessionCount++;
-		_sessions.insert(session);
+		lock_guard<recursive_mutex> _lock(m_lock);
+		m_sessionCount++;
+		m_sessions.insert(session);
 	}
 }
 
 void Service::ReleaseSession(shared_ptr<Session> session)
 {
 	{
-		lock_guard<recursive_mutex> lock(_lock);
-		ASSERT(_sessions.erase(session) != 0);
-		_sessionCount--;
+		lock_guard<recursive_mutex> _lock(m_lock);
+		ASSERT(m_sessions.erase(session) != 0);
+		m_sessionCount--;
 	}
 }
 
@@ -55,11 +55,11 @@ bool ClientService::Start()
 	if (CanStart() == false)
 		return false;
 
-	const __int32 sessionCount = GetMaxSessionCount();
-	for (__int32 i = 0; i < sessionCount; i++)
+	const __int32 _sessionCount = GetMaxSessionCount();
+	for (__int32 i = 0; i < _sessionCount; i++)
 	{
 		shared_ptr<Session> session = CreateSession();
-		if (session->Connect() == false)
+		if (session->eCONNECT() == false)
 			return false;
 	}
 
@@ -76,12 +76,12 @@ bool ServerService::Start()
 	if (CanStart() == false)
 		return false;
 
-	_listener = make_shared<Listener>();
-	if (_listener == nullptr)
+	m_listener = make_shared<Listener>();
+	if (m_listener == nullptr)
 		return false;
 
-	shared_ptr<ServerService> service = static_pointer_cast<ServerService>(shared_from_this());
-	if (_listener->StartAccept(service) == false)
+	shared_ptr<ServerService> _service = static_pointer_cast<ServerService>(shared_from_this());
+	if (m_listener->StartAccept(_service) == false)
 		return false;
 
 	return true;

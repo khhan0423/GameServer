@@ -25,34 +25,34 @@ public:
 	virtual ~Service();
 
 	virtual bool						Start() abstract;
-	bool								CanStart() { return _sessionFactory != nullptr; }
+	bool								CanStart() { return m_sessionFactory != nullptr; }
 
 	virtual void						CloseService();
-	void								SetSessionFactory(SessionFactory func) { _sessionFactory = func; }
+	void								SetSessionFactory(SessionFactory func) { m_sessionFactory = func; }
 
 	shared_ptr<Session>					CreateSession();
 	void								AddSession(shared_ptr<Session> session);
 	void								ReleaseSession(shared_ptr<Session> session);
-	__int32								GetCurrentSessionCount() { return _sessionCount; }
-	__int32								GetMaxSessionCount() { return _maxSessionCount; }
+	__int32								GetCurrentSessionCount() { return m_sessionCount; }
+	__int32								GetMaxSessionCount() { return m_maxSessionCount; }
 
 public:
-	ServiceType							GetServiceType() { return _type; }
-	NetAddress							GetNetAddress() { return _netAddress; }
-	shared_ptr<IocpCore>&				GetIocpCore() { return _iocpCore; }
+	ServiceType							GetServiceType() { return m_type; }
+	NetAddress							GetNetAddress() { return m_netAddress; }
+	shared_ptr<IocpCore>&				GetIocpCore() { return m_iocpCore; }
 
 protected:
-	recursive_mutex						_lock;
+	recursive_mutex						m_lock;
 
 protected:
-	ServiceType							_type;
-	NetAddress							_netAddress = {};
-	shared_ptr<IocpCore>				_iocpCore;
+	ServiceType							m_type;
+	NetAddress							m_netAddress = {};
+	shared_ptr<IocpCore>				m_iocpCore;
 
-	set<shared_ptr<Session>>			_sessions;
-	__int32								_sessionCount = 0;
-	__int32								_maxSessionCount = 0;
-	SessionFactory						_sessionFactory;
+	set<shared_ptr<Session>>			m_sessions;
+	__int32								m_sessionCount = 0;
+	__int32								m_maxSessionCount = 0;
+	SessionFactory						m_sessionFactory;
 };
 
 class ClientService : public Service
@@ -75,5 +75,5 @@ public:
 	virtual void				CloseService() override;
 
 private:
-	shared_ptr<Listener>		_listener = nullptr;
+	shared_ptr<Listener>		m_listener = nullptr;
 };

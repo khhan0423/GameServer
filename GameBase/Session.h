@@ -14,7 +14,7 @@
 //IOCPEvent 재사용 위해 소유하고 있다.
 //IOCPEvent 는 IOCPObject를 상속받았고,
 //IOCPObject는 관리받는 CompletionPort의 핸들의 스마트포인터를 소유하고 있음으로,
-//재사용 시, IOCPObject owner 스마트포인터에 CompletionPort핸들의 스마트포인터를 넘겨주는 방식으로 재사용 한다.
+//재사용 시, IOCPObject m_owner 스마트포인터에 CompletionPort핸들의 스마트포인터를 넘겨주는 방식으로 재사용 한다.
 //송.수신 버퍼를 소유하고 있다.
 class Session : public IocpObject
 {
@@ -39,18 +39,18 @@ public:
 	virtual ~Session();
 
 public:
-	void									Send(shared_ptr<SendBuffer> sendBuffer);
-	bool									Connect();
-	void									Disconnect(const WCHAR* cause);
+	void									eSEND(shared_ptr<SendBuffer> sendBuffer);
+	bool									eCONNECT();
+	void									eDISCONNECT(const WCHAR* cause);
 
-	shared_ptr<Service>						GetService() { return _service.lock(); }
-	void									SetService(shared_ptr<Service> service) { _service = service; }
+	shared_ptr<Service>						GetService() { return m_service.lock(); }
+	void									SetService(shared_ptr<Service> service) { m_service = service; }
 
 public:
-	void									SetNetAddress(NetAddress address) { _netAddress = address; }
-	NetAddress								GetAddress() { return _netAddress; }
-	SOCKET									GetSocket() { return _socket; }
-	bool									IsConnected() { return _connected; }
+	void									SetNetAddress(NetAddress address) { m_netAddress = address; }
+	NetAddress								GetAddress() { return m_netAddress; }
+	SOCKET									GetSocket() { return m_socket; }
+	bool									IsConnected() { return m_connected; }
 	shared_ptr<Session>						GetSessionRef() { return static_pointer_cast<Session>(shared_from_this()); }
 
 private:
@@ -73,22 +73,22 @@ protected:
 	virtual void							OnDisconnected() { }
 
 private:
-	weak_ptr<Service>						_service;
-	SOCKET									_socket = INVALID_SOCKET;
-	NetAddress								_netAddress = {};
-	atomic<bool>							_connected = false;
+	weak_ptr<Service>						m_service;
+	SOCKET									m_socket = INVALID_SOCKET;
+	NetAddress								m_netAddress = {};
+	atomic<bool>							m_connected = false;
 
 private:
-	recursive_mutex							_lock;
+	recursive_mutex							m_lock;
 
 private:
-	RecvBuffer								_recvBuffer;
-	queue<shared_ptr<SendBuffer>>			_sendQueue;
-	atomic<bool>							_sendRegistered = false;
+	RecvBuffer								m_recvBuffer;
+	queue<shared_ptr<SendBuffer>>			m_sendQueue;
+	atomic<bool>							m_sendRegistered = false;
 
 private:
-	ConnectEvent							_connectEvent;
-	DisconnectEvent							_disconnectEvent;
-	RecvEvent								_recvEvent;
-	SendEvent								_sendEvent;
+	ConnectEvent							m_connectEvent;
+	DisconnectEvent							m_disconnectEvent;
+	RecvEvent								m_recvEvent;
+	SendEvent								m_sendEvent;
 };

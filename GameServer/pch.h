@@ -12,8 +12,10 @@
 
 #ifdef _DEBUG
 #pragma comment(lib, "GameBase/Debug/GameBase.lib")
+#pragma comment(lib, "ProtoBuf/Debug/libprotobufd.lib")
 
 #else
 #pragma comment(lib, "GameBase/Release/GameBase.lib")
+#pragma comment(lib, "ProtoBuf/Release/libprotobuf.lib")
 
 #endif

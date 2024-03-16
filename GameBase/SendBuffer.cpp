@@ -3,7 +3,7 @@
 
 SendBuffer::SendBuffer(__int32 bufferSize)
 {
-	_buffer.resize(bufferSize);
+	m_buffer.resize(bufferSize);
 }
 
 SendBuffer::~SendBuffer()
@@ -11,9 +11,14 @@ SendBuffer::~SendBuffer()
 
 }
 
-void SendBuffer::CopyData(void* data, __int32 len)
+void SendBuffer::CopyData(void* dataPtr, __int32 len)
 {
-	ASSERT(Capacity() >= len);
-	::memcpy(_buffer.data(), data, len);
-	_writeSize = len;
+	ASSERT(GetCapacity() >= len);
+	::memcpy(m_buffer.data(), dataPtr, len);
+	m_writeSize = len;
+}
+
+void SendBuffer::Close(__int32 writeSize)
+{
+	m_writeSize = writeSize;
 }

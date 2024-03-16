@@ -19,9 +19,9 @@ public:
 	{
 		cout << "Connected To Server" << endl;
 
-		shared_ptr<SendBuffer> sendBuffer = make_shared<SendBuffer>(4096);
-		sendBuffer->CopyData(sendData, sizeof(sendData));
-		Send(sendBuffer);
+		shared_ptr<SendBuffer> _sendBuffer = make_shared<SendBuffer>(4096);
+		_sendBuffer->CopyData(sendData, sizeof(sendData));
+		eSEND(_sendBuffer);
 	}
 
 	virtual __int32 OnRecv(BYTE* buffer, __int32 len) override
@@ -30,9 +30,9 @@ public:
 
 		this_thread::sleep_for(1s);
 
-		shared_ptr<SendBuffer> sendBuffer = make_shared<SendBuffer>(4096);
-		sendBuffer->CopyData(sendData, sizeof(sendData));
-		Send(sendBuffer);
+		shared_ptr<SendBuffer> _sendBuffer = make_shared<SendBuffer>(4096);
+		_sendBuffer->CopyData(sendData, sizeof(sendData));
+		eSEND(_sendBuffer);
 
 		return len;
 	}
@@ -54,13 +54,13 @@ int main()
 	SocketUtils::Init();
 	this_thread::sleep_for(1s);
 
-	shared_ptr<ClientService> service = make_shared<ClientService>(
+	shared_ptr<ClientService> _service = make_shared<ClientService>(
 		NetAddress(L"127.0.0.1", 7777),
 		move(make_shared<IocpCore>()),
 		move(make_shared<ServerSession>), // TODO : SessionManager µî
 		1);
 
-	ASSERT(service->Start());
+	ASSERT(_service->Start());
 
 	for (__int32 i = 0; i < 2; i++)
 	{
@@ -68,7 +68,7 @@ int main()
 			{
 				while (true)
 				{
-					service->GetIocpCore()->Dispatch();
+					_service->GetIocpCore()->Dispatch();
 				}
 			});
 	}

@@ -16,10 +16,10 @@ __int32 GameSession::OnRecv(BYTE* buffer, __int32 len)
 {
 	cout << "OnRecv Len = " << len << endl;
 
-	shared_ptr<SendBuffer> sendBuffer = make_shared<SendBuffer>(4096);
-	sendBuffer->CopyData(buffer, len);
+	shared_ptr<SendBuffer> _sendBuffer = make_shared<SendBuffer>(4096);
+	_sendBuffer->CopyData(buffer, len);
 
-	GetGameSessionManager()->Broadcast(sendBuffer);
+	GetGameSessionManager()->Broadcast(_sendBuffer);
 
 	return len;
 }

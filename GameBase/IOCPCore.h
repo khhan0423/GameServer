@@ -17,11 +17,11 @@ public:
 	IocpCore();
 	~IocpCore();
 
-	HANDLE		GetHandle() { return _iocpHandle; }
+	HANDLE		GetHandle() { return m_iocpHandle; }
 
 	bool		Register(shared_ptr<IocpObject> iocpObject);
 	bool		Dispatch(unsigned __int32 timeout = INFINITE);
 
 private:
-	HANDLE		_iocpHandle;
+	HANDLE		m_iocpHandle;
 };
