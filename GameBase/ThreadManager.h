@@ -17,6 +17,8 @@ public:
 	void				Launch(function<void(void)> callback);
 	void				Join();
 
+	static void			Run();
+
 	static void			InitTLS();
 	static void			ReleaseTLS();
 

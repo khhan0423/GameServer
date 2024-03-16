@@ -24,10 +24,10 @@ public:
 
 
 	void								ClearTakeLine() { m_taskLineQueue.Clear(); }
+	void								Run();
 
 protected:
-	void								Regist(shared_ptr<Task> task);
-	void								Run();
+	void								Regist(shared_ptr<Task> task);	
 
 protected:
 	LockQueue<shared_ptr<Task>>			m_taskLineQueue;

@@ -3,14 +3,17 @@
 
 PacketSession::PacketSession()
 {
+
 }
 
 PacketSession::~PacketSession()
 {
+	cout << "PacketSession::~PacketSession()" << endl;
 }
 
 __int32 PacketSession::OnRecv(unsigned char* buffer, __int32 len)
 {
+	cout << "PacketSession::OnRecv()" << endl;
 	__int32 _processLen = 0;
 
 	while (true)

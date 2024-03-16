@@ -6,6 +6,7 @@
 
 Listener::~Listener()
 {
+	cout << "Listener::~Listener()" << endl;
 	SocketUtils::Close(m_socket);
 
 	for (AcceptEvent* _acceptEvent : m_acceptEvents)
@@ -17,6 +18,7 @@ Listener::~Listener()
 
 bool Listener::StartAccept(shared_ptr<ServerService> service)
 {
+	cout << "Listener::StartAccept()" << endl;
 	m_service = service;
 	if (m_service == nullptr)
 		return false;
@@ -57,6 +59,7 @@ bool Listener::StartAccept(shared_ptr<ServerService> service)
 
 void Listener::CloseSocket()
 {
+	cout << "Listener::CloseSocket()" << endl;
 	SocketUtils::Close(m_socket);
 }
 
@@ -67,6 +70,7 @@ HANDLE Listener::GetHandle()
 
 void Listener::Dispatch(IocpEvent* iocpEvent, __int32 numOfBytes)
 {
+	cout << "Listener::Dispatch()" << endl;
 	ASSERT(iocpEvent->m_eventType == EventType::eACCEPT);
 	AcceptEvent* _acceptEventPtr = static_cast<AcceptEvent*>(iocpEvent);
 	ProcessAccept(_acceptEventPtr);
@@ -74,6 +78,7 @@ void Listener::Dispatch(IocpEvent* iocpEvent, __int32 numOfBytes)
 
 void Listener::RegisterAccept(AcceptEvent* acceptEventPtr)
 {
+	cout << "Listener::RegisterAccept()" << endl;
 	shared_ptr<Session> _session = m_service->CreateSession();
 
 	acceptEventPtr->Init();
@@ -92,6 +97,7 @@ void Listener::RegisterAccept(AcceptEvent* acceptEventPtr)
 
 void Listener::ProcessAccept(AcceptEvent* acceptEventPtr)
 {
+	cout << "Listener::ProcessAccept()" << endl;
 	shared_ptr<Session> _session = acceptEventPtr->session;
 
 	if (false == SocketUtils::SetUpdateAcceptSocket(_session->GetSocket(), m_socket))

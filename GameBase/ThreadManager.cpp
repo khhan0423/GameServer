@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "ThreadManager.h"
+#include "TaskManager.h"
 
 ThreadManager::ThreadManager()
 {
@@ -34,15 +35,33 @@ void ThreadManager::Join()
 	m_threadList.clear();
 }
 
+void ThreadManager::Run()
+{
+	while (true)
+	{
+		unsigned __int64 _now = ::GetTickCount64();
+		if (_now > TLS_EndTickCount)
+			break;
+
+		shared_ptr<TaskQueue> _taskLine = GetTaskManager()->Pop();
+		if (_taskLine == nullptr)
+			break;
+
+		_taskLine->Run();
+	}
+}
+
 void ThreadManager::InitTLS()
 {
 	//static 이라 프로세스 구동 시
 	//값 1로 세팅되며, 런타임에 static Tatomic<uint32> SThreadId = 1; 구문은 패스된다.
 	static atomic<unsigned __int32> SThreadId = 1;
 	TLS_ThreadId = SThreadId.fetch_add(1);
+	
+	cout << "ThreadManager::InitTLS()" << endl;
 }
 
 void ThreadManager::ReleaseTLS()
 {
-
+	cout << "ThreadManager::ReleaseTLS()" << endl;
 }

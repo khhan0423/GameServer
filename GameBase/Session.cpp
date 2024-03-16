@@ -6,17 +6,20 @@
 
 Session::Session() : m_recvBuffer(BUFFER_SIZE)
 {
+	cout << "Session::Session()" << endl;
 	m_socket = SocketUtils::CreateSocket();
 }
 
 Session::~Session()
 {
+	cout << "Session::~Session()" << endl;
 	SocketUtils::Close(m_socket);
 }
 
 void Session::Send(shared_ptr<SendBuffer> sendBuffer)
 {
 	{
+		cout << "Session::Send()" << endl;
 		lock_guard<recursive_mutex> _lock(m_lock);
 
 		m_sendQueue.push(sendBuffer);
@@ -28,6 +31,7 @@ void Session::Send(shared_ptr<SendBuffer> sendBuffer)
 
 bool Session::Connect()
 {
+	cout << "Session::Connect()" << endl;
 	return RegisterConnect();
 }
 
@@ -35,6 +39,8 @@ void Session::Disconnect(const WCHAR* cause)
 {
 	if (m_connected.exchange(false) == false)
 		return;	
+
+	cout << "Session::Disconnect()" << endl;
 
 	OnDisconnected();
 	GetService()->ReleaseSession(GetSessionRef());
@@ -49,6 +55,7 @@ HANDLE Session::GetHandle()
 
 void Session::Dispatch(IocpEvent* iocpEvent, __int32 numOfBytes)
 {
+	cout << "Session::Dispatch()" << endl;
 	switch (iocpEvent->m_eventType)
 	{
 	case EventType::eCONNECT:
@@ -70,6 +77,7 @@ void Session::Dispatch(IocpEvent* iocpEvent, __int32 numOfBytes)
 
 bool Session::RegisterConnect()
 {
+	cout << "Session::RegisterConnect()" << endl;
 	if (IsConnected())
 		return false;
 
@@ -105,6 +113,7 @@ bool Session::RegisterConnect()
 
 bool Session::RegisterDisconnect()
 {
+	cout << "Session::RegisterDisconnect()" << endl;
 	m_disconnectEvent.Init();
 	m_disconnectEvent.m_owner = shared_from_this();
 
@@ -123,6 +132,7 @@ bool Session::RegisterDisconnect()
 
 void Session::RegisterRecv()
 {
+	cout << "Session::RegisterRecv()" << endl;
 	if (IsConnected() == false)
 		return;
 
@@ -148,6 +158,7 @@ void Session::RegisterRecv()
 
 void Session::RegisterSend()
 {
+	cout << "Session::RegisterSend()" << endl;
 	if (IsConnected() == false)
 		return;
 
@@ -199,6 +210,7 @@ void Session::RegisterSend()
 
 void Session::ProcessConnect()
 {
+	cout << "Session::ProcessConnect()" << endl;
 	m_connectEvent.m_owner = nullptr;
 
 	m_connected.store(true);
@@ -218,6 +230,7 @@ void Session::ProcessDisconnect()
 
 void Session::ProcessRecv(__int32 numOfBytes)
 {
+	cout << "Session::ProcessRecv()" << endl;
 	m_recvEvent.m_owner = nullptr;
 
 	if (numOfBytes == 0)
@@ -247,6 +260,7 @@ void Session::ProcessRecv(__int32 numOfBytes)
 
 void Session::ProcessSend(__int32 numOfBytes)
 {
+	cout << "Session::ProcessSend()" << endl;
 	m_sendEvent.m_owner = nullptr;
 	m_sendEvent.m_sendBufferList.clear();
 

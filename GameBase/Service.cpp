@@ -9,11 +9,12 @@ Service::Service(ServiceType type, NetAddress address, shared_ptr<IocpCore> core
 
 Service::~Service()
 {
+	cout << "Service::~Service()" << endl;
 }
 
 void Service::CloseService()
 {
-
+	cout << "Service::CloseService()" << endl;
 }
 
 shared_ptr<Session> Service::CreateSession()
@@ -21,6 +22,7 @@ shared_ptr<Session> Service::CreateSession()
 	shared_ptr<Session> _session = m_sessionFactory();
 	_session->SetService(shared_from_this());
 
+	cout << "Service::CreateSession()" << endl;
 	if (m_iocpCore->Register(_session) == false)
 		return nullptr;
 
@@ -29,6 +31,7 @@ shared_ptr<Session> Service::CreateSession()
 
 void Service::AddSession(shared_ptr<Session> session)
 {
+	cout << "Service::AddSession()" << endl;
 	{
 		lock_guard<recursive_mutex> _lock(m_lock);
 		m_sessionCount++;
@@ -38,6 +41,7 @@ void Service::AddSession(shared_ptr<Session> session)
 
 void Service::ReleaseSession(shared_ptr<Session> session)
 {
+	cout << "Service::ReleaseSession()" << endl;
 	{
 		lock_guard<recursive_mutex> _lock(m_lock);
 		ASSERT(m_sessions.erase(session) != 0);
@@ -52,6 +56,7 @@ ClientService::ClientService(NetAddress targetAddress, shared_ptr<IocpCore> core
 
 bool ClientService::Start()
 {
+	cout << "ClientService::Start()" << endl;
 	if (CanStart() == false)
 		return false;
 
@@ -73,6 +78,7 @@ ServerService::ServerService(NetAddress address, shared_ptr<IocpCore> core, Sess
 
 bool ServerService::Start()
 {
+	cout << "ServerService::Start()" << endl;
 	if (CanStart() == false)
 		return false;
 
@@ -89,6 +95,6 @@ bool ServerService::Start()
 
 void ServerService::CloseService()
 {
-
+	cout << "ServerService::CloseService()" << endl;
 	Service::CloseService();
 }
