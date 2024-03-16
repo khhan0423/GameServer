@@ -10,5 +10,4 @@
 using namespace std;
 
 #include "globalMacro.h"
-#include "globalBaseDef.h"
 #include "TLSDef.h"

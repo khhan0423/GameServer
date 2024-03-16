@@ -28,11 +28,8 @@
     <Filter Include="Task">
       <UniqueIdentifier>{c3155867-122f-445c-bcb9-631862d4b6e1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Def\GlobalBase">
+    <Filter Include="Def\Base">
       <UniqueIdentifier>{e274f7bb-6320-4757-a1d9-7171da05f296}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Def\GlobalBase\Base">
-      <UniqueIdentifier>{57e869b4-2b71-45d6-82ae-5300bdc7998a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -78,9 +75,6 @@
     <ClInclude Include="TLSDef.h">
       <Filter>Def</Filter>
     </ClInclude>
-    <ClInclude Include="globalStruct.h">
-      <Filter>Def</Filter>
-    </ClInclude>
     <ClInclude Include="Session.h">
       <Filter>Netwotk\Session</Filter>
     </ClInclude>
@@ -90,20 +84,20 @@
     <ClInclude Include="Task.h">
       <Filter>Task</Filter>
     </ClInclude>
-    <ClInclude Include="LockQueueBase.h">
-      <Filter>Def\GlobalBase\Base</Filter>
-    </ClInclude>
-    <ClInclude Include="SingletonBase.h">
-      <Filter>Def\GlobalBase\Base</Filter>
-    </ClInclude>
     <ClInclude Include="TaskQueue.h">
       <Filter>Task</Filter>
     </ClInclude>
     <ClInclude Include="TaskManager.h">
       <Filter>Task</Filter>
     </ClInclude>
-    <ClInclude Include="globalBaseDef.h">
-      <Filter>Def\GlobalBase</Filter>
+    <ClInclude Include="GlobalGameBase.h">
+      <Filter>Def</Filter>
+    </ClInclude>
+    <ClInclude Include="LockQueueBase.h">
+      <Filter>Def\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="SingletonBase.h">
+      <Filter>Def\Base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -146,9 +140,6 @@
     <ClCompile Include="TLSDef.cpp">
       <Filter>Def</Filter>
     </ClCompile>
-    <ClCompile Include="globalStruct.cpp">
-      <Filter>Def</Filter>
-    </ClCompile>
     <ClCompile Include="Session.cpp">
       <Filter>Netwotk\Session</Filter>
     </ClCompile>
@@ -163,6 +154,9 @@
     </ClCompile>
     <ClCompile Include="TaskManager.cpp">
       <Filter>Task</Filter>
+    </ClCompile>
+    <ClCompile Include="GlobalGameBase.cpp">
+      <Filter>Def</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

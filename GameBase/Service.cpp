@@ -4,7 +4,7 @@
 Service::Service(ServiceType type, NetAddress address, shared_ptr<IocpCore> core, SessionFactory factory, __int32 maxSessionCount)
 	: m_type(type), m_netAddress(address), m_iocpCore(core), m_sessionFactory(factory), m_maxSessionCount(maxSessionCount)
 {
-
+	cout << "Service::Service(.......)" << endl;
 }
 
 Service::~Service()
@@ -44,7 +44,7 @@ void Service::ReleaseSession(shared_ptr<Session> session)
 	cout << "Service::ReleaseSession()" << endl;
 	{
 		lock_guard<recursive_mutex> _lock(m_lock);
-		ASSERT(m_sessions.erase(session) != 0);
+		VERIFY(m_sessions.erase(session) != 0);
 		m_sessionCount--;
 	}
 }
@@ -74,6 +74,7 @@ bool ClientService::Start()
 ServerService::ServerService(NetAddress address, shared_ptr<IocpCore> core, SessionFactory factory, __int32 maxSessionCount)
 	: Service(ServiceType::Server, address, core, factory, maxSessionCount)
 {
+	cout << "ServerService::ServerService(......)" << endl;
 }
 
 bool ServerService::Start()

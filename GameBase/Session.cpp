@@ -55,7 +55,7 @@ HANDLE Session::GetHandle()
 
 void Session::Dispatch(IocpEvent* iocpEvent, __int32 numOfBytes)
 {
-	cout << "Session::Dispatch()" << endl;
+	//cout << "Session::Dispatch()" << endl;
 	switch (iocpEvent->m_eventType)
 	{
 	case EventType::eCONNECT:

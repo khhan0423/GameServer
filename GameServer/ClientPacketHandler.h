@@ -49,7 +49,7 @@ private:
 		PacketHeader* header = reinterpret_cast<PacketHeader*>(_sendBuffer->Buffer());
 		header->m_size = _packetSize;
 		header->m_protocolID = pktId;
-		ASSERT(pkt.SerializeToArray(&header[1], _dataSize));
+		VERIFY(pkt.SerializeToArray(&header[1], _dataSize));
 		_sendBuffer->Close(_packetSize);
 
 		return _sendBuffer;

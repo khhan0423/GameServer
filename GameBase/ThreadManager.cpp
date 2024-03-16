@@ -4,16 +4,20 @@
 
 ThreadManager::ThreadManager()
 {
+	cout << "ThreadManager::ThreadManager()" << endl;	
 	InitTLS();
 }
 
 ThreadManager::~ThreadManager()
 {
+	cout << "ThreadManager::~ThreadManager()" << endl;
+	ReleaseTLS();
 	Join();
 }
 
 void ThreadManager::Launch(function<void(void)> callback)
 {
+	cout << "ThreadManager::Launch()" << endl;
 	{
 		lock_guard<recursive_mutex> lock(m_lock);
 		m_threadList.push_back(thread([=]()
@@ -27,6 +31,7 @@ void ThreadManager::Launch(function<void(void)> callback)
 
 void ThreadManager::Join()
 {
+	cout << "ThreadManager::Join()" << endl;
 	for (thread& _thread : m_threadList)
 	{
 		if (_thread.joinable())
@@ -37,6 +42,7 @@ void ThreadManager::Join()
 
 void ThreadManager::Run()
 {
+	//cout << "ThreadManager::Run()" << endl;
 	while (true)
 	{
 		unsigned __int64 _now = ::GetTickCount64();

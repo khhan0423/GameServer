@@ -6,7 +6,7 @@ IocpCore::IocpCore()
 {
 	//CreateIoCompletionPort 처음으로 생성함.
 	m_iocpHandle = ::CreateIoCompletionPort(INVALID_HANDLE_VALUE, 0, 0, 0);
-	ASSERT(m_iocpHandle != INVALID_HANDLE_VALUE);
+	VERIFY(m_iocpHandle != INVALID_HANDLE_VALUE);
 }
 
 IocpCore::~IocpCore()
@@ -27,6 +27,8 @@ bool IocpCore::Dispatch(unsigned __int32 timeout)
 	DWORD _numOfBytes = 0;
 	ULONG_PTR _key = 0;
 	IocpEvent* _iocpEvent = nullptr;
+
+	//cout << "IocpCore::Dispatch()" << endl;
 
 	if (::GetQueuedCompletionStatus(m_iocpHandle, OUT & _numOfBytes, OUT & _key, OUT reinterpret_cast<LPOVERLAPPED*>(&_iocpEvent), timeout))
 	{

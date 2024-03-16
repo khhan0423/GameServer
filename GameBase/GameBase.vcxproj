@@ -151,10 +151,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="globalBaseDef.h" />
+    <ClInclude Include="GlobalGameBase.h" />
     <ClInclude Include="globalMacro.h" />
     <ClInclude Include="globalpch.h" />
-    <ClInclude Include="globalStruct.h" />
     <ClInclude Include="IOCPCore.h" />
     <ClInclude Include="IOCPEvent.h" />
     <ClInclude Include="LibTestClass.h" />
@@ -176,8 +175,8 @@
     <ClInclude Include="TLSDef.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="GlobalGameBase.cpp" />
     <ClCompile Include="globalpch.cpp" />
-    <ClCompile Include="globalStruct.cpp" />
     <ClCompile Include="IOCPCore.cpp" />
     <ClCompile Include="IOCPEvent.cpp" />
     <ClCompile Include="LibTestClass.cpp" />

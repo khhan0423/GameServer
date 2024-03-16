@@ -71,7 +71,7 @@ HANDLE Listener::GetHandle()
 void Listener::Dispatch(IocpEvent* iocpEvent, __int32 numOfBytes)
 {
 	cout << "Listener::Dispatch()" << endl;
-	ASSERT(iocpEvent->m_eventType == EventType::eACCEPT);
+	VERIFY(iocpEvent->m_eventType == EventType::eACCEPT);
 	AcceptEvent* _acceptEventPtr = static_cast<AcceptEvent*>(iocpEvent);
 	ProcessAccept(_acceptEventPtr);
 }

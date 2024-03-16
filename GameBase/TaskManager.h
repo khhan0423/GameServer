@@ -6,8 +6,8 @@
 class TaskManager : public SingletonBase<TaskManager>
 {
 public:
-	TaskManager() {};
-	~TaskManager() {};
+	TaskManager() { cout << "TaskManager::TaskManager()" << endl; };
+	~TaskManager() { cout << "TaskManager::~TaskManager()" << endl; };
 
 	void								Regist(shared_ptr<TaskQueue> taskQueue);
 	shared_ptr<TaskQueue>				Pop();
