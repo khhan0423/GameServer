@@ -29,16 +29,20 @@ shared_ptr<Session> Service::CreateSession()
 
 void Service::AddSession(shared_ptr<Session> session)
 {
-	lock_guard<recursive_mutex> lock(_lock);
-	_sessionCount++;
-	_sessions.insert(session);
+	{
+		lock_guard<recursive_mutex> lock(_lock);
+		_sessionCount++;
+		_sessions.insert(session);
+	}
 }
 
 void Service::ReleaseSession(shared_ptr<Session> session)
 {
-	lock_guard<recursive_mutex> lock(_lock);
-	ASSERT(_sessions.erase(session) != 0);
-	_sessionCount--;
+	{
+		lock_guard<recursive_mutex> lock(_lock);
+		ASSERT(_sessions.erase(session) != 0);
+		_sessionCount--;
+	}
 }
 
 ClientService::ClientService(NetAddress targetAddress, shared_ptr<IocpCore> core, SessionFactory factory, __int32 maxSessionCount)

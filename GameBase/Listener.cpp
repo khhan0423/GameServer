@@ -31,6 +31,9 @@ bool Listener::StartAccept(shared_ptr<ServerService> service)
 	if (SocketUtils::SetReuseAddress(_socket, true) == false)
 		return false;
 
+	if (SocketUtils::SetTcpNoDelay(_socket, true) == false)
+		return false;
+
 	if (SocketUtils::SetLinger(_socket, 0, 0) == false)
 		return false;
 

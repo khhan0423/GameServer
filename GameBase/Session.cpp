@@ -16,13 +16,14 @@ Session::~Session()
 
 void Session::Send(shared_ptr<SendBuffer> sendBuffer)
 {
+	{
+		lock_guard<recursive_mutex> lock(_lock);
 
-	lock_guard<recursive_mutex> lock(_lock);
+		_sendQueue.push(sendBuffer);
 
-	_sendQueue.push(sendBuffer);
-
-	if (_sendRegistered.exchange(true) == false)
-		RegisterSend();
+		if (_sendRegistered.exchange(true) == false)
+			RegisterSend();
+	}
 }
 
 bool Session::Connect()
@@ -33,12 +34,9 @@ bool Session::Connect()
 void Session::Disconnect(const WCHAR* cause)
 {
 	if (_connected.exchange(false) == false)
-		return;
+		return;	
 
-	// TEMP
-	wcout << "Disconnect : " << cause << endl;
-
-	OnDisconnected(); // 컨텐츠 코드에서 재정의
+	OnDisconnected();
 	GetService()->ReleaseSession(GetSessionRef());
 
 	RegisterDisconnect();
@@ -81,11 +79,14 @@ bool Session::RegisterConnect()
 	if (SocketUtils::SetReuseAddress(_socket, true) == false)
 		return false;
 
-	if (SocketUtils::BindAnyAddress(_socket, 0/*남는거*/) == false)
+	if (SocketUtils::SetTcpNoDelay(_socket, true) == false)
+		return false;
+
+	if (SocketUtils::BindAnyAddress(_socket, 0) == false)
 		return false;
 
 	_connectEvent.Init();
-	_connectEvent.owner = shared_from_this(); // ADD_REF
+	_connectEvent.owner = shared_from_this();
 
 	DWORD numOfBytes = 0;
 	SOCKADDR_IN sockAddr = GetService()->GetNetAddress().GetSockAddr();
@@ -126,7 +127,7 @@ void Session::RegisterRecv()
 		return;
 
 	_recvEvent.Init();
-	_recvEvent.owner = shared_from_this(); // ADD_REF
+	_recvEvent.owner = shared_from_this();
 
 	WSABUF wsaBuf;
 	wsaBuf.buf = reinterpret_cast<char*>(_recvBuffer.WritePos());
@@ -140,7 +141,7 @@ void Session::RegisterRecv()
 		if (errorCode != WSA_IO_PENDING)
 		{
 			HandleError(errorCode);
-			_recvEvent.owner = nullptr; // RELEASE_REF
+			_recvEvent.owner = nullptr;
 		}
 	}
 }
@@ -162,7 +163,9 @@ void Session::RegisterSend()
 			shared_ptr<SendBuffer> sendBuffer = _sendQueue.front();
 
 			writeSize += sendBuffer->WriteSize();
-			// TODO : 예외 체크
+			
+			if (writeSize >= 4000) //BYTE 단위의 버퍼 4KB에 가깝게
+				break;
 
 			_sendQueue.pop();
 			_sendEvent.sendBuffers.push_back(sendBuffer);
@@ -186,8 +189,8 @@ void Session::RegisterSend()
 		if (errorCode != WSA_IO_PENDING)
 		{
 			HandleError(errorCode);
-			_sendEvent.owner = nullptr; // RELEASE_REF
-			_sendEvent.sendBuffers.clear(); // RELEASE_REF
+			_sendEvent.owner = nullptr;
+			_sendEvent.sendBuffers.clear();
 			_sendRegistered.store(false);
 		}
 	}
@@ -253,12 +256,13 @@ void Session::ProcessSend(__int32 numOfBytes)
 	}
 
 	OnSend(numOfBytes);
-
-	lock_guard<recursive_mutex> lock(_lock);
-	if (_sendQueue.empty())
-		_sendRegistered.store(false);
-	else
-		RegisterSend();
+	{
+		lock_guard<recursive_mutex> lock(_lock);
+		if (_sendQueue.empty())
+			_sendRegistered.store(false);
+		else
+			RegisterSend();
+	}
 }
 
 void Session::HandleError(__int32 errorCode)
