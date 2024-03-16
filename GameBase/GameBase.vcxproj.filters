@@ -13,6 +13,12 @@
     <Filter Include="Netwotk">
       <UniqueIdentifier>{b9b53bda-767a-4f6c-8332-a7ee0b55c95e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Netwotk\Buffer">
+      <UniqueIdentifier>{5cef79ac-e69e-439f-b6b9-a62325f7b602}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Netwotk\IOCP">
+      <UniqueIdentifier>{bb7777cd-d6dd-4d11-88eb-d047c59a6de3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="globalpch.h">
@@ -33,6 +39,27 @@
     <ClInclude Include="globalMacro.h">
       <Filter>Def</Filter>
     </ClInclude>
+    <ClInclude Include="Session.h">
+      <Filter>Netwotk</Filter>
+    </ClInclude>
+    <ClInclude Include="RecvBuffer.h">
+      <Filter>Netwotk\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="SendBuffer.h">
+      <Filter>Netwotk\Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="IOCPCore.h">
+      <Filter>Netwotk\IOCP</Filter>
+    </ClInclude>
+    <ClInclude Include="IOCPEvent.h">
+      <Filter>Netwotk\IOCP</Filter>
+    </ClInclude>
+    <ClInclude Include="Service.h">
+      <Filter>Netwotk</Filter>
+    </ClInclude>
+    <ClInclude Include="Listener.h">
+      <Filter>Netwotk</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -48,6 +75,27 @@
       <Filter>Netwotk</Filter>
     </ClCompile>
     <ClCompile Include="SocketUtils.cpp">
+      <Filter>Netwotk</Filter>
+    </ClCompile>
+    <ClCompile Include="Session.cpp">
+      <Filter>Netwotk</Filter>
+    </ClCompile>
+    <ClCompile Include="SendBuffer.cpp">
+      <Filter>Netwotk\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="RecvBuffer.cpp">
+      <Filter>Netwotk\Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="IOCPCore.cpp">
+      <Filter>Netwotk\IOCP</Filter>
+    </ClCompile>
+    <ClCompile Include="IOCPEvent.cpp">
+      <Filter>Netwotk\IOCP</Filter>
+    </ClCompile>
+    <ClCompile Include="Service.cpp">
+      <Filter>Netwotk</Filter>
+    </ClCompile>
+    <ClCompile Include="Listener.cpp">
       <Filter>Netwotk</Filter>
     </ClCompile>
   </ItemGroup>
