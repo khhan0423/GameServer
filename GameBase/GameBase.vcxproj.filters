@@ -10,6 +10,9 @@
     <Filter Include="Util">
       <UniqueIdentifier>{72f7c285-6a25-4bd9-b090-105b7db113a0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Netwotk">
+      <UniqueIdentifier>{b9b53bda-767a-4f6c-8332-a7ee0b55c95e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="globalpch.h">
@@ -21,6 +24,15 @@
     <ClInclude Include="LibTestClass.h">
       <Filter>Main</Filter>
     </ClInclude>
+    <ClInclude Include="NetAddress.h">
+      <Filter>Netwotk</Filter>
+    </ClInclude>
+    <ClInclude Include="SocketUtils.h">
+      <Filter>Netwotk</Filter>
+    </ClInclude>
+    <ClInclude Include="globalMacro.h">
+      <Filter>Def</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -31,6 +43,12 @@
     </ClCompile>
     <ClCompile Include="LibTestClass.cpp">
       <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="NetAddress.cpp">
+      <Filter>Netwotk</Filter>
+    </ClCompile>
+    <ClCompile Include="SocketUtils.cpp">
+      <Filter>Netwotk</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
