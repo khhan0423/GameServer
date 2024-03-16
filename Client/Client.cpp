@@ -3,55 +3,47 @@
 #include "Service.h"
 #include "Session.h"
 #include "SocketUtils.h"
+#include "ServerPacketHandler.h"
 
-
-char sendData[] = "Hello World";
-
-class ServerSession : public Session
+class ServerSession : public PacketSession
 {
 public:
 	~ServerSession()
 	{
-		cout << "~ServerSession" << endl;
+		cout << "ServerSession::~ServerSession()" << endl;
 	}
 
 	virtual void OnConnected() override
 	{
-		cout << "Connected To Server" << endl;
-
-		shared_ptr<SendBuffer> _sendBuffer = make_shared<SendBuffer>(4096);
-		_sendBuffer->CopyData(sendData, sizeof(sendData));
-		eSEND(_sendBuffer);
+		cout << "ServerSession::OnConnected()" << endl;
 	}
 
-	virtual __int32 OnRecv(BYTE* buffer, __int32 len) override
+	virtual void OnRecvPacket(unsigned char* buffer, __int32 len) override
 	{
-		cout << "OnRecv Len = " << len << endl;
+		shared_ptr<PacketSession> _session = GetPacketSessionRef();
+		PacketHeader* header = reinterpret_cast<PacketHeader*>(buffer);
 
-		this_thread::sleep_for(1s);
+		cout << "ServerSession::OnRecvPacket() Len = " << len << endl;
 
-		shared_ptr<SendBuffer> _sendBuffer = make_shared<SendBuffer>(4096);
-		_sendBuffer->CopyData(sendData, sizeof(sendData));
-		eSEND(_sendBuffer);
-
-		return len;
+		ServerPacketHandler::HandlePacket(_session, buffer, len);
 	}
 
 	virtual void OnSend(__int32 len) override
 	{
-		cout << "OnSend Len = " << len << endl;
+		cout << "ServerSession::OnSend() Len = " << len << endl;
 	}
 
 	virtual void OnDisconnected() override
 	{
-		cout << "Disconnected" << endl;
+		cout << "ServerSession::OnDisconnected()" << endl;
 	}
 };
 
 
 int main()
 {
-	SocketUtils::Init();
+	ServerPacketHandler::Init();
+
 	this_thread::sleep_for(1s);
 
 	shared_ptr<ClientService> _service = make_shared<ClientService>(

@@ -14,7 +14,7 @@ Session::~Session()
 	SocketUtils::Close(m_socket);
 }
 
-void Session::eSEND(shared_ptr<SendBuffer> sendBuffer)
+void Session::Send(shared_ptr<SendBuffer> sendBuffer)
 {
 	{
 		lock_guard<recursive_mutex> _lock(m_lock);
@@ -26,12 +26,12 @@ void Session::eSEND(shared_ptr<SendBuffer> sendBuffer)
 	}
 }
 
-bool Session::eCONNECT()
+bool Session::Connect()
 {
 	return RegisterConnect();
 }
 
-void Session::eDISCONNECT(const WCHAR* cause)
+void Session::Disconnect(const WCHAR* cause)
 {
 	if (m_connected.exchange(false) == false)
 		return;	
@@ -222,13 +222,13 @@ void Session::ProcessRecv(__int32 numOfBytes)
 
 	if (numOfBytes == 0)
 	{
-		eDISCONNECT(L"Recv 0");
+		Disconnect(L"Recv 0");
 		return;
 	}
 
 	if (m_recvBuffer.OnWrite(numOfBytes) == false)
 	{
-		eDISCONNECT(L"OnWrite Overflow");
+		Disconnect(L"OnWrite Overflow");
 		return;
 	}
 
@@ -236,7 +236,7 @@ void Session::ProcessRecv(__int32 numOfBytes)
 	__int32 _processLen = OnRecv(m_recvBuffer.GetReadPos(), _dataSize);
 	if (_processLen < 0 || _dataSize < _processLen || m_recvBuffer.OnRead(_processLen) == false)
 	{
-		eDISCONNECT(L"OnRead Overflow");
+		Disconnect(L"OnRead Overflow");
 		return;
 	}
 
@@ -252,7 +252,7 @@ void Session::ProcessSend(__int32 numOfBytes)
 
 	if (numOfBytes == 0)
 	{
-		eDISCONNECT(L"Send 0");
+		Disconnect(L"Send 0");
 		return;
 	}
 
@@ -272,7 +272,7 @@ void Session::HandleError(__int32 errorCode)
 	{
 	case WSAECONNRESET:
 	case WSAECONNABORTED:
-		eDISCONNECT(L"HandleError");
+		Disconnect(L"HandleError");
 		break;
 	default:
 		// TODO : Log

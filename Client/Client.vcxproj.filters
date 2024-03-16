@@ -10,6 +10,9 @@
     <Filter Include="Util">
       <UniqueIdentifier>{32d136fa-6603-4153-bda8-92d4c5f26e1c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Main\PacketHandler">
+      <UniqueIdentifier>{6cf7e898-e219-4e36-b144-900e20250759}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">
@@ -18,10 +21,16 @@
     <ClCompile Include="pch.cpp">
       <Filter>Def</Filter>
     </ClCompile>
+    <ClCompile Include="ServerPacketHandler.cpp">
+      <Filter>Main\PacketHandler</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
       <Filter>Def</Filter>
+    </ClInclude>
+    <ClInclude Include="ServerPacketHandler.h">
+      <Filter>Main\PacketHandler</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

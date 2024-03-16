@@ -22,6 +22,18 @@
     <Filter Include="Thread">
       <UniqueIdentifier>{24a676f8-582f-4501-8fea-0957cfc3b164}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Netwotk\Session">
+      <UniqueIdentifier>{499c74fc-04af-4b84-9544-03243ae76ec8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Task">
+      <UniqueIdentifier>{c3155867-122f-445c-bcb9-631862d4b6e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Def\GlobalBase">
+      <UniqueIdentifier>{e274f7bb-6320-4757-a1d9-7171da05f296}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Def\GlobalBase\Base">
+      <UniqueIdentifier>{57e869b4-2b71-45d6-82ae-5300bdc7998a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="globalpch.h">
@@ -37,9 +49,6 @@
       <Filter>Netwotk</Filter>
     </ClInclude>
     <ClInclude Include="SocketUtils.h">
-      <Filter>Netwotk</Filter>
-    </ClInclude>
-    <ClInclude Include="Session.h">
       <Filter>Netwotk</Filter>
     </ClInclude>
     <ClInclude Include="RecvBuffer.h">
@@ -60,9 +69,6 @@
     <ClInclude Include="Listener.h">
       <Filter>Netwotk</Filter>
     </ClInclude>
-    <ClInclude Include="SingletonBase.h">
-      <Filter>Def</Filter>
-    </ClInclude>
     <ClInclude Include="globalMacro.h">
       <Filter>Def</Filter>
     </ClInclude>
@@ -71,6 +77,33 @@
     </ClInclude>
     <ClInclude Include="TLSDef.h">
       <Filter>Def</Filter>
+    </ClInclude>
+    <ClInclude Include="globalStruct.h">
+      <Filter>Def</Filter>
+    </ClInclude>
+    <ClInclude Include="Session.h">
+      <Filter>Netwotk\Session</Filter>
+    </ClInclude>
+    <ClInclude Include="PacketSession.h">
+      <Filter>Netwotk\Session</Filter>
+    </ClInclude>
+    <ClInclude Include="Task.h">
+      <Filter>Task</Filter>
+    </ClInclude>
+    <ClInclude Include="LockQueueBase.h">
+      <Filter>Def\GlobalBase\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="SingletonBase.h">
+      <Filter>Def\GlobalBase\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="TaskQueue.h">
+      <Filter>Task</Filter>
+    </ClInclude>
+    <ClInclude Include="TaskManager.h">
+      <Filter>Task</Filter>
+    </ClInclude>
+    <ClInclude Include="globalBaseDef.h">
+      <Filter>Def\GlobalBase</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -87,9 +120,6 @@
       <Filter>Netwotk</Filter>
     </ClCompile>
     <ClCompile Include="SocketUtils.cpp">
-      <Filter>Netwotk</Filter>
-    </ClCompile>
-    <ClCompile Include="Session.cpp">
       <Filter>Netwotk</Filter>
     </ClCompile>
     <ClCompile Include="SendBuffer.cpp">
@@ -115,6 +145,24 @@
     </ClCompile>
     <ClCompile Include="TLSDef.cpp">
       <Filter>Def</Filter>
+    </ClCompile>
+    <ClCompile Include="globalStruct.cpp">
+      <Filter>Def</Filter>
+    </ClCompile>
+    <ClCompile Include="Session.cpp">
+      <Filter>Netwotk\Session</Filter>
+    </ClCompile>
+    <ClCompile Include="PacketSession.cpp">
+      <Filter>Netwotk\Session</Filter>
+    </ClCompile>
+    <ClCompile Include="Task.cpp">
+      <Filter>Task</Filter>
+    </ClCompile>
+    <ClCompile Include="TaskQueue.cpp">
+      <Filter>Task</Filter>
+    </ClCompile>
+    <ClCompile Include="TaskManager.cpp">
+      <Filter>Task</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

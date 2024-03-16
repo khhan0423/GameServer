@@ -59,7 +59,7 @@ bool ClientService::Start()
 	for (__int32 i = 0; i < _sessionCount; i++)
 	{
 		shared_ptr<Session> session = CreateSession();
-		if (session->eCONNECT() == false)
+		if (session->Connect() == false)
 			return false;
 	}
 

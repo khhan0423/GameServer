@@ -39,9 +39,9 @@ public:
 	virtual ~Session();
 
 public:
-	void									eSEND(shared_ptr<SendBuffer> sendBuffer);
-	bool									eCONNECT();
-	void									eDISCONNECT(const WCHAR* cause);
+	void									Send(shared_ptr<SendBuffer> sendBuffer);
+	bool									Connect();
+	void									Disconnect(const WCHAR* cause);
 
 	shared_ptr<Service>						GetService() { return m_service.lock(); }
 	void									SetService(shared_ptr<Service> service) { m_service = service; }

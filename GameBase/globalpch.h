@@ -1,8 +1,5 @@
 #pragma once
 
-#include "globalMacro.h"
-#include "TLSDef.h"
-
 #include <windows.h>
 #include <iostream>
 #include <winsock2.h>
@@ -12,7 +9,6 @@
 
 using namespace std;
 
-static void fnGameBase()
-{
-	cout << "print any thing" << endl;
-}
+#include "globalMacro.h"
+#include "globalBaseDef.h"
+#include "TLSDef.h"

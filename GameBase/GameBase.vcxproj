@@ -151,13 +151,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="globalBaseDef.h" />
     <ClInclude Include="globalMacro.h" />
     <ClInclude Include="globalpch.h" />
+    <ClInclude Include="globalStruct.h" />
     <ClInclude Include="IOCPCore.h" />
     <ClInclude Include="IOCPEvent.h" />
     <ClInclude Include="LibTestClass.h" />
     <ClInclude Include="Listener.h" />
+    <ClInclude Include="LockQueueBase.h" />
     <ClInclude Include="NetAddress.h" />
+    <ClInclude Include="PacketSession.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="RecvBuffer.h" />
     <ClInclude Include="SendBuffer.h" />
@@ -165,16 +169,21 @@
     <ClInclude Include="Session.h" />
     <ClInclude Include="SingletonBase.h" />
     <ClInclude Include="SocketUtils.h" />
+    <ClInclude Include="Task.h" />
+    <ClInclude Include="TaskManager.h" />
+    <ClInclude Include="TaskQueue.h" />
     <ClInclude Include="ThreadManager.h" />
     <ClInclude Include="TLSDef.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="globalpch.cpp" />
+    <ClCompile Include="globalStruct.cpp" />
     <ClCompile Include="IOCPCore.cpp" />
     <ClCompile Include="IOCPEvent.cpp" />
     <ClCompile Include="LibTestClass.cpp" />
     <ClCompile Include="Listener.cpp" />
     <ClCompile Include="NetAddress.cpp" />
+    <ClCompile Include="PacketSession.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -186,6 +195,9 @@
     <ClCompile Include="Service.cpp" />
     <ClCompile Include="Session.cpp" />
     <ClCompile Include="SocketUtils.cpp" />
+    <ClCompile Include="Task.cpp" />
+    <ClCompile Include="TaskManager.cpp" />
+    <ClCompile Include="TaskQueue.cpp" />
     <ClCompile Include="ThreadManager.cpp" />
     <ClCompile Include="TLSDef.cpp" />
   </ItemGroup>

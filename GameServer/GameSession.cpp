@@ -1,30 +1,42 @@
 #include "pch.h"
 #include "GameSession.h"
 #include "GameSessionManager.h"
+#include "ClientPacketHandler.h"
+
 
 void GameSession::OnConnected()
 {
 	GetGameSessionManager()->Add(static_pointer_cast<GameSession>(shared_from_this()));
+	cout << "GameSession::OnConnected()" << endl;
 }
 
 void GameSession::OnDisconnected()
 {
 	GetGameSessionManager()->Remove(static_pointer_cast<GameSession>(shared_from_this()));
+
+	if (m_currentPlayer)
+	{
+		if (auto _room = m_room.lock())
+			_room->RegistTaskLine(&Room::Leave, m_currentPlayer);
+	}
+
+	cout << "GameSession::OnDisconnected()" << endl;
+
+	m_currentPlayer = nullptr;
+	m_playerList.clear();
 }
 
-__int32 GameSession::OnRecv(BYTE* buffer, __int32 len)
+void GameSession::OnRecvPacket(unsigned char* buffer, __int32 len)
 {
-	cout << "OnRecv Len = " << len << endl;
+	shared_ptr<PacketSession> _session = GetPacketSessionRef();
+	PacketHeader* _headerPtr = reinterpret_cast<PacketHeader*>(buffer);
 
-	shared_ptr<SendBuffer> _sendBuffer = make_shared<SendBuffer>(4096);
-	_sendBuffer->CopyData(buffer, len);
+	cout << "GameSession::OnRecvPacket() Len = " << len << endl;
 
-	GetGameSessionManager()->Broadcast(_sendBuffer);
-
-	return len;
+	ClientPacketHandler::HandlePacket(_session, buffer, len);
 }
 
 void GameSession::OnSend(__int32 len)
 {
-	cout << "OnSend Len = " << len << endl;
+	cout << "GameSession::OnSend() Len = " << len << endl;
 }

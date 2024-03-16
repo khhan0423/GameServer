@@ -10,6 +10,15 @@
     <Filter Include="Util">
       <UniqueIdentifier>{87204874-cfb5-4258-a6fd-8d0ccbc85e5b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Contents">
+      <UniqueIdentifier>{4d4eac9c-69b7-47f0-a848-ca70ac71619e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\Session">
+      <UniqueIdentifier>{6016eb2a-467f-4b6c-8076-13a4b6a865b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main\PacketHandler">
+      <UniqueIdentifier>{d1e8a3ee-feea-4343-a603-30f268350bf8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameServer.cpp">
@@ -18,22 +27,40 @@
     <ClCompile Include="pch.cpp">
       <Filter>Def</Filter>
     </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="Room.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
     <ClCompile Include="GameSession.cpp">
-      <Filter>Main</Filter>
+      <Filter>Main\Session</Filter>
     </ClCompile>
     <ClCompile Include="GameSessionManager.cpp">
-      <Filter>Main</Filter>
+      <Filter>Main\Session</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientPacketHandler.cpp">
+      <Filter>Main\PacketHandler</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
       <Filter>Def</Filter>
     </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="Room.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
     <ClInclude Include="GameSession.h">
-      <Filter>Main</Filter>
+      <Filter>Main\Session</Filter>
     </ClInclude>
     <ClInclude Include="GameSessionManager.h">
-      <Filter>Main</Filter>
+      <Filter>Main\Session</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientPacketHandler.h">
+      <Filter>Main\PacketHandler</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
