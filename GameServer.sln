@@ -4,10 +4,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.8.34408.163
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GameServer", "GameServer\GameServer.vcxproj", "{57B7DF91-2185-4BC0-BB4B-F2DDC86C97A9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{224EFF77-367E-4C53-A9A8-B558CA8A21C2} = {224EFF77-367E-4C53-A9A8-B558CA8A21C2}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GameBase", "GameBase\GameBase.vcxproj", "{224EFF77-367E-4C53-A9A8-B558CA8A21C2}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Client", "Client\Client.vcxproj", "{D21BF359-15C1-4350-B9FF-054AACB1C9DF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{224EFF77-367E-4C53-A9A8-B558CA8A21C2} = {224EFF77-367E-4C53-A9A8-B558CA8A21C2}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

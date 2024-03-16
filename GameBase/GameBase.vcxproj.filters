@@ -1,29 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="소스 파일">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="Main">
+      <UniqueIdentifier>{c13c1ae0-04a5-4c75-8cca-32c105b14916}</UniqueIdentifier>
     </Filter>
-    <Filter Include="헤더 파일">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    <Filter Include="Def">
+      <UniqueIdentifier>{f1456f74-75f8-4736-b59f-7e9a686006f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Util">
+      <UniqueIdentifier>{72f7c285-6a25-4bd9-b090-105b7db113a0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="framework.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="globalpch.h">
+      <Filter>Def</Filter>
     </ClInclude>
     <ClInclude Include="pch.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>Def</Filter>
+    </ClInclude>
+    <ClInclude Include="LibTestClass.h">
+      <Filter>Main</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GameBase.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="pch.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>Def</Filter>
+    </ClCompile>
+    <ClCompile Include="globalpch.cpp">
+      <Filter>Def</Filter>
+    </ClCompile>
+    <ClCompile Include="LibTestClass.cpp">
+      <Filter>Main</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
