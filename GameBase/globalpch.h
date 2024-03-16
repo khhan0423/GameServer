@@ -1,6 +1,7 @@
 #pragma once
 
 #include "globalMacro.h"
+#include "TLSDef.h"
 
 #include <windows.h>
 #include <iostream>

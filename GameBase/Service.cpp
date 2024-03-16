@@ -37,7 +37,7 @@ void Service::AddSession(shared_ptr<Session> session)
 void Service::ReleaseSession(shared_ptr<Session> session)
 {
 	lock_guard<recursive_mutex> lock(_lock);
-	ASSERT_CRASH(_sessions.erase(session) != 0);
+	ASSERT(_sessions.erase(session) != 0);
 	_sessionCount--;
 }
 

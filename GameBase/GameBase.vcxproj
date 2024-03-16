@@ -163,10 +163,12 @@
     <ClInclude Include="SendBuffer.h" />
     <ClInclude Include="Service.h" />
     <ClInclude Include="Session.h" />
+    <ClInclude Include="SingletonBase.h" />
     <ClInclude Include="SocketUtils.h" />
+    <ClInclude Include="ThreadManager.h" />
+    <ClInclude Include="TLSDef.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="globalMacro.cpp" />
     <ClCompile Include="globalpch.cpp" />
     <ClCompile Include="IOCPCore.cpp" />
     <ClCompile Include="IOCPEvent.cpp" />
@@ -184,6 +186,8 @@
     <ClCompile Include="Service.cpp" />
     <ClCompile Include="Session.cpp" />
     <ClCompile Include="SocketUtils.cpp" />
+    <ClCompile Include="ThreadManager.cpp" />
+    <ClCompile Include="TLSDef.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

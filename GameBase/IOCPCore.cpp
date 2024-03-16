@@ -6,7 +6,7 @@ IocpCore::IocpCore()
 {
 	//CreateIoCompletionPort 처음으로 생성함.
 	_iocpHandle = ::CreateIoCompletionPort(INVALID_HANDLE_VALUE, 0, 0, 0);
-	ASSERT_CRASH(_iocpHandle != INVALID_HANDLE_VALUE);
+	ASSERT(_iocpHandle != INVALID_HANDLE_VALUE);
 }
 
 IocpCore::~IocpCore()

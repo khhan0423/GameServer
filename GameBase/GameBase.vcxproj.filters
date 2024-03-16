@@ -19,6 +19,9 @@
     <Filter Include="Netwotk\IOCP">
       <UniqueIdentifier>{bb7777cd-d6dd-4d11-88eb-d047c59a6de3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Thread">
+      <UniqueIdentifier>{24a676f8-582f-4501-8fea-0957cfc3b164}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="globalpch.h">
@@ -57,7 +60,18 @@
     <ClInclude Include="Listener.h">
       <Filter>Netwotk</Filter>
     </ClInclude>
-    <ClInclude Include="globalMacro.h" />
+    <ClInclude Include="SingletonBase.h">
+      <Filter>Def</Filter>
+    </ClInclude>
+    <ClInclude Include="globalMacro.h">
+      <Filter>Def</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadManager.h">
+      <Filter>Thread</Filter>
+    </ClInclude>
+    <ClInclude Include="TLSDef.h">
+      <Filter>Def</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -96,6 +110,11 @@
     <ClCompile Include="Listener.cpp">
       <Filter>Netwotk</Filter>
     </ClCompile>
-    <ClCompile Include="globalMacro.cpp" />
+    <ClCompile Include="ThreadManager.cpp">
+      <Filter>Thread</Filter>
+    </ClCompile>
+    <ClCompile Include="TLSDef.cpp">
+      <Filter>Def</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
