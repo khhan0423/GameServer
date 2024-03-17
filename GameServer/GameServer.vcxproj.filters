@@ -19,6 +19,9 @@
     <Filter Include="Main\PacketHandler">
       <UniqueIdentifier>{d1e8a3ee-feea-4343-a603-30f268350bf8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="DataBase">
+      <UniqueIdentifier>{8b079d5c-9e24-4562-8b70-ef6c6e3d5a90}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameServer.cpp">
@@ -42,6 +45,18 @@
     <ClCompile Include="ClientPacketHandler.cpp">
       <Filter>Main\PacketHandler</Filter>
     </ClCompile>
+    <ClCompile Include="DataBaseBase.cpp">
+      <Filter>DataBase</Filter>
+    </ClCompile>
+    <ClCompile Include="GameServerBase.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="ADOManager.cpp">
+      <Filter>DataBase</Filter>
+    </ClCompile>
+    <ClCompile Include="SQLLite.cpp">
+      <Filter>DataBase</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -61,6 +76,18 @@
     </ClInclude>
     <ClInclude Include="ClientPacketHandler.h">
       <Filter>Main\PacketHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="DataBaseBase.h">
+      <Filter>DataBase</Filter>
+    </ClInclude>
+    <ClInclude Include="GameServerBase.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="ADOManager.h">
+      <Filter>DataBase</Filter>
+    </ClInclude>
+    <ClInclude Include="SQLLite.h">
+      <Filter>DataBase</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

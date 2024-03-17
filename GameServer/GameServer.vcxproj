@@ -72,22 +72,22 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)Bin\$(Configuration)\</OutDir>
-    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)protobuf-21.12\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)sqlite3\;$(SolutionDir)protobuf-21.12\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)Bin\$(Configuration)\</OutDir>
-    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)protobuf-21.12\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)sqlite3\;$(SolutionDir)protobuf-21.12\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)Bin\$(Configuration)\</OutDir>
-    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)protobuf-21.12\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)sqlite3\;$(SolutionDir)protobuf-21.12\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)Bin\$(Configuration)\</OutDir>
-    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)protobuf-21.12\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)sqlite3\;$(SolutionDir)protobuf-21.12\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -155,8 +155,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ADOManager.cpp" />
     <ClCompile Include="ClientPacketHandler.cpp" />
+    <ClCompile Include="DataBaseBase.cpp" />
     <ClCompile Include="GameServer.cpp" />
+    <ClCompile Include="GameServerBase.cpp" />
     <ClCompile Include="GameSession.cpp" />
     <ClCompile Include="GameSessionManager.cpp" />
     <ClCompile Include="pch.cpp">
@@ -167,14 +170,19 @@
     </ClCompile>
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Room.cpp" />
+    <ClCompile Include="SQLLite.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ADOManager.h" />
     <ClInclude Include="ClientPacketHandler.h" />
+    <ClInclude Include="DataBaseBase.h" />
+    <ClInclude Include="GameServerBase.h" />
     <ClInclude Include="GameSession.h" />
     <ClInclude Include="GameSessionManager.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Room.h" />
+    <ClInclude Include="SQLLite.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
