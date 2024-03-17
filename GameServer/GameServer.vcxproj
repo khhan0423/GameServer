@@ -159,7 +159,7 @@
     <ClCompile Include="ClientPacketHandler.cpp" />
     <ClCompile Include="DataBaseBase.cpp" />
     <ClCompile Include="GameServer.cpp" />
-    <ClCompile Include="GameServerBase.cpp" />
+    <ClCompile Include="GameServerSystem.cpp" />
     <ClCompile Include="GameSession.cpp" />
     <ClCompile Include="GameSessionManager.cpp" />
     <ClCompile Include="pch.cpp">
@@ -176,7 +176,7 @@
     <ClInclude Include="ADOManager.h" />
     <ClInclude Include="ClientPacketHandler.h" />
     <ClInclude Include="DataBaseBase.h" />
-    <ClInclude Include="GameServerBase.h" />
+    <ClInclude Include="GameServerSystem.h" />
     <ClInclude Include="GameSession.h" />
     <ClInclude Include="GameSessionManager.h" />
     <ClInclude Include="pch.h" />

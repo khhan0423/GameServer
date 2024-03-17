@@ -48,7 +48,7 @@
     <ClCompile Include="DataBaseBase.cpp">
       <Filter>DataBase</Filter>
     </ClCompile>
-    <ClCompile Include="GameServerBase.cpp">
+    <ClCompile Include="GameServerSystem.cpp">
       <Filter>Main</Filter>
     </ClCompile>
     <ClCompile Include="ADOManager.cpp">
@@ -80,7 +80,7 @@
     <ClInclude Include="DataBaseBase.h">
       <Filter>DataBase</Filter>
     </ClInclude>
-    <ClInclude Include="GameServerBase.h">
+    <ClInclude Include="GameServerSystem.h">
       <Filter>Main</Filter>
     </ClInclude>
     <ClInclude Include="ADOManager.h">
