@@ -159,6 +159,7 @@
     <ClInclude Include="LibTestClass.h" />
     <ClInclude Include="Listener.h" />
     <ClInclude Include="LockQueueBase.h" />
+    <ClInclude Include="LogBase.h" />
     <ClInclude Include="NetAddress.h" />
     <ClInclude Include="PacketSession.h" />
     <ClInclude Include="pch.h" />
@@ -181,6 +182,7 @@
     <ClCompile Include="IOCPEvent.cpp" />
     <ClCompile Include="LibTestClass.cpp" />
     <ClCompile Include="Listener.cpp" />
+    <ClCompile Include="LogBase.cpp" />
     <ClCompile Include="NetAddress.cpp" />
     <ClCompile Include="PacketSession.cpp" />
     <ClCompile Include="pch.cpp">

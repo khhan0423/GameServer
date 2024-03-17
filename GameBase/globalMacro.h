@@ -92,3 +92,17 @@
 #define VERIFY_MSG_DELETE_RETURN_VALUE(exp, msg, p, returnValue){ if(!(exp)) { ASSERT_REPORT(exp, msg); if(p) { delete (p); (p) = nullptr; } return returnValue; } }
 
 #define NEVER_GET_HERE									ASSERT_REPORT(0, _T("ASSERT : NEVER GET HEAR"))
+
+//SAFE ¸ÅÅ©·Î
+#ifndef SAFE_DELETE
+#define SAFE_DELETE(p) { if(p) { delete (p); (p) = nullptr; } }
+#endif
+#ifndef SAFE_DELETE_ARRAY
+#define SAFE_DELETE_ARRAY(p) { if(p) { delete[] (p); (p) = nullptr; } }
+#endif
+#ifndef SAFE_RELEASE
+#define SAFE_RELEASE(p) { if(p) { (p)->Release(); (p) = nullptr; } }
+#endif
+#ifndef SAFE_CLOSE
+#define SAFE_CLOSE(p) { if(p != INVALID_HANDLE_VALUE) { CloseHandle(p); (p) = INVALID_HANDLE_VALUE; } }
+#endif

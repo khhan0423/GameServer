@@ -11,3 +11,4 @@ using namespace std;
 
 #include "globalMacro.h"
 #include "TLSDef.h"
+#include "LogBase.h"
