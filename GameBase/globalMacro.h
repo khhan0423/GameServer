@@ -110,3 +110,21 @@
 
 #define CHECK_DBVALUE(exp) { if(!(exp)) { ErrorLog("DBError[%s] : %s", __FUNCTION__, #exp); m_Result = Protocol_DBError; return; } }
 #define CHECK_DBVALUE_RETURN_FALSE(exp) { if(!(exp)) { ErrorLog("DBError[%s] : %s", __FUNCTION__, #exp); m_Result = Protocol_DBError; return false; } }
+
+//TODO 매크로
+//사용법 : #pagma TODO("이곳에 앞으로 해야 할 목록을 작성하면 컴파일시에 출력창을 통해 출력이 된다")
+#ifndef _QUOTE
+#define _QUOTE(x) # x
+#endif
+#ifndef QUOTE
+#define QUOTE(x) _QUOTE(x)
+#endif
+#ifndef __FILE__LINE__
+#define __FILE__LINE__ __FILE__ "(" QUOTE(__LINE__) ") : "
+#endif
+#ifndef TODO
+#define TODO(x) message( __FILE__LINE__ " TODO : "x"\n")
+#endif
+#ifndef FIXME
+#define FIXME(x) message(__FILE__LINE__ " FIXME : "x"\n")
+#endif

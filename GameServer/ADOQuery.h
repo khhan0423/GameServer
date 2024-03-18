@@ -1,7 +1,7 @@
 #pragma once
 #include "comdef.h"
 
-class CADOAgent;
+class ADOAgent;
 
 //ADO 기반 쿼리 작성용 프레임웍
 //본 클레스 상속하여 쿼리만들것
@@ -16,7 +16,7 @@ protected:
 	bool	m_IsThreadSafe = false;
 
 public:
-	void Excute(CADOAgent* pAgent)
+	void Excute(ADOAgent* pAgent)
 	{
 		try
 		{
@@ -35,7 +35,7 @@ public:
 	}
 
 	virtual const char* GetQueryName() const = 0;
-	virtual void Run(CADOAgent* pAgent) = 0;
+	virtual void Run(ADOAgent* pAgent) = 0;
 	virtual void Complete() = 0;
 	WORD GetResult() const { return m_Result; }
 	bool IsThreadSafeQuery() const { return m_IsThreadSafe; }

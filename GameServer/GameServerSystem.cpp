@@ -36,35 +36,36 @@ void GameServerSystem::Release()
  
 void GameServerSystem::Intiate() 
 {
-	m_service = make_shared<ServerService>(
+	m_serviceForClient = make_shared<ServerService>(
 		NetAddress(L"127.0.0.1", 7777),
 		move(make_shared<IocpCore>())/*rValue move 로 포장해서 넘김*/,
 		move(make_shared<GameSession>)/*rValue move 로 포장해서 넘김*/,
 		5);
 
-	VERIFY(m_service->Start());
+	VERIFY(m_serviceForClient->Start());
 
 	OnIntiate();
 }
 
 void GameServerSystem::OnIntiate()
 {
+	m_isReady.exchange(true);
+
 	for (__int32 i = 0; i < 2; i++)
 	{
 		GThreadManager->Launch([this]()
 			{
 				while (true)
 				{
-					Run();
+					ThreadRun();
 				}
 			});
-	}
-
-	m_isReady.exchange(true);
+	}	
 }
 
-void GameServerSystem::Run()
+void GameServerSystem::ThreadRun()
 {
+	//
 	while (true)
 	{
 		if (m_isReady == false)
@@ -72,7 +73,7 @@ void GameServerSystem::Run()
 
 		TLS_EndTickCount = ::GetTickCount64() + WORKER_TICK;
 
-		m_service->GetIocpCore()->Dispatch(10);
+		m_serviceForClient->GetIocpCore()->Dispatch(10);
 
 		GThreadManager->Run();
 	}

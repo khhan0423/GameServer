@@ -28,22 +28,22 @@ void GameLog::Log(const __int32 iLevel, const char* strFile, const __int32 iLine
 
 		if (m_iOutput == GAMELOG_OUTPUT_NONE || iLevel < m_iLevel) return;
 
-		time_t ltime;
-		time(&ltime);
+		time_t _time;
+		time(&_time);
 
 		struct tm Tm;
-		if (localtime_s(&Tm, &ltime)) return;
+		if (localtime_s(&Tm, &_time)) return;
 
-		char strTime[32];
-		strftime(strTime, 32, "%Y-%m-%d %H:%M:%S", &Tm);
+		char _strTime[32];
+		strftime(_strTime, 32, "%Y-%m-%d %H:%M:%S", &Tm);
 
-		va_list	args;
-		va_start(args, strFormat);
+		va_list	_args;
+		va_start(_args, strFormat);
 
 		if (m_iOutput == GAMELOG_OUTPUT_SCRN || m_iOutput == GAMELOG_OUTPUT_BOTH)
 		{
-			printf("%s:", strTime);
-			vprintf(strFormat, args);
+			printf("%s:", _strTime);
+			vprintf(strFormat, _args);
 			printf("\n");
 		}
 		if (m_iOutput == GAMELOG_OUTPUT_FILE || m_iOutput == GAMELOG_OUTPUT_BOTH)
@@ -57,10 +57,10 @@ void GameLog::Log(const __int32 iLevel, const char* strFile, const __int32 iLine
 
 			if (!m_pFile)
 			{
-				char strLogFile[256];
-				sprintf_s(strLogFile, sizeof(strLogFile), "%s\\%s(%d)", GAMELOG_PATH, m_strFilePath.c_str(), 0);
-				strftime(strLogFile + strlen(strLogFile), 64, "_%Y-%m-%d_%H-%M-%S.log", &Tm);
-				m_strLogFile = strLogFile;
+				char _strLogFile[256];
+				sprintf_s(_strLogFile, sizeof(_strLogFile), "%s\\%s(%d)", GAMELOG_PATH, m_strFilePath.c_str(), 0);
+				strftime(_strLogFile + strlen(_strLogFile), 64, "_%Y-%m-%d_%H-%M-%S.log", &Tm);
+				m_strLogFile = _strLogFile;
 
 				_mkdir(GAMELOG_PATH);
 
@@ -68,8 +68,8 @@ void GameLog::Log(const __int32 iLevel, const char* strFile, const __int32 iLine
 				if (!m_pFile) return;
 			}
 
-			fprintf(m_pFile, "LEVEL[%d] : %s : ", iLevel, strTime);
-			vfprintf(m_pFile, strFormat, args);
+			fprintf(m_pFile, "LEVEL[%d] : %s : ", iLevel, _strTime);
+			vfprintf(m_pFile, strFormat, _args);
 			fprintf(m_pFile, " - %s(%d)\n", strFile, iLine);
 
 			fflush(m_pFile);
@@ -77,6 +77,6 @@ void GameLog::Log(const __int32 iLevel, const char* strFile, const __int32 iLine
 
 		m_iCount++;
 
-		va_end(args);
+		va_end(_args);
 	}
 }

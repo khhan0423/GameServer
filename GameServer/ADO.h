@@ -1,5 +1,4 @@
 #pragma once
-#include "ADOManager.h"
 #include "StringUtil.h"
 #include "objbase.h"
 

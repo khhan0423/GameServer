@@ -3,6 +3,7 @@
 #include <mutex>
 #include "ADO.h"
 #include "ADOQuery.h"
+#include "FPS.h"
 
 using namespace DataBase;
 using namespace DataBase::SQLite3;
@@ -59,8 +60,9 @@ private:
 	ADO*					m_accountDBPtr = nullptr;
 	ADO*					m_gameDBPtr = nullptr;
 
-	bool					m_bRun;
+	atomic<bool>			m_isRun;
 	HANDLE					m_hThread;
+	FPS						m_fps;
 	CQueryQueue				m_queueWait;
 	CQueryQueue				m_queueComplete;
 
@@ -78,12 +80,15 @@ public:
 	ADO* GetGameDB() { return m_gameDBPtr; }
 
 public:
-	bool Init(const string & accountDB);
+	bool Init(const string& accountDB, const string& gameDB);
+	bool Init(const string& gameDB);
 	void Update();
+	virtual int GetFPS() const { return m_fps.GetFPS(); }
 
 	size_t GetWaitQueueCount() const { return m_queueWait.GetCount(); }
 	size_t GetCompleteQueueCount() const { return m_queueComplete.GetCount(); }
 
 public:
-	void PushQuery(ADOQuery * q) { m_queueWait.Push(q); }
+	virtual void PushQuery(ADOQuery* pQuery) { m_queueWait.Push(pQuery); }
+	virtual bool SyncQuery(ADOQuery* pQuery);
 };

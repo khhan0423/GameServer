@@ -151,6 +151,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="FileUtil.h" />
+    <ClInclude Include="FPS.h" />
     <ClInclude Include="GlobalGameBase.h" />
     <ClInclude Include="globalMacro.h" />
     <ClInclude Include="globalpch.h" />
@@ -164,6 +166,10 @@
     <ClInclude Include="PacketSession.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="ProtocolResultEnum.h" />
+    <ClInclude Include="rapidxml.hpp" />
+    <ClInclude Include="rapidxml_iterators.hpp" />
+    <ClInclude Include="rapidxml_print.hpp" />
+    <ClInclude Include="rapidxml_utils.hpp" />
     <ClInclude Include="RecvBuffer.h" />
     <ClInclude Include="SendBuffer.h" />
     <ClInclude Include="Service.h" />
@@ -176,8 +182,10 @@
     <ClInclude Include="TaskQueue.h" />
     <ClInclude Include="ThreadManager.h" />
     <ClInclude Include="TLSDef.h" />
+    <ClInclude Include="XmlParser.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="FileUtil.cpp" />
     <ClCompile Include="GlobalGameBase.cpp" />
     <ClCompile Include="globalpch.cpp" />
     <ClCompile Include="IOCPCore.cpp" />
@@ -204,6 +212,7 @@
     <ClCompile Include="TaskQueue.cpp" />
     <ClCompile Include="ThreadManager.cpp" />
     <ClCompile Include="TLSDef.cpp" />
+    <ClCompile Include="XmlParser.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -24,13 +24,13 @@ private:
 										
 	void								Intiate();
 	void								OnIntiate();
-	void								Run();
+	void								ThreadRun();
 	
 	void								CheckAnotherServers();
 
 	atomic<bool>						m_isReady = false;
 
 private:
-	shared_ptr<ServerService>			m_service;
+	shared_ptr<ServerService>			m_serviceForClient;
 };
 

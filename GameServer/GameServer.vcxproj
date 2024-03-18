@@ -72,22 +72,22 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)Bin\$(Configuration)\</OutDir>
-    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)sqlite3\;$(SolutionDir)protobuf-21.12\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)sqlite3\;$(SolutionDir)protobuf\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)Bin\$(Configuration)\</OutDir>
-    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)sqlite3\;$(SolutionDir)protobuf-21.12\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)sqlite3\;$(SolutionDir)protobuf\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)Bin\$(Configuration)\</OutDir>
-    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)sqlite3\;$(SolutionDir)protobuf-21.12\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)sqlite3\;$(SolutionDir)protobuf\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)Bin\$(Configuration)\</OutDir>
-    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)sqlite3\;$(SolutionDir)protobuf-21.12\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)sqlite3\;$(SolutionDir)protobuf\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
