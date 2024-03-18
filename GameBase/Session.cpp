@@ -113,7 +113,7 @@ bool Session::RegisterConnect()
 
 bool Session::RegisterDisconnect()
 {
-	cout << "Session::RegisterDisconnect()" << endl;
+	DebugLog("[%s]", __FUNCTION__);
 	m_disconnectEvent.Init();
 	m_disconnectEvent.m_owner = shared_from_this();
 

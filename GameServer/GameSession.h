@@ -9,7 +9,7 @@ class GameSession : public PacketSession
 public:
 	~GameSession()
 	{
-		cout << "~GameSession" << endl;
+		DebugLog("[%s]", __FUNCTION__);
 	}
 
 	virtual void						OnConnected() override;
