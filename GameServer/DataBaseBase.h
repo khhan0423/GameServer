@@ -9,11 +9,11 @@ namespace DataBase
 #define ISOCTDIGIT(CH) ((CH) >= '0' && (CH) <= '7')
 #define OCTVAL(CH) ((CH) - '0')
 
-	class CDB_Module_Interface
+	class DB_Module_Interface
 	{
 	public:
-		CDB_Module_Interface() {};
-		virtual ~CDB_Module_Interface() {};
+		DB_Module_Interface() {};
+		virtual ~DB_Module_Interface() {};
 
 	public:
 		virtual bool Connect(const char* strConnect) abstract;
@@ -148,7 +148,7 @@ namespace DataBase
 		virtual ~CDBManagerInterface()
 		{
 			for (auto&& it : m_DBAgentList)
-				delete it;
+				SAFE_DELETE(it);
 
 			m_DBAgentList.clear();
 

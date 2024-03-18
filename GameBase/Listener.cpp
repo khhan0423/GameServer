@@ -12,7 +12,7 @@ Listener::~Listener()
 	for (AcceptEvent* _acceptEvent : m_acceptEvents)
 	{
 		if(_acceptEvent != nullptr)
-			delete _acceptEvent;
+			SAFE_DELETE(_acceptEvent);
 	}		
 }
 

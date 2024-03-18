@@ -163,12 +163,14 @@
     <ClInclude Include="NetAddress.h" />
     <ClInclude Include="PacketSession.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="ProtocolResultEnum.h" />
     <ClInclude Include="RecvBuffer.h" />
     <ClInclude Include="SendBuffer.h" />
     <ClInclude Include="Service.h" />
     <ClInclude Include="Session.h" />
     <ClInclude Include="SingletonBase.h" />
     <ClInclude Include="SocketUtils.h" />
+    <ClInclude Include="StringUtil.h" />
     <ClInclude Include="Task.h" />
     <ClInclude Include="TaskManager.h" />
     <ClInclude Include="TaskQueue.h" />
@@ -191,6 +193,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="ProtocolResultEnum.cpp" />
     <ClCompile Include="RecvBuffer.cpp" />
     <ClCompile Include="SendBuffer.cpp" />
     <ClCompile Include="Service.cpp" />

@@ -13,6 +13,9 @@
     <Filter Include="Main\PacketHandler">
       <UniqueIdentifier>{6cf7e898-e219-4e36-b144-900e20250759}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Protocol">
+      <UniqueIdentifier>{dd9b3b51-07fc-4c1e-a928-d334f4173db1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">

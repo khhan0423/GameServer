@@ -31,6 +31,15 @@
     <Filter Include="Def\Base">
       <UniqueIdentifier>{e274f7bb-6320-4757-a1d9-7171da05f296}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Def\Enums">
+      <UniqueIdentifier>{35ca6d58-0d6e-4b45-a36c-9971044ad2a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Def\Macro">
+      <UniqueIdentifier>{9c4a8ac8-d1e9-4730-a5b6-2155291dad99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Def\TLS">
+      <UniqueIdentifier>{068c9cff-57e3-4da4-ad65-437f0cf43ab8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="globalpch.h">
@@ -66,14 +75,8 @@
     <ClInclude Include="Listener.h">
       <Filter>Netwotk</Filter>
     </ClInclude>
-    <ClInclude Include="globalMacro.h">
-      <Filter>Def</Filter>
-    </ClInclude>
     <ClInclude Include="ThreadManager.h">
       <Filter>Thread</Filter>
-    </ClInclude>
-    <ClInclude Include="TLSDef.h">
-      <Filter>Def</Filter>
     </ClInclude>
     <ClInclude Include="Session.h">
       <Filter>Netwotk\Session</Filter>
@@ -100,6 +103,18 @@
       <Filter>Def\Base</Filter>
     </ClInclude>
     <ClInclude Include="LogBase.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="ProtocolResultEnum.h">
+      <Filter>Def\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="globalMacro.h">
+      <Filter>Def\Macro</Filter>
+    </ClInclude>
+    <ClInclude Include="TLSDef.h">
+      <Filter>Def\TLS</Filter>
+    </ClInclude>
+    <ClInclude Include="StringUtil.h">
       <Filter>Util</Filter>
     </ClInclude>
   </ItemGroup>
@@ -140,9 +155,6 @@
     <ClCompile Include="ThreadManager.cpp">
       <Filter>Thread</Filter>
     </ClCompile>
-    <ClCompile Include="TLSDef.cpp">
-      <Filter>Def</Filter>
-    </ClCompile>
     <ClCompile Include="Session.cpp">
       <Filter>Netwotk\Session</Filter>
     </ClCompile>
@@ -163,6 +175,12 @@
     </ClCompile>
     <ClCompile Include="LogBase.cpp">
       <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="ProtocolResultEnum.cpp">
+      <Filter>Def\Enums</Filter>
+    </ClCompile>
+    <ClCompile Include="TLSDef.cpp">
+      <Filter>Def\TLS</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

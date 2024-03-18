@@ -106,3 +106,7 @@
 #ifndef SAFE_CLOSE
 #define SAFE_CLOSE(p) { if(p != INVALID_HANDLE_VALUE) { CloseHandle(p); (p) = INVALID_HANDLE_VALUE; } }
 #endif
+
+
+#define CHECK_DBVALUE(exp) { if(!(exp)) { ErrorLog("DBError[%s] : %s", __FUNCTION__, #exp); m_Result = Protocol_DBError; return; } }
+#define CHECK_DBVALUE_RETURN_FALSE(exp) { if(!(exp)) { ErrorLog("DBError[%s] : %s", __FUNCTION__, #exp); m_Result = Protocol_DBError; return false; } }

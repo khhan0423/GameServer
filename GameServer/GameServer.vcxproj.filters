@@ -22,6 +22,9 @@
     <Filter Include="DataBase">
       <UniqueIdentifier>{8b079d5c-9e24-4562-8b70-ef6c6e3d5a90}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Protocol">
+      <UniqueIdentifier>{347cd8dd-06ca-4840-b965-858a0b7bd4e0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameServer.cpp">
@@ -54,7 +57,13 @@
     <ClCompile Include="ADOManager.cpp">
       <Filter>DataBase</Filter>
     </ClCompile>
-    <ClCompile Include="SQLLite.cpp">
+    <ClCompile Include="ADO.cpp">
+      <Filter>DataBase</Filter>
+    </ClCompile>
+    <ClCompile Include="ADOAgnet.cpp">
+      <Filter>DataBase</Filter>
+    </ClCompile>
+    <ClCompile Include="ADOQuery.cpp">
       <Filter>DataBase</Filter>
     </ClCompile>
   </ItemGroup>
@@ -86,7 +95,13 @@
     <ClInclude Include="ADOManager.h">
       <Filter>DataBase</Filter>
     </ClInclude>
-    <ClInclude Include="SQLLite.h">
+    <ClInclude Include="ADO.h">
+      <Filter>DataBase</Filter>
+    </ClInclude>
+    <ClInclude Include="ADOAgnet.h">
+      <Filter>DataBase</Filter>
+    </ClInclude>
+    <ClInclude Include="ADOQuery.h">
       <Filter>DataBase</Filter>
     </ClInclude>
   </ItemGroup>

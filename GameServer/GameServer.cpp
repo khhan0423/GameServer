@@ -8,7 +8,7 @@
 
 int main()
 {
-	GameServerSystem _server;
+	GameServer()->Init();
 
 	return 0;
 }

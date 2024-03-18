@@ -3,7 +3,7 @@
 
 using namespace DataBase;
 
-__int32 CDB_Module_Interface::BinaryToText(const unsigned char* pbin, const unsigned __int64 bin_len, unsigned char* ptext, unsigned const __int64 text_len)
+__int32 DB_Module_Interface::BinaryToText(const unsigned char* pbin, const unsigned long long bin_len, unsigned char* ptext, const unsigned long long text_len)
 {
 	const unsigned char* _vp;
 	unsigned char* _rp;
@@ -61,7 +61,7 @@ __int32 CDB_Module_Interface::BinaryToText(const unsigned char* pbin, const unsi
 	return static_cast<__int32>(strlen((const char*)ptext));
 }
 
-__int32 CDB_Module_Interface::TextToBinary(const unsigned char* ptext, const unsigned __int64 text_len, unsigned char* pbin, const unsigned __int64 bin_len)
+__int32 DB_Module_Interface::TextToBinary(const unsigned char* ptext, const unsigned long long text_len, unsigned char* pbin, const unsigned long long bin_len)
 {
 	if (ptext == nullptr)
 		return 0;
@@ -114,7 +114,7 @@ __int32 CDB_Module_Interface::TextToBinary(const unsigned char* ptext, const uns
 	else
 		memcpy(pbin, _buffer, _buflen);
 
-	delete [] _buffer;
+	SAFE_DELETE_ARRAY(_buffer);
 	_buffer = nullptr;
 
 	return static_cast<__int32>(_buflen);

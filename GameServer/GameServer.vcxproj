@@ -155,7 +155,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ADO.cpp" />
+    <ClCompile Include="ADOAgnet.cpp" />
     <ClCompile Include="ADOManager.cpp" />
+    <ClCompile Include="ADOQuery.cpp" />
     <ClCompile Include="ClientPacketHandler.cpp" />
     <ClCompile Include="DataBaseBase.cpp" />
     <ClCompile Include="GameServer.cpp" />
@@ -170,10 +173,12 @@
     </ClCompile>
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Room.cpp" />
-    <ClCompile Include="SQLLite.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ADO.h" />
+    <ClInclude Include="ADOAgnet.h" />
     <ClInclude Include="ADOManager.h" />
+    <ClInclude Include="ADOQuery.h" />
     <ClInclude Include="ClientPacketHandler.h" />
     <ClInclude Include="DataBaseBase.h" />
     <ClInclude Include="GameServerSystem.h" />
@@ -182,7 +187,6 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Room.h" />
-    <ClInclude Include="SQLLite.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

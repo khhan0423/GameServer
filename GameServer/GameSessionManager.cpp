@@ -6,18 +6,18 @@ void GameSessionManager::Add(shared_ptr<GameSession> session)
 {
 	{
 		lock_guard<recursive_mutex> lock(m_lock);
-		m_sessionSet.insert(session);
-		DebugLog("[%s]", __FUNCTION__);
+		m_sessionSet.insert(session);		
 	}
+	DebugLog("[%s]", __FUNCTION__);
 }
 
 void GameSessionManager::Remove(shared_ptr<GameSession> session)
 {
 	{
 		lock_guard<recursive_mutex> lock(m_lock);
-		m_sessionSet.erase(session);
-		DebugLog("[%s]", __FUNCTION__);
+		m_sessionSet.erase(session);		
 	}
+	DebugLog("[%s]", __FUNCTION__);
 }
 
 void GameSessionManager::Broadcast(shared_ptr<SendBuffer> sendBuffer)
@@ -26,8 +26,8 @@ void GameSessionManager::Broadcast(shared_ptr<SendBuffer> sendBuffer)
 		lock_guard<recursive_mutex> lock(m_lock);
 		for (shared_ptr < GameSession> session : m_sessionSet)
 		{
-			session->Send(sendBuffer);
-			DebugLog("[%s]", __FUNCTION__);
+			session->Send(sendBuffer);			
 		}
+		DebugLog("[%s]", __FUNCTION__);
 	}
 }

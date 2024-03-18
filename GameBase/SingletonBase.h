@@ -102,7 +102,7 @@ public:
 				if (deleteFlag)
 				{
 					SSingletonBase::GetManager().Erase(_pInstance);
-					delete _pInstance;
+					SAFE_DELETE(_pInstance);
 				}
 			}
 		}

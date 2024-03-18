@@ -7,8 +7,10 @@
 class GameServerSystem : public TSingleton<GameServerSystem>
 {
 public:
-	GameServerSystem();
+	GameServerSystem() {};
 	~GameServerSystem() { Release(); }
+
+	void								Init();
 
 private:
 	enum

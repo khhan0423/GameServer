@@ -6,7 +6,7 @@
 #include "ClientPacketHandler.h"
 #include "LogBase.h"
 
-GameServerSystem::GameServerSystem()
+void GameServerSystem::Init()
 {
 	Initialize();
 }
@@ -49,7 +49,6 @@ void GameServerSystem::Intiate()
 
 void GameServerSystem::OnIntiate()
 {
-	shared_ptr<ServerService> _service = m_service;
 	for (__int32 i = 0; i < 2; i++)
 	{
 		GThreadManager->Launch([this]()
