@@ -6,20 +6,20 @@
 
 Session::Session() : m_recvBuffer(BUFFER_SIZE)
 {
-	cout << "Session::Session()" << endl;
+	DebugLog("[%s]", __FUNCTION__);
 	m_socket = SocketUtils::CreateSocket();
 }
 
 Session::~Session()
 {
-	cout << "Session::~Session()" << endl;
+	DebugLog("[%s]", __FUNCTION__);
 	SocketUtils::Close(m_socket);
 }
 
 void Session::Send(shared_ptr<SendBuffer> sendBuffer)
 {
 	{
-		cout << "Session::Send()" << endl;
+		DebugLog("[%s]", __FUNCTION__);
 		lock_guard<recursive_mutex> _lock(m_lock);
 
 		m_sendQueue.push(sendBuffer);
@@ -31,7 +31,7 @@ void Session::Send(shared_ptr<SendBuffer> sendBuffer)
 
 bool Session::Connect()
 {
-	cout << "Session::Connect()" << endl;
+	DebugLog("[%s]", __FUNCTION__);
 	return RegisterConnect();
 }
 
@@ -40,7 +40,7 @@ void Session::Disconnect(const WCHAR* cause)
 	if (m_connected.exchange(false) == false)
 		return;	
 
-	cout << "Session::Disconnect()" << endl;
+	DebugLog("[%s]", __FUNCTION__);
 
 	OnDisconnected();
 	GetService()->ReleaseSession(GetSessionRef());
@@ -77,7 +77,7 @@ void Session::Dispatch(IocpEvent* iocpEvent, __int32 numOfBytes)
 
 bool Session::RegisterConnect()
 {
-	cout << "Session::RegisterConnect()" << endl;
+	DebugLog("[%s]", __FUNCTION__);
 	if (IsConnected())
 		return false;
 
@@ -132,7 +132,7 @@ bool Session::RegisterDisconnect()
 
 void Session::RegisterRecv()
 {
-	cout << "Session::RegisterRecv()" << endl;
+	DebugLog("[%s]", __FUNCTION__);
 	if (IsConnected() == false)
 		return;
 
@@ -158,7 +158,7 @@ void Session::RegisterRecv()
 
 void Session::RegisterSend()
 {
-	cout << "Session::RegisterSend()" << endl;
+	DebugLog("[%s]", __FUNCTION__);
 	if (IsConnected() == false)
 		return;
 
@@ -210,7 +210,7 @@ void Session::RegisterSend()
 
 void Session::ProcessConnect()
 {
-	cout << "Session::ProcessConnect()" << endl;
+	DebugLog("[%s]", __FUNCTION__);
 	m_connectEvent.m_owner = nullptr;
 
 	m_connected.store(true);
@@ -230,7 +230,7 @@ void Session::ProcessDisconnect()
 
 void Session::ProcessRecv(__int32 numOfBytes)
 {
-	cout << "Session::ProcessRecv()" << endl;
+	DebugLog("[%s]", __FUNCTION__);
 	m_recvEvent.m_owner = nullptr;
 
 	if (numOfBytes == 0)
@@ -260,7 +260,7 @@ void Session::ProcessRecv(__int32 numOfBytes)
 
 void Session::ProcessSend(__int32 numOfBytes)
 {
-	cout << "Session::ProcessSend()" << endl;
+	DebugLog("[%s]", __FUNCTION__);
 	m_sendEvent.m_owner = nullptr;
 	m_sendEvent.m_sendBufferList.clear();
 
@@ -289,8 +289,7 @@ void Session::HandleError(__int32 errorCode)
 		Disconnect(L"HandleError");
 		break;
 	default:
-		// TODO : Log
-		cout << "Handle Error : " << errorCode << endl;
+		DebugLog("[%s] Handle Error [%d]: ", __FUNCTION__, errorCode);
 		break;
 	}
 }

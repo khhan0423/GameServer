@@ -20,6 +20,7 @@ void TaskQueue::Regist(shared_ptr<Task> task)
 		else
 		{
 			GTaskManager->Regist(shared_from_this());
+			//GetTaskManager()->Regist(shared_from_this());
 		}
 	}
 }
@@ -50,6 +51,7 @@ void TaskQueue::Run()
 		{
 			TLS_CurrentTaskQueue = nullptr;
 			GTaskManager->Regist(shared_from_this());
+			//GetTaskManager()->Regist(shared_from_this());
 			break;
 		}
 	}

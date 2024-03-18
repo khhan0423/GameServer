@@ -6,6 +6,7 @@
 #include "GlobalGameBase.h"
 #include "ThreadManager.h"
 #include "ClientPacketHandler.h"
+#include "LogBase.h"
 
 enum
 {
@@ -21,12 +22,14 @@ void DoWorkerJob(shared_ptr<ServerService>& service)
 		service->GetIocpCore()->Dispatch(10);
 
 		GThreadManager->Run();
+		//GetThreadManager()->Run();
 	}
 }
 
 int main()
 {
 	ClientPacketHandler::Init();
+	GetGlobalLog()->Init(GAMELOG_LEVEL_DEBUG, GAMELOG_OUTPUT_BOTH, "GameServer");
 
 	shared_ptr<ServerService> _service = make_shared<ServerService>(
 		NetAddress(L"127.0.0.1", 7777),
@@ -38,8 +41,8 @@ int main()
 
 	for (__int32 i = 0; i < 2; i++)
 	{
-		cout << "GThreadManager->Launch" << endl;
 		GThreadManager->Launch([&_service]()
+		//GetThreadManager()->Launch([&_service]()
 			{
 				while (true)
 				{
@@ -51,6 +54,7 @@ int main()
 	DoWorkerJob(_service);
 
 	GThreadManager->Join();
+	//GetThreadManager()->Join();
 
 	return 0;
 }

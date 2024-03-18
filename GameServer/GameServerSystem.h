@@ -4,7 +4,7 @@
 
 #define GameServer() GameServerSystem::GetInstance()
 
-class GameServerSystem : public SingletonBase<GameServerSystem>
+class GameServerSystem : public TSingleton<GameServerSystem>
 {
 public:
 	GameServerSystem();

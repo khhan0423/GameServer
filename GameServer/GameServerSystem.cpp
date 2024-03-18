@@ -15,8 +15,8 @@ void GameServerSystem::Release()
 {
 	//do release and delete dynamic resources.
 }
-
-void GameServerSystem::Intiate()
+ 
+void GameServerSystem::Intiate() 
 {
 	//ServerService init and start.
 }

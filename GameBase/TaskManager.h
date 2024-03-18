@@ -1,10 +1,14 @@
 #pragma once
 
-class TaskManager
+#include "SingletonBase.h"
+
+//#define GetTaskManager() TaskManager::GetInstance()
+
+class TaskManager : public TSingleton<TaskManager>
 {
 public:
-	TaskManager() { cout << "TaskManager::TaskManager()" << endl; };
-	~TaskManager() { cout << "TaskManager::~TaskManager()" << endl; };
+	TaskManager() { DebugLog("[%s]", __FUNCTION__); };
+	~TaskManager() { DebugLog("[%s]", __FUNCTION__); };
 
 	void								Regist(shared_ptr<TaskQueue> taskQueue);
 	shared_ptr<TaskQueue>				Pop();

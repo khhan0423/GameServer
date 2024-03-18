@@ -11,12 +11,12 @@ class ServerSession : public PacketSession
 public:
 	~ServerSession()
 	{
-		cout << "ServerSession::~ServerSession()" << endl;
+		DebugLog("[%s]", __FUNCTION__);
 	}
 
 	virtual void OnConnected() override
 	{
-		cout << "ServerSession::OnConnected()" << endl;
+		DebugLog("[%s]", __FUNCTION__);
 	}
 
 	virtual void OnRecvPacket(unsigned char* buffer, __int32 len) override
@@ -24,19 +24,19 @@ public:
 		shared_ptr<PacketSession> _session = GetPacketSessionRef();
 		PacketHeader* header = reinterpret_cast<PacketHeader*>(buffer);
 
-		cout << "ServerSession::OnRecvPacket() Len = " << len << endl;
+		DebugLog("[%s] len : ", __FUNCTION__, len);
 
 		ServerPacketHandler::HandlePacket(_session, buffer, len);
 	}
 
 	virtual void OnSend(__int32 len) override
 	{
-		cout << "ServerSession::OnSend() Len = " << len << endl;
+		DebugLog("[%s] len : ", __FUNCTION__, len);
 	}
 
 	virtual void OnDisconnected() override
 	{
-		cout << "ServerSession::OnDisconnected()" << endl;
+		DebugLog("[%s]", __FUNCTION__);
 	}
 };
 
@@ -54,6 +54,7 @@ void DoWorkerJob(shared_ptr<ClientService>& service)
 		service->GetIocpCore()->Dispatch(10);
 
 		GThreadManager->Run();
+		//GetThreadManager()->Run();
 	}
 }
 
@@ -75,6 +76,7 @@ int main()
 	for (__int32 i = 0; i < 1; i++)
 	{
 		GThreadManager->Launch([&_service]()
+		//GetThreadManager()->Launch([&_service]()
 			{
 				while (true)
 				{
@@ -86,4 +88,5 @@ int main()
 	DoWorkerJob(_service);
 
 	GThreadManager->Join();
+	//GetThreadManager()->Join();
 }

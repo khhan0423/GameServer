@@ -7,7 +7,7 @@
 void GameSession::OnConnected()
 {
 	GetGameSessionManager()->Add(static_pointer_cast<GameSession>(shared_from_this()));
-	cout << "GameSession::OnConnected()" << endl;
+	DebugLog("[%s]", __FUNCTION__);
 }
 
 void GameSession::OnDisconnected()
@@ -20,7 +20,7 @@ void GameSession::OnDisconnected()
 			_room->RegistTaskLine(&Room::Leave, m_currentPlayer);
 	}
 
-	cout << "GameSession::OnDisconnected()" << endl;
+	DebugLog("[%s]", __FUNCTION__);
 
 	m_currentPlayer = nullptr;
 	m_playerList.clear();
@@ -31,12 +31,12 @@ void GameSession::OnRecvPacket(unsigned char* buffer, __int32 len)
 	shared_ptr<PacketSession> _session = GetPacketSessionRef();
 	PacketHeader* _headerPtr = reinterpret_cast<PacketHeader*>(buffer);
 
-	cout << "GameSession::OnRecvPacket() Len = " << len << endl;
+	DebugLog("[%s] len[%d] :", __FUNCTION__, len);
 
 	ClientPacketHandler::HandlePacket(_session, buffer, len);
 }
 
 void GameSession::OnSend(__int32 len)
 {
-	cout << "GameSession::OnSend() Len = " << len << endl;
+	DebugLog("[%s]", __FUNCTION__);
 }

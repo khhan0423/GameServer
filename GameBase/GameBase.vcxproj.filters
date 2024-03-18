@@ -99,7 +99,9 @@
     <ClInclude Include="SingletonBase.h">
       <Filter>Def\Base</Filter>
     </ClInclude>
-    <ClInclude Include="LogBase.h" />
+    <ClInclude Include="LogBase.h">
+      <Filter>Util</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -159,6 +161,8 @@
     <ClCompile Include="GlobalGameBase.cpp">
       <Filter>Def</Filter>
     </ClCompile>
-    <ClCompile Include="LogBase.cpp" />
+    <ClCompile Include="LogBase.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

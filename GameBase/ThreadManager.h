@@ -3,8 +3,11 @@
 #include <mutex>
 #include <thread>
 #include <functional>
+//#include "SingletonBase.h"
 
-class ThreadManager
+//#define GetThreadManager() ThreadManager::GetInstance()
+
+class ThreadManager //: public TSingleton<ThreadManager>
 {
 public:
 	ThreadManager();

@@ -3,17 +3,17 @@
 
 PacketSession::PacketSession()
 {
-
+	DebugLog("[%s]", __FUNCTION__);
 }
 
 PacketSession::~PacketSession()
 {
-	cout << "PacketSession::~PacketSession()" << endl;
+	DebugLog("[%s]", __FUNCTION__);
 }
 
 __int32 PacketSession::OnRecv(unsigned char* buffer, __int32 len)
 {
-	cout << "PacketSession::OnRecv()" << endl;
+	DebugLog("[%s] len : ", __FUNCTION__, len);
 	__int32 _processLen = 0;
 
 	while (true)
