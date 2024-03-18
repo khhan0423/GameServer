@@ -11,10 +11,17 @@ public:
 	~GameServerSystem() { Release(); }
 
 private:
+	enum
+	{
+		WORKER_TICK = 64
+	};
+private:
 	bool								Initialize();
+	bool								OnInitialize();
 	void								Release();
 										
 	void								Intiate();
+	void								OnIntiate();
 	void								Run();
 	
 	void								CheckAnotherServers();
