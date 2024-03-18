@@ -5,7 +5,7 @@
 
 
 using namespace DataBase;
-using namespace DataBase::SQLite3;
+using namespace DataBase::MSSQL;
 
 DataBaseCoInitialize gCoInit;
 
@@ -191,7 +191,7 @@ bool SADORecordset::MoveNext() const
 	return m_RecordsetList[m_szRecordsetIndex]->MoveNext() == S_OK;
 }
 
-void SADOCommand::Close()
+void ADOCommand::Close()
 {
 	if (!m_pCommand)
 		return;
@@ -202,7 +202,7 @@ void SADOCommand::Close()
 	m_pCommand = nullptr;
 }
 
-bool SADOCommand::Create(ADO* pADO, bool HasReturnValue, bool NamedParameters)
+bool ADOCommand::Create(ADO* pADO, bool HasReturnValue, bool NamedParameters)
 {
 	if (pADO == nullptr)
 		return false;
@@ -225,7 +225,7 @@ bool SADOCommand::Create(ADO* pADO, bool HasReturnValue, bool NamedParameters)
 	return AppendParam("", ADODB::adInteger, ADODB::adParamReturnValue, sizeof(int), vtMissing);
 }
 
-ADODB::_RecordsetPtr SADOCommand::Execute(const char* strCommandText, ADODB::CommandTypeEnum eCommandType)
+ADODB::_RecordsetPtr ADOCommand::Execute(const char* strCommandText, ADODB::CommandTypeEnum eCommandType)
 {
 	if (!m_pCommand) return nullptr;
 
@@ -236,7 +236,7 @@ ADODB::_RecordsetPtr SADOCommand::Execute(const char* strCommandText, ADODB::Com
 	return pRecordSet;
 }
 
-bool SADOCommand::AppendParam(const char* strName, ADODB::DataTypeEnum eDataType, ADODB::ParameterDirectionEnum eParameterDirection, long lSize, const _variant_t& rValue)
+bool ADOCommand::AppendParam(const char* strName, ADODB::DataTypeEnum eDataType, ADODB::ParameterDirectionEnum eParameterDirection, long lSize, const _variant_t& rValue)
 {
 	if (!m_pCommand) return false;
 

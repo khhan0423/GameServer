@@ -5,6 +5,7 @@
 #include "ThreadManager.h"
 #include "ClientPacketHandler.h"
 #include "LogBase.h"
+#include "ADOManager.h"
 
 void GameServerSystem::Init()
 {
@@ -13,16 +14,28 @@ void GameServerSystem::Init()
 
 bool GameServerSystem::Initialize()
 {
+	//초기값 세팅 및 Config 들 로딩
 	ClientPacketHandler::Init();
 	GetGlobalLog()->Init(GAMELOG_LEVEL_DEBUG, GAMELOG_OUTPUT_BOTH, "GameServer");
 
-	OnInitialize();
+	if (false == OnInitialize())
+	{
+		exit(1);
+	}
 
 	return true;
 }
 
 bool GameServerSystem::OnInitialize()
 {
+	//서버 서비스가 시작되기 전에 미리 로딩되어야 할 종류의 메니저들을 시작한다.
+	
+	if (false == GetADOManager()->Start()) //ADO DB 매니저 시작
+	{
+		ErrorLog("ADOManager Start Fail");
+		return false;
+	}
+
 
 	Intiate();
 

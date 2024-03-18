@@ -9,9 +9,6 @@
 
 __int32 busy_handler(void* pArg, __int32 nCallCount);
 
-struct sqlite3;
-struct sqlite3_stmt;
-
 namespace DataBase
 {
 	//https://learn.microsoft.com/en-us/windows/win32/api/objbase/nf-objbase-coinitialize
@@ -23,13 +20,13 @@ namespace DataBase
 		virtual ~DataBaseCoInitialize() { ::CoUninitialize(); }
 	};
 
-	namespace SQLite3
+	namespace MSSQL
 	{
 		class ADO
 		{
 		protected:
 			ADODB::_ConnectionPtr	m_pConnection = nullptr;
-			string				m_strConnection;
+			string					m_strConnection;
 
 		public:
 			ADODB::_ConnectionPtr GetConnection() { return m_pConnection; }
@@ -55,7 +52,7 @@ namespace DataBase
 		class SADOTrans
 		{
 		private:
-			ADO* m_pADO;
+			ADO*	m_pADO;
 			bool	m_bCommit = false;
 
 		public:
@@ -167,19 +164,19 @@ namespace DataBase
 			}
 		};
 
-		class SADOCommand
+		class ADOCommand
 		{
 		public:
-			class SADOParameter
+			class ADOParameter
 			{
 			protected:
 				ADODB::_ParameterPtr	m_pParameter = nullptr;
 
 			public:
-				SADOParameter() {}
-				SADOParameter(ADODB::_ParameterPtr pParameter) : m_pParameter(pParameter) {}
-				SADOParameter(SADOParameter& objADOParameter) : m_pParameter(objADOParameter.m_pParameter) {}
-				virtual ~SADOParameter()
+				ADOParameter() {}
+				ADOParameter(ADODB::_ParameterPtr pParameter) : m_pParameter(pParameter) {}
+				ADOParameter(ADOParameter& objADOParameter) : m_pParameter(objADOParameter.m_pParameter) {}
+				virtual ~ADOParameter()
 				{
 					if (m_pParameter)
 					{
@@ -223,7 +220,7 @@ namespace DataBase
 			ADO* m_pOwner = nullptr;
 
 		public:
-			virtual ~SADOCommand() { Close(); }
+			virtual ~ADOCommand() { Close(); }
 
 		public:
 			void Close();
@@ -249,7 +246,7 @@ namespace DataBase
 			{
 				if (!m_pCommand) return false;
 
-				SADOParameter Val;
+				ADOParameter Val;
 
 				Val.SetParameter(m_pCommand->GetParameters()->Item[_variant_t((long)iParamIndex)]);
 				Val.GetValue(rValue);
@@ -259,7 +256,7 @@ namespace DataBase
 			{
 				if (!m_pCommand) return false;
 
-				SADOParameter Val;
+				ADOParameter Val;
 
 				Val.SetParameter(m_pCommand->GetParameters()->Item[_variant_t(strParamName)]);
 				Val.GetValue(rValue);

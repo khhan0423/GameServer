@@ -13,7 +13,7 @@
 #ifdef _DEBUG
 #pragma comment(lib, "GameBase/Debug/GameBase.lib")
 #pragma comment(lib, "ProtoBuf/Debug/libprotobufd.lib")
-#pragma comment(lib, "SQLite3/Release/Sqlite364D.lib")
+#pragma comment(lib, "SQLite3/Debug/Sqlite364D.lib")
 
 #else
 #pragma comment(lib, "GameBase/Release/GameBase.lib")

@@ -66,6 +66,9 @@
     <ClCompile Include="ADOQuery.cpp">
       <Filter>DataBase</Filter>
     </ClCompile>
+    <ClCompile Include="SQLite.cpp">
+      <Filter>DataBase</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -102,6 +105,9 @@
       <Filter>DataBase</Filter>
     </ClInclude>
     <ClInclude Include="ADOQuery.h">
+      <Filter>DataBase</Filter>
+    </ClInclude>
+    <ClInclude Include="SQLite.h">
       <Filter>DataBase</Filter>
     </ClInclude>
   </ItemGroup>
