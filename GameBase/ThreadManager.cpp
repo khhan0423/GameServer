@@ -52,11 +52,13 @@ void ThreadManager::Run()
 
 
 		shared_ptr<TaskQueue> _taskLine = GTaskManager->Pop();
-		//shared_ptr<TaskQueue> _taskLine = GetTaskManager()->Pop();
+
 		if (_taskLine == nullptr)
 			break;
 
 		_taskLine->Run();
+		
+		this_thread::yield();
 	}
 }
 

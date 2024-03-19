@@ -1,14 +1,29 @@
 #pragma once
-
+#include "SingletonBase.h"
 #include "DataBaseBase.h"
-#include "SQLite.h"
+#include "SQLiteQuery.h"
 #include "SQLiteAgent.h"
 
 using namespace DataBase;
 using namespace DataBase::SQLite3;
 
-class SQLiteManager : public DBManagerInterface<SQLiteQueryBase, SQLiteConnector>
-{
+#define GetSQLITEDBManager() SQLiteManager::GetInstance()
 
+class SQLiteManager : public DBManagerInterface<SQLiteQueryBase, SQLiteDBAgent>, public TSingleton<SQLiteManager>
+{
+public:
+	bool Start() override;
+	void Stop() override;
+	void Update() override;
+
+public:
+	__int32 GetFPS(__int32 index) const override;
+	__int32 GetBadFPS() const override;
+
+	void SetReady();
+
+
+private:
+	
 };
 

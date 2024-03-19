@@ -2,9 +2,7 @@
 
 #include "SingletonBase.h"
 
-//#define GetTaskManager() TaskManager::GetInstance()
-
-class TaskManager : public TSingleton<TaskManager>
+class TaskManager
 {
 public:
 	TaskManager() { DebugLog("[%s]", __FUNCTION__); };

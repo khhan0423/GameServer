@@ -32,7 +32,7 @@ void ADOAgent::ThreadFunc(void* pv)
 
 	while (pThis->m_isRun)
 	{
-		//pThis->m_FPS.Update();
+		pThis->m_fps.Update();
 
 		while (true)
 		{
@@ -40,10 +40,7 @@ void ADOAgent::ThreadFunc(void* pv)
 			if (pQuery == nullptr)
 				break;
 
-			//long long checktime = timeGetTime();
 			pQuery->Excute(pThis);
-			//GetServer()->AddDBRunCount(1);
-			//GetServer()->AddDBRunTime(int(timeGetTime() - checktime));
 
 			if (pQuery->IsThreadSafeQuery() == false)
 			{

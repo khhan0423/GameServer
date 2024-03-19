@@ -3,17 +3,14 @@
 #include <mutex>
 #include <thread>
 #include <functional>
-//#include "SingletonBase.h"
 
-//#define GetThreadManager() ThreadManager::GetInstance()
-
-class ThreadManager //: public TSingleton<ThreadManager>
+class ThreadManager
 {
 public:
 	ThreadManager();
 	~ThreadManager();
-						//void 형을 반환하는 void 가 인자값인 함수자
-						//즉 람다를 받아서 실행.
+							//void 형을 반환하는 void 가 인자값인 함수자
+							//즉 람다를 받아서 실행.
 	void					Launch(function<void(void)> callback);
 	void					Join();
 

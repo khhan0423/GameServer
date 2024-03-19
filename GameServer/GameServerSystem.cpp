@@ -5,7 +5,7 @@
 #include "ThreadManager.h"
 #include "ClientPacketHandler.h"
 #include "LogBase.h"
-#include "ADOManager.h"
+#include "SQLiteManager.h"
 
 void GameServerSystem::Init()
 {
@@ -30,9 +30,9 @@ bool GameServerSystem::OnInitialize()
 {
 	//서버 서비스가 시작되기 전에 미리 로딩되어야 할 종류의 메니저들을 시작한다.
 	
-	if (false == GetADOManager()->Start()) //ADO DB 매니저 시작
+	if (false == GetSQLITEDBManager()->Start()) //DB 매니저 시작
 	{
-		ErrorLog("ADOManager Start Fail");
+		ErrorLog("SQLITEDBManager Start Fail");
 		return false;
 	}
 
@@ -73,12 +73,14 @@ void GameServerSystem::OnIntiate()
 					ThreadRun();
 				}
 			});
-	}	
+	}
+
+	GetSQLITEDBManager()->SetReady();
 }
 
 void GameServerSystem::ThreadRun()
 {
-	//
+
 	while (true)
 	{
 		if (m_isReady == false)

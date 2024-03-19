@@ -173,7 +173,7 @@
     </ClCompile>
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Room.cpp" />
-    <ClCompile Include="SQLite.cpp" />
+    <ClCompile Include="SQLiteConnet.cpp" />
     <ClCompile Include="SQLiteAgent.cpp" />
     <ClCompile Include="SQLiteManager.cpp" />
     <ClCompile Include="SQLiteQuery.cpp" />
@@ -191,7 +191,7 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Room.h" />
-    <ClInclude Include="SQLite.h" />
+    <ClInclude Include="SQLiteConnet.h" />
     <ClInclude Include="SQLiteAgent.h" />
     <ClInclude Include="SQLiteManager.h" />
     <ClInclude Include="SQLiteQuery.h" />

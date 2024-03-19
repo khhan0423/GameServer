@@ -1,6 +1,6 @@
 #include "pch.h"
 #include <sqlite3.h>
-#include "SQLite.h"
+#include "SQLiteConnet.h"
 #include "LogBase.h"
 
 using namespace DataBase::SQLite3;
@@ -46,15 +46,16 @@ bool SQLiteConnector::TryOpen()
 
 	if (sqlite3_exec(m_DBHandlerPtr, PragmaString.c_str(), NULL, NULL, NULL) != SQLITE_OK)
 	{
-		ErrorLog("Sqlite Exec Error");
+		ErrorLog("[%s] PragmaString Failed", __FUNCTION__);
 		return false;
 	}
 
-	if (sqlite3_exec(m_DBHandlerPtr, "vacuum;", NULL, NULL, NULL) != SQLITE_OK)
-	{
-		ErrorLog("Sqlite Exec Error");
-		return false;
-	}
+	//vacuum Àº ÆÐ½º
+	//if (sqlite3_exec(m_DBHandlerPtr, "vacuum;", NULL, NULL, NULL) != SQLITE_OK)
+	//{
+	//	ErrorLog("[%s] vacuum Failed", __FUNCTION__);
+	//	return false;
+	//}
 
 	m_isOpen.exchange(true);
 

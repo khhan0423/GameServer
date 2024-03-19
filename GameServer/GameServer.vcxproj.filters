@@ -72,7 +72,7 @@
     <ClCompile Include="ADOQuery.cpp">
       <Filter>DataBase\MSSQL</Filter>
     </ClCompile>
-    <ClCompile Include="SQLite.cpp">
+    <ClCompile Include="SQLiteConnet.cpp">
       <Filter>DataBase\SQLITE</Filter>
     </ClCompile>
     <ClCompile Include="DataBaseBase.cpp">
@@ -122,7 +122,7 @@
     <ClInclude Include="ADOQuery.h">
       <Filter>DataBase\MSSQL</Filter>
     </ClInclude>
-    <ClInclude Include="SQLite.h">
+    <ClInclude Include="SQLiteConnet.h">
       <Filter>DataBase\SQLITE</Filter>
     </ClInclude>
     <ClInclude Include="DataBaseBase.h">

@@ -58,7 +58,7 @@ namespace DataBase
 			void Push(QueryBase* q)
 			{
 				{
-					lock_guard _lock(m_lock);
+					lock_guard<mutex> _lock(m_lock);
 					m_queue.push(q);
 				}		
 			}
@@ -102,7 +102,7 @@ namespace DataBase
 		DataBase_Module	m_DataBase;
 	};
 
-	template<class QueryBase, class DataBase_Module>
+	template<class QueryBase, class DBAgnet>
 	class DBManagerInterface
 	{
 	public:
@@ -127,22 +127,22 @@ namespace DataBase
 		virtual __int32 GetBadFPS() const = 0;
 
 	public:
-		void Insert(__int32 DBGUID, QueryBase* Query)
+		void Insert(__int32 globalUniqueID, QueryBase* Query)
 		{
 			if (m_DBAgentList.empty())
 				return;
-
-			m_DBAgentList[DBGUID]->PushQuery(Query);
+			//같은 유니크 ID 를 가진 객체는 같은 DB 커넥션에서 같은 쿼리큐를 사용하도록
+			m_DBAgentList[globalUniqueID % m_DBAgentList.size()]->PushQuery(Query);
 
 			return;
 		}
 
-		DBAgentInterface<QueryBase, DataBase_Module>* GetDBAgent(__int32 DBGUID)
+		DBAgnet* GetDBAgent(__int32 globalUniqueID)
 		{
 			if (m_DBAgentList.empty())
 				return NULL;
-
-			return m_DBAgentList[DBGUID];
+			//같은 유니크 ID 를 가진 객체는 같은 DB 커넥션에서 같은 쿼리큐를 사용하도록
+			return m_DBAgentList[globalUniqueID % m_DBAgentList.size()];
 		}
 
 		unsigned long long GetAgentCount() const
@@ -162,7 +162,7 @@ namespace DataBase
 		}
 
 	protected:
-		vector<DBAgentInterface<QueryBase, DataBase_Module>*> m_DBAgentList;
+		vector<DBAgnet*> m_DBAgentList;
 	};
 };
 
