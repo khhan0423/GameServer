@@ -40,7 +40,10 @@
     <Filter Include="Def\TLS">
       <UniqueIdentifier>{068c9cff-57e3-4da4-ad65-437f0cf43ab8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="XML">
+    <Filter Include="Util\ThirdParty">
+      <UniqueIdentifier>{b0591008-995a-4a50-8f53-8564bcbbc02a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Util\ThirdParty\XML">
       <UniqueIdentifier>{7cd827cd-acda-40b0-994d-60981a22ec94}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -117,29 +120,32 @@
     <ClInclude Include="TLSDef.h">
       <Filter>Def\TLS</Filter>
     </ClInclude>
-    <ClInclude Include="StringUtil.h">
-      <Filter>Util</Filter>
-    </ClInclude>
     <ClInclude Include="FPS.h">
       <Filter>Util</Filter>
     </ClInclude>
     <ClInclude Include="rapidxml_print.hpp">
-      <Filter>XML</Filter>
+      <Filter>Util\ThirdParty\XML</Filter>
     </ClInclude>
     <ClInclude Include="rapidxml_utils.hpp">
-      <Filter>XML</Filter>
+      <Filter>Util\ThirdParty\XML</Filter>
     </ClInclude>
     <ClInclude Include="XmlParser.h">
-      <Filter>XML</Filter>
+      <Filter>Util\ThirdParty\XML</Filter>
     </ClInclude>
     <ClInclude Include="rapidxml.hpp">
-      <Filter>XML</Filter>
+      <Filter>Util\ThirdParty\XML</Filter>
     </ClInclude>
     <ClInclude Include="rapidxml_iterators.hpp">
-      <Filter>XML</Filter>
+      <Filter>Util\ThirdParty\XML</Filter>
     </ClInclude>
     <ClInclude Include="FileUtil.h">
       <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="StringUtil.h">
+      <Filter>Util\ThirdParty</Filter>
+    </ClInclude>
+    <ClInclude Include="StringFormat.h">
+      <Filter>Util\ThirdParty</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -207,7 +213,7 @@
       <Filter>Def\TLS</Filter>
     </ClCompile>
     <ClCompile Include="XmlParser.cpp">
-      <Filter>XML</Filter>
+      <Filter>Util\ThirdParty\XML</Filter>
     </ClCompile>
     <ClCompile Include="FileUtil.cpp">
       <Filter>Util</Filter>

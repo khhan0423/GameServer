@@ -10,8 +10,8 @@ vector<BYTE> FileUtils::ReadFile(const wchar_t* path)
 	if (_stream)
 	{
 		_stream.unsetf(ios::skipws);
-
 		_stream.seekg(0, ios::end);
+
 		size_t size = static_cast<size_t>(_stream.tellg());
 		_stream.seekg(0);
 

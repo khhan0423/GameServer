@@ -176,6 +176,7 @@
     <ClInclude Include="Session.h" />
     <ClInclude Include="SingletonBase.h" />
     <ClInclude Include="SocketUtils.h" />
+    <ClInclude Include="StringFormat.h" />
     <ClInclude Include="StringUtil.h" />
     <ClInclude Include="Task.h" />
     <ClInclude Include="TaskManager.h" />

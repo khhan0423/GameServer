@@ -1,4 +1,5 @@
 #pragma once
+
 namespace DataBase
 {
 #define MAX_DEFAULT_DB_CONNECT 1
@@ -9,64 +10,25 @@ namespace DataBase
 #define ISOCTDIGIT(CH) ((CH) >= '0' && (CH) <= '7')
 #define OCTVAL(CH) ((CH) - '0')
 
-	class DB_Module_Interface
+	template<class QueryBase, class DataBase_Module>	
+	class DBAgentInterface
 	{
 	public:
-		DB_Module_Interface() {};
-		virtual ~DB_Module_Interface() {};
-
-	public:
-		virtual bool Connect(const char* strConnect) abstract;
-		virtual void Close() abstract;
-		virtual bool IsOpen() abstract;
-		virtual bool ReOpen() abstract;
-
-		virtual bool Query(const char* strQuery) abstract;
-
-		virtual bool Fetch() abstract;
-		virtual void AllocHandle() abstract;
-		virtual void FreeHandle() abstract;
-
-		virtual bool GetData(__int32 nFieldNum, unsigned char* result) abstract;
-		virtual bool GetData(__int32 nFieldNum, char* result) abstract;
-		virtual bool GetData(__int32 nFieldNum, short* result) abstract;
-		virtual bool GetData(__int32 nFieldNum, unsigned short* result) abstract;
-		virtual bool GetData(__int32 nFieldNum, __int32* result) abstract;
-		virtual bool GetData(__int32 nFieldNum, unsigned __int32* result) abstract;
-		virtual bool GetData(__int32 nFieldNum, long long* result) abstract;
-		virtual bool GetData(__int32 nFieldNum, unsigned long long* result) abstract;
-		virtual bool GetData(__int32 nFieldNum, char* const result, unsigned __int32 nSize) abstract;
-		virtual bool GetData(__int32 nFieldNum, double* result) abstract;
-
-		virtual void DisplayErrorMsg() abstract;
-
-	protected:
-		__int32 BinaryToText(const unsigned char* pbin, const unsigned long long bin_len, unsigned char* ptext, const unsigned long long text_len);
-		__int32 TextToBinary(const unsigned char* ptext, const unsigned long long text_len, unsigned char* pbin, const unsigned long long bin_len);
-
-	protected:
-		string		m_strConnect;
-	};
-
-	template<class QueryBase, class DataBase_Module>
-	class CDBAgentInterface
-	{
-	public:
-		CDBAgentInterface() {};
-		virtual ~CDBAgentInterface()
+		DBAgentInterface() {};
+		virtual ~DBAgentInterface()
 		{
 			while (m_QueueWait.Pop()) {}
 			while (m_QueueComplete.Pop()) {}
 		};
 
 	protected:
-		class CQueryQueue
+		class QueryQueue
 		{
 		public:
-			virtual ~CQueryQueue()
+			virtual ~QueryQueue()
 			{
 				{
-					lock_guard _lock(m_lock);
+					lock_guard<mutex> _lock(m_lock);
 					while (!m_queue.empty())
 					{
 						QueryBase* q = m_queue.front();
@@ -79,7 +41,7 @@ namespace DataBase
 			size_t GetCount() const
 			{
 				{
-					lock_guard _lock(m_lock);
+					lock_guard<mutex> _lock(m_lock);
 					return m_queue.size();
 				}
 				
@@ -88,7 +50,7 @@ namespace DataBase
 			{
 				
 				{
-					lock_guard _lock(m_lock);
+					lock_guard<mutex> _lock(m_lock);
 					return m_queue.empty();
 				}
 				
@@ -103,7 +65,7 @@ namespace DataBase
 			QueryBase* Pop()
 			{
 				{
-					lock_guard _lock(m_lock);
+					lock_guard<mutex> _lock(m_lock);
 					QueryBase* q = NULL;
 					if (!m_queue.empty())
 					{
@@ -134,18 +96,18 @@ namespace DataBase
 		virtual bool SyncQuery(QueryBase* /*Query*/) { return true; };
 
 	protected:
-		CQueryQueue		m_QueueWait;
-		CQueryQueue		m_QueueComplete;
+		QueryQueue		m_QueueWait;
+		QueryQueue		m_QueueComplete;
 
 		DataBase_Module	m_DataBase;
 	};
 
 	template<class QueryBase, class DataBase_Module>
-	class CDBManagerInterface
+	class DBManagerInterface
 	{
 	public:
-		CDBManagerInterface() {};
-		virtual ~CDBManagerInterface()
+		DBManagerInterface() {};
+		virtual ~DBManagerInterface()
 		{
 			for (auto&& it : m_DBAgentList)
 				SAFE_DELETE(it);
@@ -175,7 +137,7 @@ namespace DataBase
 			return;
 		}
 
-		CDBAgentInterface<QueryBase, DataBase_Module>* GetDBAgent(__int32 DBGUID)
+		DBAgentInterface<QueryBase, DataBase_Module>* GetDBAgent(__int32 DBGUID)
 		{
 			if (m_DBAgentList.empty())
 				return NULL;
@@ -200,7 +162,7 @@ namespace DataBase
 		}
 
 	protected:
-		vector<CDBAgentInterface<QueryBase, DataBase_Module>*> m_DBAgentList;
+		vector<DBAgentInterface<QueryBase, DataBase_Module>*> m_DBAgentList;
 	};
 };
 

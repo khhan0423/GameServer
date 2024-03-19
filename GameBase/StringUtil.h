@@ -2,6 +2,8 @@
 #include <atlbase.h>
 #include <atlconv.h>
 #include <string>
+#include <algorithm>
+#include "StringFormat.h"
 
 class StringUtil
 {
@@ -9,99 +11,168 @@ class StringUtil
 	class StringConvBuffer
 	{
 	public:
-		StringConvBuffer(size_t AllocSize) : m_convBuffer(nullptr), m_convBufferLength(AllocSize)
+		StringConvBuffer(size_t AllocSize) : m_ConvBuffer(nullptr), m_ConvBufferLength(AllocSize)
 		{
-			m_convBuffer = new CharType[m_convBufferLength];
-			memset(m_convBuffer, 0x00, sizeof(CharType) * m_convBufferLength);
+			m_ConvBuffer = new CharType[m_ConvBufferLength];
+			memset(m_ConvBuffer, 0x00, sizeof(CharType) * m_ConvBufferLength);
 		};
-		virtual ~StringConvBuffer() { SAFE_DELETE_ARRAY(m_convBuffer); m_convBufferLength = 0; }
+		virtual ~StringConvBuffer() { if (m_ConvBuffer) delete[] m_ConvBuffer; m_ConvBufferLength = 0; }
 	public:
-		CharType* GetBuffer() { return m_convBuffer; }
-		size_t GetBufferLen() { return m_convBufferLength; }
+		CharType* GetBuffer() { return m_ConvBuffer; }
+		size_t GetBufferLen() { return m_ConvBufferLength; }
 
 	private:
-		CharType*	m_convBuffer;
-		size_t		m_convBufferLength;
+		CharType* m_ConvBuffer;
+		size_t		m_ConvBufferLength;
 	};
 public:
-	static wstring ToWide(const char* str)
+	static std::wstring ToWide(const char* str)
 	{
 		USES_CONVERSION;
 		return A2CW(str);
 	}
-	static std::wstring ToWide(const string& str)
+	static std::wstring ToWide(const std::string& str)
 	{
 		USES_CONVERSION;
 		return A2CW(str.c_str());
 	}
-	static string ToAnsi(const wchar_t* str)
+	static std::string ToAnsi(const wchar_t* str)
 	{
 		USES_CONVERSION;
 		return W2CA(str);
 	}
-	static string ToAnsi(const wstring& str)
+	static std::string ToAnsi(const std::wstring& str)
 	{
 		USES_CONVERSION;
 		return W2CA(str.c_str());
 	}
-	static string WideToUtf8(const wstring& str)
+	static std::string WideToUtf8(const std::wstring& str)
 	{
-		StringConvBuffer<char> _ConvertBuffer(WideCharToMultiByte(CP_UTF8, 0, str.c_str(), static_cast<__int32>(str.length()), nullptr, 0, nullptr, nullptr));
-		WideCharToMultiByte(CP_UTF8, 0, str.c_str(), static_cast<__int32>(str.length()), _ConvertBuffer.GetBuffer(), static_cast<__int32>(_ConvertBuffer.GetBufferLen()), nullptr, nullptr);
+		StringConvBuffer<char> _ConvertBuffer(WideCharToMultiByte(CP_UTF8, 0, str.c_str(), static_cast<int>(str.length()), nullptr, 0, nullptr, nullptr));
+		WideCharToMultiByte(CP_UTF8, 0, str.c_str(), static_cast<int>(str.length()), _ConvertBuffer.GetBuffer(), static_cast<int>(_ConvertBuffer.GetBufferLen()), nullptr, nullptr);
 
-		return string(_ConvertBuffer.GetBuffer(), _ConvertBuffer.GetBufferLen());
+		return std::string(_ConvertBuffer.GetBuffer(), _ConvertBuffer.GetBufferLen());
 	}
-	static string WideToSLOG(const wstring& str)
+	static std::wstring Utf8ToWide(const std::string& str)
 	{
-		return WideToUtf8(str);
-	}
-	static wstring Utf8ToWide(const std::string& str)
-	{
-		StringConvBuffer<wchar_t> _ConvertBuffer(MultiByteToWideChar(CP_UTF8, 0, str.c_str(), static_cast<__int32>(str.length()), nullptr, 0));
-		MultiByteToWideChar(CP_UTF8, 0, str.c_str(), static_cast<__int32>(str.length()), _ConvertBuffer.GetBuffer(), static_cast<__int32>(_ConvertBuffer.GetBufferLen()));
+		StringConvBuffer<wchar_t> _ConvertBuffer(MultiByteToWideChar(CP_UTF8, 0, str.c_str(), static_cast<int>(str.length()), nullptr, 0));
+		MultiByteToWideChar(CP_UTF8, 0, str.c_str(), static_cast<int>(str.length()), _ConvertBuffer.GetBuffer(), static_cast<int>(_ConvertBuffer.GetBufferLen()));
 
-		return wstring(_ConvertBuffer.GetBuffer(), _ConvertBuffer.GetBufferLen());
+		return std::wstring(_ConvertBuffer.GetBuffer(), _ConvertBuffer.GetBufferLen());
 	}
-	static string AnsiToUtf8(const string& str)
+	static std::string AnsiToUtf8(const std::string& str)
 	{
 		return WideToUtf8(ToWide(str));
 	}
-	static string AnsiToSLOG(const string& str)
-	{
-		return AnsiToUtf8(str);
-	}
-	static string Utf8ToAnsi(const string& str)
+	static std::string Utf8ToAnsi(const std::string& str)
 	{
 		return ToAnsi(Utf8ToWide(str));
 	}
+	static std::string DoubleToAnsi(double value)
+	{
+		std::string str;
+		stdutil::format(str, "%fd", value);
+		return str;
+	}
+	static std::wstring DoubleToWide(double value)
+	{
+		std::wstring str;
+		stdutil::format(str, L"%fd", value);
+		return str;
+	}
+	static std::string DoubleToUtf8(double value)
+	{
+		std::wstring str;
+		stdutil::format(str, L"%fd", value);
 
-	static bool ToLower(string& str)
+		return WideToUtf8(str);
+	}
+	static std::string IntToAnsi(long long value)
 	{
-		transform(str.begin(), str.end(), str.begin(), tolower);
+		std::string str;
+		stdutil::format(str, "%LLd", value);
+		return str;
+	}
+	static std::wstring IntToWide(long long value)
+	{
+		std::wstring str;
+		stdutil::format(str, L"%LLd", value);
+		return str;
+	}
+	static std::string IntToUtf8(long long value)
+	{
+		std::wstring str;
+		stdutil::format(str, L"%LLd", value);
+
+		return WideToUtf8(str);
+	}
+	static std::string FloatToAnsi(float value)
+	{
+		std::string str;
+		stdutil::format(str, "%.2f", value);
+
+		return str;
+	}
+	static std::wstring FloatToWide(float value)
+	{
+		std::wstring str;
+		stdutil::format(str, L"%.2f", value);
+
+		return str;
+	}
+	static std::string FloatToUtf8(float value)
+	{
+		std::wstring str;
+		stdutil::format(str, L"%.2f", value);
+
+		return WideToUtf8(str);
+	}
+	static std::string UIntToAnsi(unsigned long long value)
+	{
+		std::string str;
+		stdutil::format(str, "%LLu", value);
+		return str;
+	}
+	static std::wstring UIntToWide(unsigned long long value)
+	{
+		std::wstring str;
+		stdutil::format(str, L"%LLu", value);
+		return str;
+	}
+	static std::string UIntToUtf8(unsigned long long value)
+	{
+		std::wstring str;
+		stdutil::format(str, L"%LLu", value);
+
+		return WideToUtf8(str);
+	}
+	static bool ToLower(std::string& str)
+	{
+		std::transform(str.begin(), str.end(), str.begin(), tolower);
 		return true;
 	}
-	static bool ToLower(wstring& str)
+	static bool ToLower(std::wstring& str)
 	{
-		transform(str.begin(), str.end(), str.begin(), tolower);
+		std::transform(str.begin(), str.end(), str.begin(), tolower);
 		return true;
 	}
-	static bool ToUpper(string& str)
+	static bool ToUpper(std::string& str)
 	{
-		transform(str.begin(), str.end(), str.begin(), toupper);
+		std::transform(str.begin(), str.end(), str.begin(), toupper);
 		return true;
 	}
-	static bool ToUpper(wstring& str)
+	static bool ToUpper(std::wstring& str)
 	{
-		transform(str.begin(), str.end(), str.begin(), toupper);
+		std::transform(str.begin(), str.end(), str.begin(), toupper);
 		return true;
 	}
 	static bool IsNumber(const char* str)
 	{
 		if (!str) return false;
-		size_t _len = strlen(str);
-		if (!_len) return false;
+		size_t len = strlen(str);
+		if (!len) return false;
 
-		for (size_t i = 0; i < _len; ++i)
+		for (size_t i = 0; i < len; ++i)
 			if (str[i] != '.' && str[i] != '-' && !::isdigit(static_cast<unsigned char>(str[i]))) return false;
 		return true;
 	}
@@ -109,26 +180,24 @@ public:
 	{
 		if (!wstr) return false;
 
-		size_t _len = wcslen(wstr);
-		if (!_len) return false;
+		size_t len = wcslen(wstr);
+		if (!len) return false;
 
-		for (size_t i = 0; i < _len; ++i)
+		for (size_t i = 0; i < len; ++i)
 			if (wstr[i] != '.' && !::iswdigit(wstr[i])) return false;
 		return true;
 	}
-	static void Trim(string& str)
+	static void Trim(std::string& str)
 	{
-		size_t _npos = str.find_last_not_of(" \t\v\n") + 1;
+		size_t npos = str.find_last_not_of(" \t\v\n") + 1;
 
-		if (_npos != string::npos)
-			str.replace(_npos, str.length() - _npos, "");
+		if (npos != std::string::npos)
+			str.replace(npos, str.length() - npos, "");
 	}
-	static void Trim(wstring& str)
+	static void Trim(std::wstring& str)
 	{
-		size_t _npos = str.find_last_not_of(L" \t\v\n") + 1;
-		if (_npos != wstring::npos)
-			str.replace(_npos, str.length() - _npos, L"");
+		size_t npos = str.find_last_not_of(L" \t\v\n") + 1;
+		if (npos != std::wstring::npos)
+			str.replace(npos, str.length() - npos, L"");
 	}
 };
-
-

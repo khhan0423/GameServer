@@ -161,7 +161,7 @@
     <ClCompile Include="ADOQuery.cpp" />
     <ClCompile Include="ClientPacketHandler.cpp" />
     <ClCompile Include="DataBaseBase.cpp" />
-    <ClCompile Include="GameServer.cpp" />
+    <ClCompile Include="Main.cpp" />
     <ClCompile Include="GameServerSystem.cpp" />
     <ClCompile Include="GameSession.cpp" />
     <ClCompile Include="GameSessionManager.cpp" />
@@ -174,6 +174,9 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Room.cpp" />
     <ClCompile Include="SQLite.cpp" />
+    <ClCompile Include="SQLiteAgent.cpp" />
+    <ClCompile Include="SQLiteManager.cpp" />
+    <ClCompile Include="SQLiteQuery.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ADO.h" />
@@ -189,6 +192,9 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="SQLite.h" />
+    <ClInclude Include="SQLiteAgent.h" />
+    <ClInclude Include="SQLiteManager.h" />
+    <ClInclude Include="SQLiteQuery.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -25,9 +25,18 @@
     <Filter Include="Protocol">
       <UniqueIdentifier>{347cd8dd-06ca-4840-b965-858a0b7bd4e0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="DataBase\MSSQL">
+      <UniqueIdentifier>{9ac5131f-f771-40f7-8442-555afb1e0074}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DataBase\SQLITE">
+      <UniqueIdentifier>{3345bb07-6c74-4823-b525-0d69010a3399}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DataBase\Interface">
+      <UniqueIdentifier>{85c6b28c-afeb-48a2-ab0c-81da994ed602}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GameServer.cpp">
+    <ClCompile Include="Main.cpp">
       <Filter>Main</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp">
@@ -48,26 +57,35 @@
     <ClCompile Include="ClientPacketHandler.cpp">
       <Filter>Main\PacketHandler</Filter>
     </ClCompile>
-    <ClCompile Include="DataBaseBase.cpp">
-      <Filter>DataBase</Filter>
-    </ClCompile>
     <ClCompile Include="GameServerSystem.cpp">
       <Filter>Main</Filter>
     </ClCompile>
-    <ClCompile Include="ADOManager.cpp">
-      <Filter>DataBase</Filter>
-    </ClCompile>
     <ClCompile Include="ADO.cpp">
-      <Filter>DataBase</Filter>
+      <Filter>DataBase\MSSQL</Filter>
     </ClCompile>
     <ClCompile Include="ADOAgnet.cpp">
-      <Filter>DataBase</Filter>
+      <Filter>DataBase\MSSQL</Filter>
+    </ClCompile>
+    <ClCompile Include="ADOManager.cpp">
+      <Filter>DataBase\MSSQL</Filter>
     </ClCompile>
     <ClCompile Include="ADOQuery.cpp">
-      <Filter>DataBase</Filter>
+      <Filter>DataBase\MSSQL</Filter>
     </ClCompile>
     <ClCompile Include="SQLite.cpp">
-      <Filter>DataBase</Filter>
+      <Filter>DataBase\SQLITE</Filter>
+    </ClCompile>
+    <ClCompile Include="DataBaseBase.cpp">
+      <Filter>DataBase\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="SQLiteAgent.cpp">
+      <Filter>DataBase\SQLITE</Filter>
+    </ClCompile>
+    <ClCompile Include="SQLiteManager.cpp">
+      <Filter>DataBase\SQLITE</Filter>
+    </ClCompile>
+    <ClCompile Include="SQLiteQuery.cpp">
+      <Filter>DataBase\SQLITE</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -89,26 +107,35 @@
     <ClInclude Include="ClientPacketHandler.h">
       <Filter>Main\PacketHandler</Filter>
     </ClInclude>
-    <ClInclude Include="DataBaseBase.h">
-      <Filter>DataBase</Filter>
-    </ClInclude>
     <ClInclude Include="GameServerSystem.h">
       <Filter>Main</Filter>
     </ClInclude>
-    <ClInclude Include="ADOManager.h">
-      <Filter>DataBase</Filter>
-    </ClInclude>
     <ClInclude Include="ADO.h">
-      <Filter>DataBase</Filter>
+      <Filter>DataBase\MSSQL</Filter>
     </ClInclude>
     <ClInclude Include="ADOAgnet.h">
-      <Filter>DataBase</Filter>
+      <Filter>DataBase\MSSQL</Filter>
+    </ClInclude>
+    <ClInclude Include="ADOManager.h">
+      <Filter>DataBase\MSSQL</Filter>
     </ClInclude>
     <ClInclude Include="ADOQuery.h">
-      <Filter>DataBase</Filter>
+      <Filter>DataBase\MSSQL</Filter>
     </ClInclude>
     <ClInclude Include="SQLite.h">
-      <Filter>DataBase</Filter>
+      <Filter>DataBase\SQLITE</Filter>
+    </ClInclude>
+    <ClInclude Include="DataBaseBase.h">
+      <Filter>DataBase\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="SQLiteAgent.h">
+      <Filter>DataBase\SQLITE</Filter>
+    </ClInclude>
+    <ClInclude Include="SQLiteManager.h">
+      <Filter>DataBase\SQLITE</Filter>
+    </ClInclude>
+    <ClInclude Include="SQLiteQuery.h">
+      <Filter>DataBase\SQLITE</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
