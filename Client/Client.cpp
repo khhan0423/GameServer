@@ -54,7 +54,6 @@ void DoWorkerJob(shared_ptr<ClientService>& service)
 		service->GetIocpCore()->Dispatch(10);
 
 		GThreadManager->Run();
-		//GetThreadManager()->Run();
 	}
 }
 
