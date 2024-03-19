@@ -20,6 +20,7 @@ bool GameServerSystem::Initialize()
 
 	if (false == OnInitialize())
 	{
+		ErrorLog("[%s] fail - OnInitialize()", __FUNCTION__);
 		exit(1);
 	}
 
@@ -30,9 +31,9 @@ bool GameServerSystem::OnInitialize()
 {
 	//서버 서비스가 시작되기 전에 미리 로딩되어야 할 종류의 메니저들을 시작한다.
 	
-	if (false == GetSQLITEDBManager()->Start()) //DB 매니저 시작
+	if (false == GetDBManager()->Start()) //DB 매니저 시작
 	{
-		ErrorLog("SQLITEDBManager Start Fail");
+		ErrorLog("[%s] fail - GetDBManager()->Start()", __FUNCTION__);
 		return false;
 	}
 
@@ -75,7 +76,7 @@ void GameServerSystem::OnIntiate()
 			});
 	}
 
-	GetSQLITEDBManager()->SetReady();
+	GetDBManager()->SetReady();
 }
 
 void GameServerSystem::ThreadRun()

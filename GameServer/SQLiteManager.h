@@ -7,7 +7,7 @@
 using namespace DataBase;
 using namespace DataBase::SQLite3;
 
-#define GetSQLITEDBManager() SQLiteManager::GetInstance()
+#define GetDBManager() SQLiteManager::GetInstance()
 
 class SQLiteManager : public DBManagerInterface<SQLiteQueryBase, SQLiteDBAgent>, public TSingleton<SQLiteManager>
 {

@@ -10,12 +10,13 @@ bool SQLiteManager::Start()
 	for (int i = 0; i < 2; i++)
 	{
 		SQLiteDBAgent* pDBAgent = new SQLiteDBAgent;
-		if (!pDBAgent->Init("myaccountDB"))
+		if (pDBAgent->Init("myaccountDB") == false)
 		{
 			Stop();
 			return false;
-		}
+		}		
 		m_DBAgentList.push_back(pDBAgent);
+		SystemLog("DBAgent[%d] - start", i);
 	}
 
 	SystemLog("DB Connect Success");

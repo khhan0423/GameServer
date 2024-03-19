@@ -62,6 +62,7 @@ void DoWorkerJob(shared_ptr<ClientService>& service)
 int main()
 {
 	ServerPacketHandler::Init();
+	GetGlobalLog()->Init(GAMELOG_LEVEL_DEBUG, GAMELOG_OUTPUT_BOTH, "Client");
 
 	this_thread::sleep_for(1s);
 
@@ -76,7 +77,6 @@ int main()
 	for (__int32 i = 0; i < 1; i++)
 	{
 		GThreadManager->Launch([&_service]()
-		//GetThreadManager()->Launch([&_service]()
 			{
 				while (true)
 				{
@@ -88,5 +88,4 @@ int main()
 	DoWorkerJob(_service);
 
 	GThreadManager->Join();
-	//GetThreadManager()->Join();
 }

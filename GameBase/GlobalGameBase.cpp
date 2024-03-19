@@ -22,4 +22,4 @@ public:
 		delete GTaskManager;
 		SocketUtils::Clear();
 	}
-}GGlobalGameBase;
+} GGlobalGameBase;
