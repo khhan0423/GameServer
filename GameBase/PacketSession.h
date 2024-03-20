@@ -16,7 +16,7 @@ public:
 	shared_ptr<PacketSession>	GetPacketSessionRef() { return static_pointer_cast<PacketSession>(shared_from_this()); }
 
 protected:
-	//PacketSession 을 상속받는 크레스는 OnRecvPacket를 통해서만 Recv를 하여야 한다.
+	//PacketSession 을 상속받는 클레스는 OnRecvPacket를 통해서만 Recv를 하여야 한다.
 	virtual __int32				OnRecv(unsigned char* bufferPtr, __int32 len) sealed;
 	virtual void				OnRecvPacket(unsigned char* bufferPtr, __int32 len) abstract;
 };

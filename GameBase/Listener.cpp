@@ -45,7 +45,7 @@ bool Listener::StartAccept(shared_ptr<ServerService> service)
 	if (SocketUtils::Listen(m_socket) == false)
 		return false;
 
-	for (__int32 i = 0; i < m_ListenCount; i++)
+	for (unsigned __int32 i = 0; i < m_ListenCount; i++)
 	{
 		AcceptEvent* acceptEvent = new AcceptEvent();
 		acceptEvent->m_owner = shared_from_this();

@@ -16,38 +16,18 @@ namespace DataBase
 		{
 		public:
 			SQLiteConnector();
-			virtual ~SQLiteConnector()
-			{
-				Close();
-			}
+			virtual ~SQLiteConnector();
 
 		public:
-			bool InitDBName(const string& DBfileName)
-			{
-				m_DBFileName = DBfileName;
-				return true;
-			}
+			bool					InitDBName(const string& DBfileName);
+			sqlite3*				GetHandle();
+			bool					IsOpen();
+			bool					Open();
+			bool					TryOpen();
+			void					Close();
 
-			sqlite3* GetHandle()
-			{
-				return m_DBHandlerPtr;
-			}
-
-			bool IsOpen()
-			{
-				return m_isOpen;
-			}
-
-			bool Open()
-			{
-				return TryOpen();
-			}
-
-			bool TryOpen();
-
-			void Close();
 		private:
-			sqlite3* m_DBHandlerPtr = nullptr;
+			sqlite3*				m_DBHandlerPtr = nullptr;
 
 		private:
 			string					m_DBFileName = "";

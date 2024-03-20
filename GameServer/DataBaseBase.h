@@ -2,13 +2,8 @@
 
 namespace DataBase
 {
-#define MAX_DEFAULT_DB_CONNECT 1
 #define MAX_BUSY_WAIT_TIME 1
 #define MAX_BUSY_WAIT_COUNT 60
-
-#define ISFIRSTOCTDIGIT(CH) ((CH) >= '0' && (CH) <= '3')
-#define ISOCTDIGIT(CH) ((CH) >= '0' && (CH) <= '7')
-#define OCTVAL(CH) ((CH) - '0')
 
 	template<class QueryBase, class DataBase_Module>	
 	class DBAgentInterface

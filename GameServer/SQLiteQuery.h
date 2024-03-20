@@ -14,7 +14,6 @@ namespace DataBase
 	namespace SQLite3
 	{
 		//SQLite Äõ¸®°´Ã¼
-		using QueryCallbackType = std::function<void()>;
 		class SQLiteQueryBase
 		{
 		public:
@@ -27,50 +26,31 @@ namespace DataBase
 				e_NULL
 			};
 		public:
-			void AddParamNULL();
-			void AddParam(const bool input);
-			void AddParam(const __int8 input);
-			void AddParam(const __int16 input);
-			void AddParam(const __int32 input);
-			void AddParam(const __int64 input);
-			void AddParam(const float input);
-			void AddParam(const double input);
-			void AddParam(const char* input);
-			void AddParam(const string input);
-			
-			
-			template<typename T, typename Ret, typename... Args>
-			void AddComplete(shared_ptr<T> owner, Ret(T::* memFunc)(Args...), Args&&... args)
-			{
-				m_callback = [owner, memFunc, args...]()
-					{
-						(owner.get()->*memFunc)(args...);
-					};
-			}
-
-			void AddComplete(CallbackType&& callback)
-			{
-				m_callback = move(callback);
-			}
-
+			void								AddParamNULL();
+			void								AddParam(const bool input);
+			void								AddParam(const __int8 input);
+			void								AddParam(const __int16 input);
+			void								AddParam(const __int32 input);
+			void								AddParam(const __int64 input);
+			void								AddParam(const float input);
+			void								AddParam(const double input);
+			void								AddParam(const char* input);
+			void								AddParam(const string input);
 		public:
-			bool Prepare();
-			void Bind();
-			void RegistSQLiteParam(const SQPLITE_TYPE type, const string str, const int cnt);
+			bool								Prepare();
+			void								Bind();
+			void								RegistSQLiteParam(const SQPLITE_TYPE type, const string str, const int cnt);
 
-			void Excute(SQLiteDBAgent* agent);
-			int Fetch();
-			void GetValue(const __int32 pos, OUT vector<string>& outCul);
+			void								Excute(SQLiteDBAgent* agent);
+			int									Fetch();
+			void								GetValue(const __int32 pos, OUT vector<string>& outCul);
 
-			void SetDBHandle(sqlite3* dbHandle);
-			__int32 GetCommandResult();
-			void SetSycnFlag();
-			bool IsSyncQuery();
+			void								SetDBHandle(sqlite3* dbHandle);
+			__int32								GetCommandResult();
+			void								SetSycnFlag();
+			bool								IsSyncQuery();
 
-			void Complete()
-			{
-				m_callback();
-			}
+			virtual void						Complete() abstract {}
 
 		public:
 			string								m_sql;
@@ -81,7 +61,6 @@ namespace DataBase
 			vector<vector<string>>				m_Result;
 			sqlite3_stmt* m_res;
 			sqlite3* m_db;
-			QueryCallbackType					m_callback;
 		};
 	}
 }

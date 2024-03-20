@@ -50,6 +50,7 @@ private:
 		header->m_size = _packetSize;
 		header->m_protocolID = pktId;
 		VERIFY(pkt.SerializeToArray(&header[1], _dataSize));
+		//send버퍼의 버퍼 주소로 직접 write 하는 경우네는 send 버퍼 close 꼭 해야함.
 		_sendBuffer->Close(_packetSize);
 
 		return _sendBuffer;

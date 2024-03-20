@@ -9,7 +9,6 @@ public:
 	GUIDFacroty() {}
 	unsigned __int64 Generate()
 	{
-		//atomic ¸¸¼¼
 		return m_GUID.fetch_add(1);
 	}
 };

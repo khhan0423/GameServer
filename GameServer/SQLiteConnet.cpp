@@ -9,7 +9,7 @@ int busy_handler(void* /*pArg*/, int nCallCount)
 {
 	if (nCallCount < MAX_BUSY_WAIT_COUNT)
 	{
-		Sleep(MAX_BUSY_WAIT_TIME);
+		this_thread::sleep_for(chrono::microseconds(MAX_BUSY_WAIT_TIME));
 		return 1;
 	}
 	return 0;
@@ -17,6 +17,32 @@ int busy_handler(void* /*pArg*/, int nCallCount)
 
 SQLiteConnector::SQLiteConnector() : m_DBHandlerPtr(nullptr), m_isOpen(false)
 {
+}
+
+SQLiteConnector::~SQLiteConnector()
+{
+	Close();
+}
+
+bool SQLiteConnector::InitDBName(const string& DBfileName)
+{
+	m_DBFileName = DBfileName;
+	return true;
+}
+
+sqlite3* SQLiteConnector::GetHandle()
+{
+	return m_DBHandlerPtr;
+}
+
+bool SQLiteConnector::IsOpen()
+{
+	return m_isOpen;
+}
+
+bool SQLiteConnector::Open()
+{
+	return TryOpen();
 }
 
 bool SQLiteConnector::TryOpen()

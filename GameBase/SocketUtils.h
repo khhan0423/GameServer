@@ -5,28 +5,28 @@ class NetAddress;
 class SocketUtils
 {
 public:
-	static LPFN_CONNECTEX		ConnectEx;
-	static LPFN_DISCONNECTEX	DisconnectEx;
-	static LPFN_ACCEPTEX		AcceptEx;
+	static			LPFN_CONNECTEX		ConnectEx;
+	static			LPFN_DISCONNECTEX	DisconnectEx;
+	static			LPFN_ACCEPTEX		AcceptEx;
 
 public:
-	static void Init();
-	static void Clear();
+	static void		Init();
+	static void		Clear();
 
-	static bool BindWindowsFunction(SOCKET socket, GUID guid, LPVOID* fn);
-	static SOCKET CreateSocket();
+	static bool		BindWindowsFunction(SOCKET socket, GUID guid, LPVOID* fn);
+	static SOCKET	CreateSocket();
 
-	static bool SetLinger(SOCKET socket, unsigned __int16 onoff, unsigned __int16 linger);
-	static bool SetReuseAddress(SOCKET socket, bool flag);
-	static bool SetRecvBufferSize(SOCKET socket, __int32 size);
-	static bool SetSendBufferSize(SOCKET socket, __int32 size);
-	static bool SetTcpNoDelay(SOCKET socket, bool flag);
-	static bool SetUpdateAcceptSocket(SOCKET socket, SOCKET listenSocket);
+	static bool		SetLinger(SOCKET socket, unsigned __int16 onoff, unsigned __int16 linger);
+	static bool		SetReuseAddress(SOCKET socket, bool flag);
+	static bool		SetRecvBufferSize(SOCKET socket, __int32 size);
+	static bool		SetSendBufferSize(SOCKET socket, __int32 size);
+	static bool		SetTcpNoDelay(SOCKET socket, bool flag);
+	static bool		SetUpdateAcceptSocket(SOCKET socket, SOCKET listenSocket);
 
-	static bool Bind(SOCKET socket, NetAddress netAddr);
-	static bool BindAnyAddress(SOCKET socket, unsigned __int16 port);
-	static bool Listen(SOCKET socket, __int32 backlog = SOMAXCONN);
-	static void Close(SOCKET& socket);
+	static bool		Bind(SOCKET socket, NetAddress netAddr);
+	static bool		BindAnyAddress(SOCKET socket, unsigned __int16 port);
+	static bool		Listen(SOCKET socket, __int32 backlog = SOMAXCONN);
+	static void		Close(SOCKET& socket);
 };
 
 template<typename T>

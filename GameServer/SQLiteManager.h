@@ -12,18 +12,14 @@ using namespace DataBase::SQLite3;
 class SQLiteManager : public DBManagerInterface<SQLiteQueryBase, SQLiteDBAgent>, public TSingleton<SQLiteManager>
 {
 public:
-	bool Start() override;
-	void Stop() override;
-	void Update() override;
+	bool		Start() override;
+	void		Stop() override;
+	void		Update() override;
 
 public:
-	__int32 GetFPS(__int32 index) const override;
-	__int32 GetBadFPS() const override;
+	__int32		GetFPS(__int32 index) const override;
+	__int32		GetBadFPS() const override;
 
-	void SetReady();
-
-
-private:
-	
+	void		SetReady();	
 };
 

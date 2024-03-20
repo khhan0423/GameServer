@@ -26,7 +26,6 @@ private:
 
 private:
 	friend class Listener; //Listener 에서 Session의 수신버퍼를 연결하여 AcceptEx를 호출하여야 함.
-	//friend class IocpCore;
 	friend class Service;
 
 	enum

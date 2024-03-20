@@ -25,9 +25,6 @@
     <Filter Include="Protocol">
       <UniqueIdentifier>{347cd8dd-06ca-4840-b965-858a0b7bd4e0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="DataBase\MSSQL">
-      <UniqueIdentifier>{9ac5131f-f771-40f7-8442-555afb1e0074}</UniqueIdentifier>
-    </Filter>
     <Filter Include="DataBase\SQLITE">
       <UniqueIdentifier>{3345bb07-6c74-4823-b525-0d69010a3399}</UniqueIdentifier>
     </Filter>
