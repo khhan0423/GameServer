@@ -6,7 +6,8 @@ void GameSessionManager::Add(shared_ptr<GameSession> session)
 {
 	{
 		lock_guard<recursive_mutex> lock(m_lock);
-		m_sessionSet.insert(session);		
+		m_sessionSet.insert(session);
+		SystemLog("[%s] insert session manager - key : [%lld]", __FUNCTION__, session->m_currentPlayer);
 	}
 	DebugLog("[%s]", __FUNCTION__);
 }

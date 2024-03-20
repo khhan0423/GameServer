@@ -9,6 +9,7 @@ class ServerService;
 class Listener : public IocpObject
 {
 public:
+	Listener(const unsigned __int32 listernCnt) : m_ListenCount(listernCnt) {}
 	Listener() = default;
 	~Listener();
 
@@ -25,6 +26,7 @@ private:
 	void ProcessAccept(AcceptEvent* acceptEvent);
 
 protected:
+	unsigned __int32			m_ListenCount = 5;
 	SOCKET						m_socket = INVALID_SOCKET;
 	vector<AcceptEvent*>		m_acceptEvents;
 	shared_ptr<ServerService>	m_service;

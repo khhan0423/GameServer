@@ -54,7 +54,7 @@ void GameServerSystem::Intiate()
 		NetAddress(L"127.0.0.1", 7777),
 		move(make_shared<IocpCore>())/*rValue move 로 포장해서 넘김*/,
 		move(make_shared<GameSession>)/*rValue move 로 포장해서 넘김*/,
-		5);
+		1);
 
 	VERIFY(m_serviceForClient->Start());
 

@@ -212,11 +212,9 @@ void Session::ProcessConnect()
 {
 	DebugLog("[%s]", __FUNCTION__);
 	m_connectEvent.m_owner = nullptr;
-
 	m_connected.store(true);
 
 	GetService()->AddSession(GetSessionRef());
-
 
 	OnConnected();
 

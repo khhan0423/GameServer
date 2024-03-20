@@ -49,7 +49,7 @@ protected:
 	shared_ptr<IocpCore>				m_iocpCore;
 
 	set<shared_ptr<Session>>			m_sessions;
-	__int32								m_sessionCount = 0;
+	atomic<__int32>						m_sessionCount = 0;
 	__int32								m_maxSessionCount = 0;
 	SessionFactory						m_sessionFactory;
 };

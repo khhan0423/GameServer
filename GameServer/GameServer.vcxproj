@@ -196,6 +196,9 @@
     <ClInclude Include="SQLiteManager.h" />
     <ClInclude Include="SQLiteQuery.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="프로토콜시퀀스설계노트.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -3,7 +3,6 @@
 #include <atlconv.h>
 #include <string>
 #include <algorithm>
-#include "StringFormat.h"
 
 class StringUtil
 {
@@ -22,10 +21,13 @@ class StringUtil
 		size_t GetBufferLen() { return m_ConvBufferLength; }
 
 	private:
-		CharType* m_ConvBuffer;
+		CharType*	m_ConvBuffer;
 		size_t		m_ConvBufferLength;
 	};
 public:
+	////////////////////////////////////////////////////////////////////////
+	// 언젠가는 대체해야 하는 부분 스택영역 사용이라 루프안에서 위험성 있음.
+	////////////////////////////////////////////////////////////////////////
 	static std::wstring ToWide(const char* str)
 	{
 		USES_CONVERSION;
@@ -46,6 +48,7 @@ public:
 		USES_CONVERSION;
 		return W2CA(str.c_str());
 	}
+	////////////////////////////////////////////////////////////////////////
 	static std::string WideToUtf8(const std::wstring& str)
 	{
 		StringConvBuffer<char> _ConvertBuffer(WideCharToMultiByte(CP_UTF8, 0, str.c_str(), static_cast<int>(str.length()), nullptr, 0, nullptr, nullptr));
@@ -70,81 +73,51 @@ public:
 	}
 	static std::string DoubleToAnsi(double value)
 	{
-		std::string str;
-		stdutil::format(str, "%fd", value);
-		return str;
+		return to_string(value);
 	}
 	static std::wstring DoubleToWide(double value)
 	{
-		std::wstring str;
-		stdutil::format(str, L"%fd", value);
-		return str;
+		return to_wstring(value);
 	}
 	static std::string DoubleToUtf8(double value)
 	{
-		std::wstring str;
-		stdutil::format(str, L"%fd", value);
-
-		return WideToUtf8(str);
+		return WideToUtf8(to_wstring(value));
 	}
 	static std::string IntToAnsi(long long value)
 	{
-		std::string str;
-		stdutil::format(str, "%LLd", value);
-		return str;
+		return to_string(value);
 	}
 	static std::wstring IntToWide(long long value)
 	{
-		std::wstring str;
-		stdutil::format(str, L"%LLd", value);
-		return str;
+		return to_wstring(value);
 	}
 	static std::string IntToUtf8(long long value)
 	{
-		std::wstring str;
-		stdutil::format(str, L"%LLd", value);
-
-		return WideToUtf8(str);
+		return WideToUtf8(to_wstring(value));
 	}
 	static std::string FloatToAnsi(float value)
 	{
-		std::string str;
-		stdutil::format(str, "%.2f", value);
-
-		return str;
+		return to_string(value);
 	}
 	static std::wstring FloatToWide(float value)
 	{
-		std::wstring str;
-		stdutil::format(str, L"%.2f", value);
-
-		return str;
+		return to_wstring(value);
 	}
 	static std::string FloatToUtf8(float value)
 	{
-		std::wstring str;
-		stdutil::format(str, L"%.2f", value);
-
-		return WideToUtf8(str);
+		return WideToUtf8(to_wstring(value));
 	}
 	static std::string UIntToAnsi(unsigned long long value)
 	{
-		std::string str;
-		stdutil::format(str, "%LLu", value);
-		return str;
+		return to_string(value);
 	}
 	static std::wstring UIntToWide(unsigned long long value)
 	{
-		std::wstring str;
-		stdutil::format(str, L"%LLu", value);
-		return str;
+		return to_wstring(value);
 	}
 	static std::string UIntToUtf8(unsigned long long value)
 	{
-		std::wstring str;
-		stdutil::format(str, L"%LLu", value);
-
-		return WideToUtf8(str);
+		return WideToUtf8(to_wstring(value));
 	}
 	static bool ToLower(std::string& str)
 	{

@@ -141,11 +141,9 @@
     <ClInclude Include="FileUtil.h">
       <Filter>Util</Filter>
     </ClInclude>
+    <ClInclude Include="GUIDFactory.h" />
     <ClInclude Include="StringUtil.h">
-      <Filter>Util\ThirdParty</Filter>
-    </ClInclude>
-    <ClInclude Include="StringFormat.h">
-      <Filter>Util\ThirdParty</Filter>
+      <Filter>Util</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -216,6 +214,10 @@
       <Filter>Util\ThirdParty\XML</Filter>
     </ClCompile>
     <ClCompile Include="FileUtil.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="GUIDFactory.cpp" />
+    <ClCompile Include="StringUtil.cpp">
       <Filter>Util</Filter>
     </ClCompile>
   </ItemGroup>

@@ -34,7 +34,7 @@ void Service::AddSession(shared_ptr<Session> session)
 	DebugLog("[%s]", __FUNCTION__);
 	{
 		lock_guard<recursive_mutex> _lock(m_lock);
-		m_sessionCount++;
+		m_sessionCount.fetch_add(1);
 		m_sessions.insert(session);
 	}
 }
@@ -45,7 +45,7 @@ void Service::ReleaseSession(shared_ptr<Session> session)
 	{
 		lock_guard<recursive_mutex> _lock(m_lock);
 		VERIFY(m_sessions.erase(session) != 0);
-		m_sessionCount--;
+		m_sessionCount.fetch_sub(1);
 	}
 }
 
