@@ -14,6 +14,7 @@ namespace DataBase
 	namespace SQLite3
 	{
 		//SQLite 쿼리객체
+		using CallbackType = std::function<void()>;
 		class SQLiteQueryBase
 		{
 		public:
@@ -36,6 +37,15 @@ namespace DataBase
 			void AddParam(const double input);
 			void AddParam(const char* input);
 			void AddParam(const string input);
+			
+			template<typename T, typename Ret, typename... Args>
+			void AddComplete(shared_ptr<T> owner, Ret(T::* memFunc)(Args...), Args&&... args)
+			{
+				_callback = [owner, memFunc, args...]()
+					{
+						(owner.get()->*memFunc)(args...);
+					};
+			}
 		public:
 			bool Prepare();
 			void Bind();
@@ -49,11 +59,10 @@ namespace DataBase
 			__int32 GetCommandResult();
 			void SetSycnFlag();
 			bool IsSyncQuery();
-		
-		public:
-			virtual void Complete() abstract
+
+			void Complete()
 			{
-				//쿼리에 특화해서 상속빋이 구현
+				_callback();
 			}
 
 		public:
@@ -65,6 +74,7 @@ namespace DataBase
 			vector<vector<string>>				m_Result;
 			sqlite3_stmt* m_res;
 			sqlite3* m_db;
+			CallbackType						_callback;
 		};
 	}
 }
@@ -75,6 +85,7 @@ namespace DataBase
 //	command.SetDBHandle(db);	
 //	command.AddParam("Audi");
 //	command.AddParam("Volvo");
+//  commane.AddComplete(....) <- 쿼리실행 완료 후 핸들링할 콜백함수 지정
 //	command.Excute();
 //	int _result = command.GetCommandResult();
 
@@ -85,6 +96,7 @@ namespace DataBase
 //	command.AddParam(10);
 //	command.AddParam("HYUNDAI");
 //	command.AddParam(31000);
+//  commane.AddComplete(....) <- 쿼리실행 완료 후 핸들링할 콜백함수 지정
 //	command.Excute();
 //	int _result = command.GetCommandResult();
 
@@ -93,6 +105,7 @@ namespace DataBase
 //	command.m_sql = "DELETE FROM cars WHERE Id = ?";
 //	command.SetDBHandle(db);
 //	command.AddParam(3);
+//  commane.AddComplete(....) <- 쿼리실행 완료 후 핸들링할 콜백함수 지정
 //	command.Excute();
 //	int _result = command.GetCommandResult();
 
@@ -102,5 +115,6 @@ namespace DataBase
 //	command.SetDBHandle(db);
 //	command.AddParam(20000);
 //	command.AddParam("Audi");
+//  commane.AddComplete(....) <- 쿼리실행 완료 후 핸들링할 콜백함수 지정
 //	command.Excute();
 //	int _result = command.GetCommandResult();

@@ -60,18 +60,6 @@
     <ClCompile Include="GameServerSystem.cpp">
       <Filter>Main</Filter>
     </ClCompile>
-    <ClCompile Include="ADO.cpp">
-      <Filter>DataBase\MSSQL</Filter>
-    </ClCompile>
-    <ClCompile Include="ADOAgnet.cpp">
-      <Filter>DataBase\MSSQL</Filter>
-    </ClCompile>
-    <ClCompile Include="ADOManager.cpp">
-      <Filter>DataBase\MSSQL</Filter>
-    </ClCompile>
-    <ClCompile Include="ADOQuery.cpp">
-      <Filter>DataBase\MSSQL</Filter>
-    </ClCompile>
     <ClCompile Include="SQLiteConnet.cpp">
       <Filter>DataBase\SQLITE</Filter>
     </ClCompile>
@@ -109,18 +97,6 @@
     </ClInclude>
     <ClInclude Include="GameServerSystem.h">
       <Filter>Main</Filter>
-    </ClInclude>
-    <ClInclude Include="ADO.h">
-      <Filter>DataBase\MSSQL</Filter>
-    </ClInclude>
-    <ClInclude Include="ADOAgnet.h">
-      <Filter>DataBase\MSSQL</Filter>
-    </ClInclude>
-    <ClInclude Include="ADOManager.h">
-      <Filter>DataBase\MSSQL</Filter>
-    </ClInclude>
-    <ClInclude Include="ADOQuery.h">
-      <Filter>DataBase\MSSQL</Filter>
     </ClInclude>
     <ClInclude Include="SQLiteConnet.h">
       <Filter>DataBase\SQLITE</Filter>

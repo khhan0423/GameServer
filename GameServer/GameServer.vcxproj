@@ -155,10 +155,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ADO.cpp" />
-    <ClCompile Include="ADOAgnet.cpp" />
-    <ClCompile Include="ADOManager.cpp" />
-    <ClCompile Include="ADOQuery.cpp" />
     <ClCompile Include="ClientPacketHandler.cpp" />
     <ClCompile Include="DataBaseBase.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -179,10 +175,6 @@
     <ClCompile Include="SQLiteQuery.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ADO.h" />
-    <ClInclude Include="ADOAgnet.h" />
-    <ClInclude Include="ADOManager.h" />
-    <ClInclude Include="ADOQuery.h" />
     <ClInclude Include="ClientPacketHandler.h" />
     <ClInclude Include="DataBaseBase.h" />
     <ClInclude Include="GameServerSystem.h" />
