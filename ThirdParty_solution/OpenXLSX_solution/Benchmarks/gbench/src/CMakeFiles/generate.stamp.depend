@@ -1,0 +1,8 @@
+# CMake generation dependency list for this directory.
+C:/Kh_Kan_CPP_Works/OpenXLSX-master/Benchmarks/gbench/cmake/Config.cmake.in
+C:/Kh_Kan_CPP_Works/OpenXLSX-master/Benchmarks/gbench/cmake/benchmark.pc.in
+C:/Kh_Kan_CPP_Works/OpenXLSX-master/Benchmarks/gbench/src/CMakeLists.txt
+C:/Program Files/CMake/share/cmake-3.29/Modules/BasicConfigVersion-SameMajorVersion.cmake.in
+C:/Program Files/CMake/share/cmake-3.29/Modules/CMakePackageConfigHelpers.cmake
+C:/Program Files/CMake/share/cmake-3.29/Modules/GNUInstallDirs.cmake
+C:/Program Files/CMake/share/cmake-3.29/Modules/WriteBasicConfigVersionFile.cmake

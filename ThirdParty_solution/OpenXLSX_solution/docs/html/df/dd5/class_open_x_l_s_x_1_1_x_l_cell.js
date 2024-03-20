@@ -1,0 +1,27 @@
+var class_open_x_l_s_x_1_1_x_l_cell =
+[
+    [ "XLCell", "df/dd5/class_open_x_l_s_x_1_1_x_l_cell.html#ae926acf74b1eda4376e4241e9555d538", null ],
+    [ "XLCell", "df/dd5/class_open_x_l_s_x_1_1_x_l_cell.html#ac479a51c41194edfd2dc14353bf8a783", null ],
+    [ "XLCell", "df/dd5/class_open_x_l_s_x_1_1_x_l_cell.html#a928d1f8dde9e9f6f273c947f09905508", null ],
+    [ "XLCell", "df/dd5/class_open_x_l_s_x_1_1_x_l_cell.html#aefd30ddc5b511bd7597a7807bfde0dcc", null ],
+    [ "~XLCell", "df/dd5/class_open_x_l_s_x_1_1_x_l_cell.html#a5920f1c950543c1708d621ff9597a6b1", null ],
+    [ "cellReference", "df/dd5/class_open_x_l_s_x_1_1_x_l_cell.html#abb52c18fc150d9a89517b5ab0b34af69", null ],
+    [ "formula", "df/dd5/class_open_x_l_s_x_1_1_x_l_cell.html#a128a688e3e24475611ca28ce1a62ee4f", null ],
+    [ "formula", "df/dd5/class_open_x_l_s_x_1_1_x_l_cell.html#a7faa7e0e43ad61bf0539159a6627f89d", null ],
+    [ "hasFormula", "df/dd5/class_open_x_l_s_x_1_1_x_l_cell.html#a964095828e1eed5728aef4c013761a93", null ],
+    [ "offset", "df/dd5/class_open_x_l_s_x_1_1_x_l_cell.html#a12ea41765efe2acc18330fbc607507ac", null ],
+    [ "operator bool", "df/dd5/class_open_x_l_s_x_1_1_x_l_cell.html#a67b76affb3b5d35fa419ac234144038b", null ],
+    [ "operator=", "df/dd5/class_open_x_l_s_x_1_1_x_l_cell.html#ad01acc3a82ce21f57cbe799a1e76d248", null ],
+    [ "operator=", "df/dd5/class_open_x_l_s_x_1_1_x_l_cell.html#ae7a33e3ac828b54b5ab20b4456139484", null ],
+    [ "value", "df/dd5/class_open_x_l_s_x_1_1_x_l_cell.html#a60017bae9a180c4f271b64826150b105", null ],
+    [ "value", "df/dd5/class_open_x_l_s_x_1_1_x_l_cell.html#acc3f99d75f3cf906ddad16f028283ffb", null ],
+    [ "operator!=", "df/dd5/class_open_x_l_s_x_1_1_x_l_cell.html#a813306a72213f3cc6764cb0212e8ac68", null ],
+    [ "operator==", "df/dd5/class_open_x_l_s_x_1_1_x_l_cell.html#a870a5f011c8825c409be69c09048b6b5", null ],
+    [ "XLCellIterator", "df/dd5/class_open_x_l_s_x_1_1_x_l_cell.html#aeb4927f60c87be1316fcd0c9d1af2bb9", null ],
+    [ "XLCellValueProxy", "df/dd5/class_open_x_l_s_x_1_1_x_l_cell.html#a46b7bad943374588ad16c59f1c24f937", null ],
+    [ "XLRowDataIterator", "df/dd5/class_open_x_l_s_x_1_1_x_l_cell.html#ae772eb42084f0784445b55af578efc64", null ],
+    [ "m_cellNode", "df/dd5/class_open_x_l_s_x_1_1_x_l_cell.html#a001c965b38db41e970ce4b2b4815ec65", null ],
+    [ "m_formulaProxy", "df/dd5/class_open_x_l_s_x_1_1_x_l_cell.html#a222fc151b21b81d8e80483fad29c84c2", null ],
+    [ "m_sharedStrings", "df/dd5/class_open_x_l_s_x_1_1_x_l_cell.html#a94c2bd69f272cd18c87dea217f2e8546", null ],
+    [ "m_valueProxy", "df/dd5/class_open_x_l_s_x_1_1_x_l_cell.html#aa0f57904df02793cfc3620e528ef4847", null ]
+];

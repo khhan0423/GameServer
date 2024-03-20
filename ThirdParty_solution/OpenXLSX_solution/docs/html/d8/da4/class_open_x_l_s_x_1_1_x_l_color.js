@@ -1,0 +1,26 @@
+var class_open_x_l_s_x_1_1_x_l_color =
+[
+    [ "XLColor", "d8/da4/class_open_x_l_s_x_1_1_x_l_color.html#a56a5240f34db232d96f539bbb3ef04b9", null ],
+    [ "XLColor", "d8/da4/class_open_x_l_s_x_1_1_x_l_color.html#a71483f8e374d7903a29927db63e04f01", null ],
+    [ "XLColor", "d8/da4/class_open_x_l_s_x_1_1_x_l_color.html#abcae9e06c3caedb0ac085143f8246ba8", null ],
+    [ "XLColor", "d8/da4/class_open_x_l_s_x_1_1_x_l_color.html#ad34325baacf9fa4cc7e481294fddd723", null ],
+    [ "XLColor", "d8/da4/class_open_x_l_s_x_1_1_x_l_color.html#a1f17ef77aff6cd26088849dbc07f1a79", null ],
+    [ "XLColor", "d8/da4/class_open_x_l_s_x_1_1_x_l_color.html#ad71d48bfb2a6d6fea726766a68e7646c", null ],
+    [ "~XLColor", "d8/da4/class_open_x_l_s_x_1_1_x_l_color.html#ac40800085800161edd43dffed3b66fea", null ],
+    [ "alpha", "d8/da4/class_open_x_l_s_x_1_1_x_l_color.html#aecf22ae986fa8d5ac5ff28424ca8e108", null ],
+    [ "blue", "d8/da4/class_open_x_l_s_x_1_1_x_l_color.html#a1e74ddb1db63b2288c3e6dfce79a0c0d", null ],
+    [ "green", "d8/da4/class_open_x_l_s_x_1_1_x_l_color.html#a8cc8512a435b375d9d44029bd17a0ff5", null ],
+    [ "hex", "d8/da4/class_open_x_l_s_x_1_1_x_l_color.html#af01c0d5917229fe7d06e29a70d1cf41b", null ],
+    [ "operator=", "d8/da4/class_open_x_l_s_x_1_1_x_l_color.html#ae0e6d7b6af6a45fed5ea5097d432bdb1", null ],
+    [ "operator=", "d8/da4/class_open_x_l_s_x_1_1_x_l_color.html#a23abf517465d4ae2bbff71dd70121183", null ],
+    [ "red", "d8/da4/class_open_x_l_s_x_1_1_x_l_color.html#aec81eee7c2b1ebff223b1e64568c1c53", null ],
+    [ "set", "d8/da4/class_open_x_l_s_x_1_1_x_l_color.html#ac245df8b93f7fe97a9f50fb21648be15", null ],
+    [ "set", "d8/da4/class_open_x_l_s_x_1_1_x_l_color.html#a3697e4d5cd4c6257fb137db56d04fbe0", null ],
+    [ "set", "d8/da4/class_open_x_l_s_x_1_1_x_l_color.html#abcc48acf3343af9dc91f1bab3e3fb150", null ],
+    [ "operator!=", "d8/da4/class_open_x_l_s_x_1_1_x_l_color.html#abcf08aad37c418dc01275dea82a51104", null ],
+    [ "operator==", "d8/da4/class_open_x_l_s_x_1_1_x_l_color.html#abf1c27b6ca8cd1c26dfc5c991b12cc1d", null ],
+    [ "m_alpha", "d8/da4/class_open_x_l_s_x_1_1_x_l_color.html#ae76d6e0c318f6cbc2b052799982c4d43", null ],
+    [ "m_blue", "d8/da4/class_open_x_l_s_x_1_1_x_l_color.html#abc55c0996e13d2860a3f660b92fa11fc", null ],
+    [ "m_green", "d8/da4/class_open_x_l_s_x_1_1_x_l_color.html#ade744dc24b670080c78f32a00498e86f", null ],
+    [ "m_red", "d8/da4/class_open_x_l_s_x_1_1_x_l_color.html#aee12a571fedb8b4ea4bb0e88e50d8969", null ]
+];

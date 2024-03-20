@@ -1,0 +1,9 @@
+C:/Kh_Kan_CPP_Works/OpenXLSX-master_solution/CMakeFiles/INSTALL.dir
+C:/Kh_Kan_CPP_Works/OpenXLSX-master_solution/CMakeFiles/ALL_BUILD.dir
+C:/Kh_Kan_CPP_Works/OpenXLSX-master_solution/CMakeFiles/ZERO_CHECK.dir
+C:/Kh_Kan_CPP_Works/OpenXLSX-master_solution/OpenXLSX/CMakeFiles/OpenXLSX.dir
+C:/Kh_Kan_CPP_Works/OpenXLSX-master_solution/OpenXLSX/CMakeFiles/INSTALL.dir
+C:/Kh_Kan_CPP_Works/OpenXLSX-master_solution/OpenXLSX/CMakeFiles/ALL_BUILD.dir
+C:/Kh_Kan_CPP_Works/OpenXLSX-master_solution/Documentation/CMakeFiles/Documentation.dir
+C:/Kh_Kan_CPP_Works/OpenXLSX-master_solution/Documentation/CMakeFiles/INSTALL.dir
+C:/Kh_Kan_CPP_Works/OpenXLSX-master_solution/Documentation/CMakeFiles/ALL_BUILD.dir

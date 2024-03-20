@@ -1,0 +1,13 @@
+# CMake generation dependency list for this directory.
+C:/Kh_Kan_CPP_Works/OpenXLSX-master/Benchmarks/gbench/CMakeLists.txt
+C:/Kh_Kan_CPP_Works/OpenXLSX-master/Benchmarks/gbench/cmake/AddCXXCompilerFlag.cmake
+C:/Kh_Kan_CPP_Works/OpenXLSX-master/Benchmarks/gbench/cmake/CXXFeatureCheck.cmake
+C:/Kh_Kan_CPP_Works/OpenXLSX-master/Benchmarks/gbench/cmake/GetGitVersion.cmake
+C:/Program Files/CMake/share/cmake-3.29/Modules/CheckCSourceCompiles.cmake
+C:/Program Files/CMake/share/cmake-3.29/Modules/CheckCXXCompilerFlag.cmake
+C:/Program Files/CMake/share/cmake-3.29/Modules/CheckIncludeFile.cmake
+C:/Program Files/CMake/share/cmake-3.29/Modules/CheckLibraryExists.cmake
+C:/Program Files/CMake/share/cmake-3.29/Modules/FindGit.cmake
+C:/Program Files/CMake/share/cmake-3.29/Modules/FindPackageHandleStandardArgs.cmake
+C:/Program Files/CMake/share/cmake-3.29/Modules/FindPackageMessage.cmake
+C:/Program Files/CMake/share/cmake-3.29/Modules/FindThreads.cmake

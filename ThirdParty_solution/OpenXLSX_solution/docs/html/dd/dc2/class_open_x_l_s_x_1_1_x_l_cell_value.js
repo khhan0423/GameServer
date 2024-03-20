@@ -1,0 +1,27 @@
+var class_open_x_l_s_x_1_1_x_l_cell_value =
+[
+    [ "XLCellValue", "dd/dc2/class_open_x_l_s_x_1_1_x_l_cell_value.html#af8b960ccb5b4a0930a2edb9e5a38cfba", null ],
+    [ "XLCellValue", "dd/dc2/class_open_x_l_s_x_1_1_x_l_cell_value.html#a0eaa1edf1e264dea6960af798996b465", null ],
+    [ "XLCellValue", "dd/dc2/class_open_x_l_s_x_1_1_x_l_cell_value.html#a09c5df053eba071e0f63eb686e877a57", null ],
+    [ "XLCellValue", "dd/dc2/class_open_x_l_s_x_1_1_x_l_cell_value.html#aaa4c38e825390d18382ca00b9f5b0c91", null ],
+    [ "~XLCellValue", "dd/dc2/class_open_x_l_s_x_1_1_x_l_cell_value.html#a430312b6bd8c9fbeab3a2ce9a8096b9a", null ],
+    [ "clear", "dd/dc2/class_open_x_l_s_x_1_1_x_l_cell_value.html#ab4fdea8efe3342aa4b128fd48707b7f2", null ],
+    [ "get", "dd/dc2/class_open_x_l_s_x_1_1_x_l_cell_value.html#ac7de7e8325fbac455a32632ec56d9c2e", null ],
+    [ "operator T", "dd/dc2/class_open_x_l_s_x_1_1_x_l_cell_value.html#a8b661d00358adea68affef384db73360", null ],
+    [ "operator=", "dd/dc2/class_open_x_l_s_x_1_1_x_l_cell_value.html#afe4cbb9c824d8a33f72f09e9f18dd709", null ],
+    [ "operator=", "dd/dc2/class_open_x_l_s_x_1_1_x_l_cell_value.html#a8761e8430f19043cc1a0317055a851b6", null ],
+    [ "operator=", "dd/dc2/class_open_x_l_s_x_1_1_x_l_cell_value.html#a5bc7e7b0ede1ad449fa58f9507a56f95", null ],
+    [ "set", "dd/dc2/class_open_x_l_s_x_1_1_x_l_cell_value.html#a3a97f08e43c7dfab9736381b761574c0", null ],
+    [ "setError", "dd/dc2/class_open_x_l_s_x_1_1_x_l_cell_value.html#aada86d7660299487f8e720575e030991", null ],
+    [ "type", "dd/dc2/class_open_x_l_s_x_1_1_x_l_cell_value.html#a2393604a9000b0c1c50658a1f856c096", null ],
+    [ "typeAsString", "dd/dc2/class_open_x_l_s_x_1_1_x_l_cell_value.html#a99073ef39b2a429ef5aea5858bc0df00", null ],
+    [ "operator!=", "dd/dc2/class_open_x_l_s_x_1_1_x_l_cell_value.html#acc5089b30f6bf94619a1507670b03aa8", null ],
+    [ "operator<", "dd/dc2/class_open_x_l_s_x_1_1_x_l_cell_value.html#a421d6bf3f17c68dca3b3f1664ed0ead7", null ],
+    [ "operator<<", "dd/dc2/class_open_x_l_s_x_1_1_x_l_cell_value.html#a7c849116a39019e7622ec463e99378df", null ],
+    [ "operator<=", "dd/dc2/class_open_x_l_s_x_1_1_x_l_cell_value.html#a9a892b4a06094903e1da472b07507e68", null ],
+    [ "operator==", "dd/dc2/class_open_x_l_s_x_1_1_x_l_cell_value.html#a4d4d2d914c0f2a43a9f37fbfa45e2321", null ],
+    [ "operator>", "dd/dc2/class_open_x_l_s_x_1_1_x_l_cell_value.html#a9336b460ca3e18331b281e685be8c012", null ],
+    [ "operator>=", "dd/dc2/class_open_x_l_s_x_1_1_x_l_cell_value.html#aeb47e799ff4bf5a6468163539444dff8", null ],
+    [ "m_type", "dd/dc2/class_open_x_l_s_x_1_1_x_l_cell_value.html#a67788bbd5567753560cc3c5978df4b3e", null ],
+    [ "m_value", "dd/dc2/class_open_x_l_s_x_1_1_x_l_cell_value.html#a4fae6f6c4b72b99beaa3fa832dc17302", null ]
+];

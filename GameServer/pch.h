@@ -14,10 +14,12 @@
 #pragma comment(lib, "GameBase/Debug/GameBase.lib")
 #pragma comment(lib, "ProtoBuf/Debug/libprotobufd.lib")
 #pragma comment(lib, "SQLite3/Debug/Sqlite364D.lib")
+#pragma comment(lib, "OpenXLSX/Debug/OpenXLSXd.lib")
 
 #else
 #pragma comment(lib, "GameBase/Release/GameBase.lib")
 #pragma comment(lib, "ProtoBuf/Release/libprotobuf.lib")
 #pragma comment(lib, "SQLite3/Release/Sqlite364.lib")
+#pragma comment(lib, "OpenXLSX/Release/OpenXLSX.lib")
 
 #endif
