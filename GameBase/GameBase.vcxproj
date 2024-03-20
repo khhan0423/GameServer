@@ -183,6 +183,7 @@
     <ClInclude Include="SingletonBase.h" />
     <ClInclude Include="SocketUtils.h" />
     <ClInclude Include="StringUtil.h" />
+    <ClInclude Include="TableBase.h" />
     <ClInclude Include="Task.h" />
     <ClInclude Include="TaskManager.h" />
     <ClInclude Include="TaskQueue.h" />
@@ -216,6 +217,7 @@
     <ClCompile Include="Session.cpp" />
     <ClCompile Include="SocketUtils.cpp" />
     <ClCompile Include="StringUtil.cpp" />
+    <ClCompile Include="TableBase.cpp" />
     <ClCompile Include="Task.cpp" />
     <ClCompile Include="TaskManager.cpp" />
     <ClCompile Include="TaskQueue.cpp" />

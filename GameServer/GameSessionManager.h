@@ -5,7 +5,7 @@
 
 #define GetGameSessionManager() GameSessionManager::GetInstance()
 
-class GameSessionManager : public TSingleton<GameSessionManager>
+class GameSessionManager : public TSingletonBase<GameSessionManager>
 {
 public:
 	void Add(shared_ptr<GameSession> session);

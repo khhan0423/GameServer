@@ -46,7 +46,7 @@ public:
 	void Log(const __int32 iLevel, const char* strFile, const __int32 iLine, const char* strFormat, ...);
 };
 
-class SGlobalLog : public GameLog, public TSingleton<SGlobalLog> {};
+class SGlobalLog : public GameLog, public TSingletonBase<SGlobalLog> {};
 
 #define GetGlobalLog()	SGlobalLog::GetInstance()
 #define DebugLog(...)	GetGlobalLog()->Log(PLOG_LEVEL_DEBUG, __VA_ARGS__);

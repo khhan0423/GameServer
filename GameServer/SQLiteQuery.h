@@ -59,8 +59,8 @@ namespace DataBase
 			__int32								m_commandResult = SQLITE_ERROR;
 			vector<pair<SQPLITE_TYPE, string>>	m_Params;
 			vector<vector<string>>				m_Result;
-			sqlite3_stmt* m_res;
-			sqlite3* m_db;
+			sqlite3_stmt*						m_res = nullptr;
+			sqlite3*							m_db = nullptr;
 		};
 	}
 }

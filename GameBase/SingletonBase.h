@@ -2,13 +2,13 @@
 #include <list>
 #include <algorithm>
 
-class SSingletonBase
+class SingletonBase
 {
 protected:
 	class SManager
 	{
 	private:
-		list<SSingletonBase*>		m_list;
+		list<SingletonBase*>		m_list;
 		mutex						m_lock;
 
 	public:
@@ -18,7 +18,7 @@ protected:
 		}
 		void Release()
 		{
-			struct delete_ptr { void operator() (SSingletonBase* p) { delete p; } };
+			struct delete_ptr { void operator() (SingletonBase* p) { delete p; } };
 			for_each(m_list.begin(), m_list.end(), delete_ptr());
 			
 			{
@@ -26,7 +26,7 @@ protected:
 				m_list.clear();
 			}
 		}
-		void Add(SSingletonBase* pSingleton)
+		void Add(SingletonBase* pSingleton)
 		{
 			{
 				lock_guard<mutex> _lock(m_lock);
@@ -34,7 +34,7 @@ protected:
 			}
 
 		}
-		void Erase(SSingletonBase* pSingleton)
+		void Erase(SingletonBase* pSingleton)
 		{
 			{
 				lock_guard<mutex> _lock(m_lock);
@@ -56,14 +56,14 @@ public:
 	}
 
 protected:
-	SSingletonBase() {}
+	SingletonBase() {}
 
 public:
-	virtual ~SSingletonBase() {}
+	virtual ~SingletonBase() {}
 };
 
 template<typename TYPE>
-class TSingleton : public SSingletonBase
+class TSingletonBase : public SingletonBase
 {
 
 protected:
@@ -71,8 +71,8 @@ protected:
 	static mutex _static_lock;
 
 protected:
-	TSingleton() {}
-	virtual ~TSingleton() { if (this == _static_pInstance) Delete(false); }
+	TSingletonBase() {}
+	virtual ~TSingletonBase() { if (this == _static_pInstance) Delete(false); }
 
 public:
 	static TYPE* GetInstance()
@@ -83,7 +83,7 @@ public:
 			if (_static_pInstance == nullptr)
 			{
 				_static_pInstance = new TYPE;
-				SSingletonBase::GetManager().Add(_static_pInstance);
+				SingletonBase::GetManager().Add(_static_pInstance);
 			}
 		}
 
@@ -101,7 +101,7 @@ public:
 				_static_pInstance = nullptr;
 				if (deleteFlag)
 				{
-					SSingletonBase::GetManager().Erase(_pInstance);
+					SingletonBase::GetManager().Erase(_pInstance);
 					SAFE_DELETE(_pInstance);
 				}
 			}
@@ -109,12 +109,12 @@ public:
 	}
 
 private:
-	TSingleton(const TSingleton<TYPE>&);
-	const TSingleton<TYPE>& operator = (const TSingleton<TYPE>&);
+	TSingletonBase(const TSingletonBase<TYPE>&);
+	const TSingletonBase<TYPE>& operator = (const TSingletonBase<TYPE>&);
 };
 
 template<typename TYPE>
-TYPE* TSingleton<TYPE>::_static_pInstance;
+TYPE* TSingletonBase<TYPE>::_static_pInstance;
 
 template<typename TYPE>
-mutex TSingleton<TYPE>::_static_lock;
+mutex TSingletonBase<TYPE>::_static_lock;

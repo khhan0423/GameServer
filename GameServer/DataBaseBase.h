@@ -5,7 +5,7 @@ namespace DataBase
 #define MAX_BUSY_WAIT_TIME 1
 #define MAX_BUSY_WAIT_COUNT 60
 
-	template<class QueryBase, class DataBase_Module>	
+	template<class QueryBase, class DataBase_ConnectModule>	
 	class DBAgentInterface
 	{
 	public:
@@ -91,10 +91,10 @@ namespace DataBase
 		virtual bool SyncQuery(QueryBase* /*Query*/) { return true; };
 
 	protected:
-		QueryQueue		m_QueueWait;
-		QueryQueue		m_QueueComplete;
+		QueryQueue				m_QueueWait;
+		QueryQueue				m_QueueComplete;
 
-		DataBase_Module	m_DataBase;
+		DataBase_ConnectModule	m_DataBase;
 	};
 
 	template<class QueryBase, class DBAgnet>

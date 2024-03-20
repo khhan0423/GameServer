@@ -150,6 +150,7 @@
     <ClInclude Include="SeqIDGenerator.h">
       <Filter>Util</Filter>
     </ClInclude>
+    <ClInclude Include="TableBase.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -230,5 +231,6 @@
     <ClCompile Include="SeqIDGenerator.cpp">
       <Filter>Util</Filter>
     </ClCompile>
+    <ClCompile Include="TableBase.cpp" />
   </ItemGroup>
 </Project>
