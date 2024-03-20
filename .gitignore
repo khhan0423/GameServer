@@ -361,3 +361,11 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/GameServer/ADO.cpp
+/GameServer/ADO.h
+/GameServer/ADOAgnet.cpp
+/GameServer/ADOAgnet.h
+/GameServer/ADOManager.cpp
+/GameServer/ADOManager.h
+/GameServer/ADOQuery.cpp
+/GameServer/ADOQuery.h
