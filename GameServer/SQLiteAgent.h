@@ -8,6 +8,7 @@ using namespace DataBase;
 using namespace DataBase::SQLite3;
 
 //쿼리
+
 class SQLiteDBAgent : public DBAgentInterface<SQLiteQueryBase, SQLiteConnector>
 {
 	//Agnet는 독립적인 DB 커넥션을 유지하여야함.
@@ -18,7 +19,7 @@ class SQLiteDBAgent : public DBAgentInterface<SQLiteQueryBase, SQLiteConnector>
 public:
 	SQLiteDBAgent()
 	{
-		m_thread = thread(ThreadFunc, reinterpret_cast<void*>(this));
+		
 	}
 	~SQLiteDBAgent()
 	{
@@ -53,6 +54,8 @@ public:
 			m_DataBase.InitDBName(DBName);
 			return (m_DataBase.Open());
 		}
+
+		m_thread = thread(ThreadFunc, reinterpret_cast<void*>(this));
 
 		return true;
 	}

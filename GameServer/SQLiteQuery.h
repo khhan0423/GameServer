@@ -14,7 +14,7 @@ namespace DataBase
 	namespace SQLite3
 	{
 		//SQLite Äõ¸®°´Ã¼
-		using CallbackType = std::function<void()>;
+		using QueryCallbackType = std::function<void()>;
 		class SQLiteQueryBase
 		{
 		public:
@@ -38,14 +38,21 @@ namespace DataBase
 			void AddParam(const char* input);
 			void AddParam(const string input);
 			
+			
 			template<typename T, typename Ret, typename... Args>
 			void AddComplete(shared_ptr<T> owner, Ret(T::* memFunc)(Args...), Args&&... args)
 			{
-				_callback = [owner, memFunc, args...]()
+				m_callback = [owner, memFunc, args...]()
 					{
 						(owner.get()->*memFunc)(args...);
 					};
 			}
+
+			void AddComplete(CallbackType&& callback)
+			{
+				m_callback = move(callback);
+			}
+
 		public:
 			bool Prepare();
 			void Bind();
@@ -62,7 +69,7 @@ namespace DataBase
 
 			void Complete()
 			{
-				_callback();
+				m_callback();
 			}
 
 		public:
@@ -74,7 +81,7 @@ namespace DataBase
 			vector<vector<string>>				m_Result;
 			sqlite3_stmt* m_res;
 			sqlite3* m_db;
-			CallbackType						_callback;
+			QueryCallbackType					m_callback;
 		};
 	}
 }
