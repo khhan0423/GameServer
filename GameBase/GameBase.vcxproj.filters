@@ -141,8 +141,13 @@
     <ClInclude Include="FileUtil.h">
       <Filter>Util</Filter>
     </ClInclude>
-    <ClInclude Include="GUIDFactory.h" />
     <ClInclude Include="StringUtil.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="SerialManager.h">
+      <Filter>Util</Filter>
+    </ClInclude>
+    <ClInclude Include="SeqIDGenerator.h">
       <Filter>Util</Filter>
     </ClInclude>
   </ItemGroup>
@@ -216,8 +221,13 @@
     <ClCompile Include="FileUtil.cpp">
       <Filter>Util</Filter>
     </ClCompile>
-    <ClCompile Include="GUIDFactory.cpp" />
     <ClCompile Include="StringUtil.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="SerialManager.cpp">
+      <Filter>Util</Filter>
+    </ClCompile>
+    <ClCompile Include="SeqIDGenerator.cpp">
       <Filter>Util</Filter>
     </ClCompile>
   </ItemGroup>

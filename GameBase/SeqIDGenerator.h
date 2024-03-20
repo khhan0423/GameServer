@@ -1,15 +1,14 @@
 #pragma once
 #include <mutex>
 
-class GUIDFacroty
+class SeqIDGenerator
 {
 private:
 	atomic<unsigned long long> m_GUID = 0;
 public:
-	GUIDFacroty() {}
+	SeqIDGenerator() {}
 	unsigned __int64 Generate()
 	{
 		return m_GUID.fetch_add(1);
 	}
 };
-

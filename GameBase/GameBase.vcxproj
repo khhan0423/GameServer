@@ -160,7 +160,7 @@
     <ClInclude Include="GlobalGameBase.h" />
     <ClInclude Include="globalMacro.h" />
     <ClInclude Include="globalpch.h" />
-    <ClInclude Include="GUIDFactory.h" />
+    <ClInclude Include="SeqIDGenerator.h" />
     <ClInclude Include="IOCPCore.h" />
     <ClInclude Include="IOCPEvent.h" />
     <ClInclude Include="LibTestClass.h" />
@@ -177,6 +177,7 @@
     <ClInclude Include="rapidxml_utils.hpp" />
     <ClInclude Include="RecvBuffer.h" />
     <ClInclude Include="SendBuffer.h" />
+    <ClInclude Include="SerialManager.h" />
     <ClInclude Include="Service.h" />
     <ClInclude Include="Session.h" />
     <ClInclude Include="SingletonBase.h" />
@@ -193,7 +194,7 @@
     <ClCompile Include="FileUtil.cpp" />
     <ClCompile Include="GlobalGameBase.cpp" />
     <ClCompile Include="globalpch.cpp" />
-    <ClCompile Include="GUIDFactory.cpp" />
+    <ClCompile Include="SeqIDGenerator.cpp" />
     <ClCompile Include="IOCPCore.cpp" />
     <ClCompile Include="IOCPEvent.cpp" />
     <ClCompile Include="LibTestClass.cpp" />
@@ -210,6 +211,7 @@
     <ClCompile Include="ProtocolResultEnum.cpp" />
     <ClCompile Include="RecvBuffer.cpp" />
     <ClCompile Include="SendBuffer.cpp" />
+    <ClCompile Include="SerialManager.cpp" />
     <ClCompile Include="Service.cpp" />
     <ClCompile Include="Session.cpp" />
     <ClCompile Include="SocketUtils.cpp" />
