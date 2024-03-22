@@ -72,23 +72,23 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)Bin\$(Configuration)\</OutDir>
-    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)ThirdParty_Include\protobuf\;$(SolutionDir)ThirdParty_Include\OpenXLSX\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)ThirdParty_Include\protobuf\;$(SolutionDir)boost_1_84_0\;$(SolutionDir)ThirdParty_Include\OpenXLSX\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Libs;$(SolutionDir)boost_1_84_0\stage\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)Bin\$(Configuration)\</OutDir>
-    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)ThirdParty_Include\protobuf\;$(SolutionDir)ThirdParty_Include\OpenXLSX\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)ThirdParty_Include\protobuf\;$(SolutionDir)boost_1_84_0\;$(SolutionDir)ThirdParty_Include\OpenXLSX\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Libs;$(SolutionDir)boost_1_84_0\stage\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)Bin\$(Configuration)\</OutDir>
-    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)ThirdParty_Include\protobuf\;$(SolutionDir)ThirdParty_Include\OpenXLSX\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)ThirdParty_Include\protobuf\;$(SolutionDir)boost_1_84_0\;$(SolutionDir)ThirdParty_Include\OpenXLSX\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Libs;$(SolutionDir)boost_1_84_0\stage\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)Bin\$(Configuration)\</OutDir>
-    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)ThirdParty_Include\protobuf\;$(SolutionDir)ThirdParty_Include\OpenXLSX\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)ThirdParty_Include\protobuf\;$(SolutionDir)boost_1_84_0\;$(SolutionDir)ThirdParty_Include\OpenXLSX\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Libs;$(SolutionDir)boost_1_84_0\stage\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

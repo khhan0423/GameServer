@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "LogBase.h"
 #include "ServerPacketHandler.h"
 
 PacketHandlerFunc GPacketHandler[UINT16_MAX];

@@ -18,27 +18,35 @@ protected:
 		}
 		void Release()
 		{
-			struct delete_ptr { void operator() (SingletonBase* p) { delete p; } };
-			for_each(m_list.begin(), m_list.end(), delete_ptr());
-			
+			struct delete_ptr
+			{ 
+				void operator() (SingletonBase* p)
+				{
+					SAFE_DELETE(p); 
+				} 
+			};
+
+			for_each(m_list.begin(), m_list.end(), delete_ptr());			
 			{
-				lock_guard<mutex> _lock(m_lock);
-				m_list.clear();
+				{
+					lock_guard<mutex> _lock(m_lock);
+					m_list.clear();
+				}
 			}
 		}
-		void Add(SingletonBase* pSingleton)
+		void Add(SingletonBase* singletonPtr)
 		{
 			{
 				lock_guard<mutex> _lock(m_lock);
-				m_list.push_front(pSingleton);
+				m_list.push_front(singletonPtr);
 			}
 
 		}
-		void Erase(SingletonBase* pSingleton)
+		void Erase(SingletonBase* singletonPtr)
 		{
 			{
 				lock_guard<mutex> _lock(m_lock);
-				auto it = std::find(m_list.begin(), m_list.end(), pSingleton);
+				auto it = std::find(m_list.begin(), m_list.end(), singletonPtr);
 				if (it != m_list.end()) m_list.erase(it);
 			}
 		}
@@ -67,38 +75,38 @@ class TSingletonBase : public SingletonBase
 {
 
 protected:
-	static TYPE* _static_pInstance;
-	static mutex _static_lock;
+	static TYPE* m_Instance;
+	static mutex m_lock;
 
 protected:
 	TSingletonBase() {}
-	virtual ~TSingletonBase() { if (this == _static_pInstance) Delete(false); }
+	virtual ~TSingletonBase() { if (this == m_Instance) Delete(false); }
 
 public:
 	static TYPE* GetInstance()
 	{
-		if (_static_pInstance == nullptr)
+		if (m_Instance == nullptr)
 		{
-			lock_guard<mutex> _lock(_static_lock);
-			if (_static_pInstance == nullptr)
+			lock_guard<mutex> _lock(m_lock);
+			if (m_Instance == nullptr)
 			{
-				_static_pInstance = new TYPE;
-				SingletonBase::GetManager().Add(_static_pInstance);
+				m_Instance = new TYPE;
+				SingletonBase::GetManager().Add(m_Instance);
 			}
 		}
 
-		return _static_pInstance;
+		return m_Instance;
 	}
 	
 	static void Delete(bool deleteFlag = true)
 	{
-		if (_static_pInstance != nullptr)
+		if (m_Instance != nullptr)
 		{
-			lock_guard<mutex> _lock(_static_lock);
-			if (_static_pInstance != nullptr)
+			lock_guard<mutex> _lock(m_lock);
+			if (m_Instance != nullptr)
 			{
-				TYPE* _pInstance = _static_pInstance;
-				_static_pInstance = nullptr;
+				TYPE* _pInstance = m_Instance;
+				m_Instance = nullptr;
 				if (deleteFlag)
 				{
 					SingletonBase::GetManager().Erase(_pInstance);
@@ -114,7 +122,7 @@ private:
 };
 
 template<typename TYPE>
-TYPE* TSingletonBase<TYPE>::_static_pInstance;
+TYPE* TSingletonBase<TYPE>::m_Instance;
 
 template<typename TYPE>
-mutex TSingletonBase<TYPE>::_static_lock;
+mutex TSingletonBase<TYPE>::m_lock;

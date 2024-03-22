@@ -23,6 +23,7 @@
 
 class GameLog
 {
+
 private:
 	const int	MAX_LOG_COUNT = 100000;
 

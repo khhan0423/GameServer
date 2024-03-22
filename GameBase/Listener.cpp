@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "LogBase.h"
 #include "Listener.h"
 #include "SocketUtils.h"
 #include "Session.h"

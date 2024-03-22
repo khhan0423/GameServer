@@ -23,6 +23,7 @@ void GameLog::Init(const __int32 iLevel, const __int32 iOutput, const std::strin
 
 void GameLog::Log(const __int32 iLevel, const char* strFile, const __int32 iLine, const char* strFormat, ...)
 {
+#pragma  TODO ("C++ 스타일로 언젠가 변경할것")
 	{
 		lock_guard<mutex> _lock(m_Lock);
 

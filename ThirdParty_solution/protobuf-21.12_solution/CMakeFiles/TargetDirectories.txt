@@ -1,6 +1,0 @@
-C:/Kh_Kan_CPP_Works/protobuf-21.12_solution/CMakeFiles/libprotobuf-lite.dir
-C:/Kh_Kan_CPP_Works/protobuf-21.12_solution/CMakeFiles/libprotobuf.dir
-C:/Kh_Kan_CPP_Works/protobuf-21.12_solution/CMakeFiles/libprotoc.dir
-C:/Kh_Kan_CPP_Works/protobuf-21.12_solution/CMakeFiles/protoc.dir
-C:/Kh_Kan_CPP_Works/protobuf-21.12_solution/CMakeFiles/ALL_BUILD.dir
-C:/Kh_Kan_CPP_Works/protobuf-21.12_solution/CMakeFiles/ZERO_CHECK.dir

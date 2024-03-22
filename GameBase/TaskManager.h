@@ -1,6 +1,7 @@
 #pragma once
 
 #include "SingletonBase.h"
+#include "LogBase.h"
 
 class TaskManager
 {

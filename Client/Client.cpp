@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "LogBase.h"
 #include "GlobalGameBase.h"
 #include "ThreadManager.h"
 #include "Service.h"

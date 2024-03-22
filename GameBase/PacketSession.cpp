@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "LogBase.h"
 #include "PacketSession.h"
 
 PacketSession::PacketSession()

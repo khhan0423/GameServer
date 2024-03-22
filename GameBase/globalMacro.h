@@ -1,39 +1,26 @@
 #pragma once
+
 #define OUT
 #define IN
 
-#define USING_DEFAULT_ASSERT
 
-#ifdef USING_DEFAULT_ASSERT
+//__COUNTER__ 컴파일시마다 유니크한 정수값 제공
+//_T 유니코드일때는 L로 치환되어 wide string 이라는 의미로 쓰인다. 멀티바이트일때는 무시 된다.
+//__FILE__ 소스 파일 이름
+//__LINE__ 소스 파일 라인
+//## 연결 a##b -> ab
+//#pragma message  컴파일타임에 IDE 출력창에 메시지 전달.
+
 #include <assert.h>
 #ifndef _DEBUG
 #define ASSERT_REPORT(exp, msg)
 #else
 #define ASSERT_REPORT(exp, msg) _wassert(_CRT_WIDE(#exp), _CRT_WIDE(__FILE__), __LINE__)
 #endif
-#else
-#include <assert.h>
-#ifndef _DEBUG
-#define ASSERT_REPORT(exp, msg)																		\
-		{																									\
-			ErrorLog("[%s] %S", __FUNCTION__, msg);															\
-		}
-#else
-#define ASSERT_REPORT(exp, msg)																		\
-		{																									\
-			_wassert(_CRT_WIDE(#exp), _CRT_WIDE(__FILE__), __LINE__);										\
-			ErrorLog("[%s] %S", __FUNCTION__, msg);															\
-		}
-#endif
-#endif //#ifdef USING_DEFAULT_ASSERT
 
 #define MAKE_PAIR(a, b)											a##b
 #define MAKE_UNIQUE_VALUE(c)									MAKE_PAIR(__unique_value, c)
 #define MAKE_TEMP_VALUE											MAKE_UNIQUE_VALUE(__COUNTER__)
-
-#ifdef ASSERT
-#undef ASSERT
-#endif
 
 #ifndef _DEBUG
 #define ASSERT(exp)
@@ -41,10 +28,6 @@
 #else
 #define ASSERT(exp)												{ if(!(exp)) { ASSERT_REPORT(exp, _T(#exp)); } }
 #define ASSERT_MSG(exp, msg)									{ if(!(exp)) { ASSERT_REPORT(exp, _T(#exp)##msg); } }
-#endif
-
-#ifdef VERIFY
-#undef VERIFY
 #endif
 
 #define VERIFY(exp)												{ if(!(exp)) { ASSERT_REPORT(exp, _T(#exp)); } }
@@ -107,12 +90,9 @@
 #define SAFE_CLOSE(p) { if(p != INVALID_HANDLE_VALUE) { CloseHandle(p); (p) = INVALID_HANDLE_VALUE; } }
 #endif
 
-
-#define CHECK_DBVALUE(exp) { if(!(exp)) { ErrorLog("DBError[%s] : %s", __FUNCTION__, #exp); m_Result = Protocol_DBError; return; } }
-#define CHECK_DBVALUE_RETURN_FALSE(exp) { if(!(exp)) { ErrorLog("DBError[%s] : %s", __FUNCTION__, #exp); m_Result = Protocol_DBError; return false; } }
-
 //TODO 매크로
 //사용법 : #pagma TODO("이곳에 앞으로 해야 할 목록을 작성하면 컴파일시에 출력창을 통해 출력이 된다")
+//#pragma message 기능을 확장
 #ifndef _QUOTE
 #define _QUOTE(x) # x
 #endif

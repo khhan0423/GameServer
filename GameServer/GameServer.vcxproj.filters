@@ -31,6 +31,9 @@
     <Filter Include="DataBase\Interface">
       <UniqueIdentifier>{85c6b28c-afeb-48a2-ab0c-81da994ed602}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TABLE">
+      <UniqueIdentifier>{f610a08e-578b-4f3b-81a6-2ea5bbbffcc4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -72,6 +75,12 @@
     <ClCompile Include="SQLiteQuery.cpp">
       <Filter>DataBase\SQLITE</Filter>
     </ClCompile>
+    <ClCompile Include="ItemTable.cpp">
+      <Filter>TABLE</Filter>
+    </ClCompile>
+    <ClCompile Include="TableReader.cpp">
+      <Filter>TABLE</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -109,6 +118,12 @@
     </ClInclude>
     <ClInclude Include="SQLiteQuery.h">
       <Filter>DataBase\SQLITE</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemTable.h">
+      <Filter>TABLE</Filter>
+    </ClInclude>
+    <ClInclude Include="TableReader.h">
+      <Filter>TABLE</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

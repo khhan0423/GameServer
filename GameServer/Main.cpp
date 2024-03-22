@@ -11,7 +11,7 @@ void  MainThreadFunc()
 	while (true)
 	{
 		GetDBManager()->Update();
-		this_thread::yield();
+		this_thread::sleep_for(chrono::microseconds(1));
 	}
 }
 

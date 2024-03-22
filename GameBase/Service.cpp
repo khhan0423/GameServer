@@ -1,4 +1,5 @@
 #include "pch.h"
+#include "LogBase.h"
 #include "Service.h"
 
 Service::Service(ServiceType type, NetAddress address, shared_ptr<IocpCore> core, SessionFactory factory, __int32 maxSessionCount)

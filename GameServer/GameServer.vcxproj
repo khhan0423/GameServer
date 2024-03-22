@@ -72,23 +72,23 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)Bin\$(Configuration)\</OutDir>
-    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)ThirdParty_Include\protobuf\;$(SolutionDir)ThirdParty_Include\OpenXLSX\;$(SolutionDir)ThirdParty_Include\sqlite3\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)boost_1_84_0\;$(SolutionDir)ThirdParty_Include\protobuf\;$(SolutionDir)ThirdParty_Include\OpenXLSX\;$(SolutionDir)ThirdParty_Include\sqlite3\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Libs;$(SolutionDir)boost_1_84_0\stage\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)Bin\$(Configuration)\</OutDir>
-    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)ThirdParty_Include\protobuf\;$(SolutionDir)ThirdParty_Include\OpenXLSX\;$(SolutionDir)ThirdParty_Include\sqlite3\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)boost_1_84_0\;$(SolutionDir)ThirdParty_Include\protobuf\;$(SolutionDir)ThirdParty_Include\OpenXLSX\;$(SolutionDir)ThirdParty_Include\sqlite3\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Libs;$(SolutionDir)boost_1_84_0\stage\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)Bin\$(Configuration)\</OutDir>
-    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)ThirdParty_Include\protobuf\;$(SolutionDir)ThirdParty_Include\OpenXLSX\;$(SolutionDir)ThirdParty_Include\sqlite3\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)boost_1_84_0\;$(SolutionDir)ThirdParty_Include\protobuf\;$(SolutionDir)ThirdParty_Include\OpenXLSX\;$(SolutionDir)ThirdParty_Include\sqlite3\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Libs;$(SolutionDir)boost_1_84_0\stage\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)Bin\$(Configuration)\</OutDir>
-    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)ThirdParty_Include\protobuf\;$(SolutionDir)ThirdParty_Include\OpenXLSX\;$(SolutionDir)ThirdParty_Include\sqlite3\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)boost_1_84_0\;$(SolutionDir)ThirdParty_Include\protobuf\;$(SolutionDir)ThirdParty_Include\OpenXLSX\;$(SolutionDir)ThirdParty_Include\sqlite3\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Libs;$(SolutionDir)boost_1_84_0\stage\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -161,6 +161,7 @@
   <ItemGroup>
     <ClCompile Include="ClientPacketHandler.cpp" />
     <ClCompile Include="DataBaseBase.cpp" />
+    <ClCompile Include="ItemTable.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="GameServerSystem.cpp" />
     <ClCompile Include="GameSession.cpp" />
@@ -177,6 +178,7 @@
     <ClCompile Include="SQLiteAgent.cpp" />
     <ClCompile Include="SQLiteManager.cpp" />
     <ClCompile Include="SQLiteQuery.cpp" />
+    <ClCompile Include="TableReader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ClientPacketHandler.h" />
@@ -184,6 +186,7 @@
     <ClInclude Include="GameServerSystem.h" />
     <ClInclude Include="GameSession.h" />
     <ClInclude Include="GameSessionManager.h" />
+    <ClInclude Include="ItemTable.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Room.h" />
@@ -191,6 +194,7 @@
     <ClInclude Include="SQLiteAgent.h" />
     <ClInclude Include="SQLiteManager.h" />
     <ClInclude Include="SQLiteQuery.h" />
+    <ClInclude Include="TableReader.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="프로토콜시퀀스설계노트.txt" />

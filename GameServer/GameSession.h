@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include "LogBase.h"
 #include "PacketSession.h"
 #include "Player.h"
 #include "Room.h"
