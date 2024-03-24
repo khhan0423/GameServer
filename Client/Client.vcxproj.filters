@@ -27,6 +27,19 @@
     <ClCompile Include="ServerPacketHandler.cpp">
       <Filter>Main\PacketHandler</Filter>
     </ClCompile>
+    <ClCompile Include="Test.cpp" />
+    <ClCompile Include="Protocol\ProtocolClientToServer.pb.cc">
+      <Filter>Protocol</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocol\ProtocolClientToServerEnum.pb.cc">
+      <Filter>Protocol</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocol\ProtocolServerToClient.pb.cc">
+      <Filter>Protocol</Filter>
+    </ClCompile>
+    <ClCompile Include="Protocol\ProtocolServerToClientEnum.pb.cc">
+      <Filter>Protocol</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -35,5 +48,32 @@
     <ClInclude Include="ServerPacketHandler.h">
       <Filter>Main\PacketHandler</Filter>
     </ClInclude>
+    <ClInclude Include="Test.h" />
+    <ClInclude Include="Protocol\ProtocolClientToServer.pb.h">
+      <Filter>Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\ProtocolClientToServerEnum.pb.h">
+      <Filter>Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\ProtocolServerToClient.pb.h">
+      <Filter>Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="Protocol\ProtocolServerToClientEnum.pb.h">
+      <Filter>Protocol</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Protocol\ProtocolClientToServer.proto">
+      <Filter>Protocol</Filter>
+    </None>
+    <None Include="Protocol\ProtocolClientToServerEnum.proto">
+      <Filter>Protocol</Filter>
+    </None>
+    <None Include="Protocol\ProtocolServerToClient.proto">
+      <Filter>Protocol</Filter>
+    </None>
+    <None Include="Protocol\ProtocolServerToClientEnum.proto">
+      <Filter>Protocol</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -6,6 +6,8 @@
 #include "Session.h"
 #include "SocketUtils.h"
 #include "ServerPacketHandler.h"
+#include "Protocol/ProtocolClientToServer.pb.h"
+
 
 class ServerSession : public PacketSession
 {
@@ -18,6 +20,10 @@ public:
 	virtual void OnConnected() override
 	{
 		DebugLog("[%s]", __FUNCTION__);
+		//ProtocolServerToClient::ResultLogin -> server
+		ProtocolClientToServer::RequestLogin _ReqLogin;
+		auto _sendBuffer = ServerPacketHandler::MakeSendBuffer(_ReqLogin);
+		Send(_sendBuffer);
 	}
 
 	virtual void OnRecvPacket(unsigned char* buffer, __int32 len) override

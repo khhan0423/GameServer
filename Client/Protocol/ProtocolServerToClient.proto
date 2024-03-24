@@ -1,0 +1,8 @@
+syntax = "proto3";
+import "ProtocolServerToClientEnum.proto";
+package ProtocolServerToClient;
+message ResultLogin
+{
+	bool 	m_success = 1;
+	int32 	m_playerCount = 2;
+}

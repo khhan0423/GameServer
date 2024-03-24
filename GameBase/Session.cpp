@@ -26,8 +26,11 @@ void Session::Send(shared_ptr<SendBuffer> sendBuffer)
 		m_sendQueue.push(sendBuffer);
 
 		if (m_sendRegistered.exchange(true) == false)
-			RegisterSend();
+			m_sendRegistered = true;			
 	}
+
+	if (m_sendRegistered == true)
+		RegisterSend();
 }
 
 bool Session::Connect()

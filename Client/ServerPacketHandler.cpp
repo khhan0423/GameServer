@@ -11,3 +11,11 @@ bool Handle_INVALID(shared_ptr<PacketSession>& session, unsigned char* buffer, _
 	// TODO : Log
 	return false;
 }
+
+bool Handle_ResultLogin(shared_ptr<PacketSession>& session, ProtocolServerToClient::ResultLogin& pkt)
+{
+
+	return true;
+}
+
+

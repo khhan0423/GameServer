@@ -5,7 +5,6 @@
 // 여기에 자주 업데이트할 파일을 추가하지 마세요. 그러면 성능이 저하됩니다.
 
 #pragma once
-
-#define WIN32_LEAN_AND_MEAN             // 거의 사용되지 않는 내용을 Windows 헤더에서 제외합니다.
-
+#pragma warning( disable : 4251 )
+#define WIN32_LEAN_AND_MEAN				// 거의 사용되지 않는 내용을 Windows 헤더에서 제외합니다.
 #include "globalpch.h"

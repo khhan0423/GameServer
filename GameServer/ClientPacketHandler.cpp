@@ -11,3 +11,9 @@ bool Handle_INVALID(shared_ptr<PacketSession>& session, unsigned char* buffer, _
 	// TODO : Log
 	return false;
 }
+
+bool Handle_RequestLogin(shared_ptr<PacketSession>& session, ProtocolClientToServer::RequestLogin& pkt)
+{
+	DebugLog("[%s]", __FUNCTION__);
+	return true;
+}

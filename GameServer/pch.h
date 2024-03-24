@@ -7,7 +7,7 @@
 #pragma once
 
 #define WIN32_LEAN_AND_MEAN             // 거의 사용되지 않는 내용을 Windows 헤더에서 제외합니다.
-
+#pragma warning( disable : 4251 )			 //프로토버퍼 최신버전 빌드 시, static 라이블러리사용하지 말라고 경고 일단 끈다.
 #include "globalpch.h"
 
 #ifdef _DEBUG

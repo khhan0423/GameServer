@@ -1,0 +1,7 @@
+syntax = "proto3";
+package ProtocolClientToServer;
+enum PacketType
+{	
+	eDefault = 0;
+	eREQUEST_LOGIN = 2000;
+}

@@ -72,22 +72,22 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)Bin\$(Configuration)\</OutDir>
-    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)ThirdParty_Include\protobuf\;$(SolutionDir)boost_1_84_0\;$(SolutionDir)ThirdParty_Include\OpenXLSX\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)boost_1_84_0\;$(SolutionDir)ThirdParty_Include\protobuf\;$(SolutionDir)ThirdParty_Include\OpenXLSX\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Libs;$(SolutionDir)boost_1_84_0\stage\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)Bin\$(Configuration)\</OutDir>
-    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)ThirdParty_Include\protobuf\;$(SolutionDir)boost_1_84_0\;$(SolutionDir)ThirdParty_Include\OpenXLSX\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)boost_1_84_0\;$(SolutionDir)ThirdParty_Include\protobuf\;$(SolutionDir)ThirdParty_Include\OpenXLSX\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Libs;$(SolutionDir)boost_1_84_0\stage\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)Bin\$(Configuration)\</OutDir>
-    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)ThirdParty_Include\protobuf\;$(SolutionDir)boost_1_84_0\;$(SolutionDir)ThirdParty_Include\OpenXLSX\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)boost_1_84_0\;$(SolutionDir)ThirdParty_Include\protobuf\;$(SolutionDir)ThirdParty_Include\OpenXLSX\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Libs;$(SolutionDir)boost_1_84_0\stage\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)Bin\$(Configuration)\</OutDir>
-    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)ThirdParty_Include\protobuf\;$(SolutionDir)boost_1_84_0\;$(SolutionDir)ThirdParty_Include\OpenXLSX\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)GameBase\;$(SolutionDir)boost_1_84_0\;$(SolutionDir)ThirdParty_Include\protobuf\;$(SolutionDir)ThirdParty_Include\OpenXLSX\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Libs;$(SolutionDir)boost_1_84_0\stage\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -98,7 +98,8 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <DisableSpecificWarnings>4251</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -115,7 +116,8 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <DisableSpecificWarnings>4251</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -132,7 +134,8 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <DisableSpecificWarnings>4251</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -149,7 +152,8 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <DisableSpecificWarnings>4251</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -166,11 +170,47 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Protocol\ProtocolClientToServer.pb.cc">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Protocol\ProtocolClientToServerEnum.pb.cc">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Protocol\ProtocolServerToClient.pb.cc">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Protocol\ProtocolServerToClientEnum.pb.cc">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="ServerPacketHandler.cpp" />
+    <ClCompile Include="Test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Protocol\ProtocolClientToServer.pb.h" />
+    <ClInclude Include="Protocol\ProtocolClientToServerEnum.pb.h" />
+    <ClInclude Include="Protocol\ProtocolServerToClient.pb.h" />
+    <ClInclude Include="Protocol\ProtocolServerToClientEnum.pb.h" />
     <ClInclude Include="ServerPacketHandler.h" />
+    <ClInclude Include="Test.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Protocol\ProtocolClientToServer.proto" />
+    <None Include="Protocol\ProtocolClientToServerEnum.proto" />
+    <None Include="Protocol\ProtocolServerToClient.proto" />
+    <None Include="Protocol\ProtocolServerToClientEnum.proto" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
