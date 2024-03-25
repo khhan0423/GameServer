@@ -170,6 +170,7 @@
     <ClCompile Include="ClientPacketHandler.cpp" />
     <ClCompile Include="DataBaseBase.cpp" />
     <ClCompile Include="ItemTable.cpp" />
+    <ClCompile Include="LoginProcess.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="GameServerSystem.cpp" />
     <ClCompile Include="GameSession.cpp" />
@@ -219,6 +220,7 @@
     <ClInclude Include="GameSession.h" />
     <ClInclude Include="GameSessionManager.h" />
     <ClInclude Include="ItemTable.h" />
+    <ClInclude Include="LoginProcess.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Protocol\ProtocolClientToServer.pb.h" />

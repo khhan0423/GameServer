@@ -34,6 +34,12 @@
     <Filter Include="TABLE">
       <UniqueIdentifier>{f610a08e-578b-4f3b-81a6-2ea5bbbffcc4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="DataBase\SQLITE\QUERY">
+      <UniqueIdentifier>{0e90839f-5afc-40ee-92f9-c4b0182027a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DataBase\SQLITE\Core">
+      <UniqueIdentifier>{c8e16bdf-fd84-4a12-8818-031e18d0bd72}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -60,20 +66,8 @@
     <ClCompile Include="GameServerSystem.cpp">
       <Filter>Main</Filter>
     </ClCompile>
-    <ClCompile Include="SQLiteConnet.cpp">
-      <Filter>DataBase\SQLITE</Filter>
-    </ClCompile>
     <ClCompile Include="DataBaseBase.cpp">
       <Filter>DataBase\Interface</Filter>
-    </ClCompile>
-    <ClCompile Include="SQLiteAgent.cpp">
-      <Filter>DataBase\SQLITE</Filter>
-    </ClCompile>
-    <ClCompile Include="SQLiteManager.cpp">
-      <Filter>DataBase\SQLITE</Filter>
-    </ClCompile>
-    <ClCompile Include="SQLiteQuery.cpp">
-      <Filter>DataBase\SQLITE</Filter>
     </ClCompile>
     <ClCompile Include="ItemTable.cpp">
       <Filter>TABLE</Filter>
@@ -92,6 +86,21 @@
     </ClCompile>
     <ClCompile Include="Protocol\ProtocolServerToClientEnum.pb.cc">
       <Filter>Protocol</Filter>
+    </ClCompile>
+    <ClCompile Include="LoginProcess.cpp">
+      <Filter>DataBase\SQLITE\QUERY</Filter>
+    </ClCompile>
+    <ClCompile Include="SQLiteAgent.cpp">
+      <Filter>DataBase\SQLITE\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="SQLiteConnet.cpp">
+      <Filter>DataBase\SQLITE\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="SQLiteManager.cpp">
+      <Filter>DataBase\SQLITE\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="SQLiteQuery.cpp">
+      <Filter>DataBase\SQLITE\Core</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -116,20 +125,8 @@
     <ClInclude Include="GameServerSystem.h">
       <Filter>Main</Filter>
     </ClInclude>
-    <ClInclude Include="SQLiteConnet.h">
-      <Filter>DataBase\SQLITE</Filter>
-    </ClInclude>
     <ClInclude Include="DataBaseBase.h">
       <Filter>DataBase\Interface</Filter>
-    </ClInclude>
-    <ClInclude Include="SQLiteAgent.h">
-      <Filter>DataBase\SQLITE</Filter>
-    </ClInclude>
-    <ClInclude Include="SQLiteManager.h">
-      <Filter>DataBase\SQLITE</Filter>
-    </ClInclude>
-    <ClInclude Include="SQLiteQuery.h">
-      <Filter>DataBase\SQLITE</Filter>
     </ClInclude>
     <ClInclude Include="ItemTable.h">
       <Filter>TABLE</Filter>
@@ -148,6 +145,21 @@
     </ClInclude>
     <ClInclude Include="Protocol\ProtocolServerToClientEnum.pb.h">
       <Filter>Protocol</Filter>
+    </ClInclude>
+    <ClInclude Include="LoginProcess.h">
+      <Filter>DataBase\SQLITE\QUERY</Filter>
+    </ClInclude>
+    <ClInclude Include="SQLiteAgent.h">
+      <Filter>DataBase\SQLITE\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="SQLiteConnet.h">
+      <Filter>DataBase\SQLITE\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="SQLiteManager.h">
+      <Filter>DataBase\SQLITE\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="SQLiteQuery.h">
+      <Filter>DataBase\SQLITE\Core</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

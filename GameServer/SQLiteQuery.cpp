@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "SQLiteQuery.h"
 #include "SQLiteAgent.h"
+#include "Player.h"
+#include "StringUtil.h"
 
 using namespace DataBase;
 using namespace DataBase::SQLite3;
@@ -46,15 +48,11 @@ void SQLiteQueryBase::AddParam(const string input)
 	m_Params.push_back(make_pair(eTEXT, input));
 }
 
-bool SQLiteQueryBase::Prepare()
+void SQLiteQueryBase::Prepare()
 {
-	int ret = sqlite3_prepare_v2(m_db, m_sql.c_str(), -1, &m_res, 0);
-	if (ret != SQLITE_OK)
-	{
-		ErrorLog("[%s] - Failed Prepare return Val : %d", __FUNCTION__, ret);
-		return false;
-	}
-	return true;
+	//sqlite3_prepare_v2 에서 이미, 쿼리가 실행된다고 볼 수 있음.
+	//SQLITE_OK 일때, m_res 핸들을 통하여, 결과값을 핸들링 할 수 있게 제공.
+	m_excuteResult = sqlite3_prepare_v2(m_db, m_sql.c_str(), -1, &m_res, 0);
 }
 void SQLiteQueryBase::Bind()
 {
@@ -92,26 +90,30 @@ void SQLiteQueryBase::Excute(SQLiteDBAgent* agent)
 
 	Prepare();
 
+	if (m_res == nullptr)
+	{
+		ErrorLog("[%s] - Fail prepare", __FUNCTION__);
+		return;
+	}
+
 	Bind();
 
 	m_commandResult = Fetch();
 
 	if (m_commandResult != SQLITE_DONE)
 	{
-		ErrorLog("[%s] - Failed Excute retrn Val : %d", __FUNCTION__, m_commandResult);
+		ErrorLog("[%s] - Failed Fetch retrn Val : %d", __FUNCTION__, m_commandResult);
 	}
-	return;
-
-	Complete();
+	return;	
 }
 
 int SQLiteQueryBase::Fetch()
 {
 	int step = sqlite3_step(m_res);
 
-	vector<string> outCul;
 	while (step == SQLITE_ROW)
 	{
+		vector<string> outCul;
 		const int _columnCnt = sqlite3_data_count(m_res);
 		for (int i = 0; i < _columnCnt; i++)
 		{
@@ -140,9 +142,14 @@ void SQLiteQueryBase::SetDBHandle(sqlite3* dbHandle)
 	m_db = dbHandle;
 }
 
-__int32 SQLiteQueryBase::GetCommandResult()
+__int32 SQLiteQueryBase::IsValid()
 {
-	return m_commandResult;
+	return m_excuteResult;
+}
+
+__int32 SQLiteQueryBase::GetResultCount()
+{
+	return static_cast<__int32>(m_Result.size());
 }
 
 void SQLiteQueryBase::SetSycnFlag()
@@ -153,4 +160,9 @@ void SQLiteQueryBase::SetSycnFlag()
 bool SQLiteQueryBase::IsSyncQuery()
 {
 	return m_isSyncQuery;
+}
+
+void SQLiteQueryBase::SetSession(shared_ptr<PacketSession> sessionShared)
+{
+	m_SessionShared = sessionShared;
 }

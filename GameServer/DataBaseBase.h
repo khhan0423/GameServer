@@ -1,5 +1,5 @@
 #pragma once
-
+#include "LogBase.h"
 namespace DataBase
 {
 #define MAX_BUSY_WAIT_TIME 1
@@ -61,7 +61,7 @@ namespace DataBase
 			{
 				{
 					lock_guard<mutex> _lock(m_lock);
-					QueryBase* q = NULL;
+					QueryBase* q = nullptr;
 					if (!m_queue.empty())
 					{
 						q = m_queue.front();
@@ -72,7 +72,7 @@ namespace DataBase
 			}
 
 		private:
-			mutex				m_lock;
+			mutable mutex		m_lock;
 			queue<QueryBase*>	m_queue;
 		};
 
@@ -86,9 +86,6 @@ namespace DataBase
 
 	public:
 		void PushQuery(QueryBase* q) { m_QueueWait.Push(q); }
-
-	public:
-		virtual bool SyncQuery(QueryBase* /*Query*/) { return true; };
 
 	protected:
 		QueryQueue				m_QueueWait;

@@ -15,7 +15,7 @@ class SQLiteDBAgent : public DBAgentInterface<SQLiteQueryBase, SQLiteConnector>
 	//그곳에서 쿼리를 실제로 처리하게 만들어야함.
 
 public:
-	SQLiteDBAgent() {}
+	SQLiteDBAgent();
 	~SQLiteDBAgent();
 
 	//인터페이스 구현
@@ -38,11 +38,14 @@ private:
 		while (true)
 		{
 			if (pThis->m_isReady == false)
-				break;
+				continue;
+
+			if (pThis->m_QueueWait.IsEmpty() == true)
+				continue;
 
 			SQLiteQueryBase* pQuery = pThis->m_QueueWait.Pop();
 			if (pQuery == nullptr)
-				break;
+				continue;
 
 			pQuery->Excute(pThis);
 

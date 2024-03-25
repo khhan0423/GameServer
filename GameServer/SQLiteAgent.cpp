@@ -1,6 +1,10 @@
 #include "pch.h"
 #include "SQLiteAgent.h"
 
+SQLiteDBAgent::SQLiteDBAgent()
+{
+	m_thread = thread(ThreadFunc, reinterpret_cast<void*>(this));
+}
 
 SQLiteDBAgent::~SQLiteDBAgent()
 {
@@ -13,12 +17,16 @@ void SQLiteDBAgent::Update()
 	while (true)
 	{
 		//DBManater 에서 Main Thread 에서 에이전트별로 순회하며 호출되는 부분
+
+		if (m_QueueComplete.IsEmpty() == true)
+			continue;
+
 		SQLiteQueryBase* _query = m_QueueComplete.Pop();
 		if (_query == nullptr)
 			break;
-
+		
 		_query->Complete();
-
+		
 		SAFE_DELETE(_query);
 	}
 }
@@ -36,9 +44,6 @@ bool SQLiteDBAgent::Init(const string DBName)
 		m_DataBase.InitDBName(DBName);
 		return (m_DataBase.Open());
 	}
-
-	m_thread = thread(ThreadFunc, reinterpret_cast<void*>(this));
-
 	return true;
 }
 

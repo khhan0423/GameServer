@@ -8,7 +8,7 @@
 #include "StringUtil.h"
 
 class SQLiteDBAgent;
-
+class PacketSession;
 namespace DataBase
 {
 	namespace SQLite3
@@ -37,7 +37,7 @@ namespace DataBase
 			void								AddParam(const char* input);
 			void								AddParam(const string input);
 		public:
-			bool								Prepare();
+			void								Prepare();
 			void								Bind();
 			void								RegistSQLiteParam(const SQPLITE_TYPE type, const string str, const int cnt);
 
@@ -46,21 +46,30 @@ namespace DataBase
 			void								GetValue(const __int32 pos, OUT vector<string>& outCul);
 
 			void								SetDBHandle(sqlite3* dbHandle);
-			__int32								GetCommandResult();
+			__int32								IsValid();
+			__int32								GetResultCount();
 			void								SetSycnFlag();
 			bool								IsSyncQuery();
 
 			virtual void						Complete() abstract {}
 
 		public:
+			void SetSession(shared_ptr<PacketSession> sessionShared);
+			shared_ptr<PacketSession> GetSession() { return m_SessionShared.lock(); }
+
+		public:
 			string								m_sql;
+			vector<vector<string>>				m_Result;
 		private:
 			atomic<bool>						m_isSyncQuery = false;
+			__int32								m_excuteResult = SQLITE_OK;
 			__int32								m_commandResult = SQLITE_ERROR;
-			vector<pair<SQPLITE_TYPE, string>>	m_Params;
-			vector<vector<string>>				m_Result;
+			vector<pair<SQPLITE_TYPE, string>>	m_Params;			
 			sqlite3_stmt*						m_res = nullptr;
 			sqlite3*							m_db = nullptr;
+
+		private:
+			weak_ptr<PacketSession>				m_SessionShared;
 		};
 	}
 }
