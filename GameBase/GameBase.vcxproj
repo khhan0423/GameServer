@@ -167,14 +167,12 @@
     <ClInclude Include="SeqIDGenerator.h" />
     <ClInclude Include="IOCPCore.h" />
     <ClInclude Include="IOCPEvent.h" />
-    <ClInclude Include="LibTestClass.h" />
     <ClInclude Include="Listener.h" />
     <ClInclude Include="LockQueueBase.h" />
     <ClInclude Include="LogBase.h" />
     <ClInclude Include="NetAddress.h" />
     <ClInclude Include="PacketSession.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="ProtocolResultEnum.h" />
     <ClInclude Include="rapidxml.hpp" />
     <ClInclude Include="rapidxml_iterators.hpp" />
     <ClInclude Include="rapidxml_print.hpp" />
@@ -202,7 +200,6 @@
     <ClCompile Include="SeqIDGenerator.cpp" />
     <ClCompile Include="IOCPCore.cpp" />
     <ClCompile Include="IOCPEvent.cpp" />
-    <ClCompile Include="LibTestClass.cpp" />
     <ClCompile Include="Listener.cpp" />
     <ClCompile Include="LogBase.cpp" />
     <ClCompile Include="NetAddress.cpp" />
@@ -213,7 +210,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="ProtocolResultEnum.cpp" />
     <ClCompile Include="RecvBuffer.cpp" />
     <ClCompile Include="SendBuffer.cpp" />
     <ClCompile Include="SerialManager.cpp" />

@@ -54,9 +54,6 @@
     <ClInclude Include="pch.h">
       <Filter>Def</Filter>
     </ClInclude>
-    <ClInclude Include="LibTestClass.h">
-      <Filter>Main</Filter>
-    </ClInclude>
     <ClInclude Include="NetAddress.h">
       <Filter>Netwotk</Filter>
     </ClInclude>
@@ -111,9 +108,6 @@
     <ClInclude Include="LogBase.h">
       <Filter>Util</Filter>
     </ClInclude>
-    <ClInclude Include="ProtocolResultEnum.h">
-      <Filter>Def\Enums</Filter>
-    </ClInclude>
     <ClInclude Include="globalMacro.h">
       <Filter>Def\Macro</Filter>
     </ClInclude>
@@ -158,9 +152,6 @@
     </ClCompile>
     <ClCompile Include="globalpch.cpp">
       <Filter>Def</Filter>
-    </ClCompile>
-    <ClCompile Include="LibTestClass.cpp">
-      <Filter>Main</Filter>
     </ClCompile>
     <ClCompile Include="NetAddress.cpp">
       <Filter>Netwotk</Filter>
@@ -209,9 +200,6 @@
     </ClCompile>
     <ClCompile Include="LogBase.cpp">
       <Filter>Util</Filter>
-    </ClCompile>
-    <ClCompile Include="ProtocolResultEnum.cpp">
-      <Filter>Def\Enums</Filter>
     </ClCompile>
     <ClCompile Include="TLSDef.cpp">
       <Filter>Def\TLS</Filter>

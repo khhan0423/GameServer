@@ -15,13 +15,13 @@ NetAddress::NetAddress(wstring ip, unsigned __int16 port)
 
 wstring NetAddress::GetIpAddress()
 {
-	WCHAR m_buffer[100];
+	wchar_t m_buffer[100];
 	//wide char : not 1 byte -> buf len is (sizeof(buffer) / sizeof(buffer[0]) 
 	::InetNtopW(AF_INET, &m_sockAddr.sin_addr, m_buffer, (sizeof(m_buffer) / sizeof(m_buffer[0])));
 	return wstring(m_buffer);
 }
 
-IN_ADDR NetAddress::IpToAddress(const WCHAR* ip)
+IN_ADDR NetAddress::IpToAddress(const wchar_t* ip)
 {
 	IN_ADDR _address;
 	::InetPtonW(AF_INET, ip, &_address);

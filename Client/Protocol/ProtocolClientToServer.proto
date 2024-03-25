@@ -3,6 +3,5 @@ import "ProtocolClientToServerEnum.proto";
 package ProtocolClientToServer;
 message RequestLogin
 {
-	bool 	m_success = 1;
-	int32 	m_playerCount = 2;
+	string m_accountID = 1;
 }

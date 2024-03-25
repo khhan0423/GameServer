@@ -9,7 +9,7 @@
 
 _locale_t kr = _create_locale(LC_NUMERIC, "kor");
 
-bool XmlNode::GetBoolAttr(const WCHAR* key, bool defaultValue)
+bool XmlNode::GetBoolAttr(const wchar_t* key, bool defaultValue)
 {
 	XmlAttributeType* attr = _node->first_attribute(key);
 	if (attr)
@@ -18,7 +18,7 @@ bool XmlNode::GetBoolAttr(const WCHAR* key, bool defaultValue)
 	return defaultValue;
 }
 
-__int8 XmlNode::GetInt8Attr(const WCHAR* key, __int8 defaultValue)
+__int8 XmlNode::GetInt8Attr(const wchar_t* key, __int8 defaultValue)
 {
 	XmlAttributeType* attr = _node->first_attribute(key);
 	if (attr)
@@ -27,7 +27,7 @@ __int8 XmlNode::GetInt8Attr(const WCHAR* key, __int8 defaultValue)
 	return defaultValue;
 }
 
-__int16 XmlNode::GetInt16Attr(const WCHAR* key, __int16 defaultValue)
+__int16 XmlNode::GetInt16Attr(const wchar_t* key, __int16 defaultValue)
 {
 	XmlAttributeType* attr = _node->first_attribute(key);
 	if (attr)
@@ -36,7 +36,7 @@ __int16 XmlNode::GetInt16Attr(const WCHAR* key, __int16 defaultValue)
 	return defaultValue;
 }
 
-__int32 XmlNode::GetInt32Attr(const WCHAR* key, __int32 defaultValue)
+__int32 XmlNode::GetInt32Attr(const wchar_t* key, __int32 defaultValue)
 {
 	XmlAttributeType* attr = _node->first_attribute(key);
 	if (attr)
@@ -45,16 +45,16 @@ __int32 XmlNode::GetInt32Attr(const WCHAR* key, __int32 defaultValue)
 	return defaultValue;
 }
 
-__int64 XmlNode::GetInt64Attr(const WCHAR* key, __int64 defaultValue)
+__int64 XmlNode::GetInt64Attr(const wchar_t* key, __int64 defaultValue)
 {
-	xml_attribute<WCHAR>* attr = _node->first_attribute(key);
+	xml_attribute<wchar_t>* attr = _node->first_attribute(key);
 	if (attr)
 		return ::_wtoi64(attr->value());
 
 	return defaultValue;
 }
 
-float XmlNode::GetFloatAttr(const WCHAR* key, float defaultValue)
+float XmlNode::GetFloatAttr(const wchar_t* key, float defaultValue)
 {
 	XmlAttributeType* attr = _node->first_attribute(key);
 	if (attr)
@@ -63,7 +63,7 @@ float XmlNode::GetFloatAttr(const WCHAR* key, float defaultValue)
 	return defaultValue;
 }
 
-double XmlNode::GetDoubleAttr(const WCHAR* key, double defaultValue)
+double XmlNode::GetDoubleAttr(const wchar_t* key, double defaultValue)
 {
 	XmlAttributeType* attr = _node->first_attribute(key);
 	if (attr)
@@ -72,7 +72,7 @@ double XmlNode::GetDoubleAttr(const WCHAR* key, double defaultValue)
 	return defaultValue;
 }
 
-const WCHAR* XmlNode::GetStringAttr(const WCHAR* key, const WCHAR* defaultValue)
+const wchar_t* XmlNode::GetStringAttr(const wchar_t* key, const wchar_t* defaultValue)
 {
 	XmlAttributeType* attr = _node->first_attribute(key);
 	if (attr)
@@ -83,7 +83,7 @@ const WCHAR* XmlNode::GetStringAttr(const WCHAR* key, const WCHAR* defaultValue)
 
 bool XmlNode::GetBoolValue(bool defaultValue)
 {
-	WCHAR* val = _node->value();
+	wchar_t* val = _node->value();
 	if (val)
 		return ::_wcsicmp(val, L"true") == 0;
 
@@ -92,7 +92,7 @@ bool XmlNode::GetBoolValue(bool defaultValue)
 
 __int8 XmlNode::GetInt8Value(__int8 defaultValue)
 {
-	WCHAR* val = _node->value();
+	wchar_t* val = _node->value();
 	if (val)
 		return static_cast<__int8>(::_wtoi(val));
 
@@ -101,7 +101,7 @@ __int8 XmlNode::GetInt8Value(__int8 defaultValue)
 
 __int16 XmlNode::GetInt16Value(__int16 defaultValue)
 {
-	WCHAR* val = _node->value();
+	wchar_t* val = _node->value();
 	if (val)
 		return static_cast<__int16>(::_wtoi(val));
 	return defaultValue;
@@ -109,7 +109,7 @@ __int16 XmlNode::GetInt16Value(__int16 defaultValue)
 
 __int32 XmlNode::GetInt32Value(__int32 defaultValue)
 {
-	WCHAR* val = _node->value();
+	wchar_t* val = _node->value();
 	if (val)
 		return static_cast<__int32>(::_wtoi(val));
 
@@ -118,7 +118,7 @@ __int32 XmlNode::GetInt32Value(__int32 defaultValue)
 
 __int64 XmlNode::GetInt64Value(__int64 defaultValue)
 {
-	WCHAR* val = _node->value();
+	wchar_t* val = _node->value();
 	if (val)
 		return static_cast<__int64>(::_wtoi64(val));
 
@@ -127,7 +127,7 @@ __int64 XmlNode::GetInt64Value(__int64 defaultValue)
 
 float XmlNode::GetFloatValue(float defaultValue)
 {
-	WCHAR* val = _node->value();
+	wchar_t* val = _node->value();
 	if (val)
 		return static_cast<float>(::_wtof(val));
 
@@ -136,32 +136,32 @@ float XmlNode::GetFloatValue(float defaultValue)
 
 double XmlNode::GetDoubleValue(double defaultValue)
 {
-	WCHAR* val = _node->value();
+	wchar_t* val = _node->value();
 	if (val)
 		return ::_wtof_l(val, kr);
 
 	return defaultValue;
 }
 
-const WCHAR* XmlNode::GetStringValue(const WCHAR* defaultValue)
+const wchar_t* XmlNode::GetStringValue(const wchar_t* defaultValue)
 {
-	WCHAR* val = _node->first_node()->value();
+	wchar_t* val = _node->first_node()->value();
 	if (val)
 		return val;
 
 	return defaultValue;
 }
 
-XmlNode XmlNode::FindChild(const WCHAR* key)
+XmlNode XmlNode::FindChild(const wchar_t* key)
 {
 	return XmlNode(_node->first_node(key));
 }
 
-vector<XmlNode> XmlNode::FindChildren(const WCHAR* key)
+vector<XmlNode> XmlNode::FindChildren(const wchar_t* key)
 {
 	vector<XmlNode> nodes;
 
-	xml_node<WCHAR>* node = _node->first_node(key);
+	xml_node<wchar_t>* node = _node->first_node(key);
 	while (node)
 	{
 		nodes.push_back(XmlNode(node));
@@ -179,7 +179,7 @@ bool XmlParser::ParseFromFile(const wchar_t* fileName, OUT XmlNode& root)
 	if (m_data.empty())
 		return false;
 	m_document = make_shared<XmlDocumentType>();
-	m_document->parse<0>(reinterpret_cast<WCHAR*>(&m_data[0]));
+	m_document->parse<0>(reinterpret_cast<wchar_t*>(&m_data[0]));
 	root = XmlNode(m_document->first_node());
 
 	return true;

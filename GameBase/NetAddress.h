@@ -12,7 +12,7 @@ public:
 	unsigned __int16		GetPort() { return ::ntohs(m_sockAddr.sin_port); }
 
 public:
-	static IN_ADDR			IpToAddress(const WCHAR* ip);
+	static IN_ADDR			IpToAddress(const wchar_t* ip);
 
 private:
 	SOCKADDR_IN				m_sockAddr = {};

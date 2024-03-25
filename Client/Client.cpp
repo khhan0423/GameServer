@@ -22,6 +22,7 @@ public:
 		DebugLog("[%s]", __FUNCTION__);
 		//ProtocolServerToClient::ResultLogin -> server
 		ProtocolClientToServer::RequestLogin _ReqLogin;
+		_ReqLogin.set_m_accountid("khhan0423");
 		auto _sendBuffer = ServerPacketHandler::MakeSendBuffer(_ReqLogin);
 		Send(_sendBuffer);
 	}

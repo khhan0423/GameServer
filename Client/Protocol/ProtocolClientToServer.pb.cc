@@ -23,8 +23,7 @@ namespace _pbi = _pb::internal;
 namespace ProtocolClientToServer {
 PROTOBUF_CONSTEXPR RequestLogin::RequestLogin(
     ::_pbi::ConstantInitialized): _impl_{
-    /*decltype(_impl_.m_success_)*/false
-  , /*decltype(_impl_.m_playercount_)*/0
+    /*decltype(_impl_.m_accountid_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_._cached_size_)*/{}} {}
 struct RequestLoginDefaultTypeInternal {
   PROTOBUF_CONSTEXPR RequestLoginDefaultTypeInternal()
@@ -47,8 +46,7 @@ const uint32_t TableStruct_ProtocolClientToServer_2eproto::offsets[] PROTOBUF_SE
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::ProtocolClientToServer::RequestLogin, _impl_.m_success_),
-  PROTOBUF_FIELD_OFFSET(::ProtocolClientToServer::RequestLogin, _impl_.m_playercount_),
+  PROTOBUF_FIELD_OFFSET(::ProtocolClientToServer::RequestLogin, _impl_.m_accountid_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, -1, sizeof(::ProtocolClientToServer::RequestLogin)},
@@ -61,15 +59,15 @@ static const ::_pb::Message* const file_default_instances[] = {
 const char descriptor_table_protodef_ProtocolClientToServer_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\034ProtocolClientToServer.proto\022\026Protocol"
   "ClientToServer\032 ProtocolClientToServerEn"
-  "um.proto\"8\n\014RequestLogin\022\021\n\tm_success\030\001 "
-  "\001(\010\022\025\n\rm_playerCount\030\002 \001(\005b\006proto3"
+  "um.proto\"#\n\014RequestLogin\022\023\n\013m_accountID\030"
+  "\001 \001(\tb\006proto3"
   ;
 static const ::_pbi::DescriptorTable* const descriptor_table_ProtocolClientToServer_2eproto_deps[1] = {
   &::descriptor_table_ProtocolClientToServerEnum_2eproto,
 };
 static ::_pbi::once_flag descriptor_table_ProtocolClientToServer_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_ProtocolClientToServer_2eproto = {
-    false, false, 154, descriptor_table_protodef_ProtocolClientToServer_2eproto,
+    false, false, 133, descriptor_table_protodef_ProtocolClientToServer_2eproto,
     "ProtocolClientToServer.proto",
     &descriptor_table_ProtocolClientToServer_2eproto_once, descriptor_table_ProtocolClientToServer_2eproto_deps, 1, 1,
     schemas, file_default_instances, TableStruct_ProtocolClientToServer_2eproto::offsets,
@@ -100,14 +98,18 @@ RequestLogin::RequestLogin(const RequestLogin& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   RequestLogin* const _this = this; (void)_this;
   new (&_impl_) Impl_{
-      decltype(_impl_.m_success_){}
-    , decltype(_impl_.m_playercount_){}
+      decltype(_impl_.m_accountid_){}
     , /*decltype(_impl_._cached_size_)*/{}};
 
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::memcpy(&_impl_.m_success_, &from._impl_.m_success_,
-    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.m_playercount_) -
-    reinterpret_cast<char*>(&_impl_.m_success_)) + sizeof(_impl_.m_playercount_));
+  _impl_.m_accountid_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.m_accountid_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (!from._internal_m_accountid().empty()) {
+    _this->_impl_.m_accountid_.Set(from._internal_m_accountid(), 
+      _this->GetArenaForAllocation());
+  }
   // @@protoc_insertion_point(copy_constructor:ProtocolClientToServer.RequestLogin)
 }
 
@@ -116,10 +118,13 @@ inline void RequestLogin::SharedCtor(
   (void)arena;
   (void)is_message_owned;
   new (&_impl_) Impl_{
-      decltype(_impl_.m_success_){false}
-    , decltype(_impl_.m_playercount_){0}
+      decltype(_impl_.m_accountid_){}
     , /*decltype(_impl_._cached_size_)*/{}
   };
+  _impl_.m_accountid_.InitDefault();
+  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+    _impl_.m_accountid_.Set("", GetArenaForAllocation());
+  #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
 }
 
 RequestLogin::~RequestLogin() {
@@ -133,6 +138,7 @@ RequestLogin::~RequestLogin() {
 
 inline void RequestLogin::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+  _impl_.m_accountid_.Destroy();
 }
 
 void RequestLogin::SetCachedSize(int size) const {
@@ -145,9 +151,7 @@ void RequestLogin::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  ::memset(&_impl_.m_success_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&_impl_.m_playercount_) -
-      reinterpret_cast<char*>(&_impl_.m_success_)) + sizeof(_impl_.m_playercount_));
+  _impl_.m_accountid_.ClearToEmpty();
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -157,19 +161,13 @@ const char* RequestLogin::_InternalParse(const char* ptr, ::_pbi::ParseContext* 
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // bool m_success = 1;
+      // string m_accountID = 1;
       case 1:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
-          _impl_.m_success_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
+          auto str = _internal_mutable_m_accountid();
+          ptr = ::_pbi::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(ptr);
-        } else
-          goto handle_unusual;
-        continue;
-      // int32 m_playerCount = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
-          _impl_.m_playercount_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
-          CHK_(ptr);
+          CHK_(::_pbi::VerifyUTF8(str, "ProtocolClientToServer.RequestLogin.m_accountID"));
         } else
           goto handle_unusual;
         continue;
@@ -202,16 +200,14 @@ uint8_t* RequestLogin::_InternalSerialize(
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // bool m_success = 1;
-  if (this->_internal_m_success() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteBoolToArray(1, this->_internal_m_success(), target);
-  }
-
-  // int32 m_playerCount = 2;
-  if (this->_internal_m_playercount() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteInt32ToArray(2, this->_internal_m_playercount(), target);
+  // string m_accountID = 1;
+  if (!this->_internal_m_accountid().empty()) {
+    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
+      this->_internal_m_accountid().data(), static_cast<int>(this->_internal_m_accountid().length()),
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
+      "ProtocolClientToServer.RequestLogin.m_accountID");
+    target = stream->WriteStringMaybeAliased(
+        1, this->_internal_m_accountid(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -230,14 +226,11 @@ size_t RequestLogin::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // bool m_success = 1;
-  if (this->_internal_m_success() != 0) {
-    total_size += 1 + 1;
-  }
-
-  // int32 m_playerCount = 2;
-  if (this->_internal_m_playercount() != 0) {
-    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(this->_internal_m_playercount());
+  // string m_accountID = 1;
+  if (!this->_internal_m_accountid().empty()) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
+        this->_internal_m_accountid());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
@@ -258,11 +251,8 @@ void RequestLogin::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::P
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_m_success() != 0) {
-    _this->_internal_set_m_success(from._internal_m_success());
-  }
-  if (from._internal_m_playercount() != 0) {
-    _this->_internal_set_m_playercount(from._internal_m_playercount());
+  if (!from._internal_m_accountid().empty()) {
+    _this->_internal_set_m_accountid(from._internal_m_accountid());
   }
   _this->_internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -280,13 +270,13 @@ bool RequestLogin::IsInitialized() const {
 
 void RequestLogin::InternalSwap(RequestLogin* other) {
   using std::swap;
+  auto* lhs_arena = GetArenaForAllocation();
+  auto* rhs_arena = other->GetArenaForAllocation();
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(RequestLogin, _impl_.m_playercount_)
-      + sizeof(RequestLogin::_impl_.m_playercount_)
-      - PROTOBUF_FIELD_OFFSET(RequestLogin, _impl_.m_success_)>(
-          reinterpret_cast<char*>(&_impl_.m_success_),
-          reinterpret_cast<char*>(&other->_impl_.m_success_));
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr::InternalSwap(
+      &_impl_.m_accountid_, lhs_arena,
+      &other->_impl_.m_accountid_, rhs_arena
+  );
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata RequestLogin::GetMetadata() const {

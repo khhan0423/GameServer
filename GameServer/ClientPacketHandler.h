@@ -1,10 +1,12 @@
 #pragma once
-#include "PacketSession.h"
-#include "Protocol/ProtocolServerToClient.pb.h"
 #include "Protocol/ProtocolServerToClientEnum.pb.h"
+#include "Protocol/ProtocolServerToClient.pb.h"
 
-#include "Protocol/ProtocolClientToServer.pb.h"
+
 #include "Protocol/ProtocolClientToServerEnum.pb.h"
+#include "Protocol/ProtocolClientToServer.pb.h"
+
+#include "PacketSession.h"
 
 using PacketHandlerFunc = std::function<bool(shared_ptr<PacketSession>&, unsigned char*, __int32)>;
 extern PacketHandlerFunc GPacketHandler[UINT16_MAX];

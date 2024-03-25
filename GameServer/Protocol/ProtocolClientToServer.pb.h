@@ -178,25 +178,20 @@ class RequestLogin final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kMSuccessFieldNumber = 1,
-    kMPlayerCountFieldNumber = 2,
+    kMAccountIDFieldNumber = 1,
   };
-  // bool m_success = 1;
-  void clear_m_success();
-  bool m_success() const;
-  void set_m_success(bool value);
+  // string m_accountID = 1;
+  void clear_m_accountid();
+  const std::string& m_accountid() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_m_accountid(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_m_accountid();
+  PROTOBUF_NODISCARD std::string* release_m_accountid();
+  void set_allocated_m_accountid(std::string* m_accountid);
   private:
-  bool _internal_m_success() const;
-  void _internal_set_m_success(bool value);
-  public:
-
-  // int32 m_playerCount = 2;
-  void clear_m_playercount();
-  int32_t m_playercount() const;
-  void set_m_playercount(int32_t value);
-  private:
-  int32_t _internal_m_playercount() const;
-  void _internal_set_m_playercount(int32_t value);
+  const std::string& _internal_m_accountid() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_m_accountid(const std::string& value);
+  std::string* _internal_mutable_m_accountid();
   public:
 
   // @@protoc_insertion_point(class_scope:ProtocolClientToServer.RequestLogin)
@@ -207,8 +202,7 @@ class RequestLogin final :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   struct Impl_ {
-    bool m_success_;
-    int32_t m_playercount_;
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr m_accountid_;
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   };
   union { Impl_ _impl_; };
@@ -225,44 +219,54 @@ class RequestLogin final :
 #endif  // __GNUC__
 // RequestLogin
 
-// bool m_success = 1;
-inline void RequestLogin::clear_m_success() {
-  _impl_.m_success_ = false;
+// string m_accountID = 1;
+inline void RequestLogin::clear_m_accountid() {
+  _impl_.m_accountid_.ClearToEmpty();
 }
-inline bool RequestLogin::_internal_m_success() const {
-  return _impl_.m_success_;
+inline const std::string& RequestLogin::m_accountid() const {
+  // @@protoc_insertion_point(field_get:ProtocolClientToServer.RequestLogin.m_accountID)
+  return _internal_m_accountid();
 }
-inline bool RequestLogin::m_success() const {
-  // @@protoc_insertion_point(field_get:ProtocolClientToServer.RequestLogin.m_success)
-  return _internal_m_success();
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void RequestLogin::set_m_accountid(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.m_accountid_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:ProtocolClientToServer.RequestLogin.m_accountID)
 }
-inline void RequestLogin::_internal_set_m_success(bool value) {
+inline std::string* RequestLogin::mutable_m_accountid() {
+  std::string* _s = _internal_mutable_m_accountid();
+  // @@protoc_insertion_point(field_mutable:ProtocolClientToServer.RequestLogin.m_accountID)
+  return _s;
+}
+inline const std::string& RequestLogin::_internal_m_accountid() const {
+  return _impl_.m_accountid_.Get();
+}
+inline void RequestLogin::_internal_set_m_accountid(const std::string& value) {
   
-  _impl_.m_success_ = value;
+  _impl_.m_accountid_.Set(value, GetArenaForAllocation());
 }
-inline void RequestLogin::set_m_success(bool value) {
-  _internal_set_m_success(value);
-  // @@protoc_insertion_point(field_set:ProtocolClientToServer.RequestLogin.m_success)
-}
-
-// int32 m_playerCount = 2;
-inline void RequestLogin::clear_m_playercount() {
-  _impl_.m_playercount_ = 0;
-}
-inline int32_t RequestLogin::_internal_m_playercount() const {
-  return _impl_.m_playercount_;
-}
-inline int32_t RequestLogin::m_playercount() const {
-  // @@protoc_insertion_point(field_get:ProtocolClientToServer.RequestLogin.m_playerCount)
-  return _internal_m_playercount();
-}
-inline void RequestLogin::_internal_set_m_playercount(int32_t value) {
+inline std::string* RequestLogin::_internal_mutable_m_accountid() {
   
-  _impl_.m_playercount_ = value;
+  return _impl_.m_accountid_.Mutable(GetArenaForAllocation());
 }
-inline void RequestLogin::set_m_playercount(int32_t value) {
-  _internal_set_m_playercount(value);
-  // @@protoc_insertion_point(field_set:ProtocolClientToServer.RequestLogin.m_playerCount)
+inline std::string* RequestLogin::release_m_accountid() {
+  // @@protoc_insertion_point(field_release:ProtocolClientToServer.RequestLogin.m_accountID)
+  return _impl_.m_accountid_.Release();
+}
+inline void RequestLogin::set_allocated_m_accountid(std::string* m_accountid) {
+  if (m_accountid != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.m_accountid_.SetAllocated(m_accountid, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.m_accountid_.IsDefault()) {
+    _impl_.m_accountid_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:ProtocolClientToServer.RequestLogin.m_accountID)
 }
 
 #ifdef __GNUC__

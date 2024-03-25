@@ -15,5 +15,4 @@
 using namespace std;
 
 #include "globalMacro.h"
-#include "ProtocolResultEnum.h"
 #include "TLSDef.h"
