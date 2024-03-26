@@ -4,7 +4,7 @@
 class SeqIDGenerator
 {
 private:
-	atomic<unsigned long long> m_GUID = 0;
+	std::atomic<unsigned long long> m_GUID = 0;
 public:
 	SeqIDGenerator() {}
 	unsigned __int64 Generate()

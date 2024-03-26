@@ -9,7 +9,7 @@ int busy_handler(void* /*pArg*/, int nCallCount)
 {
 	if (nCallCount < MAX_BUSY_WAIT_COUNT)
 	{
-		this_thread::sleep_for(chrono::microseconds(MAX_BUSY_WAIT_TIME));
+		std::this_thread::sleep_for(std::chrono::microseconds(MAX_BUSY_WAIT_TIME));
 		return 1;
 	}
 	return 0;
@@ -24,7 +24,7 @@ SQLiteConnector::~SQLiteConnector()
 	Close();
 }
 
-bool SQLiteConnector::InitDBName(const string& DBfileName)
+bool SQLiteConnector::InitDBName(const std::string& DBfileName)
 {
 	m_DBFileName = DBfileName;
 	return true;

@@ -16,6 +16,15 @@
     <Filter Include="Protocol">
       <UniqueIdentifier>{dd9b3b51-07fc-4c1e-a928-d334f4173db1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="OLCEngine">
+      <UniqueIdentifier>{908acea8-8ea8-48ed-a989-6a7bf83ad716}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{1666f8ad-dd90-443f-b282-6081532a5925}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Base">
+      <UniqueIdentifier>{b3d61387-8141-4b32-9810-717b9802601b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp">

@@ -32,7 +32,7 @@ public:
 	const wchar_t*		GetStringValue(const wchar_t* defaultValue = L"");
 
 	XmlNode				FindChild(const wchar_t* key);
-	vector<XmlNode>		FindChildren(const wchar_t* key);
+	std::vector<XmlNode>		FindChildren(const wchar_t* key);
 
 private:
 	XmlNodeType*		_node = nullptr;
@@ -48,6 +48,6 @@ public:
 	bool ParseFromFile(const wchar_t* path, OUT XmlNode& root);
 
 private:
-	shared_ptr<XmlDocumentType>		m_document = nullptr;
-	wstring							m_data;
+	std::shared_ptr<XmlDocumentType>		m_document = nullptr;
+	std::wstring							m_data;
 };

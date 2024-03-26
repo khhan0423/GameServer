@@ -13,7 +13,7 @@ public:
 	PacketSession();
 	virtual ~PacketSession();
 
-	shared_ptr<PacketSession>	GetPacketSessionRef() { return static_pointer_cast<PacketSession>(shared_from_this()); }
+	std::shared_ptr<PacketSession>	GetPacketSessionRef() { return std::static_pointer_cast<PacketSession>(shared_from_this()); }
 
 protected:
 	//PacketSession 을 상속받는 클레스는 OnRecvPacket를 통해서만 Recv를 하여야 한다.

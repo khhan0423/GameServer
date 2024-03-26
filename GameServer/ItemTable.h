@@ -6,14 +6,14 @@
 
 struct ItemTableRecord
 {
-	wstring		m_ID;
-	wstring		m_Name;
-	wstring		m_type;
+	std::wstring		m_ID;
+	std::wstring		m_Name;
+	std::wstring		m_type;
 	__int32		m_atkValue;
-	wstring		m_Desc;
+	std::wstring		m_Desc;
 };
 
-class ItemTable : public TableBaseSingleton<ItemTable>, TableRecordDatas<wstring, ItemTableRecord>
+class ItemTable : public TableBaseSingleton<ItemTable>, TableRecordDatas<std::wstring, ItemTableRecord>
 {
 	virtual const char* GetFileName() override
 	{

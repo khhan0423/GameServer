@@ -24,7 +24,7 @@ public:
 
 public:
 	
-	bool						Init(const string DBName);	
+	bool						Init(const std::string DBName);	
 	sqlite3*					GetDBHandler();
 	void						SetReady();
 	bool						IsRead();
@@ -62,13 +62,13 @@ private:
 				SAFE_DELETE(pQuery);
 			}
 
-			this_thread::sleep_for(chrono::milliseconds(1));
+			std::this_thread::sleep_for(std::chrono::milliseconds(1));
 		}		
 	}
 
 private:
-	atomic<bool>			m_isReady = false;
+	std::atomic<bool>			m_isReady = false;
 	FPS						m_fps;
-	thread					m_thread;
+	std::thread					m_thread;
 };
 

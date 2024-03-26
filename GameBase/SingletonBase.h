@@ -8,8 +8,8 @@ protected:
 	class SManager
 	{
 	private:
-		list<SingletonBase*>		m_list;
-		mutex						m_lock;
+		std::list<SingletonBase*>		m_list;
+		std::mutex						m_lock;
 
 	public:
 		virtual ~SManager()
@@ -29,7 +29,7 @@ protected:
 			for_each(m_list.begin(), m_list.end(), delete_ptr());			
 			{
 				{
-					lock_guard<mutex> _lock(m_lock);
+					std::lock_guard<std::mutex> _lock(m_lock);
 					m_list.clear();
 				}
 			}
@@ -37,7 +37,7 @@ protected:
 		void Add(SingletonBase* singletonPtr)
 		{
 			{
-				lock_guard<mutex> _lock(m_lock);
+				std::lock_guard<std::mutex> _lock(m_lock);
 				m_list.push_front(singletonPtr);
 			}
 
@@ -45,7 +45,7 @@ protected:
 		void Erase(SingletonBase* singletonPtr)
 		{
 			{
-				lock_guard<mutex> _lock(m_lock);
+				std::lock_guard<std::mutex> _lock(m_lock);
 				auto it = std::find(m_list.begin(), m_list.end(), singletonPtr);
 				if (it != m_list.end()) m_list.erase(it);
 			}
@@ -55,9 +55,9 @@ protected:
 public:
 	static SManager& GetManager()
 	{
-		static mutex _static_lock;
+		static std::mutex _static_lock;
 		{
-			lock_guard<mutex> _lock(_static_lock);
+			std::lock_guard<std::mutex> _lock(_static_lock);
 			static SManager s_Manager;
 			return s_Manager;
 		}
@@ -76,7 +76,7 @@ class TSingletonBase : public SingletonBase
 
 protected:
 	static TYPE* m_Instance;
-	static mutex m_lock;
+	static std::mutex m_lock;
 
 protected:
 	TSingletonBase() {}
@@ -87,7 +87,7 @@ public:
 	{
 		if (m_Instance == nullptr)
 		{
-			lock_guard<mutex> _lock(m_lock);
+			std::lock_guard<std::mutex> _lock(m_lock);
 			if (m_Instance == nullptr)
 			{
 				m_Instance = new TYPE;
@@ -102,7 +102,7 @@ public:
 	{
 		if (m_Instance != nullptr)
 		{
-			lock_guard<mutex> _lock(m_lock);
+			std::lock_guard<std::mutex> _lock(m_lock);
 			if (m_Instance != nullptr)
 			{
 				TYPE* _pInstance = m_Instance;
@@ -125,4 +125,4 @@ template<typename TYPE>
 TYPE* TSingletonBase<TYPE>::m_Instance;
 
 template<typename TYPE>
-mutex TSingletonBase<TYPE>::m_lock;
+std::mutex TSingletonBase<TYPE>::m_lock;

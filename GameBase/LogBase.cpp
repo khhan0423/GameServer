@@ -25,7 +25,7 @@ void GameLog::Log(const __int32 iLevel, const char* strFile, const __int32 iLine
 {
 #pragma  TODO ("C++ 스타일로 언젠가 변경할것")
 	{
-		lock_guard<mutex> _lock(m_Lock);
+		std::lock_guard<std::mutex> _lock(m_Lock);
 
 		if (m_iOutput == GAMELOG_OUTPUT_NONE || iLevel < m_iLevel) return;
 

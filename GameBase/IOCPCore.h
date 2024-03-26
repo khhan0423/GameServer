@@ -2,7 +2,7 @@
 
 //CompletionPort로 관리받을 객체의 인터페이스
 //Dispatch 는 상속받은 곳에처 처리
-class IocpObject : public enable_shared_from_this<IocpObject>
+class IocpObject : public std::enable_shared_from_this<IocpObject>
 {
 public:
 	virtual HANDLE GetHandle() abstract;
@@ -19,7 +19,7 @@ public:
 
 	HANDLE		GetHandle() { return m_iocpHandle; }
 
-	bool		Register(shared_ptr<IocpObject> iocpObject);
+	bool		Register(std::shared_ptr<IocpObject> iocpObject);
 	bool		Dispatch(unsigned __int32 timeout = INFINITE);
 
 private:

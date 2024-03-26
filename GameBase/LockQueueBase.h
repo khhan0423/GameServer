@@ -12,7 +12,7 @@ public:
 	void Push(T item)
 	{
 		{
-			lock_guard<mutex> _lock(m_lock);
+			std::lock_guard<std::mutex> _lock(m_lock);
 			m_sometings.push(item);
 		}
 		
@@ -21,7 +21,7 @@ public:
 	T Pop()
 	{
 		{
-			lock_guard<mutex> _lock(m_lock);
+			std::lock_guard<std::mutex> _lock(m_lock);
 
 			if (m_sometings.empty())
 				return T();
@@ -32,10 +32,10 @@ public:
 		}
 	}
 
-	void Pop(OUT vector<T>& sometings)
+	void Pop(OUT std::vector<T>& sometings)
 	{
 		{
-			lock_guard<mutex> _lock(m_lock);
+			std::lock_guard<std::mutex> _lock(m_lock);
 
 			while (T _thing = Pop())
 				sometings.push_back(_thing);
@@ -45,12 +45,12 @@ public:
 	void Clear()
 	{
 		{
-			lock_guard<mutex> _lock(m_lock);
-			m_sometings = queue<T>();
+			std::lock_guard<std::mutex> _lock(m_lock);
+			m_sometings = std::queue<T>();
 		}		
 	}
 
 private:
-	mutex				m_lock;
-	queue<T>			m_sometings;
+	std::mutex				m_lock;
+	std::queue<T>			m_sometings;
 };

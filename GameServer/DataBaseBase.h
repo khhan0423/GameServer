@@ -23,7 +23,7 @@ namespace DataBase
 			virtual ~QueryQueue()
 			{
 				{
-					lock_guard<mutex> _lock(m_lock);
+					std::lock_guard<std::mutex> _lock(m_lock);
 					while (!m_queue.empty())
 					{
 						QueryBase* q = m_queue.front();
@@ -36,7 +36,7 @@ namespace DataBase
 			size_t GetCount() const
 			{
 				{
-					lock_guard<mutex> _lock(m_lock);
+					std::lock_guard<std::mutex> _lock(m_lock);
 					return m_queue.size();
 				}
 				
@@ -45,7 +45,7 @@ namespace DataBase
 			{
 				
 				{
-					lock_guard<mutex> _lock(m_lock);
+					std::lock_guard<std::mutex> _lock(m_lock);
 					return m_queue.empty();
 				}
 				
@@ -53,14 +53,14 @@ namespace DataBase
 			void Push(QueryBase* q)
 			{
 				{
-					lock_guard<mutex> _lock(m_lock);
+					std::lock_guard<std::mutex> _lock(m_lock);
 					m_queue.push(q);
 				}		
 			}
 			QueryBase* Pop()
 			{
 				{
-					lock_guard<mutex> _lock(m_lock);
+					std::lock_guard<std::mutex> _lock(m_lock);
 					QueryBase* q = nullptr;
 					if (!m_queue.empty())
 					{
@@ -72,8 +72,8 @@ namespace DataBase
 			}
 
 		private:
-			mutable mutex		m_lock;
-			queue<QueryBase*>	m_queue;
+			mutable std::mutex		m_lock;
+			std::queue<QueryBase*>	m_queue;
 		};
 
 	public:
@@ -154,7 +154,7 @@ namespace DataBase
 		}
 
 	protected:
-		vector<DBAgnet*> m_DBAgentList;
+		std::vector<DBAgnet*> m_DBAgentList;
 	};
 };
 

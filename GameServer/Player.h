@@ -7,6 +7,6 @@ class Player
 public:
 
 	unsigned __int64					m_playerId = 0;
-	string								m_name;
-	shared_ptr<GameSession>				m_ownerSession;
+	std::string								m_name;
+	std::shared_ptr<GameSession>				m_ownerSession;
 };

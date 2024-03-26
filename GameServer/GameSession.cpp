@@ -6,13 +6,13 @@
 
 void GameSession::OnConnected()
 {
-	GetGameSessionManager()->Add(static_pointer_cast<GameSession>(shared_from_this()));
+	GetGameSessionManager()->Add(std::static_pointer_cast<GameSession>(shared_from_this()));
 	DebugLog("[%s]", __FUNCTION__);
 }
 
 void GameSession::OnDisconnected()
 {
-	GetGameSessionManager()->Remove(static_pointer_cast<GameSession>(shared_from_this()));
+	GetGameSessionManager()->Remove(std::static_pointer_cast<GameSession>(shared_from_this()));
 
 	if (m_currentPlayer)
 	{
@@ -28,7 +28,7 @@ void GameSession::OnDisconnected()
 
 void GameSession::OnRecvPacket(unsigned char* buffer, __int32 len)
 {
-	shared_ptr<PacketSession> _session = GetPacketSessionRef();
+	std::shared_ptr<PacketSession> _session = GetPacketSessionRef();
 	PacketHeader* _headerPtr = reinterpret_cast<PacketHeader*>(buffer);
 
 	DebugLog("[%s] len[%d] :", __FUNCTION__, len);

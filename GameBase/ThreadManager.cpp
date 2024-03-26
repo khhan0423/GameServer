@@ -16,12 +16,12 @@ ThreadManager::~ThreadManager()
 	Join();
 }
 
-void ThreadManager::Launch(function<void(void)> callback)
+void ThreadManager::Launch(std::function<void(void)> callback)
 {
 	DebugLog("[%s]", __FUNCTION__);
 	{
-		lock_guard<recursive_mutex> lock(m_lock);
-		m_threadList.push_back(thread([=]()
+		std::lock_guard<std::recursive_mutex> lock(m_lock);
+		m_threadList.push_back(std::thread([=]()
 			{
 				InitTLS();
 				callback();
@@ -33,7 +33,7 @@ void ThreadManager::Launch(function<void(void)> callback)
 void ThreadManager::Join()
 {
 	DebugLog("[%s]", __FUNCTION__);
-	for (thread& _thread : m_threadList)
+	for (std::thread& _thread : m_threadList)
 	{
 		if (_thread.joinable())
 			_thread.join();
@@ -51,14 +51,14 @@ void ThreadManager::Run()
 			break;
 
 
-		shared_ptr<TaskQueue> _taskLine = GTaskManager->Pop();
+		std::shared_ptr<TaskQueue> _taskLine = GTaskManager->Pop();
 
 		if (_taskLine == nullptr)
 			break;
 
 		_taskLine->Run();
 		
-		this_thread::yield();
+		std::this_thread::yield();
 	}
 }
 
@@ -66,7 +66,7 @@ void ThreadManager::InitTLS()
 {
 	//static 이라 프로세스 구동 시
 	//값 1로 세팅되며, 런타임에 static Tatomic<uint32> SThreadId = 1; 구문은 패스된다.
-	static atomic<unsigned __int32> SThreadId = 1;
+	static std::atomic<unsigned __int32> SThreadId = 1;
 	TLS_ThreadId = SThreadId.fetch_add(1);
 	
 	DebugLog("[%s]", __FUNCTION__);

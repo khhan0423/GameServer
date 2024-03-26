@@ -3,8 +3,8 @@
 class FileUtils
 {
 public:
-	static vector<BYTE>		ReadFile(const wchar_t* path);
-	static wstring			Convert(string str);
+	static std::vector<BYTE>		ReadFile(const wchar_t* path);
+	static std::wstring			Convert(std::string str);
 };
 
 

@@ -22,7 +22,7 @@ private:
 	__int32				m_bufferSize = 0;
 	__int32				m_readPos = 0;
 	__int32				m_writePos = 0;
-	vector<BYTE>		m_buffer;
+	std::vector<BYTE>		m_buffer;
 };
 
 

@@ -14,7 +14,7 @@ IocpCore::~IocpCore()
 	::CloseHandle(m_iocpHandle);
 }
 
-bool IocpCore::Register(shared_ptr<IocpObject> iocpObject)
+bool IocpCore::Register(std::shared_ptr<IocpObject> iocpObject)
 {
 	//생성된, CreateIoCompletionPort에 IocpCore 인터페이스를 상속받은
 	//CompletionPort에 의해 관리받을 객체들을 등록함.
@@ -30,7 +30,7 @@ bool IocpCore::Dispatch(unsigned __int32 timeout)
 
 	if (::GetQueuedCompletionStatus(m_iocpHandle, OUT & _numOfBytes, OUT & _key, OUT reinterpret_cast<LPOVERLAPPED*>(&_iocpEvent), timeout))
 	{
-		shared_ptr<IocpObject> _iocpObject = _iocpEvent->m_owner;
+		std::shared_ptr<IocpObject> _iocpObject = _iocpEvent->m_owner;
 		_iocpObject->Dispatch(_iocpEvent, _numOfBytes);
 	}
 	else
@@ -42,7 +42,7 @@ bool IocpCore::Dispatch(unsigned __int32 timeout)
 			return false;
 		default:
 
-			shared_ptr<IocpObject> _iocpObject = _iocpEvent->m_owner;
+			std::shared_ptr<IocpObject> _iocpObject = _iocpEvent->m_owner;
 			_iocpObject->Dispatch(_iocpEvent, _numOfBytes);
 			break;
 		}

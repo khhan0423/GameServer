@@ -12,7 +12,7 @@
 #include <ws2tcpip.h>
 #pragma comment(lib, "ws2_32.lib")
 
-using namespace std;
+//using namespace std;
 
 #include "globalMacro.h"
 #include "TLSDef.h"

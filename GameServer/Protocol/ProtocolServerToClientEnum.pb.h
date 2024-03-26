@@ -61,8 +61,8 @@ constexpr int PacketType_ARRAYSIZE = PacketType_MAX + 1;
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* PacketType_descriptor();
 template<typename T>
 inline const std::string& PacketType_Name(T enum_t_value) {
-  static_assert(::std::is_same<T, PacketType>::value ||
-    ::std::is_integral<T>::value,
+  static_assert( std::is_same<T, PacketType>::value ||
+    std::is_integral<T>::value,
     "Incorrect type passed to function PacketType_Name.");
   return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
     PacketType_descriptor(), enum_t_value);

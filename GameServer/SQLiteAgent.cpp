@@ -3,7 +3,7 @@
 
 SQLiteDBAgent::SQLiteDBAgent()
 {
-	m_thread = thread(ThreadFunc, reinterpret_cast<void*>(this));
+	m_thread = std::thread(ThreadFunc, reinterpret_cast<void*>(this));
 }
 
 SQLiteDBAgent::~SQLiteDBAgent()
@@ -36,7 +36,7 @@ __int32 SQLiteDBAgent::GetFPS() const
 	return m_fps.GetFPS(); 
 }
 
-bool SQLiteDBAgent::Init(const string DBName)
+bool SQLiteDBAgent::Init(const std::string DBName)
 {
 	//SQLite 는 파일 이름이 DB 이름이다.
 	if (m_DataBase.GetHandle() == nullptr)

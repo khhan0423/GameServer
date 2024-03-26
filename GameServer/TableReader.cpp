@@ -11,11 +11,11 @@ const size_t TableReader::GetRowCount()  const
 
 	return m_rows.size();
 }
-const vector<wstring> TableReader::GetColNameList()  const
+const std::vector<std::wstring> TableReader::GetColNameList()  const
 {
 	if (m_colunmNames.empty() == true)
 	{
-		return vector<wstring>();
+		return std::vector<std::wstring>();
 	}
 
 	return m_colunmNames;
@@ -50,7 +50,7 @@ bool TableReader::Load(const std::string& filePath)
 		if (readValues.empty() == true)
 			continue;
 		
-		vector<wstring> _columns;
+		std::vector<std::wstring> _columns;
 		for (const auto& cell : row.cells())
 		{
 			AddCel(cell, _columns);
@@ -70,9 +70,9 @@ bool TableReader::Load(const std::string& filePath)
 	__int32 index = 0;
 	for (auto&& val : m_colunmNames)
 	{
-		wstring _str = val;
+		std::wstring _str = val;
 		transform(_str.begin(), _str.end(), _str.begin(), tolower);
-		m_columnIndexs.emplace(make_pair(_str, index++));
+		m_columnIndexs.emplace(std::make_pair(_str, index++));
 	}
 
 	m_doc.close();
@@ -80,7 +80,7 @@ bool TableReader::Load(const std::string& filePath)
 	return true;
 }
 
-void TableReader::AddCel(const XLCell& cell, OUT vector<wstring>& cells)
+void TableReader::AddCel(const XLCell& cell, OUT std::vector<std::wstring>& cells)
 {
 	switch (cell.value().type())
 	{
@@ -104,12 +104,12 @@ void TableReader::AddCel(const XLCell& cell, OUT vector<wstring>& cells)
 // 서드파티 OpenXLSX 에서 Cell 의 값을 string 이 아닌 std::variant 로 들고 있어서
 //각 경우마다 추출해서 다시 String 으로 변환해야함.
 //나중에 TableReader 도 std::variant 로 업그레이드 해볼 생각.
-void TableReader::EmptyToCells(const XLCellValueProxy& value, OUT vector<wstring>& cells)
+void TableReader::EmptyToCells(const XLCellValueProxy& value, OUT std::vector<std::wstring>& cells)
 {
 	cells.push_back(L"EMPTY");
 }
 
-void TableReader::BooleanToCells(const XLCellValueProxy& value, OUT vector<wstring>& cells)
+void TableReader::BooleanToCells(const XLCellValueProxy& value, OUT std::vector<std::wstring>& cells)
 {
 	bool _temp = value.get<bool>();
 	if (_temp == true)
@@ -118,33 +118,33 @@ void TableReader::BooleanToCells(const XLCellValueProxy& value, OUT vector<wstri
 		cells.push_back(L"FALSE");
 }
 
-void TableReader::IntegerToCells(const XLCellValueProxy& value, OUT vector<wstring>& cells)
+void TableReader::IntegerToCells(const XLCellValueProxy& value, OUT std::vector<std::wstring>& cells)
 {
 	__int64 _temp = value.get<__int64>();
 	cells.push_back(StringUtil::IntToWide(value));
 }
 
-void TableReader::FloatToCells(const XLCellValueProxy& value, OUT vector<wstring>& cells)
+void TableReader::FloatToCells(const XLCellValueProxy& value, OUT std::vector<std::wstring>& cells)
 {
 	double _temp = value.get<double>();
 	cells.push_back(StringUtil::DoubleToWide(value));
 }
 
-void TableReader::ErrorToCells(const XLCellValueProxy& value, OUT vector<wstring>& cells)
+void TableReader::ErrorToCells(const XLCellValueProxy& value, OUT std::vector<std::wstring>& cells)
 {
 	cells.push_back(L"ERROR");
 }
 
-void TableReader::StringToCells(const XLCellValueProxy& value, OUT vector<wstring>& cells)
+void TableReader::StringToCells(const XLCellValueProxy& value, OUT std::vector<std::wstring>& cells)
 {
-	string _temp = value.get<string>();
+	std::string _temp = value.get<std::string>();
 	//XLCell 의 기본 string 은 utf-8을 사용한다.
 	cells.push_back(StringUtil::Utf8ToWide(_temp));
 }
 
-bool TableReader::GetValue(size_t row, const wstring& str, OUT string& strData, bool lower /*= true*/)
+bool TableReader::GetValue(size_t row, const std::wstring& str, OUT std::string& strData, bool lower /*= true*/)
 {
-	wstring _columnName = str;
+	std::wstring _columnName = str;
 	transform(_columnName.begin(), _columnName.end(), _columnName.begin(), tolower);
 	
 	if (m_columnIndexs.find(_columnName) == m_columnIndexs.end())
@@ -161,9 +161,9 @@ bool TableReader::GetValue(size_t row, const wstring& str, OUT string& strData, 
 	return true;
 }	
 
-bool TableReader::GetValue(size_t row, const wstring& str, OUT wstring& strData, bool lower /*= true*/)
+bool TableReader::GetValue(size_t row, const std::wstring& str, OUT std::wstring& strData, bool lower /*= true*/)
 {
-	wstring _columnName = str;
+	std::wstring _columnName = str;
 	transform(_columnName.begin(), _columnName.end(), _columnName.begin(), tolower);
 
 	if (m_columnIndexs.find(_columnName) == m_columnIndexs.end())
@@ -180,11 +180,11 @@ bool TableReader::GetValue(size_t row, const wstring& str, OUT wstring& strData,
 	return true;
 }
 
-bool TableReader::GetValue(size_t row, const wstring& str, OUT bool& bData, bool bDefault /*= false*/)
+bool TableReader::GetValue(size_t row, const std::wstring& str, OUT bool& bData, bool bDefault /*= false*/)
 {
 	bData = bDefault;
 
-	wstring _columnName = str;
+	std::wstring _columnName = str;
 	transform(_columnName.begin(), _columnName.end(), _columnName.begin(), tolower);
 
 	if (m_columnIndexs.find(_columnName) == m_columnIndexs.end())
@@ -193,7 +193,7 @@ bool TableReader::GetValue(size_t row, const wstring& str, OUT bool& bData, bool
 	if (row >= m_rows.size())
 		return false;
 
-	wstring _tempStr;
+	std::wstring _tempStr;
 	_tempStr = m_rows[row][m_columnIndexs[_columnName]];
 
 	if (_tempStr.compare(L"TRUE") == 0)

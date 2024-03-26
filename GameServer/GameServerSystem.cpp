@@ -56,10 +56,10 @@ void GameServerSystem::Release()
  
 void GameServerSystem::Intiate() 
 {
-	m_serviceForClient = make_shared<ServerService>(
+	m_serviceForClient = std::make_shared<ServerService>(
 		NetAddress(L"127.0.0.1", 7777),
-		move(make_shared<IocpCore>())/*rValue move 로 포장해서 넘김*/,
-		move(make_shared<GameSession>)/*rValue move 로 포장해서 넘김*/,
+		move(std::make_shared<IocpCore>())/*rValue move 로 포장해서 넘김*/,
+		move(std::make_shared<GameSession>)/*rValue move 로 포장해서 넘김*/,
 		1);
 
 	VERIFY(m_serviceForClient->Start());
@@ -91,7 +91,7 @@ void GameServerSystem::ThreadRun()
 	while (true)
 	{
 		if (m_isReady == false)
-			this_thread::yield();
+			std::this_thread::yield();
 
 		TLS_EndTickCount = ::GetTickCount64() + WORKER_TICK;
 

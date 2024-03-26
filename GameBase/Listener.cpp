@@ -17,7 +17,7 @@ Listener::~Listener()
 	}		
 }
 
-bool Listener::StartAccept(shared_ptr<ServerService> service)
+bool Listener::StartAccept(std::shared_ptr<ServerService> service)
 {
 	DebugLog("[%s]", __FUNCTION__);
 	m_service = service;
@@ -80,7 +80,7 @@ void Listener::Dispatch(IocpEvent* iocpEvent, __int32 numOfBytes)
 void Listener::RegisterAccept(AcceptEvent* acceptEventPtr)
 {
 	DebugLog("[%s]", __FUNCTION__);
-	shared_ptr<Session> _session = m_service->CreateSession();
+	std::shared_ptr<Session> _session = m_service->CreateSession();
 
 	acceptEventPtr->Init();
 	acceptEventPtr->session = _session;
@@ -111,7 +111,7 @@ void Listener::RegisterAccept(AcceptEvent* acceptEventPtr)
 void Listener::ProcessAccept(AcceptEvent* acceptEventPtr)
 {
 	DebugLog("[%s]", __FUNCTION__);
-	shared_ptr<Session> _session = acceptEventPtr->session;
+	std::shared_ptr<Session> _session = acceptEventPtr->session;
 
 	if (false == SocketUtils::SetUpdateAcceptSocket(_session->GetSocket(), m_socket))
 	{

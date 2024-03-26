@@ -30,11 +30,11 @@ private:
 private:
 	int			m_iLevel = GAMELOG_LEVEL_DEBUG;
 	int			m_iOutput = GAMELOG_OUTPUT_NONE;
-	string		m_strFilePath;
-	string		m_strLogFile;
+	std::string		m_strFilePath;
+	std::string		m_strLogFile;
 	FILE*		m_pFile = nullptr;
 	int			m_iCount = 0;
-	mutex		m_Lock;
+	std::mutex		m_Lock;
 
 public:
 	virtual ~GameLog();
@@ -43,7 +43,7 @@ public:
 	const std::string& GetLogFile() const { return m_strLogFile; }
 
 public:
-	void Init(const __int32 iLevel, const __int32 iOutput, const string& strFilePath);
+	void Init(const __int32 iLevel, const __int32 iOutput, const std::string& strFilePath);
 	void Log(const __int32 iLevel, const char* strFile, const __int32 iLine, const char* strFormat, ...);
 };
 

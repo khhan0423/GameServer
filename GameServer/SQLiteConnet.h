@@ -19,7 +19,7 @@ namespace DataBase
 			virtual ~SQLiteConnector();
 
 		public:
-			bool					InitDBName(const string& DBfileName);
+			bool					InitDBName(const std::string& DBfileName);
 			sqlite3*				GetHandle();
 			bool					IsOpen();
 			bool					Open();
@@ -30,8 +30,8 @@ namespace DataBase
 			sqlite3*				m_DBHandlerPtr = nullptr;
 
 		private:
-			string					m_DBFileName = "";
-			atomic<bool>			m_isOpen = false;			
+			std::string					m_DBFileName = "";
+			std::atomic<bool>			m_isOpen = false;			
 		};
 	};
 }

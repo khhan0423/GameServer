@@ -73,51 +73,51 @@ public:
 	}
 	static std::string DoubleToAnsi(double value)
 	{
-		return to_string(value);
+		return std::to_string(value);
 	}
 	static std::wstring DoubleToWide(double value)
 	{
-		return to_wstring(value);
+		return std::to_wstring(value);
 	}
 	static std::string DoubleToUtf8(double value)
 	{
-		return WideToUtf8(to_wstring(value));
+		return WideToUtf8(std::to_wstring(value));
 	}
 	static std::string IntToAnsi(long long value)
 	{
-		return to_string(value);
+		return std::to_string(value);
 	}
 	static std::wstring IntToWide(long long value)
 	{
-		return to_wstring(value);
+		return std::to_wstring(value);
 	}
 	static std::string IntToUtf8(long long value)
 	{
-		return WideToUtf8(to_wstring(value));
+		return WideToUtf8(std::to_wstring(value));
 	}
 	static std::string FloatToAnsi(float value)
 	{
-		return to_string(value);
+		return std::to_string(value);
 	}
 	static std::wstring FloatToWide(float value)
 	{
-		return to_wstring(value);
+		return std::to_wstring(value);
 	}
 	static std::string FloatToUtf8(float value)
 	{
-		return WideToUtf8(to_wstring(value));
+		return WideToUtf8(std::to_wstring(value));
 	}
 	static std::string UIntToAnsi(unsigned long long value)
 	{
-		return to_string(value);
+		return std::to_string(value);
 	}
 	static std::wstring UIntToWide(unsigned long long value)
 	{
-		return to_wstring(value);
+		return std::to_wstring(value);
 	}
 	static std::string UIntToUtf8(unsigned long long value)
 	{
-		return WideToUtf8(to_wstring(value));
+		return WideToUtf8(std::to_wstring(value));
 	}
 	static bool ToLower(std::string& str)
 	{

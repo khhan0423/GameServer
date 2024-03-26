@@ -18,7 +18,7 @@ public:
 	//클래스의 맴버변수를 타입, 리턴타입, 맴버함수의 포인터, 파라미터들로 분리한 다음,
 	//람다로 캡처받아서 조립하여 맴버함수 호출
 	template<typename T, typename Ret, typename... Args>
-	Task(shared_ptr<T> owner, Ret(T::* memFunc)(Args...), Args&&... args)
+	Task(std::shared_ptr<T> owner, Ret(T::* memFunc)(Args...), Args&&... args)
 	{
 		m_callback = [owner, memFunc, args...]()
 			{

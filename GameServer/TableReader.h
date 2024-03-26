@@ -22,9 +22,9 @@ using namespace OpenXLSX;
 class TableReader
 {
 public:
-	using					Colunm = wstring;
-	using					Row = vector<Colunm>;
-	using					Rows = vector<Row>;
+	using					Colunm = std::wstring;
+	using					Row = std::vector<Colunm>;
+	using					Rows = std::vector<Row>;
 	using					ColumnIndex = std::unordered_map<std::wstring, int>;
 
 private:	
@@ -37,25 +37,25 @@ private:
 	unsigned __int16		m_colCount = 0;
 
 private:
-	atomic<bool>			m_isFirstRow = true;
+	std::atomic<bool>			m_isFirstRow = true;
 public:
 	const size_t			GetRowCount()  const;
-	const vector<wstring>	GetColNameList()  const;
+	const std::vector<std::wstring>	GetColNameList()  const;
 
 	bool					Load(const std::string& filePath);
 
-	void					AddCel(const XLCell& cell, OUT vector<wstring>& cells);
-	void					EmptyToCells(const XLCellValueProxy& value, OUT vector<wstring>& cells);
-	void					BooleanToCells(const XLCellValueProxy& value, OUT vector<wstring>& cells);
-	void					IntegerToCells(const XLCellValueProxy& value, OUT vector<wstring>& cells);
-	void					FloatToCells(const XLCellValueProxy& value, OUT vector<wstring>& cells);
-	void					ErrorToCells(const XLCellValueProxy& value, OUT vector<wstring>& cells);
-	void					StringToCells(const XLCellValueProxy& value, OUT vector<wstring>& cells);
+	void					AddCel(const XLCell& cell, OUT std::vector<std::wstring>& cells);
+	void					EmptyToCells(const XLCellValueProxy& value, OUT std::vector<std::wstring>& cells);
+	void					BooleanToCells(const XLCellValueProxy& value, OUT std::vector<std::wstring>& cells);
+	void					IntegerToCells(const XLCellValueProxy& value, OUT std::vector<std::wstring>& cells);
+	void					FloatToCells(const XLCellValueProxy& value, OUT std::vector<std::wstring>& cells);
+	void					ErrorToCells(const XLCellValueProxy& value, OUT std::vector<std::wstring>& cells);
+	void					StringToCells(const XLCellValueProxy& value, OUT std::vector<std::wstring>& cells);
 
 
-	bool					GetValue(size_t row, const wstring& column, OUT string& strData, bool lower = true);
-	bool					GetValue(size_t row, const wstring& column, OUT wstring& strData, bool lower = true);
-	bool					GetValue(size_t row, const wstring& column, OUT bool& bData, bool bDefault = false);
+	bool					GetValue(size_t row, const std::wstring& column, OUT std::string& strData, bool lower = true);
+	bool					GetValue(size_t row, const std::wstring& column, OUT std::wstring& strData, bool lower = true);
+	bool					GetValue(size_t row, const std::wstring& column, OUT bool& bData, bool bDefault = false);
 
 							//나머지 number 타입들은 템플릿 처리
 							template<typename T>
@@ -63,7 +63,7 @@ public:
 							{
 								data = defaultVal;
 
-								string _temp;
+								std::string _temp;
 								if ((GetValue(row, column, _temp) || !_temp.empty()) == false)
 									return false;
 

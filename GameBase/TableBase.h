@@ -41,10 +41,10 @@ public:
 	bool Insert(const KEY& key, RECORD* dataPtr)
 	{
 		{
-			lock_guard<mutex> _lock(m_lock);
+			std::lock_guard<std::mutex> _lock(m_lock);
 			const __int32 _index = static_cast<__int32>(m_Data.size());
 
-			auto _result = m_keyIndex.emplace(make_pair(key, _index));
+			auto _result = m_keyIndex.emplace(std::make_pair(key, _index));
 			m_Data.push_back(dataPtr);
 
 			return _result.second;
@@ -72,7 +72,7 @@ public:
 	void Release()
 	{
 		{
-			lock_guard<mutex> _lock(m_lock);
+			std::lock_guard<std::mutex> _lock(m_lock);
 			for (auto&& _iter : m_Data)
 			{
 				SAFE_DELETE(_iter);
@@ -83,8 +83,8 @@ public:
 	}
 
 private:
-	mutex				m_lock;
+	std::mutex				m_lock;
 private:
-	unordered_map<KEY, __int32>		m_keyIndex;
-	vector<RECORD*>					m_Data;
+	std::unordered_map<KEY, __int32>		m_keyIndex;
+	std::vector<RECORD*>					m_Data;
 };

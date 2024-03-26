@@ -11,7 +11,7 @@ void  MainThreadFunc()
 	while (true)
 	{
 		GetDBManager()->Update();
-		this_thread::sleep_for(chrono::microseconds(1));
+		std::this_thread::sleep_for(std::chrono::microseconds(1));
 	}
 }
 

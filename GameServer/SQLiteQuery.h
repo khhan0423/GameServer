@@ -35,15 +35,15 @@ namespace DataBase
 			void								AddParam(const float input);
 			void								AddParam(const double input);
 			void								AddParam(const char* input);
-			void								AddParam(const string input);
+			void								AddParam(const std::string input);
 		public:
 			void								Prepare();
 			void								Bind();
-			void								RegistSQLiteParam(const SQPLITE_TYPE type, const string str, const int cnt);
+			void								RegistSQLiteParam(const SQPLITE_TYPE type, const std::string str, const int cnt);
 
 			void								Excute(SQLiteDBAgent* agent);
 			int									Fetch();
-			void								GetValue(const __int32 pos, OUT vector<string>& outCul);
+			void								GetValue(const __int32 pos, OUT std::vector<std::string>& outCul);
 
 			void								SetDBHandle(sqlite3* dbHandle);
 			__int32								IsValid();
@@ -54,22 +54,22 @@ namespace DataBase
 			virtual void						Complete() abstract {}
 
 		public:
-			void SetSession(shared_ptr<PacketSession> sessionShared);
-			shared_ptr<PacketSession> GetSession() { return m_SessionShared.lock(); }
+			void SetSession(std::shared_ptr<PacketSession> sessionShared);
+			std::shared_ptr<PacketSession> GetSession() { return m_SessionShared.lock(); }
 
 		public:
-			string								m_sql;
-			vector<vector<string>>				m_Result;
+			std::string								m_sql;
+			std::vector<std::vector<std::string>>				m_Result;
 		private:
-			atomic<bool>						m_isSyncQuery = false;
+			std::atomic<bool>						m_isSyncQuery = false;
 			__int32								m_excuteResult = SQLITE_OK;
 			__int32								m_commandResult = SQLITE_ERROR;
-			vector<pair<SQPLITE_TYPE, string>>	m_Params;			
+			std::vector<std::pair<SQPLITE_TYPE, std::string>>	m_Params;			
 			sqlite3_stmt*						m_res = nullptr;
 			sqlite3*							m_db = nullptr;
 
 		private:
-			weak_ptr<PacketSession>				m_SessionShared;
+			std::weak_ptr<PacketSession>				m_SessionShared;
 		};
 	}
 }

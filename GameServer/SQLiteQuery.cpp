@@ -9,43 +9,43 @@ using namespace DataBase::SQLite3;
 
 void SQLiteQueryBase::AddParamNULL()
 {
-	SQLiteQueryBase::m_Params.push_back(make_pair(e_NULL, "0"));
+	SQLiteQueryBase::m_Params.push_back(std::make_pair(e_NULL, "0"));
 }
 void SQLiteQueryBase::AddParam(const bool input)
 {
-	m_Params.push_back(make_pair(eINTEGER, StringUtil::IntToAnsi(input)));
+	m_Params.push_back(std::make_pair(eINTEGER, StringUtil::IntToAnsi(input)));
 }
 void SQLiteQueryBase::AddParam(const __int8 input)
 {
-	m_Params.push_back(make_pair(eINTEGER, StringUtil::IntToAnsi(input)));
+	m_Params.push_back(std::make_pair(eINTEGER, StringUtil::IntToAnsi(input)));
 }
 void SQLiteQueryBase::AddParam(const __int16 input)
 {
-	m_Params.push_back(make_pair(eINTEGER, StringUtil::IntToAnsi(input)));
+	m_Params.push_back(std::make_pair(eINTEGER, StringUtil::IntToAnsi(input)));
 }
 void SQLiteQueryBase::AddParam(const __int32 input)
 {
-	m_Params.push_back(make_pair(eINTEGER, StringUtil::IntToAnsi(input)));
+	m_Params.push_back(std::make_pair(eINTEGER, StringUtil::IntToAnsi(input)));
 }
 void SQLiteQueryBase::AddParam(const __int64 input)
 {
-	m_Params.push_back(make_pair(eINTEGERLONG, StringUtil::IntToAnsi(input)));
+	m_Params.push_back(std::make_pair(eINTEGERLONG, StringUtil::IntToAnsi(input)));
 }
 void SQLiteQueryBase::AddParam(const float input)
 {
-	m_Params.push_back(make_pair(eDOUBLE, StringUtil::FloatToAnsi(input)));
+	m_Params.push_back(std::make_pair(eDOUBLE, StringUtil::FloatToAnsi(input)));
 }
 void SQLiteQueryBase::AddParam(const double input)
 {
-	m_Params.push_back(make_pair(eDOUBLE, StringUtil::DoubleToAnsi(input)));
+	m_Params.push_back(std::make_pair(eDOUBLE, StringUtil::DoubleToAnsi(input)));
 }
 void SQLiteQueryBase::AddParam(const char* input)
 {
-	m_Params.push_back(make_pair(eTEXT, input));
+	m_Params.push_back(std::make_pair(eTEXT, input));
 }
-void SQLiteQueryBase::AddParam(const string input)
+void SQLiteQueryBase::AddParam(const std::string input)
 {
-	m_Params.push_back(make_pair(eTEXT, input));
+	m_Params.push_back(std::make_pair(eTEXT, input));
 }
 
 void SQLiteQueryBase::Prepare()
@@ -61,7 +61,7 @@ void SQLiteQueryBase::Bind()
 		RegistSQLiteParam(m_Params[i].first, m_Params[i].second, i + 1);
 	}
 }
-void SQLiteQueryBase::RegistSQLiteParam(const SQPLITE_TYPE type, const string str, const int cnt)
+void SQLiteQueryBase::RegistSQLiteParam(const SQPLITE_TYPE type, const std::string str, const int cnt)
 {
 	switch (type)
 	{
@@ -74,7 +74,7 @@ void SQLiteQueryBase::RegistSQLiteParam(const SQPLITE_TYPE type, const string st
 	case eTEXT:
 	{
 		//무조건 UTF-8로 변환해서 DB에 저장 SQLITE3 DB의 기본 인코딩이 UTF-8
-		string _utf8Str = StringUtil::AnsiToUtf8(str);
+		std::string _utf8Str = StringUtil::AnsiToUtf8(str);
 		sqlite3_bind_text(m_res, cnt, _utf8Str.c_str(), static_cast<__int32>(_utf8Str.length()), SQLITE_TRANSIENT);
 		return;
 	}
@@ -113,7 +113,7 @@ int SQLiteQueryBase::Fetch()
 
 	while (step == SQLITE_ROW)
 	{
-		vector<string> outCul;
+		std::vector<std::string> outCul;
 		const int _columnCnt = sqlite3_data_count(m_res);
 		for (int i = 0; i < _columnCnt; i++)
 		{
@@ -128,12 +128,12 @@ int SQLiteQueryBase::Fetch()
 	return step;
 }
 
-void SQLiteQueryBase::GetValue(const __int32 pos, OUT vector<string>& outCul)
+void SQLiteQueryBase::GetValue(const __int32 pos, OUT std::vector<std::string>& outCul)
 {
 	//무조껀 String 으로 받아서 outCul에 저장
 	//꺼내쓰는 쪽이 변환해서 사용
 	const char* _strPtr = reinterpret_cast<const char*>(sqlite3_column_text(m_res, pos));
-	const string _outStr = _strPtr;
+	const std::string _outStr = _strPtr;
 	outCul.push_back(_outStr);
 }
 
@@ -162,7 +162,7 @@ bool SQLiteQueryBase::IsSyncQuery()
 	return m_isSyncQuery;
 }
 
-void SQLiteQueryBase::SetSession(shared_ptr<PacketSession> sessionShared)
+void SQLiteQueryBase::SetSession(std::shared_ptr<PacketSession> sessionShared)
 {
 	m_SessionShared = sessionShared;
 }

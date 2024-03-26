@@ -10,11 +10,11 @@
 class GameSessionManager : public TSingletonBase<GameSessionManager>
 {
 public:
-	void Add(shared_ptr<GameSession> session);
-	void Remove(shared_ptr<GameSession> session);
-	void Broadcast(shared_ptr<SendBuffer> sendBuffer);
+	void Add(std::shared_ptr<GameSession> session);
+	void Remove(std::shared_ptr<GameSession> session);
+	void Broadcast(std::shared_ptr<SendBuffer> sendBuffer);
 
 private:
-	recursive_mutex					m_lock;
-	set<shared_ptr<GameSession>>	m_sessionSet;
+	std::recursive_mutex					m_lock;
+	std::set<std::shared_ptr<GameSession>>	m_sessionSet;
 };

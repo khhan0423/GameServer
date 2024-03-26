@@ -2,13 +2,13 @@
 #include "task.h"
 #include "LockQueueBase.h"
 
-class TaskQueue : public enable_shared_from_this<TaskQueue>
+class TaskQueue : public std::enable_shared_from_this<TaskQueue>
 {
 public:
 
 	void RegistTaskLine(CallbackType&& callback)
 	{
-		Regist(make_shared<Task>(std::move(callback)));
+		Regist(std::make_shared<Task>(std::move(callback)));
 	}
 	
 	//ReturnType ExampleClass::MemberFunction(arg1 a, arg2 b, arg3 c)
@@ -18,8 +18,8 @@ public:
 	template<typename T, typename Ret, typename... Args>
 	void RegistTaskLine(Ret(T::* memFunc)(Args...), Args... args)
 	{
-		shared_ptr<T> owner = static_pointer_cast<T>(shared_from_this());
-		Regist(make_shared<Task>(owner, memFunc, std::forward<Args>(args)...));
+		std::shared_ptr<T> owner = std::static_pointer_cast<T>(shared_from_this());
+		Regist(std::make_shared<Task>(owner, memFunc, std::forward<Args>(args)...));
 	}
 
 
@@ -27,10 +27,10 @@ public:
 	void								Run();
 
 protected:
-	void								Regist(shared_ptr<Task> task);	
+	void								Regist(std::shared_ptr<Task> task);	
 
 protected:
-	LockQueue<shared_ptr<Task>>			m_taskLineQueue;
-	atomic<__int32>						m_taskCount = 0;
+	LockQueue<std::shared_ptr<Task>>			m_taskLineQueue;
+	std::atomic<__int32>						m_taskCount = 0;
 };
 

@@ -2,7 +2,7 @@
 #include <vector>
 
 
-class SendBuffer : enable_shared_from_this<SendBuffer>
+class SendBuffer : std::enable_shared_from_this<SendBuffer>
 {
 public:
 	SendBuffer(__int32 bufferSize);
@@ -16,6 +16,6 @@ public:
 	void			Close(__int32 writeSize);
 
 private:
-	vector<BYTE>	m_buffer;
+	std::vector<BYTE>	m_buffer;
 	__int32			m_writeSize = 0;
 };

@@ -25,7 +25,7 @@ public:
 
 public:
 	EventType				m_eventType;
-	shared_ptr<IocpObject>	m_owner;
+	std::shared_ptr<IocpObject>	m_owner;
 };
 
 
@@ -47,7 +47,7 @@ public:
 	AcceptEvent() : IocpEvent(EventType::eACCEPT) { }
 
 public:
-	shared_ptr<Session>	session = nullptr;
+	std::shared_ptr<Session>	session = nullptr;
 };
 
 class RecvEvent : public IocpEvent
@@ -61,6 +61,6 @@ class SendEvent : public IocpEvent
 public:
 	SendEvent() : IocpEvent(EventType::eSEND) { }
 
-	vector<shared_ptr<SendBuffer>> m_sendBufferList;
+	std::vector<std::shared_ptr<SendBuffer>> m_sendBufferList;
 };
 

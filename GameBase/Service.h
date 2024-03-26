@@ -15,12 +15,12 @@ enum class ServiceType : unsigned __int8
 	Client
 };
 
-using SessionFactory = function<shared_ptr<Session>(void)>;
+using SessionFactory = std::function<std::shared_ptr<Session>(void)>;
 
-class Service : public enable_shared_from_this<Service>
+class Service : public std::enable_shared_from_this<Service>
 {
 public:
-	Service(ServiceType type, NetAddress address, shared_ptr<IocpCore> core, SessionFactory factory, __int32 maxSessionCount = 1);
+	Service(ServiceType type, NetAddress address, std::shared_ptr<IocpCore> core, SessionFactory factory, __int32 maxSessionCount = 1);
 	virtual ~Service();
 
 	virtual bool						Start() abstract;
@@ -29,27 +29,27 @@ public:
 	virtual void						CloseService();
 	void								SetSessionFactory(SessionFactory func) { m_sessionFactory = func; }
 
-	shared_ptr<Session>					CreateSession();
-	void								AddSession(shared_ptr<Session> session);
-	void								ReleaseSession(shared_ptr<Session> session);
+	std::shared_ptr<Session>					CreateSession();
+	void								AddSession(std::shared_ptr<Session> session);
+	void								ReleaseSession(std::shared_ptr<Session> session);
 	__int32								GetCurrentSessionCount() { return m_sessionCount; }
 	__int32								GetMaxSessionCount() { return m_maxSessionCount; }
 
 public:
 	ServiceType							GetServiceType() { return m_type; }
 	NetAddress							GetNetAddress() { return m_netAddress; }
-	shared_ptr<IocpCore>&				GetIocpCore() { return m_iocpCore; }
+	std::shared_ptr<IocpCore>&				GetIocpCore() { return m_iocpCore; }
 
 protected:
-	recursive_mutex						m_lock;
+	std::recursive_mutex						m_lock;
 
 protected:
 	ServiceType							m_type;
 	NetAddress							m_netAddress = {};
-	shared_ptr<IocpCore>				m_iocpCore;
+	std::shared_ptr<IocpCore>				m_iocpCore;
 
-	set<shared_ptr<Session>>			m_sessions;
-	atomic<__int32>						m_sessionCount = 0;
+	std::set<std::shared_ptr<Session>>			m_sessions;
+	std::atomic<__int32>						m_sessionCount = 0;
 	__int32								m_maxSessionCount = 0;
 	SessionFactory						m_sessionFactory;
 };
@@ -57,7 +57,7 @@ protected:
 class ClientService : public Service
 {
 public:
-	ClientService(NetAddress targetAddress, shared_ptr<IocpCore> core, SessionFactory factory, __int32 maxSessionCount = 1);
+	ClientService(NetAddress targetAddress, std::shared_ptr<IocpCore> core, SessionFactory factory, __int32 maxSessionCount = 1);
 	virtual ~ClientService() {}
 
 	virtual bool	Start() override;
@@ -66,12 +66,12 @@ public:
 class ServerService : public Service
 {
 public:
-	ServerService(NetAddress targetAddress, shared_ptr<IocpCore> core, SessionFactory factory, __int32 maxSessionCount = 1);
+	ServerService(NetAddress targetAddress, std::shared_ptr<IocpCore> core, SessionFactory factory, __int32 maxSessionCount = 1);
 	virtual ~ServerService() {}
 
 	virtual bool				Start() override;
 	virtual void				CloseService() override;
 
 private:
-	shared_ptr<Listener>		m_listener = nullptr;
+	std::shared_ptr<Listener>		m_listener = nullptr;
 };

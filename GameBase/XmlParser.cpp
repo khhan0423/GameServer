@@ -157,9 +157,9 @@ XmlNode XmlNode::FindChild(const wchar_t* key)
 	return XmlNode(_node->first_node(key));
 }
 
-vector<XmlNode> XmlNode::FindChildren(const wchar_t* key)
+std::vector<XmlNode> XmlNode::FindChildren(const wchar_t* key)
 {
-	vector<XmlNode> nodes;
+	std::vector<XmlNode> nodes;
 
 	xml_node<wchar_t>* node = _node->first_node(key);
 	while (node)
@@ -173,12 +173,12 @@ vector<XmlNode> XmlNode::FindChildren(const wchar_t* key)
 
 bool XmlParser::ParseFromFile(const wchar_t* fileName, OUT XmlNode& root)
 {
-	vector<BYTE> bytes = FileUtils::ReadFile(fileName);
-	m_data = FileUtils::Convert(string(bytes.begin(), bytes.end()));
+	std::vector<BYTE> bytes = FileUtils::ReadFile(fileName);
+	m_data = FileUtils::Convert(std::string(bytes.begin(), bytes.end()));
 	
 	if (m_data.empty())
 		return false;
-	m_document = make_shared<XmlDocumentType>();
+	m_document = std::make_shared<XmlDocumentType>();
 	m_document->parse<0>(reinterpret_cast<wchar_t*>(&m_data[0]));
 	root = XmlNode(m_document->first_node());
 

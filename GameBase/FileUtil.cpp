@@ -2,15 +2,15 @@
 #include <fstream>
 #include "FileUtil.h"
 
-vector<BYTE> FileUtils::ReadFile(const wchar_t* path)
+std::vector<BYTE> FileUtils::ReadFile(const wchar_t* path)
 {
-	vector<BYTE> ret;
+	std::vector<BYTE> ret;
 
-	std::basic_ifstream<wchar_t> _stream(path, ios::binary);
+	std::basic_ifstream<wchar_t> _stream(path, std::ios::binary);
 	if (_stream)
 	{
-		_stream.unsetf(ios::skipws);
-		_stream.seekg(0, ios::end);
+		_stream.unsetf(std::ios::skipws);
+		_stream.seekg(0, std::ios::end);
 
 		size_t size = static_cast<size_t>(_stream.tellg());
 		_stream.seekg(0);
@@ -21,11 +21,11 @@ vector<BYTE> FileUtils::ReadFile(const wchar_t* path)
 	return ret;
 }
 
-wstring FileUtils::Convert(string str)
+std::wstring FileUtils::Convert(std::string str)
 {
 	const __int32 _srcLen = static_cast<__int32>(str.size());
 
-	wstring ret;
+	std::wstring ret;
 	if (_srcLen == 0)
 		return ret;
 

@@ -5,7 +5,7 @@
 #include "TaskManager.h"
 #include "GlobalGameBase.h"
 
-void TaskQueue::Regist(shared_ptr<Task> task)
+void TaskQueue::Regist(std::shared_ptr<Task> task)
 {
 	const __int32 _currentTaskCount = m_taskCount.fetch_add(1);
 	
@@ -30,7 +30,7 @@ void TaskQueue::Run()
 
 	while (true)
 	{
-		vector<shared_ptr<Task>> _taskLine;
+		std::vector<std::shared_ptr<Task>> _taskLine;
 		m_taskLineQueue.Pop(OUT _taskLine);
 
 		const __int32 _taskCount = static_cast<__int32>(_taskLine.size());

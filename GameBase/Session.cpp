@@ -17,11 +17,11 @@ Session::~Session()
 	SocketUtils::Close(m_socket);
 }
 
-void Session::Send(shared_ptr<SendBuffer> sendBuffer)
+void Session::Send(std::shared_ptr<SendBuffer> sendBuffer)
 {
 	{
 		DebugLog("[%s]", __FUNCTION__);
-		lock_guard<recursive_mutex> _lock(m_lock);
+		std::lock_guard<std::recursive_mutex> _lock(m_lock);
 
 		m_sendQueue.push(sendBuffer);
 
@@ -203,12 +203,12 @@ void Session::RegisterSend()
 	m_sendEvent.m_owner = shared_from_this();
 
 	{
-		lock_guard<recursive_mutex> _lock(m_lock);
+		std::lock_guard<std::recursive_mutex> _lock(m_lock);
 
 		__int32 m_writeSize = 0;
 		while (m_sendQueue.empty() == false)
 		{
-			shared_ptr<SendBuffer> _sendBuffer = m_sendQueue.front();
+			std::shared_ptr<SendBuffer> _sendBuffer = m_sendQueue.front();
 
 			m_writeSize += _sendBuffer->GetWriteSize();
 			
@@ -220,9 +220,9 @@ void Session::RegisterSend()
 		}
 	}
 
-	vector<WSABUF> _wsaBufs;
+	std::vector<WSABUF> _wsaBufs;
 	_wsaBufs.reserve(m_sendEvent.m_sendBufferList.size());
-	for (shared_ptr<SendBuffer> sendBuffer : m_sendEvent.m_sendBufferList)
+	for (std::shared_ptr<SendBuffer> sendBuffer : m_sendEvent.m_sendBufferList)
 	{
 		WSABUF _wsaBuf;
 		_wsaBuf.buf = reinterpret_cast<char*>(sendBuffer->GetBuffer());
@@ -318,7 +318,7 @@ void Session::ProcessSend(__int32 numOfBytes)
 
 	OnSend(numOfBytes);
 	{
-		lock_guard<recursive_mutex> _lock(m_lock);
+		std::lock_guard<std::recursive_mutex> _lock(m_lock);
 		if (m_sendQueue.empty())
 			m_sendRegistered.store(false);
 		else

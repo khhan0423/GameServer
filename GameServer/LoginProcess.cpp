@@ -7,7 +7,7 @@
 #include "Protocol/ProtocolServerToClientEnum.pb.h"
 #include "Protocol/ProtocolServerToClient.pb.h"
 
-FindAccount::FindAccount(shared_ptr<PacketSession> sessionShared, const wstring& accountID)
+FindAccount::FindAccount(std::shared_ptr<PacketSession> sessionShared, const std::wstring& accountID)
 {
 	SetSession(sessionShared);	
 
@@ -27,7 +27,7 @@ void FindAccount::Complete()
 
 	__int32 _resultCount = static_cast<__int32>(m_Result.size());
 
-	shared_ptr<PacketSession> _sessionShared = GetSession();
+	std::shared_ptr<PacketSession> _sessionShared = GetSession();
 	if (_sessionShared)
 	{
 		ProtocolServerToClient::ResultLogin _resultLogin;

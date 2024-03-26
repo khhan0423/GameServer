@@ -8,12 +8,12 @@
 #include "Protocol/ProtocolClientToServer.pb.h"
 
 
-using PacketHandlerFunc = std::function<bool(shared_ptr<PacketSession>&, unsigned char*, __int32)>;
+using PacketHandlerFunc = std::function<bool(std::shared_ptr<PacketSession>&, unsigned char*, __int32)>;
 extern PacketHandlerFunc GPacketHandler[UINT16_MAX];
 
 // Custom Handlers
-bool Handle_INVALID(shared_ptr<PacketSession>& session, unsigned char* buffer, __int32 len);
-bool Handle_ResultLogin(shared_ptr<PacketSession>& session, ProtocolServerToClient::ResultLogin& pkt);
+bool Handle_INVALID(std::shared_ptr<PacketSession>& session, unsigned char* buffer, __int32 len);
+bool Handle_ResultLogin(std::shared_ptr<PacketSession>& session, ProtocolServerToClient::ResultLogin& pkt);
 
 class ServerPacketHandler
 {
@@ -23,21 +23,21 @@ public:
 		for (__int32 i = 0; i < UINT16_MAX; i++)
 			GPacketHandler[i] = Handle_INVALID;		
 		
-		GPacketHandler[ProtocolServerToClient::PacketType::eRESULT_LOGIN] = [](shared_ptr<PacketSession>& session, unsigned char* buffer, __int32 len) { return HandlePacket<ProtocolServerToClient::ResultLogin>(Handle_ResultLogin, session, buffer, len); };
+		GPacketHandler[ProtocolServerToClient::PacketType::eRESULT_LOGIN] = [](std::shared_ptr<PacketSession>& session, unsigned char* buffer, __int32 len) { return HandlePacket<ProtocolServerToClient::ResultLogin>(Handle_ResultLogin, session, buffer, len); };
 	}
 
-	static bool HandlePacket(shared_ptr<PacketSession>& session, unsigned char* buffer, __int32 len)
+	static bool HandlePacket(std::shared_ptr<PacketSession>& session, unsigned char* buffer, __int32 len)
 	{
 		PacketHeader* header = reinterpret_cast<PacketHeader*>(buffer);
 		return GPacketHandler[header->m_protocolID](session, buffer, len);
 	}
 
 	//Client -> Server
-	static shared_ptr<SendBuffer> MakeSendBuffer(ProtocolClientToServer::RequestLogin& pkt) { return MakeSendBuffer(pkt, ProtocolClientToServer::PacketType::eREQUEST_LOGIN); }
+	static std::shared_ptr<SendBuffer> MakeSendBuffer(ProtocolClientToServer::RequestLogin& pkt) { return MakeSendBuffer(pkt, ProtocolClientToServer::PacketType::eREQUEST_LOGIN); }
 
 private:
 	template<typename PacketType, typename ProcessFunc>
-	static bool HandlePacket(ProcessFunc func, shared_ptr<PacketSession>& session, unsigned char* buffer, __int32 len)
+	static bool HandlePacket(ProcessFunc func, std::shared_ptr<PacketSession>& session, unsigned char* buffer, __int32 len)
 	{
 		PacketType pkt;
 		if (pkt.ParseFromArray(buffer + sizeof(PacketHeader), len - sizeof(PacketHeader)) == false)
@@ -47,12 +47,12 @@ private:
 	}
 
 	template<typename T>
-	static shared_ptr<SendBuffer> MakeSendBuffer(T& pkt, __int32 pktId)
+	static std::shared_ptr<SendBuffer> MakeSendBuffer(T& pkt, __int32 pktId)
 	{
 		const unsigned __int16	_dataSize = static_cast<unsigned __int16>(pkt.ByteSizeLong());
 		const unsigned __int16	_packetSize = _dataSize + sizeof(PacketHeader);
 
-		shared_ptr<SendBuffer> _sendBuffer = make_shared<SendBuffer>(_packetSize);
+		std::shared_ptr<SendBuffer> _sendBuffer = std::make_shared<SendBuffer>(_packetSize);
 		PacketHeader* header = reinterpret_cast<PacketHeader*>(_sendBuffer->GetBuffer());
 		header->m_size = _packetSize;
 		header->m_protocolID = pktId;

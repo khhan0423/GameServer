@@ -8,6 +8,14 @@
 #include "ServerPacketHandler.h"
 #include "Protocol/ProtocolClientToServer.pb.h"
 
+//OnConnected() -> 접속중 플레그 온
+//화면전환 로그인 화면
+//로그인 버늩 누르면 화면 전환
+//로그인 중입니다.
+//결과 나오면, 결과에 따라서 화면 전환 분기
+// 캐릭터 선택화면
+// 계정생성 화면
+
 
 class ServerSession : public PacketSession
 {
@@ -29,7 +37,7 @@ public:
 
 	virtual void OnRecvPacket(unsigned char* buffer, __int32 len) override
 	{
-		shared_ptr<PacketSession> _session = GetPacketSessionRef();
+		std::shared_ptr<PacketSession> _session = GetPacketSessionRef();
 		PacketHeader* header = reinterpret_cast<PacketHeader*>(buffer);
 
 		DebugLog("[%s] len : ", __FUNCTION__, len);
@@ -53,7 +61,7 @@ enum
 	WORKER_TICK = 64
 };
 
-void DoWorkerJob(shared_ptr<ClientService>& service)
+void DoWorkerJob(std::shared_ptr<ClientService>& service)
 {
 	while (true)
 	{
@@ -71,12 +79,12 @@ int main()
 	ServerPacketHandler::Init();
 	GetGlobalLog()->Init(GAMELOG_LEVEL_DEBUG, GAMELOG_OUTPUT_BOTH, "Client");
 
-	this_thread::sleep_for(1s);
+	std::this_thread::sleep_for(std::chrono::seconds(1));
 
-	shared_ptr<ClientService> _service = make_shared<ClientService>(
+	std::shared_ptr<ClientService> _service = std::make_shared<ClientService>(
 		NetAddress(L"127.0.0.1", 7777),
-		move(make_shared<IocpCore>()),
-		move(make_shared<ServerSession>),
+		move(std::make_shared<IocpCore>()),
+		move(std::make_shared<ServerSession>),
 		1);
 
 	VERIFY(_service->Start());
