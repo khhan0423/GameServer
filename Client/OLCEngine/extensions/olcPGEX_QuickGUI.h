@@ -1,3 +1,4 @@
+#pragma once
 /*
 	OneLoneCoder - QuickGUI v1.03
 	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

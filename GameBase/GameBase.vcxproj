@@ -164,11 +164,11 @@
     <ClInclude Include="GlobalGameBase.h" />
     <ClInclude Include="globalMacro.h" />
     <ClInclude Include="globalpch.h" />
+    <ClInclude Include="LockQueueBase.h" />
     <ClInclude Include="SeqIDGenerator.h" />
     <ClInclude Include="IOCPCore.h" />
     <ClInclude Include="IOCPEvent.h" />
     <ClInclude Include="Listener.h" />
-    <ClInclude Include="LockQueueBase.h" />
     <ClInclude Include="LogBase.h" />
     <ClInclude Include="NetAddress.h" />
     <ClInclude Include="PacketSession.h" />

@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Main">
-      <UniqueIdentifier>{c13c1ae0-04a5-4c75-8cca-32c105b14916}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Def">
       <UniqueIdentifier>{f1456f74-75f8-4736-b59f-7e9a686006f5}</UniqueIdentifier>
     </Filter>
@@ -99,9 +96,6 @@
     <ClInclude Include="GlobalGameBase.h">
       <Filter>Def</Filter>
     </ClInclude>
-    <ClInclude Include="LockQueueBase.h">
-      <Filter>Def\Base</Filter>
-    </ClInclude>
     <ClInclude Include="SingletonBase.h">
       <Filter>Def\Base</Filter>
     </ClInclude>
@@ -145,6 +139,9 @@
       <Filter>Util</Filter>
     </ClInclude>
     <ClInclude Include="TableBase.h" />
+    <ClInclude Include="LockQueueBase.h">
+      <Filter>Def\Base</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">

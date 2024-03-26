@@ -36,7 +36,6 @@
     <ClCompile Include="ServerPacketHandler.cpp">
       <Filter>Main\PacketHandler</Filter>
     </ClCompile>
-    <ClCompile Include="Test.cpp" />
     <ClCompile Include="Protocol\ProtocolClientToServer.pb.cc">
       <Filter>Protocol</Filter>
     </ClCompile>
@@ -49,6 +48,20 @@
     <ClCompile Include="Protocol\ProtocolServerToClientEnum.pb.cc">
       <Filter>Protocol</Filter>
     </ClCompile>
+    <ClCompile Include="SceneBase.cpp">
+      <Filter>Scene\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneIntro.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneLogin.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="olcPixelGameEngine.cpp">
+      <Filter>OLCEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientGameSession.cpp" />
+    <ClCompile Include="ClientNetworkSystem.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -57,7 +70,6 @@
     <ClInclude Include="ServerPacketHandler.h">
       <Filter>Main\PacketHandler</Filter>
     </ClInclude>
-    <ClInclude Include="Test.h" />
     <ClInclude Include="Protocol\ProtocolClientToServer.pb.h">
       <Filter>Protocol</Filter>
     </ClInclude>
@@ -70,6 +82,23 @@
     <ClInclude Include="Protocol\ProtocolServerToClientEnum.pb.h">
       <Filter>Protocol</Filter>
     </ClInclude>
+    <ClInclude Include="OLCEngine\olcPixelGameEngine.h">
+      <Filter>OLCEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="OLCEngine\extensions\olcPGEX_QuickGUI.h">
+      <Filter>OLCEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneBase.h">
+      <Filter>Scene\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneIntro.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneLogin.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientGameSession.h" />
+    <ClInclude Include="ClientNetworkSystem.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Protocol\ProtocolClientToServer.proto">

@@ -27,3 +27,10 @@
 
 
 #endif
+
+//OLC Engine 사용을 위한 Define.
+#define APP_WITDH 240
+#define APP_HEIGH 180
+#define APP_HEIGHT_DIVIDE 6
+#define APP_HEIGHT_DIVIDED_BASE (APP_HEIGH / APP_HEIGHT_DIVIDE + 1)
+

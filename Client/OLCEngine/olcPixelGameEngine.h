@@ -1,3 +1,4 @@
+#pragma once
 #pragma region license_and_help
 /*
 	olcPixelGameEngine.h
@@ -373,10 +374,17 @@ int main()
 */
 #pragma endregion
 
-#include "pch.h"
-
 #ifndef OLC_PGE_DEF
 #define OLC_PGE_DEF
+
+#include "shellapi.h"
+
+#if defined max
+#undef max
+#endif
+#if defined min
+#undef min
+#endif
 
 #pragma region std_includes
 // O------------------------------------------------------------------------------O
@@ -402,7 +410,6 @@ int main()
 #pragma endregion
 
 #define PGE_VER 225
-
 // O------------------------------------------------------------------------------O
 // | COMPILER CONFIGURATION ODDITIES                                              |
 // O------------------------------------------------------------------------------O
