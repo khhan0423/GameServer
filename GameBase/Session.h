@@ -42,7 +42,7 @@ public:
 	bool									Connect();
 	void									Disconnect(const wchar_t* cause);
 
-	std::shared_ptr<Service>						GetService() { return m_service.lock(); }
+	std::shared_ptr<Service>				GetService() { return m_service.lock(); }
 	void									SetService(std::shared_ptr<Service> service) { m_service = service; }
 
 public:
@@ -50,7 +50,7 @@ public:
 	NetAddress								GetAddress() { return m_netAddress; }
 	SOCKET									GetSocket() { return m_socket; }
 	bool									IsConnected() { return m_connected; }
-	std::shared_ptr<Session>						GetSessionRef() { return std::static_pointer_cast<Session>(shared_from_this()); }
+	std::shared_ptr<Session>				GetSessionRef() { return std::static_pointer_cast<Session>(shared_from_this()); }
 
 private:
 	bool									RegisterConnect();
@@ -72,18 +72,18 @@ protected:
 	virtual void							OnDisconnected() { }
 
 private:
-	std::weak_ptr<Service>						m_service;
+	std::weak_ptr<Service>					m_service;
 	SOCKET									m_socket = INVALID_SOCKET;
 	NetAddress								m_netAddress = {};
-	std::atomic<bool>							m_connected = false;
+	std::atomic<bool>						m_connected = false;
 
 private:
-	std::recursive_mutex							m_lock;
+	std::recursive_mutex					m_lock;
 
 private:
 	RecvBuffer								m_recvBuffer;
-	std::queue<std::shared_ptr<SendBuffer>>			m_sendQueue;
-	std::atomic<bool>							m_sendRegistered = false;
+	std::queue<std::shared_ptr<SendBuffer>>	m_sendQueue;
+	std::atomic<bool>						m_sendRegistered = false;
 
 private:
 	ConnectEvent							m_connectEvent;

@@ -30,8 +30,8 @@ namespace DataBase
 			sqlite3*				m_DBHandlerPtr = nullptr;
 
 		private:
-			std::string					m_DBFileName = "";
-			std::atomic<bool>			m_isOpen = false;			
+			std::string				m_DBFileName = "";
+			std::atomic<bool>		m_isOpen = false;			
 		};
 	};
 }

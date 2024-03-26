@@ -28,9 +28,9 @@ private:
 	
 	void								CheckAnotherServers();
 
-	std::atomic<bool>						m_isReady = false;
+	std::atomic<bool>					m_isReady = false;
 
 private:
-	std::shared_ptr<ServerService>			m_serviceForClient;
+	std::shared_ptr<ServerService>		m_serviceForClient;
 };
 

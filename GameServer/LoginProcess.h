@@ -7,8 +7,7 @@ class FindAccount : public SQLiteQueryBase
 {
 public:
 	FindAccount(std::shared_ptr<PacketSession> sessionShared, const std::wstring& accountID);
-
-void	Complete() override;
-
+	
+	void Complete() override;
 };
 

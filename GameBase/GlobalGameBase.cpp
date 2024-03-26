@@ -14,7 +14,7 @@ public:
 	{
 		GThreadManager = new ThreadManager();
 		GTaskManager = new TaskManager();
-		SocketUtils::Init();
+		SocketUtils::Init();		
 	}
 	~GlobalGameBase()
 	{

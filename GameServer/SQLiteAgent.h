@@ -68,7 +68,7 @@ private:
 
 private:
 	std::atomic<bool>			m_isReady = false;
-	FPS						m_fps;
+	FPS							m_fps;
 	std::thread					m_thread;
 };
 
