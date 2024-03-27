@@ -1,5 +1,7 @@
 #include "pch.h"
 #include "SceneBase.h"
+#include "ClientNetworkSystem.h"
+#include "LogBase.h"
 
 void SceneBase::begin()
 {
@@ -10,9 +12,7 @@ void SceneBase::begin()
 			continue;
 		m_sceneControls[cnt]->Enable(true);
 		m_sceneControls[cnt]->bVisible = true;
-	}
-
-	OnBegin();
+	}	
 }
 
 void SceneBase::complete()
@@ -29,7 +29,7 @@ void SceneBase::complete()
 	}
 }
 
-void DefaultScene::OnBegin()
+void DefaultScene::Init()
 {
 	{
 		if (m_sceneControls.empty() == true)
@@ -54,8 +54,7 @@ void DefaultScene::OnBegin()
 			guiTitleScript1 = new olc::QuickGUI::Label(m_uiManager,
 				"off line", { 0.0f, APP_HEIGHT_DIVIDED_BASE * 0.0f }, { APP_WITDH, APP_HEIGHT_DIVIDED_BASE });
 			guiTitleScript1->nAlign = olc::QuickGUI::Label::Alignment::Right;
-
-
+			m_sceneControls.push_back(guiTitleScript1);
 
 			olc::QuickGUI::Label* guiTitle = nullptr;
 			guiTitle = new olc::QuickGUI::Label(m_uiManager,
@@ -71,15 +70,20 @@ void DefaultScene::OnBegin()
 				"Press 'SPACE' key", { 0.0f, APP_HEIGHT_DIVIDED_BASE * 4.0f }, { APP_WITDH, APP_HEIGHT_DIVIDED_BASE });
 			guiTitleScript2->nAlign = olc::QuickGUI::Label::Alignment::Centre;
 			m_sceneControls.push_back(guiTitleScript2);
+
+			complete();
 		}
 	}
 }
 
 void DefaultScene::run()
 {
-
 	if (m_engine.GetKey(olc::SPACE).bReleased)
 	{
-		//서버에 접속
+		if (m_isProcessConnecting == false)
+		{
+			NetworkSystem()->StartConnect();
+			m_isProcessConnecting.exchange(true);
+		}		
 	}
 }

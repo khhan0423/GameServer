@@ -8,7 +8,7 @@ enum class State
 {
 	eDEFAULT,
 	eINTRO,
-	eMAINSCENE,
+	eLOGIN,
 	// 다른 상태들을 추가할 수 있습니다.
 };
 

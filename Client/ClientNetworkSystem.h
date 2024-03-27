@@ -11,6 +11,7 @@ public:
 	~ClientNetworkSystem() { Release(); }
 
 	void									Init();
+	bool									StartConnect();
 
 private:
 	enum

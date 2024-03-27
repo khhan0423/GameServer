@@ -1,13 +1,21 @@
 #pragma once
 #include "OLCEngine/extensions/olcPGEX_QuickGUI.h"
+
+
+//OLCEngine 은 Drawable 객체의 실시간 추가를 허용하지 않는다.
+//관리 컨테이너가 락이 안걸려 있다.
+//처음에 시작 할 때, 미리 전부 등록해 주고
+//UI를 껐다 켰다만 해 주어야 한다.
 class SceneBase
 {
 public:
-	SceneBase(olc::PixelGameEngine& engine, olc::QuickGUI::Manager& uimanager) : m_engine(engine), m_uiManager(uimanager) {}
+	SceneBase(olc::PixelGameEngine& engine, olc::QuickGUI::Manager& uimanager) : m_engine(engine), m_uiManager(uimanager) 
+	{
+	}
 public:
 	virtual void begin();
 
-	virtual void OnBegin() abstract;
+	virtual void Init()abstract;
 	virtual void run() abstract;
 	virtual void complete();	
 	virtual ~SceneBase() {}
@@ -21,7 +29,12 @@ public:
 class DefaultScene : public SceneBase
 {
 public:
-	DefaultScene(olc::PixelGameEngine& engine, olc::QuickGUI::Manager& uimanager) : SceneBase(engine, uimanager) {}
-	void OnBegin() override;
+	DefaultScene(olc::PixelGameEngine& engine, olc::QuickGUI::Manager& uimanager) : SceneBase(engine, uimanager) 
+	{
+		Init();
+	}
+	~DefaultScene() { m_isProcessConnecting, m_isProcessConnecting.exchange(false); }
+	void Init() override;
 	void run() override;
+	std::atomic<bool>	m_isProcessConnecting = false;
 };

@@ -12,6 +12,13 @@ void ClientNetworkSystem::Init()
 	Initialize();
 }
 
+bool ClientNetworkSystem::StartConnect()
+{
+	VERIFY(m_networkService->Start());
+
+	return true;
+}
+
 bool ClientNetworkSystem::Initialize()
 {
 	//초기값 세팅 및 Config 들 로딩
@@ -48,7 +55,8 @@ void ClientNetworkSystem::Intiate()
 		move(std::make_shared<ClientGameSession>)/*rValue move 로 포장해서 넘김*/,
 		1);
 
-	VERIFY(m_networkService->Start());
+	//클라이언트 UI 의 반응으로 작동시키는 테스트
+	//VERIFY(m_networkService->Start());
 
 	OnIntiate();
 }

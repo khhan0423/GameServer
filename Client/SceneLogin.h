@@ -4,8 +4,11 @@
 class SceneLogin : public SceneBase
 {
 public:
-	SceneLogin(olc::PixelGameEngine& engine, olc::QuickGUI::Manager& uimanager) : SceneBase(engine, uimanager) {}
-	void OnBegin() override
+	SceneLogin(olc::PixelGameEngine& engine, olc::QuickGUI::Manager& uimanager) : SceneBase(engine, uimanager) 
+	{
+		Init();
+	}
+	void Init() override
 	{
 		if (m_sceneControls.empty() == true)
 		{
@@ -24,6 +27,8 @@ public:
 			//--------------------------------------5
 			// 
 			//--------------------------------------6
+
+			complete();
 		}
 
 	}
