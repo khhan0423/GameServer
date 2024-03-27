@@ -1,7 +1,11 @@
 #pragma once
+#include "SingletonBase.h"
 #include "OLCEngine/extensions/olcPGEX_QuickGUI.h"
 #include "SeneStateChanger.h"
-class DummyClient : public olc::PixelGameEngine
+
+#define ClinetSystem() DummyClient::GetInstance()
+
+class DummyClient : public olc::PixelGameEngine, public TSingletonBase<DummyClient>
 {
 public:
 	SeneStateChanger* m_SceneChanger = nullptr;

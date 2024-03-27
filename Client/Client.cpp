@@ -18,11 +18,9 @@ int main()
 
 	NetworkSystem()->Init();
 
-	DummyClient _dummy;
-	_dummy.Init();
-
-	if (_dummy.Construct(APP_WITDH, APP_HEIGH, 4, 4))
-		_dummy.Start();	
+	ClinetSystem()->Init();
+	if (ClinetSystem()->Construct(APP_WITDH, APP_HEIGH, 4, 4))
+		ClinetSystem()->Start(); //loop
 
 	return 0;
 }
