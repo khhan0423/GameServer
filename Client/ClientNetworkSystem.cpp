@@ -12,11 +12,24 @@ void ClientNetworkSystem::Init()
 	Initialize();
 }
 
+void ClientNetworkSystem::Shutdown()
+{
+	m_isQuit.exchange(true);
+	Release();
+	::ExitProcess(0);
+}
+
+
 bool ClientNetworkSystem::StartConnect()
 {
 	VERIFY(m_networkService->Start());
 
 	return true;
+}
+
+void ClientNetworkSystem::Send(std::shared_ptr<SendBuffer> sendBuffer)
+{
+	m_networkService->m_serverSession->Send(sendBuffer);
 }
 
 bool ClientNetworkSystem::Initialize()
@@ -81,6 +94,9 @@ void ClientNetworkSystem::ThreadRun()
 {
 	while (true)
 	{
+		if (m_isQuit == true)
+			break;
+
 		if (m_isReady == false)
 			std::this_thread::yield();
 
@@ -89,5 +105,7 @@ void ClientNetworkSystem::ThreadRun()
 		m_networkService->GetIocpCore()->Dispatch(10);
 
 		GThreadManager->Run();
+
+		std::this_thread::sleep_for(std::chrono::microseconds(1));
 	}
 }

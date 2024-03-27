@@ -11,6 +11,7 @@ public:
 	~GameServerSystem() { Release(); }
 
 	void								Init();
+	void								Shutdown();
 
 private:
 	enum

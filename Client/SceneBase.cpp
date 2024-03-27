@@ -2,6 +2,7 @@
 #include "SceneBase.h"
 #include "ClientNetworkSystem.h"
 #include "LogBase.h"
+#include "ClientCommonData.h"
 
 void SceneBase::begin()
 {
@@ -51,8 +52,10 @@ void DefaultScene::Init()
 			//--------------------------------------6
 
 			olc::QuickGUI::Label* guiTitleScript1 = nullptr;
+			std::string _onOffLine = ClientGlobalData()->GetONOFFLine();
+
 			guiTitleScript1 = new olc::QuickGUI::Label(m_uiManager,
-				"off line", { 0.0f, APP_HEIGHT_DIVIDED_BASE * 0.0f }, { APP_WITDH, APP_HEIGHT_DIVIDED_BASE });
+				_onOffLine, { 0.0f, APP_HEIGHT_DIVIDED_BASE * 0.0f }, { APP_WITDH, APP_HEIGHT_DIVIDED_BASE });
 			guiTitleScript1->nAlign = olc::QuickGUI::Label::Alignment::Right;
 			m_sceneControls.push_back(guiTitleScript1);
 

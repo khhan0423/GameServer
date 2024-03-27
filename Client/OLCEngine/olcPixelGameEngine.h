@@ -1317,6 +1317,7 @@ namespace olc
 		void olc_DropFiles(int32_t x, int32_t y, const std::vector<std::string>& vFiles);
 		void olc_Reanimate();
 		bool olc_IsRunning();
+		void olc_shutDown() { bAtomActive.exchange(false); };
 
 		// At the very end of this file, chooses which
 		// components to compile

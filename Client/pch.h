@@ -25,12 +25,13 @@
 #pragma comment(lib, "libboost_nowide-vc143-mt-x64-1_84.lib")
 #pragma comment(lib, "OpenXLSX/Release/OpenXLSX.lib")
 
-
 #endif
-
 //OLC Engine 사용을 위한 Define.
 #define APP_WITDH 240
 #define APP_HEIGH 180
 #define APP_HEIGHT_DIVIDE 6
 #define APP_HEIGHT_DIVIDED_BASE (APP_HEIGH / APP_HEIGHT_DIVIDE + 1)
+#define APP_WIDTH_DIVIDE 5
+#define APP_WIDTH_DIVIDED_BASE (APP_WITDH / APP_WIDTH_DIVIDE + 1)
+
 

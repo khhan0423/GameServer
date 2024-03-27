@@ -1,17 +1,14 @@
 #pragma once
 #include "SceneBase.h"
-#include "DummyClient.h"
-#include "ClientNetworkSystem.h"
 #include "ClientCommonData.h"
+#include "StringUtil.h"
 
-class SceneIntro : public SceneBase
+class SceneWelcome : public SceneBase
 {
-protected:
-	olc::QuickGUI::Button* m_guiLoginButton = nullptr;
+protected:	
 	olc::QuickGUI::Button* guiEXITButton = nullptr;
-
 public:
-	SceneIntro(olc::PixelGameEngine& engine, olc::QuickGUI::Manager& uimanager) : SceneBase(engine, uimanager) 
+	SceneWelcome(olc::PixelGameEngine& engine, olc::QuickGUI::Manager& uimanager) : SceneBase(engine, uimanager)
 	{
 		Init();
 	}
@@ -44,37 +41,39 @@ public:
 
 			olc::QuickGUI::Label* guiTitle = nullptr;
 			guiTitle = new olc::QuickGUI::Label(m_uiManager,
-				"THIS IS DUMMY CLIENT", { 0.0f, APP_HEIGHT_DIVIDED_BASE * 1.0f }, { APP_WITDH, APP_HEIGHT_DIVIDED_BASE * 2 });
+				"THIS IS DUMMY CLIENT", { 0.0f, APP_HEIGHT_DIVIDED_BASE * 1.0f }, { APP_WITDH, APP_HEIGHT_DIVIDED_BASE });
 			guiTitle->nAlign = olc::QuickGUI::Label::Alignment::Centre;
 			guiTitle->bHasBorder = true;
 			guiTitle->bHasBackground = true;
 
-			m_sceneControls.push_back(guiTitle);
+			m_sceneControls.push_back(guiTitle);			
 
-			//로그인
-			
-			m_guiLoginButton = new olc::QuickGUI::Button(m_uiManager,
-				"LOGIN", { APP_WIDTH_DIVIDED_BASE * 2.0f, (APP_HEIGHT_DIVIDED_BASE * 4.0f) }, { APP_WIDTH_DIVIDED_BASE * 1.0f, (APP_HEIGHT_DIVIDED_BASE / 2.0f) });
+			olc::QuickGUI::Label* guiWelcomeText = nullptr;
+			guiWelcomeText = new olc::QuickGUI::Label(m_uiManager,
+				"WELCOME", { 0.0f, APP_HEIGHT_DIVIDED_BASE * 2.0f }, { APP_WITDH, APP_HEIGHT_DIVIDED_BASE });
+			guiWelcomeText->nAlign = olc::QuickGUI::Label::Alignment::Centre;
 
-			m_sceneControls.push_back(m_guiLoginButton);
+			m_sceneControls.push_back(guiWelcomeText);
+
+			std::string _accountID = StringUtil::WideToUtf8(ClientGlobalData()->m_AccountID);
+			guiAccountID = new olc::QuickGUI::Label(m_uiManager,
+				"user", { 0.0f, APP_HEIGHT_DIVIDED_BASE * 3.0f }, { APP_WITDH, APP_HEIGHT_DIVIDED_BASE });
+			guiAccountID->nAlign = olc::QuickGUI::Label::Alignment::Centre;
+
+			m_sceneControls.push_back(guiAccountID);
 
 			//끝내기			
 			guiEXITButton = new olc::QuickGUI::Button(m_uiManager,
-				"EXIT", { APP_WIDTH_DIVIDED_BASE * 2.0f, (APP_HEIGHT_DIVIDED_BASE * 4.0f) + (APP_HEIGHT_DIVIDED_BASE / 2.0f) }, { APP_WIDTH_DIVIDED_BASE * 1.0f, (APP_HEIGHT_DIVIDED_BASE / 2.0f) });
+				"EXIT DEMO DONE", { APP_WIDTH_DIVIDED_BASE * 1.0f, (APP_HEIGHT_DIVIDED_BASE * 4.0f) + (APP_HEIGHT_DIVIDED_BASE / 2.0f) }, { APP_WIDTH_DIVIDED_BASE * 3.0f, (APP_HEIGHT_DIVIDED_BASE / 2.0f) });
 
 			m_sceneControls.push_back(guiEXITButton);
 
 			complete();
 		}
-	}
 
+	}
 	void run() override
 	{
-		if (m_guiLoginButton->bReleased)
-		{
-			ClinetSystem()->m_SceneChanger->transition(State::eLOGIN);
-		}
-
 		if (guiEXITButton->bReleased)
 		{
 			m_engine.olc_shutDown();
@@ -82,4 +81,3 @@ public:
 		}
 	}
 };
-

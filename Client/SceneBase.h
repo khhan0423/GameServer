@@ -1,5 +1,6 @@
 #pragma once
 #include "OLCEngine/extensions/olcPGEX_QuickGUI.h"
+#include "ClientCommonData.h"
 
 
 //OLCEngine 은 Drawable 객체의 실시간 추가를 허용하지 않는다.
@@ -8,9 +9,16 @@
 //UI를 껐다 켰다만 해 주어야 한다.
 class SceneBase
 {
+protected:
+	olc::QuickGUI::Label* guiOnOffline = nullptr;
+	olc::QuickGUI::Label* guiAccountID = nullptr;
+public:
+	void SetOnOffLine(const std::string& _state) { if (guiOnOffline != nullptr) guiOnOffline->sText = _state; }
+	void SetAccountID(const std::string& _accountID) { if (guiAccountID != nullptr) guiAccountID->sText = _accountID; }
 public:
 	SceneBase(olc::PixelGameEngine& engine, olc::QuickGUI::Manager& uimanager) : m_engine(engine), m_uiManager(uimanager) 
 	{
+
 	}
 public:
 	virtual void begin();

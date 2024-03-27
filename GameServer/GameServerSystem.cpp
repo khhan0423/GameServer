@@ -13,6 +13,12 @@ void GameServerSystem::Init()
 	Initialize();
 }
 
+void GameServerSystem::Shutdown()
+{
+	Release();
+	exit(0);
+}
+
 bool GameServerSystem::Initialize()
 {
 	//초기값 세팅 및 Config 들 로딩
@@ -98,6 +104,8 @@ void GameServerSystem::ThreadRun()
 		m_serviceForClient->GetIocpCore()->Dispatch(10);
 
 		GThreadManager->Run();
+
+		std::this_thread::sleep_for(std::chrono::microseconds(1));
 	}
 }
 

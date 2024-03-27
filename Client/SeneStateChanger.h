@@ -9,6 +9,8 @@ enum class State
 	eDEFAULT,
 	eINTRO,
 	eLOGIN,
+	eWELCOME,
+	eCREATEACCOUNT,
 	// 다른 상태들을 추가할 수 있습니다.
 };
 

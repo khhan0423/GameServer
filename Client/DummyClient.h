@@ -17,6 +17,11 @@ public:
 
 	void Init();
 
+	bool OnUserDestroy() override
+	{
+		ExitProcess(0);
+	}
+
 public:
 	bool OnUserCreate() override;
 	bool OnUserUpdate(float fElapsedTime) override;

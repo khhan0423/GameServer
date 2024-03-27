@@ -78,6 +78,15 @@
     <ClCompile Include="DummyClient.cpp">
       <Filter>Main</Filter>
     </ClCompile>
+    <ClCompile Include="ClientCommonData.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneCreateAccount.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneWelcome.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -124,6 +133,15 @@
     </ClInclude>
     <ClInclude Include="DummyClient.h">
       <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientCommonData.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneCreateAccount.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneWelcome.h">
+      <Filter>Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -9,12 +9,11 @@
 
 FindAccount::FindAccount(std::shared_ptr<PacketSession> sessionShared, const std::wstring& accountID)
 {
-	SetSession(sessionShared);	
+	SetSession(sessionShared);
+	SetDBHandle(GetDBManager()->GetDBAgent(0)->GetDBHandler());
 
-	m_sql = "SELECT Id, Name FROM Cars;";
-	SetDBHandle(GetDBManager()->GetDBAgent(0)->GetDBHandler());	
+	m_sql = "SELECT account_id FROM GAME_ACCOUNT WHERE account_id = ?;";
 	AddParam(StringUtil::ToAnsi(accountID));
-
 }
 
 void FindAccount::Complete()

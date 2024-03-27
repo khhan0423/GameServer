@@ -60,14 +60,11 @@ bool ClientService::Start()
 	DebugLog("[%s]", __FUNCTION__);
 	if (CanStart() == false)
 		return false;
-
-	const __int32 _sessionCount = GetMaxSessionCount();
-	for (__int32 i = 0; i < _sessionCount; i++)
-	{
-		std::shared_ptr<Session> session = CreateSession();
-		if (session->Connect() == false)
-			return false;
-	}
+		
+	m_serverSession = CreateSession();
+	
+	if (m_serverSession->Connect() == false)
+		return false;
 
 	return true;
 }

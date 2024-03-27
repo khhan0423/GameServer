@@ -164,6 +164,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Client.cpp" />
+    <ClCompile Include="ClientCommonData.cpp" />
     <ClCompile Include="ClientGameSession.cpp" />
     <ClCompile Include="ClientNetworkSystem.cpp" />
     <ClCompile Include="DummyClient.cpp" />
@@ -200,12 +201,15 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="SceneBase.cpp" />
+    <ClCompile Include="SceneCreateAccount.cpp" />
     <ClCompile Include="SceneIntro.cpp" />
     <ClCompile Include="SceneLogin.cpp" />
+    <ClCompile Include="SceneWelcome.cpp" />
     <ClCompile Include="SeneStateChanger.cpp" />
     <ClCompile Include="ServerPacketHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ClientCommonData.h" />
     <ClInclude Include="ClientGameSession.h" />
     <ClInclude Include="ClientNetworkSystem.h" />
     <ClInclude Include="DummyClient.h" />
@@ -217,8 +221,10 @@
     <ClInclude Include="Protocol\ProtocolServerToClient.pb.h" />
     <ClInclude Include="Protocol\ProtocolServerToClientEnum.pb.h" />
     <ClInclude Include="SceneBase.h" />
+    <ClInclude Include="SceneCreateAccount.h" />
     <ClInclude Include="SceneIntro.h" />
     <ClInclude Include="SceneLogin.h" />
+    <ClInclude Include="SceneWelcome.h" />
     <ClInclude Include="SeneStateChanger.h" />
     <ClInclude Include="ServerPacketHandler.h" />
   </ItemGroup>

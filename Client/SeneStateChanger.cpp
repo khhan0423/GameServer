@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "SeneStateChanger.h"
+#include "ClientCommonData.h"
 
 void SeneStateChanger::Init()
 {
@@ -21,6 +22,9 @@ void SeneStateChanger::transition(State newState)
 	}
 	currentState = states[newState];
 	currentState->begin();
+	currentState->SetOnOffLine(ClientGlobalData()->GetONOFFLine());
+	currentState->SetAccountID(ClientGlobalData()->GetAccountID());
+	
 }
 
 void SeneStateChanger::update()

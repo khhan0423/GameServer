@@ -11,7 +11,10 @@ public:
 	~ClientNetworkSystem() { Release(); }
 
 	void									Init();
+	void									Shutdown();
 	bool									StartConnect();
+
+	void									Send(std::shared_ptr<SendBuffer> sendBuffer);
 
 private:
 	enum
@@ -28,6 +31,7 @@ private:
 	void									ThreadRun();
 
 	std::atomic<bool>						m_isReady = false;
+	std::atomic<bool>						m_isQuit = false;
 
 private:
 	std::shared_ptr<ClientService>			m_networkService;
