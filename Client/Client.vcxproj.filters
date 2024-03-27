@@ -69,6 +69,15 @@
     <ClCompile Include="ClientNetworkSystem.cpp">
       <Filter>Network</Filter>
     </ClCompile>
+    <ClCompile Include="SeneStateChanger.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="olcPGEX_QuickGUI.cpp">
+      <Filter>OLCEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="DummyClient.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -109,6 +118,12 @@
     </ClInclude>
     <ClInclude Include="ClientNetworkSystem.h">
       <Filter>Network</Filter>
+    </ClInclude>
+    <ClInclude Include="SeneStateChanger.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="DummyClient.h">
+      <Filter>Main</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

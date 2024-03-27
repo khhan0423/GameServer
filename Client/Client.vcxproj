@@ -166,6 +166,8 @@
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="ClientGameSession.cpp" />
     <ClCompile Include="ClientNetworkSystem.cpp" />
+    <ClCompile Include="DummyClient.cpp" />
+    <ClCompile Include="olcPGEX_QuickGUI.cpp" />
     <ClCompile Include="olcPixelGameEngine.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -200,11 +202,13 @@
     <ClCompile Include="SceneBase.cpp" />
     <ClCompile Include="SceneIntro.cpp" />
     <ClCompile Include="SceneLogin.cpp" />
+    <ClCompile Include="SeneStateChanger.cpp" />
     <ClCompile Include="ServerPacketHandler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ClientGameSession.h" />
     <ClInclude Include="ClientNetworkSystem.h" />
+    <ClInclude Include="DummyClient.h" />
     <ClInclude Include="OLCEngine\extensions\olcPGEX_QuickGUI.h" />
     <ClInclude Include="OLCEngine\olcPixelGameEngine.h" />
     <ClInclude Include="pch.h" />
@@ -215,6 +219,7 @@
     <ClInclude Include="SceneBase.h" />
     <ClInclude Include="SceneIntro.h" />
     <ClInclude Include="SceneLogin.h" />
+    <ClInclude Include="SeneStateChanger.h" />
     <ClInclude Include="ServerPacketHandler.h" />
   </ItemGroup>
   <ItemGroup>

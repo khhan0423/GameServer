@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "LogBase.h"
 #include "ClientNetworkSystem.h"
+#include "DummyClient.h"
 
 
 void  MainThreadFunc()
@@ -17,7 +18,11 @@ int main()
 
 	NetworkSystem()->Init();
 
-	MainThreadFunc();
+	DummyClient _dummy;
+	_dummy.Init();
+
+	if (_dummy.Construct(APP_WITDH, APP_HEIGH, 4, 4))
+		_dummy.Start();	
 
 	return 0;
 }
