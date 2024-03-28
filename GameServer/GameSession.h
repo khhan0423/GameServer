@@ -2,8 +2,7 @@
 #include <vector>
 #include "LogBase.h"
 #include "PacketSession.h"
-#include "Player.h"
-#include "Room.h"
+#include "User.h"
 
 class GameSession : public PacketSession
 {
@@ -21,10 +20,9 @@ public:
 	void									SetSessionGUID(const unsigned __int64 key) { m_GUID = key; }
 	unsigned __int64						GetSessionGUID() { return m_GUID; }
 public:
-	std::vector<std::shared_ptr<Player>>	m_playerList;
+	std::vector<std::shared_ptr<User>>	m_playerList;
 
-	std::shared_ptr<Player>					m_currentPlayer;//로비서버에서 캐릭터 리스트들 들고있는 용도
-	std::weak_ptr<class Room>				m_room; //룸이 있을 수도 있고 없을 수도 있으니, 위크포인터
+	std::shared_ptr<User>					m_currentPlayer;//로비서버에서 캐릭터 리스트들 들고있는 용도
 private:
 	unsigned __int64						m_GUID = 0;
 };

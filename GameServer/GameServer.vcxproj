@@ -181,7 +181,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="User.cpp" />
     <ClCompile Include="Protocol\ProtocolClientToServer.pb.cc">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
@@ -206,7 +206,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Room.cpp" />
+    <ClCompile Include="SmallWorld.cpp" />
     <ClCompile Include="SQLiteConnet.cpp" />
     <ClCompile Include="SQLiteAgent.cpp" />
     <ClCompile Include="SQLiteManager.cpp" />
@@ -222,12 +222,12 @@
     <ClInclude Include="ItemTable.h" />
     <ClInclude Include="LoginProcess.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="Player.h" />
+    <ClInclude Include="User.h" />
     <ClInclude Include="Protocol\ProtocolClientToServer.pb.h" />
     <ClInclude Include="Protocol\ProtocolClientToServerEnum.pb.h" />
     <ClInclude Include="Protocol\ProtocolServerToClient.pb.h" />
     <ClInclude Include="Protocol\ProtocolServerToClientEnum.pb.h" />
-    <ClInclude Include="Room.h" />
+    <ClInclude Include="SmallWorld.h" />
     <ClInclude Include="SQLiteConnet.h" />
     <ClInclude Include="SQLiteAgent.h" />
     <ClInclude Include="SQLiteManager.h" />

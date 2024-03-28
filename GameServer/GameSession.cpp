@@ -14,12 +14,6 @@ void GameSession::OnDisconnected()
 {
 	GetGameSessionManager()->Remove(std::static_pointer_cast<GameSession>(shared_from_this()));
 
-	if (m_currentPlayer)
-	{
-		if (auto _room = m_room.lock())
-			_room->RegistTaskLine(&Room::Leave, m_currentPlayer);
-	}
-
 	DebugLog("[%s]", __FUNCTION__);
 
 	m_currentPlayer = nullptr;

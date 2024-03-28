@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "SQLiteQuery.h"
 #include "SQLiteAgent.h"
-#include "Player.h"
+#include "User.h"
 #include "StringUtil.h"
 
 using namespace DataBase;
