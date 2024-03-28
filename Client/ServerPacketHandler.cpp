@@ -23,6 +23,7 @@ bool Handle_ResultLogin(std::shared_ptr<PacketSession>& session, ProtocolServerT
 		if (_rowCount == 0)
 		{
 			//계정이 없는 경우 계정 생성 화면으로 화면 상태 전환
+			ClinetSystem()->m_SceneChanger->transition(State::eCREATEACCOUNT);
 		}
 		else
 		{
@@ -36,4 +37,16 @@ bool Handle_ResultLogin(std::shared_ptr<PacketSession>& session, ProtocolServerT
 	return true;
 }
 
+bool Handle_ResultCreateAcount(std::shared_ptr<PacketSession>& session, ProtocolServerToClient::ResultCreateAccount& pkt)
+{
+	bool _result = pkt.m_success();
+	DebugLog("[%s] result :%d", __FUNCTION__, _result);
+
+	if (_result == true)
+	{
+		ClinetSystem()->m_SceneChanger->transition(State::eWELCOME);
+	}
+
+	return true;
+}
 

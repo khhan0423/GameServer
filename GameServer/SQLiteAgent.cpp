@@ -43,7 +43,7 @@ bool SQLiteDBAgent::Init(const std::string DBName)
 	{
 		m_DataBase.InitDBName(DBName);
 		return (m_DataBase.Open());
-	}
+	}	
 	return true;
 }
 

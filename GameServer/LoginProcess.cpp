@@ -36,3 +36,30 @@ void FindAccount::Complete()
 		_sessionShared->Send(_sendBuffer);
 	}
 }
+
+CreateAccount::CreateAccount(std::shared_ptr<PacketSession> sessionShared, const std::wstring& accountID)
+{
+	SetSession(sessionShared);
+	SetDBHandle(GetDBManager()->GetDBAgent(0)->GetDBHandler());
+
+	m_sql = "INSERT INTO GAME_ACCOUNT (account_id) VALUES (?);";
+	AddParam(StringUtil::ToAnsi(accountID));
+}
+
+void CreateAccount::Complete()
+{
+	if (IsValid() != SQLITE_OK)
+	{
+		ErrorLog("[%s] FindAccount Query Invalid", __FUNCTION__);
+		return;
+	}
+
+	std::shared_ptr<PacketSession> _sessionShared = GetSession();
+	if (_sessionShared)
+	{
+		ProtocolServerToClient::ResultCreateAccount _resu_CreateAccount;
+		_resu_CreateAccount.set_m_success(true);
+		auto _sendBuffer = ClientPacketHandler::MakeSendBuffer(_resu_CreateAccount);
+		_sessionShared->Send(_sendBuffer);
+	}
+}

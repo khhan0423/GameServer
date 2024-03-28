@@ -5,3 +5,8 @@ message RequestLogin
 {
 	string m_accountID = 1;
 }
+
+message RequestCreateAccount
+{
+	string m_accountID = 1;
+}

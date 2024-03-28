@@ -46,11 +46,15 @@ struct TableStruct_ProtocolClientToServer_2eproto {
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_ProtocolClientToServer_2eproto;
 namespace ProtocolClientToServer {
+class RequestCreateAccount;
+struct RequestCreateAccountDefaultTypeInternal;
+extern RequestCreateAccountDefaultTypeInternal _RequestCreateAccount_default_instance_;
 class RequestLogin;
 struct RequestLoginDefaultTypeInternal;
 extern RequestLoginDefaultTypeInternal _RequestLogin_default_instance_;
 }  // namespace ProtocolClientToServer
 PROTOBUF_NAMESPACE_OPEN
+template<> ::ProtocolClientToServer::RequestCreateAccount* Arena::CreateMaybeMessage<::ProtocolClientToServer::RequestCreateAccount>(Arena*);
 template<> ::ProtocolClientToServer::RequestLogin* Arena::CreateMaybeMessage<::ProtocolClientToServer::RequestLogin>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace ProtocolClientToServer {
@@ -208,6 +212,159 @@ class RequestLogin final :
   union { Impl_ _impl_; };
   friend struct ::TableStruct_ProtocolClientToServer_2eproto;
 };
+// -------------------------------------------------------------------
+
+class RequestCreateAccount final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:ProtocolClientToServer.RequestCreateAccount) */ {
+ public:
+  inline RequestCreateAccount() : RequestCreateAccount(nullptr) {}
+  ~RequestCreateAccount() override;
+  explicit PROTOBUF_CONSTEXPR RequestCreateAccount(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  RequestCreateAccount(const RequestCreateAccount& from);
+  RequestCreateAccount(RequestCreateAccount&& from) noexcept
+    : RequestCreateAccount() {
+    *this = ::std::move(from);
+  }
+
+  inline RequestCreateAccount& operator=(const RequestCreateAccount& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline RequestCreateAccount& operator=(RequestCreateAccount&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const RequestCreateAccount& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const RequestCreateAccount* internal_default_instance() {
+    return reinterpret_cast<const RequestCreateAccount*>(
+               &_RequestCreateAccount_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  friend void swap(RequestCreateAccount& a, RequestCreateAccount& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(RequestCreateAccount* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(RequestCreateAccount* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  RequestCreateAccount* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<RequestCreateAccount>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const RequestCreateAccount& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom( const RequestCreateAccount& from) {
+    RequestCreateAccount::MergeImpl(*this, from);
+  }
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message& to_msg, const ::PROTOBUF_NAMESPACE_ID::Message& from_msg);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::PROTOBUF_NAMESPACE_ID::Arena* arena, bool is_message_owned);
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(RequestCreateAccount* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "ProtocolClientToServer.RequestCreateAccount";
+  }
+  protected:
+  explicit RequestCreateAccount(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kMAccountIDFieldNumber = 1,
+  };
+  // string m_accountID = 1;
+  void clear_m_accountid();
+  const std::string& m_accountid() const;
+  template <typename ArgT0 = const std::string&, typename... ArgT>
+  void set_m_accountid(ArgT0&& arg0, ArgT... args);
+  std::string* mutable_m_accountid();
+  PROTOBUF_NODISCARD std::string* release_m_accountid();
+  void set_allocated_m_accountid(std::string* m_accountid);
+  private:
+  const std::string& _internal_m_accountid() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_m_accountid(const std::string& value);
+  std::string* _internal_mutable_m_accountid();
+  public:
+
+  // @@protoc_insertion_point(class_scope:ProtocolClientToServer.RequestCreateAccount)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  struct Impl_ {
+    ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr m_accountid_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_ProtocolClientToServer_2eproto;
+};
 // ===================================================================
 
 
@@ -269,9 +426,65 @@ inline void RequestLogin::set_allocated_m_accountid(std::string* m_accountid) {
   // @@protoc_insertion_point(field_set_allocated:ProtocolClientToServer.RequestLogin.m_accountID)
 }
 
+// -------------------------------------------------------------------
+
+// RequestCreateAccount
+
+// string m_accountID = 1;
+inline void RequestCreateAccount::clear_m_accountid() {
+  _impl_.m_accountid_.ClearToEmpty();
+}
+inline const std::string& RequestCreateAccount::m_accountid() const {
+  // @@protoc_insertion_point(field_get:ProtocolClientToServer.RequestCreateAccount.m_accountID)
+  return _internal_m_accountid();
+}
+template <typename ArgT0, typename... ArgT>
+inline PROTOBUF_ALWAYS_INLINE
+void RequestCreateAccount::set_m_accountid(ArgT0&& arg0, ArgT... args) {
+ 
+ _impl_.m_accountid_.Set(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
+  // @@protoc_insertion_point(field_set:ProtocolClientToServer.RequestCreateAccount.m_accountID)
+}
+inline std::string* RequestCreateAccount::mutable_m_accountid() {
+  std::string* _s = _internal_mutable_m_accountid();
+  // @@protoc_insertion_point(field_mutable:ProtocolClientToServer.RequestCreateAccount.m_accountID)
+  return _s;
+}
+inline const std::string& RequestCreateAccount::_internal_m_accountid() const {
+  return _impl_.m_accountid_.Get();
+}
+inline void RequestCreateAccount::_internal_set_m_accountid(const std::string& value) {
+  
+  _impl_.m_accountid_.Set(value, GetArenaForAllocation());
+}
+inline std::string* RequestCreateAccount::_internal_mutable_m_accountid() {
+  
+  return _impl_.m_accountid_.Mutable(GetArenaForAllocation());
+}
+inline std::string* RequestCreateAccount::release_m_accountid() {
+  // @@protoc_insertion_point(field_release:ProtocolClientToServer.RequestCreateAccount.m_accountID)
+  return _impl_.m_accountid_.Release();
+}
+inline void RequestCreateAccount::set_allocated_m_accountid(std::string* m_accountid) {
+  if (m_accountid != nullptr) {
+    
+  } else {
+    
+  }
+  _impl_.m_accountid_.SetAllocated(m_accountid, GetArenaForAllocation());
+#ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  if (_impl_.m_accountid_.IsDefault()) {
+    _impl_.m_accountid_.Set("", GetArenaForAllocation());
+  }
+#endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
+  // @@protoc_insertion_point(field_set_allocated:ProtocolClientToServer.RequestCreateAccount.m_accountID)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 
 // @@protoc_insertion_point(namespace_scope)
 

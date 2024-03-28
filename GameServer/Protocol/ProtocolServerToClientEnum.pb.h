@@ -50,19 +50,20 @@ namespace ProtocolServerToClient {
 enum PacketType : int {
   eDefault = 0,
   eRESULT_LOGIN = 1000,
+  eRESULT_CREATE_ACCOUNT = 1001,
   PacketType_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
   PacketType_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
 };
 bool PacketType_IsValid(int value);
 constexpr PacketType PacketType_MIN = eDefault;
-constexpr PacketType PacketType_MAX = eRESULT_LOGIN;
+constexpr PacketType PacketType_MAX = eRESULT_CREATE_ACCOUNT;
 constexpr int PacketType_ARRAYSIZE = PacketType_MAX + 1;
 
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* PacketType_descriptor();
 template<typename T>
 inline const std::string& PacketType_Name(T enum_t_value) {
-  static_assert( std::is_same<T, PacketType>::value ||
-    std::is_integral<T>::value,
+  static_assert(::std::is_same<T, PacketType>::value ||
+    ::std::is_integral<T>::value,
     "Incorrect type passed to function PacketType_Name.");
   return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
     PacketType_descriptor(), enum_t_value);

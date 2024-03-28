@@ -17,6 +17,7 @@ namespace DataBase
 		class SQLiteQueryBase
 		{
 		public:
+			~SQLiteQueryBase();
 			enum SQPLITE_TYPE
 			{
 				eINTEGER = 1,
@@ -73,43 +74,3 @@ namespace DataBase
 		};
 	}
 }
-//	쿼리 셈플 
-//	Select
-//	SQLiteQueryBase command;
-//	command.m_sql = "SELECT Id, Name FROM cars WHERE Name = ? or Name = ?";
-//	command.SetDBHandle(db);	
-//	command.AddParam("Audi");
-//	command.AddParam("Volvo");
-//  commane.AddComplete(....) <- 쿼리실행 완료 후 핸들링할 콜백함수 지정
-//	command.Excute();
-//	int _result = command.GetCommandResult();
-
-//	Insert
-//	SQLiteQueryBase command;
-//	command.m_sql = "INSERT INTO cars(Id, NAME, Price) VALUES(?, ?, ?)";
-//	command.SetDBHandle(db);
-//	command.AddParam(10);
-//	command.AddParam("HYUNDAI");
-//	command.AddParam(31000);
-//  commane.AddComplete(....) <- 쿼리실행 완료 후 핸들링할 콜백함수 지정
-//	command.Excute();
-//	int _result = command.GetCommandResult();
-
-//	Delete
-//	SQLiteQueryBase command;
-//	command.m_sql = "DELETE FROM cars WHERE Id = ?";
-//	command.SetDBHandle(db);
-//	command.AddParam(3);
-//  commane.AddComplete(....) <- 쿼리실행 완료 후 핸들링할 콜백함수 지정
-//	command.Excute();
-//	int _result = command.GetCommandResult();
-
-//	Update
-//	SQLiteQueryBase command;
-//	command.m_sql = "UPDATE cars SET Price = ? WHERE Name = ?";
-//	command.SetDBHandle(db);
-//	command.AddParam(20000);
-//	command.AddParam("Audi");
-//  commane.AddComplete(....) <- 쿼리실행 완료 후 핸들링할 콜백함수 지정
-//	command.Excute();
-//	int _result = command.GetCommandResult();

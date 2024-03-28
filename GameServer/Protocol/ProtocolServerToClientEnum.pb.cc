@@ -30,12 +30,13 @@ static constexpr ::_pb::Message* const* file_default_instances = nullptr;
 
 const char descriptor_table_protodef_ProtocolServerToClientEnum_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n ProtocolServerToClientEnum.proto\022\026Prot"
-  "ocolServerToClient*.\n\nPacketType\022\014\n\010eDef"
-  "ault\020\000\022\022\n\reRESULT_LOGIN\020\350\007b\006proto3"
+  "ocolServerToClient*K\n\nPacketType\022\014\n\010eDef"
+  "ault\020\000\022\022\n\reRESULT_LOGIN\020\350\007\022\033\n\026eRESULT_CR"
+  "EATE_ACCOUNT\020\351\007b\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_ProtocolServerToClientEnum_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_ProtocolServerToClientEnum_2eproto = {
-    false, false, 114, descriptor_table_protodef_ProtocolServerToClientEnum_2eproto,
+    false, false, 143, descriptor_table_protodef_ProtocolServerToClientEnum_2eproto,
     "ProtocolServerToClientEnum.proto",
     &descriptor_table_ProtocolServerToClientEnum_2eproto_once, nullptr, 0, 0,
     schemas, file_default_instances, TableStruct_ProtocolServerToClientEnum_2eproto::offsets,
@@ -57,6 +58,7 @@ bool PacketType_IsValid(int value) {
   switch (value) {
     case 0:
     case 1000:
+    case 1001:
       return true;
     default:
       return false;

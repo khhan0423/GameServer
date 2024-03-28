@@ -7,6 +7,10 @@
 using namespace DataBase;
 using namespace DataBase::SQLite3;
 
+SQLiteQueryBase::~SQLiteQueryBase()
+{
+}
+
 void SQLiteQueryBase::AddParamNULL()
 {
 	SQLiteQueryBase::m_Params.push_back(std::make_pair(e_NULL, "0"));

@@ -22,3 +22,12 @@ bool Handle_RequestLogin(std::shared_ptr<PacketSession>& session, ProtocolClient
 
 	return true;
 }
+
+bool Handle_RequestCreateAccount(std::shared_ptr<PacketSession>& session, ProtocolClientToServer::RequestCreateAccount& pkt)
+{
+	DebugLog("[%s]", __FUNCTION__);
+	std::wstring _accountID = StringUtil::Utf8ToWide(pkt.m_accountid());
+	GetDBManager()->Insert(0, new CreateAccount(session, _accountID));
+
+	return true;
+}

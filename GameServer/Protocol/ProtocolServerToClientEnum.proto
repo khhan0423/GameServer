@@ -4,4 +4,5 @@ enum PacketType
 {
 	eDefault = 0;
 	eRESULT_LOGIN = 1000;
+	eRESULT_CREATE_ACCOUNT = 1001;
 }

@@ -2,7 +2,7 @@
 #include "LogBase.h"
 namespace DataBase
 {
-#define MAX_BUSY_WAIT_TIME 1
+#define MAX_BUSY_WAIT_TIME 20
 #define MAX_BUSY_WAIT_COUNT 60
 
 	template<class QueryBase, class DataBase_ConnectModule>	

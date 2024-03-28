@@ -14,6 +14,7 @@ extern PacketHandlerFunc GPacketHandler[UINT16_MAX];
 // Custom Handlers
 bool Handle_INVALID(std::shared_ptr<PacketSession>& session, unsigned char* buffer, __int32 len);
 bool Handle_ResultLogin(std::shared_ptr<PacketSession>& session, ProtocolServerToClient::ResultLogin& pkt);
+bool Handle_ResultCreateAcount(std::shared_ptr<PacketSession>& session, ProtocolServerToClient::ResultCreateAccount& pkt);
 
 class ServerPacketHandler
 {
@@ -24,6 +25,7 @@ public:
 			GPacketHandler[i] = Handle_INVALID;		
 		
 		GPacketHandler[ProtocolServerToClient::PacketType::eRESULT_LOGIN] = [](std::shared_ptr<PacketSession>& session, unsigned char* buffer, __int32 len) { return HandlePacket<ProtocolServerToClient::ResultLogin>(Handle_ResultLogin, session, buffer, len); };
+		GPacketHandler[ProtocolServerToClient::PacketType::eRESULT_CREATE_ACCOUNT] = [](std::shared_ptr<PacketSession>& session, unsigned char* buffer, __int32 len) { return HandlePacket<ProtocolServerToClient::ResultCreateAccount>(Handle_ResultCreateAcount, session, buffer, len); };
 	}
 
 	static bool HandlePacket(std::shared_ptr<PacketSession>& session, unsigned char* buffer, __int32 len)
@@ -34,6 +36,7 @@ public:
 
 	//Client -> Server
 	static std::shared_ptr<SendBuffer> MakeSendBuffer(ProtocolClientToServer::RequestLogin& pkt) { return MakeSendBuffer(pkt, ProtocolClientToServer::PacketType::eREQUEST_LOGIN); }
+	static std::shared_ptr<SendBuffer> MakeSendBuffer(ProtocolClientToServer::RequestCreateAccount& pkt) { return MakeSendBuffer(pkt, ProtocolClientToServer::PacketType::eREQUEST_CREATE_ACCOUNT); }
 
 private:
 	template<typename PacketType, typename ProcessFunc>

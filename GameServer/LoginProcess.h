@@ -11,3 +11,11 @@ public:
 	void Complete() override;
 };
 
+class CreateAccount : public SQLiteQueryBase
+{
+public:
+	CreateAccount(std::shared_ptr<PacketSession> sessionShared, const std::wstring& accountID);
+
+	void Complete() override;
+};
+

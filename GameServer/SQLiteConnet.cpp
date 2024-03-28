@@ -50,18 +50,23 @@ bool SQLiteConnector::TryOpen()
 	if (IsOpen())
 		Close();
 
-	int nError = sqlite3_open_v2(m_DBFileName.c_str(), &m_DBHandlerPtr, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL);
+	//커넥션 풀세팅하여 여러개의 db 커넥션을 가질 경우 SQLITE_OPEN_SHAREDCACHE 세팅해 주어야 한다.
+	int nError = sqlite3_open_v2(m_DBFileName.c_str(), &m_DBHandlerPtr, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE | SQLITE_OPEN_SHAREDCACHE, NULL);
 	if (nError != SQLITE_OK)
 	{
 		ErrorLog("[%s] - Open Sqlite[%s] is Failed : Code(%d)", __FUNCTION__, m_DBFileName.c_str(), nError);
 		return false;
 	}
+	//커넥션 풀세팅하여 여러개의 db 커넥션을 가질 경우 SQLITE_CONFIG_MULTITHREAD 세팅해 주어야 한다.
+	sqlite3_db_config(m_DBHandlerPtr, SQLITE_CONFIG_MULTITHREAD);
+	sqlite3_busy_timeout(m_DBHandlerPtr, 20);
 
 	if (sqlite3_busy_handler(m_DBHandlerPtr, busy_handler, NULL) != SQLITE_OK)
 	{
 		ErrorLog("Busy Hadler Regist Failed");
 		return false;
 	}
+	
 
 	std::string PragmaString =
 		std::string("PRAGMA temp_store = 2;") +

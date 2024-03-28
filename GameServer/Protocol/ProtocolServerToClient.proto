@@ -6,3 +6,8 @@ message ResultLogin
 	bool 	m_success = 1;
 	int32 	m_playerCount = 2;
 }
+
+message ResultCreateAccount
+{
+	bool 	m_success = 1;
+}
