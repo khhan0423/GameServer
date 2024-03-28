@@ -10,7 +10,7 @@
 FindAccount::FindAccount(std::shared_ptr<PacketSession> sessionShared, const std::wstring& accountID)
 {
 	SetSession(sessionShared);
-	SetDBHandle(GetDBManager()->GetDBAgent(0)->GetDBHandler());
+	SetDBHandle(GetDBManager()->GetDBAgent(sessionShared->GetSessionGUID())->GetDBHandler());
 
 	m_sql = "SELECT account_id FROM GAME_ACCOUNT WHERE account_id = ?;";
 	AddParam(StringUtil::ToAnsi(accountID));
@@ -40,7 +40,7 @@ void FindAccount::Complete()
 CreateAccount::CreateAccount(std::shared_ptr<PacketSession> sessionShared, const std::wstring& accountID)
 {
 	SetSession(sessionShared);
-	SetDBHandle(GetDBManager()->GetDBAgent(0)->GetDBHandler());
+	SetDBHandle(GetDBManager()->GetDBAgent(sessionShared->GetSessionGUID())->GetDBHandler());
 
 	m_sql = "INSERT INTO GAME_ACCOUNT (account_id) VALUES (?);";
 	AddParam(StringUtil::ToAnsi(accountID));

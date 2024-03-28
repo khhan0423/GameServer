@@ -63,7 +63,7 @@ void GameLog::Log(const __int32 iLevel, const char* strFile, const __int32 iLine
 				strftime(_strLogFile + strlen(_strLogFile), 64, "_%Y-%m-%d_%H-%M-%S.log", &Tm);
 				m_strLogFile = _strLogFile;
 
-				_mkdir(GAMELOG_PATH);
+				std::ignore = _mkdir(GAMELOG_PATH);
 
 				m_pFile = _fsopen(m_strLogFile.c_str(), "a+", _SH_DENYNO);
 				if (!m_pFile) return;

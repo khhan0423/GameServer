@@ -52,6 +52,10 @@ public:
 	bool									IsConnected() { return m_connected; }
 	std::shared_ptr<Session>				GetSessionRef() { return std::static_pointer_cast<Session>(shared_from_this()); }
 
+public:
+	void									SetSessionGUID(const unsigned __int64 key) { m_GUID = key; }
+	unsigned __int64						GetSessionGUID() { return m_GUID; }
+
 private:
 	bool									RegisterConnect();
 	bool									RegisterDisconnect();
@@ -90,4 +94,6 @@ private:
 	DisconnectEvent							m_disconnectEvent;
 	RecvEvent								m_recvEvent;
 	SendEvent								m_sendEvent;
+private:
+	unsigned __int64						m_GUID = 0;
 };

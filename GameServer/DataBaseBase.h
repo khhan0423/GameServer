@@ -119,7 +119,7 @@ namespace DataBase
 		virtual __int32 GetBadFPS() const = 0;
 
 	public:
-		void Insert(__int32 globalUniqueID, QueryBase* Query)
+		void Insert(unsigned __int64 globalUniqueID, QueryBase* Query)
 		{
 			if (m_DBAgentList.empty())
 				return;
@@ -129,7 +129,7 @@ namespace DataBase
 			return;
 		}
 
-		DBAgnet* GetDBAgent(__int32 globalUniqueID)
+		DBAgnet* GetDBAgent(unsigned __int64 globalUniqueID)
 		{
 			if (m_DBAgentList.empty())
 				return NULL;
