@@ -38,12 +38,12 @@ public:
 	virtual ~Session();
 
 public:
-	void									Send(std::shared_ptr<SendBuffer> sendBuffer);
+	void									Send(std::shared_ptr<SendBuffer> sendBufferShared);
 	bool									Connect();
 	void									Disconnect(const wchar_t* cause);
 
 	std::shared_ptr<Service>				GetService() { return m_service.lock(); }
-	void									SetService(std::shared_ptr<Service> service) { m_service = service; }
+	void									SetService(std::shared_ptr<Service> serviceShared) { m_service = serviceShared; }
 
 public:
 	void									SetNetAddress(NetAddress address) { m_netAddress = address; }

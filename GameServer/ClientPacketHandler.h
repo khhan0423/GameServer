@@ -13,8 +13,8 @@ extern PacketHandlerFunc GPacketHandler[UINT16_MAX];
 
 // Custom Handlers
 bool Handle_INVALID(std::shared_ptr<PacketSession>& session, unsigned char* buffer, __int32 len);
-bool Handle_RequestLogin(std::shared_ptr<PacketSession>& session, ProtocolClientToServer::RequestLogin& pkt);
-bool Handle_RequestCreateAccount(std::shared_ptr<PacketSession>& session, ProtocolClientToServer::RequestCreateAccount& pkt);
+bool Handle_RequestLogin(std::shared_ptr<PacketSession>& session, ProtocolClientToServer::RequestLogin& packet);
+bool Handle_RequestCreateAccount(std::shared_ptr<PacketSession>& session, ProtocolClientToServer::RequestCreateAccount& packet);
 
 class ClientPacketHandler
 {
@@ -42,24 +42,24 @@ private:
 	template<typename PacketType, typename ProcessFunc>
 	static bool HandlePacket(ProcessFunc func, std::shared_ptr<PacketSession>& session, unsigned char* buffer, __int32 len)
 	{
-		PacketType pkt;
-		if (pkt.ParseFromArray(buffer + sizeof(PacketHeader), len - sizeof(PacketHeader)) == false)
+		PacketType _packetType;
+		if (_packetType.ParseFromArray(buffer + sizeof(PacketHeader), len - sizeof(PacketHeader)) == false)
 			return false;
 
-		return func(session, pkt);
+		return func(session, _packetType);
 	}
 
 	template<typename T>
-	static std::shared_ptr<SendBuffer> MakeSendBuffer(T& pkt, __int32 pktId)
+	static std::shared_ptr<SendBuffer> MakeSendBuffer(T& packetType, __int32 packetID)
 	{
-		const unsigned __int16	_dataSize = static_cast<unsigned __int16>(pkt.ByteSizeLong());
+		const unsigned __int16	_dataSize = static_cast<unsigned __int16>(packetType.ByteSizeLong());
 		const unsigned __int16	_packetSize = _dataSize + sizeof(PacketHeader);
 
 		std::shared_ptr<SendBuffer> _sendBuffer = std::make_shared<SendBuffer>(_packetSize);
 		PacketHeader* header = reinterpret_cast<PacketHeader*>(_sendBuffer->GetBuffer());
 		header->m_size = _packetSize;
-		header->m_protocolID = pktId;
-		VERIFY(pkt.SerializeToArray(&header[1], _dataSize));
+		header->m_protocolID = packetID;
+		VERIFY(packetType.SerializeToArray(&header[1], _dataSize));
 		//send버퍼의 버퍼 주소로 직접 write 하는 경우는 send 버퍼 close 꼭 해야함. 
 		_sendBuffer->Close(_packetSize);
 

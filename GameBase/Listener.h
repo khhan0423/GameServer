@@ -14,20 +14,20 @@ public:
 	~Listener();
 
 public:
-	virtual HANDLE				GetHandle() override;
-	virtual void				Dispatch(class IocpEvent* iocpEvent, __int32 numOfBytes = 0) override;
+	virtual HANDLE					GetHandle() override;
+	virtual void					Dispatch(class IocpEvent* iocpEventPtr, __int32 numOfBytes = 0) override;
 
 public:
-	bool						StartAccept(std::shared_ptr<ServerService> service);
-	void						CloseSocket();
+	bool							StartAccept(std::shared_ptr<ServerService> serviceShared);
+	void							CloseSocket();
 
 private:
-	void						RegisterAccept(AcceptEvent* acceptEvent);
-	void						ProcessAccept(AcceptEvent* acceptEvent);
+	void							RegisterAccept(AcceptEvent* acceptEventPtr);
+	void							ProcessAccept(AcceptEvent* acceptEventPtr);
 
 protected:
-	unsigned __int32			m_ListenCount = 5;
-	SOCKET						m_socket = INVALID_SOCKET;
+	unsigned __int32				m_ListenCount = 5;
+	SOCKET							m_socket = INVALID_SOCKET;
 	std::vector<AcceptEvent*>		m_acceptEvents;
 	std::shared_ptr<ServerService>	m_service;
 };

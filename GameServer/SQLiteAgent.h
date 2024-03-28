@@ -30,10 +30,10 @@ public:
 	bool						IsRead();
 
 private:
-	static void ThreadFunc(void* pv)
+	static void ThreadFunc(void* ptr)
 	{
 		//에이전트마다 각자 쓰레드에서 돌아가는 부분
-		SQLiteDBAgent* pThis = reinterpret_cast<SQLiteDBAgent*>(pv);		
+		SQLiteDBAgent* pThis = reinterpret_cast<SQLiteDBAgent*>(ptr);		
 
 		while (true)
 		{

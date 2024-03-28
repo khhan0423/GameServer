@@ -19,7 +19,7 @@ public:
 
 	HANDLE		GetHandle() { return m_iocpHandle; }
 
-	bool		Register(std::shared_ptr<IocpObject> iocpObject);
+	bool		Register(std::shared_ptr<IocpObject> iocpObjectShared);
 	bool		Dispatch(unsigned __int32 timeout = INFINITE);
 
 private:

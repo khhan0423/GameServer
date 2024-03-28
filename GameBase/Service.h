@@ -30,8 +30,8 @@ public:
 	void										SetSessionFactory(SessionFactory func) { m_sessionFactory = func; }
 
 	std::shared_ptr<Session>					CreateSession();
-	void										AddSession(std::shared_ptr<Session> session);
-	void										ReleaseSession(std::shared_ptr<Session> session);
+	void										AddSession(std::shared_ptr<Session> sessionShared);
+	void										ReleaseSession(std::shared_ptr<Session> sessionShared);
 	__int32										GetCurrentSessionCount() { return m_sessionCount; }
 	__int32										GetMaxSessionCount() { return m_maxSessionCount; }
 

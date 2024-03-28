@@ -83,7 +83,7 @@ public:
 	}
 
 private:
-	std::mutex				m_lock;
+	std::mutex								m_lock;
 private:
 	std::unordered_map<KEY, __int32>		m_keyIndex;
 	std::vector<RECORD*>					m_Data;

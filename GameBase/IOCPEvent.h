@@ -21,11 +21,11 @@ class IocpEvent : public OVERLAPPED
 public:
 	IocpEvent(EventType type);
 
-	void					Init();
+	void							Init();
 
 public:
-	EventType				m_eventType;
-	std::shared_ptr<IocpObject>	m_owner;
+	EventType						m_eventType;
+	std::shared_ptr<IocpObject>		m_owner;
 };
 
 
