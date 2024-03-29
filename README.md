@@ -1,6 +1,3 @@
-Here's how you can format the text for your GitHub README to display it beautifully, with proper line breaks and without any translation:
-
-```markdown
 # Portfolio Project
 
 This project was created for portfolio purposes.
@@ -8,7 +5,7 @@ This project was created for portfolio purposes.
 
 Please refer to your LinkedIn profile.
 본인의 링크드인 프로필을 참고하여 주세요.
-[LinkedIn Profile](<https://www.linkedin.com/in/kyunghun-han-231899124/>)
+[LinkedIn Profile](https://www.linkedin.com/in/kyunghun-han-231899124/)
 
 ## Development Environment
 
@@ -35,27 +32,27 @@ Every library I used was also built in the same environment.
 
 - **Description**: Database file base. 파일형 데이터베이스.
 - **URL**: [SQLite](https://www.sqlite.org/)
-- **License**: [SQLite License](https://www.sqlite.org/copyright.html)
+- **License**: [SQLite License](https://www.sqlite.org/copyright.html/)
 
 ### PROTOCOL BUFFER
 
 - **Description**: Use for packet processing. 패킷 라이블러리. 
 - **URL**: [Protocol Buffer](https://protobuf.dev/)
-- **GitHub**: [Protocol Buffer GitHub](https://github.com/protocolbuffers/protobuf)
-- **License**: [Protocol Buffer License](https://github.com/protocolbuffers/protobuf?tab=License-1-ov-file#)
+- **GitHub**: [Protocol Buffer GitHub](https://github.com/protocolbuffers/protobuf/)
+- **License**: [Protocol Buffer License](https://github.com/protocolbuffers/protobuf?tab=License-1-ov-file#/)
 
 ### OpenXLSX
 
 - **Description**: Use for Excel table loading. 엑셀파일 로딩 라이블러리. 
-- **GitHub**: [OpenXLSX GitHub](https://github.com/troldal/OpenXLSX)
-- **License**: [OpenXLSX License](https://github.com/troldal/OpenXLSX?tab=BSD-3-Clause-1-ov-file#)
+- **GitHub**: [OpenXLSX GitHub](https://github.com/troldal/OpenXLSX/)
+- **License**: [OpenXLSX License](https://github.com/troldal/OpenXLSX?tab=BSD-3-Clause-1-ov-file#/)
 
 ### olcPixelGameEngine
 
 - **Description**: Header only graphic engine. 헤더 온니 클라이언트엔진.
-- **GitHub**: [olcPixelGameEngine GitHub](https://github.com/OneLoneCoder/olcPixelGameEngine)
-- **License**: [olcPixelGameEngine License](https://github.com/OneLoneCoder/olcPixelGameEngine?tab=License-1-ov-file#)
+- **GitHub**: [olcPixelGameEngine GitHub](https://github.com/OneLoneCoder/olcPixelGameEngine/)
+- **License**: [olcPixelGameEngine License](https://github.com/OneLoneCoder/olcPixelGameEngine?tab=License-1-ov-file#/)
 
 The rights to all of the libraries I've used are with each of the original licensees.
 제가사용한 모든 라이블러리에 대한 권리는 각 라이센스 원작자들에게 있습니다.
-```
+
