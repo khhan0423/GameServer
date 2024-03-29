@@ -33,26 +33,26 @@ Every library I used was also built in the same environment.
 
 ### SQLITE
 
-- **Description**: 파일형 데이터베이스. Database file base.
+- **Description**: Database file base. 파일형 데이터베이스.
 - **URL**: [SQLite](https://www.sqlite.org/)
 - **License**: [SQLite License](https://www.sqlite.org/copyright.html)
 
 ### PROTOCOL BUFFER
 
-- **Description**: 패킷 라이블러리. Use for packet processing.
+- **Description**: Use for packet processing. 패킷 라이블러리. 
 - **URL**: [Protocol Buffer](https://protobuf.dev/)
 - **GitHub**: [Protocol Buffer GitHub](https://github.com/protocolbuffers/protobuf)
 - **License**: [Protocol Buffer License](https://github.com/protocolbuffers/protobuf?tab=License-1-ov-file#)
 
 ### OpenXLSX
 
-- **Description**: 엑셀파일 로딩 라이블러리. Use for Excel table loading.
+- **Description**: Use for Excel table loading. 엑셀파일 로딩 라이블러리. 
 - **GitHub**: [OpenXLSX GitHub](https://github.com/troldal/OpenXLSX)
 - **License**: [OpenXLSX License](https://github.com/troldal/OpenXLSX?tab=BSD-3-Clause-1-ov-file#)
 
 ### olcPixelGameEngine
 
-- **Description**: 헤더 온니 클라이언트엔진. Header only graphic engine.
+- **Description**: Header only graphic engine. 헤더 온니 클라이언트엔진.
 - **GitHub**: [olcPixelGameEngine GitHub](https://github.com/OneLoneCoder/olcPixelGameEngine)
 - **License**: [olcPixelGameEngine License](https://github.com/OneLoneCoder/olcPixelGameEngine?tab=License-1-ov-file#)
 
