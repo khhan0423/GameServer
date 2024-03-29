@@ -8,7 +8,7 @@ This project was created for portfolio purposes.
 
 Please refer to your LinkedIn profile.
 본인의 링크드인 프로필을 참고하여 주세요.
-[LinkedIn Profile](https://www.linkedin.com/in/kyunghun-han-231899124/)
+[LinkedIn Profile](<https://www.linkedin.com/in/kyunghun-han-231899124/>)
 
 ## Development Environment
 
